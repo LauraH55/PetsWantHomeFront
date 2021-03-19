@@ -1,8 +1,7 @@
 @use 'src/styles/vars';
 
 .app {
-  width: 500px;
-  margin: 1em auto;
-  text-align: center;
+  background-color:vars.$backgroundColor;
+
 }
 
