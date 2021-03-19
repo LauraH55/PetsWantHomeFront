@@ -2,8 +2,23 @@
 @use 'vars';
 
 body {
-  font-family: sans-serif;
+  font-family: 'Monsieur-Pomme', sans-serif;
+  h1, h2, h3 {
+    font-family: 'Metropolis-Light', sans-serif;
+  }
 }
+
+@font-face {
+  font-family: 'Monsieur-Pomme';
+  src: url('../assets/fonts/Monsieur-Pomme.otf');
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../assets/fonts/Metropolis-Light.otf');
+}
+
+
 
 /* 
   // or you can import your own font
