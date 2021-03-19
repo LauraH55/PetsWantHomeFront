@@ -1,12 +1,24 @@
 import React from 'react';
 
 import './nav.scss';
+import Logo from '../../assets/img/B&W-Logo-PWH.png';
 
 const Nav = () => (
   <nav className="nav">
-    <a className="nav-item nav-item--active">Accueil</a>
-    <a className="nav-item">Lien 1</a>
-    <a className="nav-item">Lien 2</a>
+    <div className="menu_link">
+      <img src={Logo} alt="logo" />
+      <ul>
+        <li>ACCUEUIL</li>
+        <li>ADOPTIONS</li>
+        <li>REFUGES</li>
+      </ul>
+    </div>
+    <div className="menu_login">
+      <ul>
+        <li>CONNEXION</li>
+        <li>INSCRIPTION</li>
+      </ul>
+    </div>
   </nav>
 );
 
