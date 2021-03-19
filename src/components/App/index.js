@@ -2,12 +2,17 @@
 import React from 'react';
 
 // == Import
+import Nav from 'src/components/Nav';
+import Home from 'src/components/Home';
+import Footer from 'src/components/Footer';
 import './styles.scss';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <h1>Composant : App</h1>
+    <Nav />
+    <Home />
+    <Footer />
   </div>
 );
 
