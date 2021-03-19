@@ -1,1 +1,45 @@
 @use 'src/styles/vars';
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: vars.$gutter * 3;
+  background-color: vars.$backgroundColor;
+
+  .menu_link {
+    display: flex;
+    align-items: center;
+    padding-left: vars.$gutter;
+
+    img {
+      height: vars.$gutter +1.5;
+    }
+
+    ul {
+      display: flex;
+      margin: vars.$gutter;
+
+      li {
+        padding: 0 vars.$gutter - 1;
+        margin: 0 vars.$gutter -1;
+      }
+    }
+  }
+
+  .menu_login {
+    display: flex;
+    justify-content: flex-end;
+
+    ul {
+      display: flex;
+      margin-right: vars.$gutter;
+
+      li {
+        padding: 0 vars.$gutter - 1.5;
+      }
+    }
+  }
+}
+
