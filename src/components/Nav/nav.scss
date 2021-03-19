@@ -6,7 +6,9 @@
   align-items: center;
   width: 100%;
   height: vars.$gutter * 3;
-  background-color: vars.$backgroundColor;
+  background-color: vars.$navColor;
+  font-family: 'Avenir', sans-serif;
+  font-size: 0.8em;
 
   .menu_link {
     display: flex;

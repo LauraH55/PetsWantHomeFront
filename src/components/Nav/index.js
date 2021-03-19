@@ -8,15 +8,15 @@ const Nav = () => (
     <div className="menu_link">
       <img src={Logo} alt="logo" />
       <ul>
-        <li>ACCUEUIL</li>
-        <li>ADOPTIONS</li>
-        <li>REFUGES</li>
+        <li>Accueil</li>
+        <li>Adoptions</li>
+        <li>Refuges</li>
       </ul>
     </div>
     <div className="menu_login">
       <ul>
-        <li>CONNEXION</li>
-        <li>INSCRIPTION</li>
+        <li>Connexion</li>
+        <li>Inscription</li>
       </ul>
     </div>
   </nav>

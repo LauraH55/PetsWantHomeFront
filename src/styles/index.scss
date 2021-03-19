@@ -3,9 +3,7 @@
 
 body {
   font-family: 'Monsieur-Pomme', sans-serif;
-  h1, h2, h3 {
-    font-family: 'Metropolis-Light', sans-serif;
-  }
+  font-size: 2em;
 }
 
 @font-face {
@@ -14,8 +12,8 @@ body {
 }
 
 @font-face {
-  font-family: 'Metropolis';
-  src: url('../assets/fonts/Metropolis-Light.otf');
+  font-family: 'Avenir';
+  src: url('../assets/fonts/avenir-lt-std-45-book.otf');
 }
 
 
