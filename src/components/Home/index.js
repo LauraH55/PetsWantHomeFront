@@ -3,7 +3,7 @@ import React from 'react';
 
 import './home.scss';
 import akita from '../../assets/images/akita.jpg';
-import suivant from '../../assets/images/suivant.png';
+import paw from '../../assets/images/pawPWH.png';
 
 const Home = () => (
   <main className="home">
@@ -12,6 +12,7 @@ const Home = () => (
     </div>
     <h2 className="subtitle">Quelques animaux disponibles à l'adoption</h2>
     <div className="thumbnails-container">
+      <img className="thumbnails" src={akita} alt="#" />
       <img className="thumbnails" src={akita} alt="" />
       <img className="thumbnails" src={akita} alt="" />
       <img className="thumbnails" src={akita} alt="" />
@@ -19,11 +20,8 @@ const Home = () => (
       <img className="thumbnails" src={akita} alt="" />
       <img className="thumbnails" src={akita} alt="" />
       <img className="thumbnails" src={akita} alt="" />
-      <img className="thumbnails" src={akita} alt="" />
-      <img className="thumbnails" src={suivant} alt="" />
+      <img className="thumbnails" src={paw} alt="" />
     </div>
-    
-
   </main>
 );
 

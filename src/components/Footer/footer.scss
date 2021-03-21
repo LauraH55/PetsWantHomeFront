@@ -1,1 +1,23 @@
 @use 'src/styles/vars';
+
+.footer {
+  background-color: vars.$footerColor;
+  font-family: 'Avenir', sans-serif;
+  font-size: 0.7em;
+
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: vars.$gutter;
+    
+    .footer-container-image {
+      height: 8em;
+    }
+  }
+
+  .footer-copyright {
+    text-align: center;
+    font-size: 0.7em;
+  }
+}
