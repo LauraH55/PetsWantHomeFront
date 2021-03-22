@@ -77,7 +77,7 @@ const Register = ({
             type="submit"
             className="login-form-button"
           >
-            OK
+            Valider
           </button>
         </form>
     </div>

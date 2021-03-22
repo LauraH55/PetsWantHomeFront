@@ -37,7 +37,7 @@ const LoginForm = ({
             type="submit"
             className="login-form-button"
           >
-            OK
+            Connexion
           </button>
         </form>
     </div>
