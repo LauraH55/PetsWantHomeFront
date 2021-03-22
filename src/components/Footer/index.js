@@ -12,7 +12,9 @@ const Footer = () => (
       <a href="#">Contact</a>
       <a href="#">À propos</a>
     </div>
-    <p className="footer-copyright">© 2021 PetsWantHome, Tous droits réservés.</p>  
+    <p className="footer-copyright">
+      © 2021 PetsWantHome, Tous droits réservés.
+    </p>
   </footer>
 );
 
