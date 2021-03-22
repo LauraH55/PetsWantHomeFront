@@ -1,0 +1,34 @@
+@use 'src/styles/vars';
+
+.field {
+  text-align: center;
+}
+.field-input {
+  width: 100%;
+  padding: .7em;
+  font-size: 1em;
+  border: 3px solid vars.$footerColor;
+  border-radius: .3em;
+  height: 2.5em;
+  margin-top: 2em;
+}
+.field-input:focus {
+  border-color: #f17f42;
+}
+.field-input:focus + .field-label {
+  color: vars.$outlineColor;
+}
+
+.field--has-content .field-label {
+  display: block;
+}
+
+.field--has-content .field-input {
+  padding: 1.4em .7em .4em;
+}
+
+.field-label {
+  color: vars.$footerColor;
+  font-size: .2em;
+}
+

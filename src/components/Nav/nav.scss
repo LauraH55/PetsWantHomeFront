@@ -38,7 +38,7 @@
       display: flex;
       margin-right: vars.$gutter;
 
-      li {
+      .nav-item {
         padding: 0 vars.$gutter - 1.5;
       }
     }

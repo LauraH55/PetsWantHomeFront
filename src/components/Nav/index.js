@@ -10,19 +10,19 @@ const Nav = () => (
       <img src={Logo} alt="logo" />
       <ul>
         <NavLink
-        to="/"
-        className="nav-item"
-        activeClassName="nav-item--active"
-        exact
-        >
-          Accueil
+          to="/"
+          className="nav-item"
+          activeClassName="nav-item--active"
+          exact
+          >
+            Accueil
         </NavLink>
         <NavLink
-        to="/adoption"
-        className="nav-item"
-        activeClassName="nav-item--active"
-        >
-          Adoptions
+          to="/adoption"
+          className="nav-item"
+          activeClassName="nav-item--active"
+          >
+            Adoptions
         </NavLink>
         {/* <NavLink
         to="/shelters"
@@ -35,8 +35,21 @@ const Nav = () => (
     </div>
     <div className="menu-login">
       <ul>
-        <li>Connexion</li>
-        <li>Inscription</li>
+        <NavLink
+          to="/login"
+          className="nav-item"
+          activeClassName="nav-item--active"
+          exact
+          >
+            Connexion
+        </NavLink>
+        <NavLink
+          to="/register"
+          className="nav-item"
+          activeClassName="nav-item--active"
+          >
+            Inscription
+        </NavLink>
       </ul>
     </div>
   </nav>
