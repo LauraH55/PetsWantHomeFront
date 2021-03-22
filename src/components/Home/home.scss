@@ -3,7 +3,8 @@
 .home {
 
   line-height: vars.$gutter;
-  background-color:#f3ecec;
+  // background-color:#f3ecec;
+  background-image: radial-gradient(ellipse at 0% 0%,  #cbdfbd, #f6f4d2 );
   padding-bottom: 2em;
 
   .banner {

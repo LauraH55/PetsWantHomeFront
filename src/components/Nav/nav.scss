@@ -10,7 +10,7 @@
   font-family: 'Avenir', sans-serif;
   font-size: 0.8em;
 
-  .menu_link {
+  .menu-link {
     display: flex;
     align-items: center;
     padding-left: vars.$gutter;
@@ -23,14 +23,14 @@
       display: flex;
       margin: vars.$gutter;
 
-      li {
+      .nav-item {
         padding: 0 vars.$gutter - 1;
         margin: 0 vars.$gutter -1;
       }
     }
   }
 
-  .menu_login {
+  .menu-login {
     display: flex;
     justify-content: flex-end;
 
