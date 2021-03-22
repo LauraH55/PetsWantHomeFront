@@ -6,21 +6,26 @@ import Logo from '../../assets/img/B&W-Logo-PWH.png';
 
 const Nav = () => (
   <nav className="nav">
+    <div className="menu-login--mobile">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <div className="menu-link">
       <img src={Logo} alt="logo" />
       <ul>
         <NavLink
-        to="/"
-        className="nav-item"
-        activeClassName="nav-item--active"
-        exact
+          to="/"
+          className="nav-item"
+          activeClassName="nav-item--active"
+          exact
         >
           Accueil
         </NavLink>
         <NavLink
-        to="/adoption"
-        className="nav-item"
-        activeClassName="nav-item--active"
+          to="/adoption"
+          className="nav-item"
+          activeClassName="nav-item--active"
         >
           Adoptions
         </NavLink>
