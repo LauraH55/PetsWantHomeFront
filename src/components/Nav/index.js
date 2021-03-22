@@ -6,6 +6,7 @@ import Logo from '../../assets/img/B&W-Logo-PWH.png';
 
 const Nav = () => (
   <nav className="nav">
+    <img src={Logo} alt="logo" className="logo-mobile" />
     <div className="menu-login--mobile">
       <div></div>
       <div></div>
