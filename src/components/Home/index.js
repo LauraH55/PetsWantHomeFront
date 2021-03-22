@@ -3,7 +3,7 @@ import React from 'react';
 
 import './home.scss';
 import akita from '../../assets/images/akita.jpg';
-import paw from '../../assets/images/pawPWH.png';
+import paw from '../../assets/images/pawnextb&w.png';
 
 const Home = () => (
   <main className="home">

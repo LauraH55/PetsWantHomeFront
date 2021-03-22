@@ -1,19 +1,39 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './nav.scss';
 import Logo from '../../assets/img/B&W-Logo-PWH.png';
 
 const Nav = () => (
   <nav className="nav">
-    <div className="menu_link">
+    <div className="menu-link">
       <img src={Logo} alt="logo" />
       <ul>
-        <li>Accueil</li>
-        <li>Adoptions</li>
-        <li>Refuges</li>
+        <NavLink
+        to="/"
+        className="nav-item"
+        activeClassName="nav-item--active"
+        exact
+        >
+          Accueil
+        </NavLink>
+        <NavLink
+        to="/adoption"
+        className="nav-item"
+        activeClassName="nav-item--active"
+        >
+          Adoptions
+        </NavLink>
+        {/* <NavLink
+        to="/shelters"
+        className="nav-item"
+        activeClassName="nav-item--active"
+        >
+          Refuges
+        </NavLink> */}
       </ul>
     </div>
-    <div className="menu_login">
+    <div className="menu-login">
       <ul>
         <li>Connexion</li>
         <li>Inscription</li>
