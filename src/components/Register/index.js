@@ -21,8 +21,6 @@ const Register = ({
     handleLogin();
   };
 
-  console.log('Register');
-
   return (
     <div className="login-form">
         <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
