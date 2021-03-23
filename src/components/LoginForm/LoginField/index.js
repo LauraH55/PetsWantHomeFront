@@ -17,14 +17,14 @@ const LoginField = ({
     manageChange(evt.target.value, name);
   };
 
-  const inputId = `field-${name}`;
+  const inputId = `loginfield-${name}`;
 
   return (
-    <div className='field'>
+    <div className='loginfield'>
 
       <label
         htmlFor={inputId}
-        className="field-label"
+        className="loginfield-label"
       >
         {placeholder}
       </label>
@@ -35,7 +35,7 @@ const LoginField = ({
         // infos de base
         id={inputId}
         type={type}
-        className="field-input"
+        className="loginfield-input"
         placeholder={placeholder}
         name={name}
       />

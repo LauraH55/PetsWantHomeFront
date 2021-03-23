@@ -17,13 +17,13 @@ const RegisterField = ({
     manageChange(evt.target.value, name);
   };
 
-  const inputId = `field-${name}`;
+  const inputId = `registerfield-${name}`;
 
   return (
-    <div className='field'>  
+    <div className='registerfield'>  
       <label
         htmlFor={inputId}
-        className="field-label"
+        className="registerfield-label"
       >
         {placeholder}
       </label>
@@ -34,7 +34,7 @@ const RegisterField = ({
         // infos de base
         id={inputId}
         type={type}
-        className="field-input"
+        className="registerfield-input"
         placeholder={placeholder}
         name={name}
       />

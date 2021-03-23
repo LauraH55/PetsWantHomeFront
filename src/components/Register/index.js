@@ -33,7 +33,7 @@ const Register = ({
           <RegisterField
             name="address"
             type="address"
-            placeholder="Adresse"
+            placeholder="Adresse du refuge"
             manageChange={changeField}
             value={address}
           />

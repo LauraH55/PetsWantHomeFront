@@ -1,11 +1,11 @@
 @use 'src/styles/vars';
 
-.field {
+.registerfield {
   text-align: center;
   margin-top: 1em;
 }
-.field-input {
-  width: 100%;
+.registerfield-input {
+  width: 80%;
   padding: .7em;
   font-size: 1em;
   border: 3px solid vars.$footerColor;
@@ -14,22 +14,22 @@
   margin-top: 0.2em;
   margin-bottom: 1em;
 }
-.field-input:focus {
+.registerfield-input:focus {
   border-color: #f17f42;
 }
-.field-input:focus + .field-label {
+.registerfield-input:focus + .field-label {
   color: vars.$outlineColor;
 }
 
-.field--has-content .field-label {
+.registerfield--has-content .field-label {
   display: block;
 }
 
-.field--has-content .field-input {
+.registerfield--has-content .field-input {
   padding: 1.4em .7em .4em;
 }
 
-.field-label {
+.registerfield-label {
   color: vars.$footerColor;
   font-size: 1.3em;
 }

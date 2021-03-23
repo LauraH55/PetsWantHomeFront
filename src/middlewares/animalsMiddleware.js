@@ -9,7 +9,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
       axios.get('http://laura-hantz.vpnuser.lan/Apotheose/apo-PetsWantHome-back/public/api/animals')
       .then((response) => {
         console.log('response: ', response);
-        store.dispatch(saveRecipes(response.data));
+        store.dispatch(saveAnimals(response.data));
       })
       .catch((error) => {
         console.log('error:', error);
