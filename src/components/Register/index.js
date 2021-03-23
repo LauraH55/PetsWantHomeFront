@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Field from './Field';
+import RegisterField from './RegisterField';
 
 import './register.scss';
 
@@ -24,47 +24,47 @@ const Register = ({
   return (
     <div className="login-form">
         <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
-          <Field
+          <RegisterField
             name="shelter"
             placeholder="Nom du refuge"
             manageChange={changeField}
             value={shelter}
           />
-          <Field
+          <RegisterField
             name="address"
             type="address"
             placeholder="Adresse"
             manageChange={changeField}
             value={address}
           />
-          <Field
+          <RegisterField
             name="phoneNumber"
             type="phoneNumber"
             placeholder="Numéro de téléphone"
             manageChange={changeField}
             value={phoneNumber}
           />
-          <Field
+          <RegisterField
             name="picture"
             type="picture"
             placeholder="Photo du refuge"
             manageChange={changeField}
             value={picture}
           />
-          <Field
+          <RegisterField
             name="email"
             placeholder="Adresse Email"
             manageChange={changeField}
             value={email}
           />
-          <Field
+          <RegisterField
             name="password"
             type="password"
             placeholder="Mot de passe"
             manageChange={changeField}
             value={password}
           />
-          <Field
+          <RegisterField
             name="confirmPassword"
             type="confirmPassword"
             placeholder="Confirmation du mot de passe"

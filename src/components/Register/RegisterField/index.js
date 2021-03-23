@@ -3,10 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
-import './field.scss';
+import './registerfield.scss';
 
 // == Composant
-const Field = ({
+const RegisterField = ({
   value,
   type,
   name,
@@ -20,8 +20,7 @@ const Field = ({
   const inputId = `field-${name}`;
 
   return (
-    <div className='field'>
-
+    <div className='field'>  
       <label
         htmlFor={inputId}
         className="field-label"
@@ -43,7 +42,7 @@ const Field = ({
   );
 };
 
-Field.propTypes = {
+RegisterField.propTypes = {
   /** text used as value for the input */
   value: PropTypes.string,
   /** type of the input */
@@ -60,10 +59,10 @@ Field.propTypes = {
 };
 
 // Valeurs par défaut pour les props
-Field.defaultProps = {
+RegisterField.defaultProps = {
   value: '',
   type: 'text',
 };
 
 // == Export
-export default Field;
+export default RegisterField;
