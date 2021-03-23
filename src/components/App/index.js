@@ -14,8 +14,9 @@ import './styles.scss';
 // == Composant
 const App = () => (
   <div className="app">
-    <Nav />
-    <Switch>
+    <Nav outerContainerId={'App'} pageWrapId={'page-wrap'} />
+    <div id="page-wrap">
+      <Switch>
         <Route path="/adoption">
           <Adoption />
         </Route>
@@ -28,7 +29,8 @@ const App = () => (
         <Route path="/">
           <Home />
         </Route>
-    </Switch>
+      </Switch>
+    </div>
     <Footer />
   </div>
 );
