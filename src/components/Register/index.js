@@ -84,22 +84,22 @@ const Register = ({
 
 Register.propTypes = {
   /** value for the email */
-  email: PropTypes.string.isRequired,
+  //email: PropTypes.string.isRequired,
   /** value for the password */
-  password: PropTypes.string.isRequired,
+  //password: PropTypes.string.isRequired,
   /** called when onChange event is received by an input, two parameters :
    * - new value
    * - name
    */
-  changeField: PropTypes.func.isRequired,
+  //changeField: PropTypes.func.isRequired,
   /** called when the form is submitted */
-  handleLogin: PropTypes.func.isRequired,
+  //handleLogin: PropTypes.func.isRequired,
   /** called when the "Déconnexion" button is clicked */
-  handleLogout: PropTypes.func.isRequired,
+  //handleLogout: PropTypes.func.isRequired,
   /** toggle between "connected" or "not connected" */
-  isLogged: PropTypes.bool,
+  //isLogged: PropTypes.bool,
   /** message displayed when "connected" */
-  loggedMessage: PropTypes.string,
+  //loggedMessage: PropTypes.string,
 };
 
 Register.defaultProps = {

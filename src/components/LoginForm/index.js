@@ -15,7 +15,6 @@ const LoginForm = ({
     evt.preventDefault();
     handleLogin();
   };
-  console.log('Login');
 
   return (
     <div className="login-form">
