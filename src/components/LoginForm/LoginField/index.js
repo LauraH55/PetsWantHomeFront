@@ -3,10 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
-import './field.scss';
+import './loginfield.scss';
 
 // == Composant
-const Field = ({
+const LoginField = ({
   value,
   type,
   name,
@@ -17,14 +17,14 @@ const Field = ({
     manageChange(evt.target.value, name);
   };
 
-  const inputId = `field-${name}`;
+  const inputId = `loginfield-${name}`;
 
   return (
-    <div className='field'>
+    <div className='loginfield'>
 
       <label
         htmlFor={inputId}
-        className="field-label"
+        className="loginfield-label"
       >
         {placeholder}
       </label>
@@ -35,7 +35,7 @@ const Field = ({
         // infos de base
         id={inputId}
         type={type}
-        className="field-input"
+        className="loginfield-input"
         placeholder={placeholder}
         name={name}
       />
@@ -43,7 +43,7 @@ const Field = ({
   );
 };
 
-Field.propTypes = {
+LoginField.propTypes = {
   /** text used as value for the input */
   value: PropTypes.string,
   /** type of the input */
@@ -60,10 +60,10 @@ Field.propTypes = {
 };
 
 // Valeurs par défaut pour les props
-Field.defaultProps = {
+LoginField.defaultProps = {
   value: '',
   type: 'text',
 };
 
 // == Export
-export default Field;
+export default LoginField;

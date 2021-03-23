@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Field from './Field';
+import LoginField from './LoginField';
 
 import './loginform.scss';
 
@@ -10,23 +10,25 @@ const LoginForm = ({
   password,
   changeField,
   handleLogin,
+  handleLogout,
+  isLogged,
+  loggedMessage,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
-  console.log('Login');
 
   return (
     <div className="login-form">
         <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
-          <Field
+          <LoginField
             name="email"
             placeholder="Adresse Email"
             manageChange={changeField}
             value={email}
           />
-          <Field
+          <LoginField
             name="password"
             type="password"
             placeholder="Mot de passe"

@@ -3,10 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // == Import : local
-import './field.scss';
+import './registerfield.scss';
 
 // == Composant
-const Field = ({
+const RegisterField = ({
   value,
   type,
   name,
@@ -17,13 +17,13 @@ const Field = ({
     manageChange(evt.target.value, name);
   };
 
-  const inputId = `field-${name}`;
+  const inputId = `registerfield-${name}`;
 
   return (
-    <div className='field'>  
+    <div className='registerfield'>  
       <label
         htmlFor={inputId}
-        className="field-label"
+        className="registerfield-label"
       >
         {placeholder}
       </label>
@@ -34,7 +34,7 @@ const Field = ({
         // infos de base
         id={inputId}
         type={type}
-        className="field-input"
+        className="registerfield-input"
         placeholder={placeholder}
         name={name}
       />
@@ -42,7 +42,7 @@ const Field = ({
   );
 };
 
-Field.propTypes = {
+RegisterField.propTypes = {
   /** text used as value for the input */
   value: PropTypes.string,
   /** type of the input */
@@ -59,10 +59,10 @@ Field.propTypes = {
 };
 
 // Valeurs par défaut pour les props
-Field.defaultProps = {
+RegisterField.defaultProps = {
   value: '',
   type: 'text',
 };
 
 // == Export
-export default Field;
+export default RegisterField;

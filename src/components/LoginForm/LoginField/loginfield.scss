@@ -1,34 +1,36 @@
 @use 'src/styles/vars';
 
-.field {
+.loginfield {
   text-align: center;
+  margin-top: 1em;
 }
-.field-input {
-  width: 100%;
+.loginfield-input {
+  width: 80%;
   padding: .7em;
   font-size: 1em;
   border: 3px solid vars.$footerColor;
   border-radius: .3em;
   height: 2.5em;
-  margin-top: 2em;
+  margin-top: 0.2em;
+  margin-bottom: 1em;
 }
-.field-input:focus {
+.loginfield-input:focus {
   border-color: #f17f42;
 }
-.field-input:focus + .field-label {
+.loginfield-input:focus + .field-label {
   color: vars.$outlineColor;
 }
 
-.field--has-content .field-label {
+.loginfield--has-content .field-label {
   display: block;
 }
 
-.field--has-content .field-input {
+.loginfield--has-content .field-input {
   padding: 1.4em .7em .4em;
 }
 
-.field-label {
+.loginfield-label {
   color: vars.$footerColor;
-  font-size: .2em;
+  font-size: 1.3em;
 }
 
