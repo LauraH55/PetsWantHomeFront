@@ -1,17 +1,49 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { slide as Menu } from 'react-burger-menu';
 import './nav.scss';
 import Logo from '../../assets/img/B&W-Logo-PWH.png';
 
 const Nav = () => (
   <nav className="nav">
-    <img src={Logo} alt="logo" className="logo-mobile" />
-    <div className="menu-login--mobile">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div className="menu--link--mobile">
+      <Menu {...Nav}>
+        <ul>
+          <NavLink
+            to="/"
+            className="menu-item"
+            activeClassName="nav-item--active"
+            exact
+          >
+            Accueil
+          </NavLink>
+          <NavLink
+            to="/adoption"
+            className="menu-item"
+            activeClassName="nav-item--active"
+          >
+            Adoptions
+          </NavLink>
+          <NavLink
+            to="/login"
+            className="menu-item"
+            activeClassName="nav-item--active"
+            exact
+          >
+            Connexion
+          </NavLink>
+          <NavLink
+            to="/register"
+            className="menu-item"
+            activeClassName="nav-item--active"
+          >
+            Inscription
+          </NavLink>
+        </ul>
+      </Menu>
+      <img src={Logo} alt="logo" className="logo-mobile" />
     </div>
+
     <div className="menu-link">
       <img src={Logo} alt="logo" />
       <ul>
@@ -20,15 +52,15 @@ const Nav = () => (
           className="nav-item"
           activeClassName="nav-item--active"
           exact
-          >
-            Accueil
+        >
+          Accueil
         </NavLink>
         <NavLink
           to="/adoption"
           className="nav-item"
           activeClassName="nav-item--active"
-          >
-            Adoptions
+        >
+          Adoptions
         </NavLink>
         {/* <NavLink
         to="/shelters"
@@ -46,15 +78,15 @@ const Nav = () => (
           className="nav-item"
           activeClassName="nav-item--active"
           exact
-          >
-            Connexion
+        >
+          Connexion
         </NavLink>
         <NavLink
           to="/register"
           className="nav-item"
           activeClassName="nav-item--active"
-          >
-            Inscription
+        >
+          Inscription
         </NavLink>
       </ul>
     </div>
