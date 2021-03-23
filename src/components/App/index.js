@@ -18,24 +18,23 @@ const App = ({ loadAnimals }) => {
     loadAnimals();
   }, []);
 
-
   return (
     <div className="app">
       <Nav outerContainerId={'App'} pageWrapId={'page-wrap'} />
       <div id="page-wrap">
         <Switch>
-            <Route path="/adoption">
-              <Adoption />
-            </Route>
-            <Route path="/register">
-              <Register />
-            </Route>
-            <Route path="/login">
-              <LoginForm />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
+          <Route path="/adoption">
+            <Adoption />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/login">
+            <LoginForm />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
         </Switch>
       </div>
       <Footer />
