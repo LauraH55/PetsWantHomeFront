@@ -1,0 +1,44 @@
+@use 'src/styles/vars';
+
+.animal {
+  display: flex;
+  flex-direction: row;
+  margin: 2em;
+  font-family: 'Avenir', sans-serif;
+  font-size: 0.7em;
+
+  .animal-image {
+    height: 400px;
+    margin-right: 2em;
+    
+
+  }
+  .animal-aside {
+    .animal-shelter {
+      margin-bottom: 1em;
+      .animal-shelter-link {
+        font-size: 1.5em;
+        font-weight: 900;
+      }
+
+    }
+    .animal-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .animal-characteristics {
+        margin-right: 2em ;
+        .animal-name {
+          font-family: vars.$pomme;
+          font-size: 4em;
+        }
+
+      }
+      .animal-description {
+
+      }
+
+    }
+    
+  }
+}

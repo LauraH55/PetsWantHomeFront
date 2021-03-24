@@ -9,7 +9,9 @@ import Home from 'src/components/Home';
 import Footer from 'src/components/Footer';
 import Adoption from 'src/components/Adoption';
 import LoginForm from 'src/containers/LoginForm';
-import Register from 'src/components/Register';
+import Register from 'src/containers/Register';
+import Animal from 'src/components/Animal';
+import Shelter from 'src/components/Shelter';
 import './styles.scss';
 
 // == Composant
@@ -25,6 +27,12 @@ const App = ({ loadAnimals }) => {
         <Switch>
           <Route path="/adoption">
             <Adoption />
+          </Route>
+          <Route path="/animal/1">
+            <Animal />
+          </Route>
+          <Route path="/shelter/1">
+            <Shelter />
           </Route>
           <Route path="/register">
             <Register />

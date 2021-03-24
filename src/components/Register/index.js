@@ -27,48 +27,48 @@ const Register = ({
           <RegisterField
             name="shelter"
             placeholder="Nom du refuge"
-            manageChange={changeField}
+            manageChange={(value, identifier) => (changeField(value, identifier))}
             value={shelter}
           />
           <RegisterField
             name="address"
             type="address"
             placeholder="Adresse du refuge"
-            manageChange={changeField}
+            manageChange={(value, identifier) => (changeField(value, identifier))}
             value={address}
           />
           <RegisterField
             name="phoneNumber"
             type="phoneNumber"
             placeholder="Numéro de téléphone"
-            manageChange={changeField}
+            manageChange={(value, identifier) => (changeField(value, identifier))}
             value={phoneNumber}
           />
           <RegisterField
             name="picture"
             type="picture"
             placeholder="Photo du refuge"
-            manageChange={changeField}
+            manageChange={(value, identifier) => (changeField(value, identifier))}
             value={picture}
           />
           <RegisterField
             name="email"
             placeholder="Adresse Email"
-            manageChange={changeField}
+            manageChange={(value, identifier) => (changeField(value, identifier))}
             value={email}
           />
           <RegisterField
             name="password"
             type="password"
             placeholder="Mot de passe"
-            manageChange={changeField}
+            manageChange={(value, identifier) => (changeField(value, identifier))}
             value={password}
           />
           <RegisterField
             name="confirmPassword"
             type="confirmPassword"
             placeholder="Confirmation du mot de passe"
-            manageChange={changeField}
+            manageChange={(value, identifier) => (changeField(value, identifier))}
             value={confirmPassword}
           />
           <button
@@ -84,22 +84,33 @@ const Register = ({
 
 Register.propTypes = {
   /** value for the email */
-  //email: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
   /** value for the password */
-  //password: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
   /** called when onChange event is received by an input, two parameters :
    * - new value
    * - name
    */
-  //changeField: PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired,
   /** called when the form is submitted */
-  //handleLogin: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+    /** value for the email */
+  shelter: PropTypes.string.isRequired,
+  /** value for the email */
+  confirmPassword: PropTypes.string.isRequired,
+  /** value for the email */
+  address: PropTypes.string.isRequired,
+  /** value for the email */
+  phoneNumber: PropTypes.string.isRequired,
+  /** value for the email */
+  picture: PropTypes.string.isRequired,
+
   /** called when the "Déconnexion" button is clicked */
-  //handleLogout: PropTypes.func.isRequired,
+  // handleLogout: PropTypes.func.isRequired,
   /** toggle between "connected" or "not connected" */
-  //isLogged: PropTypes.bool,
+  // isLogged: PropTypes.bool,
   /** message displayed when "connected" */
-  //loggedMessage: PropTypes.string,
+  // loggedMessage: PropTypes.string,
 };
 
 Register.defaultProps = {
