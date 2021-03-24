@@ -1,8 +1,10 @@
-import { UPDATE_USER_FIELD } from 'src/actions/auth';
+import { UPDATE_USER_FIELD, SAVE_USER, LOG_OUT } from 'src/actions/auth';
 
 const initialState = {
   email: '',
   password: '',
+  isLogged: false,
+  token: null,
 };
 
 function authReducer(state = initialState, action) {
@@ -18,6 +20,23 @@ function authReducer(state = initialState, action) {
         ...state,
         password: action.newValue,
       };
+
+      case SAVE_USER:
+        return {
+          ...state,
+          isLogged: action.isLogged,
+          token: action.token,
+          // on en profite pour vider les champs
+          email: '',
+          password: '',
+        };
+  
+      case LOG_OUT:
+        return {
+          ...state,
+          isLogged: false,
+          token: null,
+        };
 
     default:
       return state;
