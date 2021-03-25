@@ -20,7 +20,7 @@ const Animal = () => (
       </div>
       <div className="animal-info">
         <div className="animal-characteristics"> 
-          <h3 className="animal-name">Simba</h3>
+          <h3 className="animal-name">Leiko</h3>
           <h4>Espèce : Chien</h4>
           <h4>Race : Akita</h4>
           <h4>Âge : 2ans</h4>

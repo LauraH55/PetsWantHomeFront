@@ -1,7 +1,7 @@
 import { UPDATE_USER_FIELD, SAVE_USER, LOG_OUT } from 'src/actions/auth';
 
 const initialState = {
-  email: '',
+  username: '',
   password: '',
   isLogged: false,
   token: null,
@@ -10,10 +10,10 @@ const initialState = {
 function authReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USER_FIELD:
-      if (action.name === 'email') {
+      if (action.name === 'username') {
         return {
           ...state,
-          email: action.newValue,
+          username: action.newValue,
         };
       }
       return {
@@ -26,8 +26,7 @@ function authReducer(state = initialState, action) {
           ...state,
           isLogged: action.isLogged,
           token: action.token,
-          // on en profite pour vider les champs
-          email: '',
+          username: '',
           password: '',
         };
   

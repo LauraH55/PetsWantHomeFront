@@ -8,8 +8,10 @@
   font-size: 0.7em;
 
   .animal-image {
-    height: 400px;
+    width: 50%;
+    height: auto;
     margin-right: 2em;
+    object-fit: cover;
     
 
   }
@@ -26,8 +28,10 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+
       .animal-characteristics {
         margin-right: 2em ;
+
         .animal-name {
           font-family: vars.$pomme;
           font-size: 4em;

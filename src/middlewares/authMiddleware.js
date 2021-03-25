@@ -2,15 +2,15 @@ import axios from 'axios';
 
 import { LOG_IN, NEW_SHELTER_CREATION } from 'src/actions/auth';
 
-const API_URL = 'http://laura-hantz.vpnuser.lan/Apotheose/apo-PetsWantHome-back/public/api/shelters';
+const API_URL = 'http://laura-hantz.vpnuser.lan/Apotheose/apo-PetsWantHome-back/public/api';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN: {
-      const { email, password } = store.getState().auth;
+      const { username, password } = store.getState().auth;
 
       axios.post(`${API_URL}/login`, {
-        email: email,
+        username: username,
         password: password,
       })
         .then((response) => {

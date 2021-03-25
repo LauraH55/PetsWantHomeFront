@@ -1,6 +1,6 @@
 @use 'src/styles/vars';
 
-.login-form {
+.loginfield-form {
   flex: 1;
   display: flex;
   align-items: center;
@@ -8,29 +8,29 @@
   font-family: 'Avenir', sans-serif;
 }
 
-.login-form-element {
+.loginfield-form-element {
   text-align: center;
 }
 
-.login-form-message {
+.loginfield-form-message {
   text-align: right;
   margin: .3em 1em;
 }
 
-.login-form-logged {
+.loginfield-form-logged {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-.login-form-button {
+.loginfield-form-button {
   font-weight: 700;
-  font-size: 1em;
+  font-size: 1rem;
   color: #fff;
   background-color: vars.$footerColor;
   border-radius: 0.3em;
   border: 0;
-  padding: 0.7em;
-  height: 2.5em;
-  margin: 2em;
+  padding: 1rem;
+  height: 3rem;
+  margin: 2rem;
 }

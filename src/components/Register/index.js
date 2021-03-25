@@ -22,8 +22,8 @@ const Register = ({
   };
 
   return (
-    <div className="login-form">
-        <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
+    <div className="register-form">
+        <form autoComplete="off" className="register-form-element" onSubmit={handleSubmit}>
           <RegisterField
             name="shelter"
             placeholder="Nom du refuge"
@@ -73,7 +73,7 @@ const Register = ({
           />
           <button
             type="submit"
-            className="login-form-button"
+            className="register-form-button"
           >
             Valider
           </button>

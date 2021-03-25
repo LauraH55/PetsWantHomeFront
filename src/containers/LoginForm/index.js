@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import LoginForm from 'src/components/LoginForm';
 
 const mapStateToProps = (state) => ({
-  email: state.auth.email,
+  username: state.auth.username,
   password: state.auth.password,
 });
 

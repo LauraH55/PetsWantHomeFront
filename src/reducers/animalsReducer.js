@@ -9,7 +9,7 @@ function animalsReducer(state = initialState, action) {
     case SAVE_ANIMALS:
       return {
         ...state,
-        recipesList: action.recipes,
+        animalsList: action.animals,
       };
     default:
       return state;

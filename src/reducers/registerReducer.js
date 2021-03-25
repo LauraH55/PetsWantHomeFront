@@ -12,6 +12,8 @@ const initialState = {
 
 function registerReducer(state = initialState, action) {
   switch (action.type) {
+
+    // TODO Updating the registering fields
     case UPDATE_USER_FIELD:
       return {
         ...state,
