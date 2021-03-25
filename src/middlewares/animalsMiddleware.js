@@ -6,7 +6,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case FETCH_ANIMALS:
-      axios.get('http://laura-hantz.vpnuser.lan/Apotheose/apo-PetsWantHome-back/public/api/animals')
+      axios.get('http://107.22.27.42/apo-PetsWantHome-back/public/api/animals')
       .then((response) => {
         console.log('response: ', response);
         store.dispatch(saveAnimals(response.data));

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 
 // == Import
 import Nav from 'src/components/Nav';
-import Home from 'src/components/Home';
+import Home from 'src/containers/Home';
 import Footer from 'src/components/Footer';
-import Adoption from 'src/components/Adoption';
+import Adoption from 'src/containers/Adoption';
 import LoginForm from 'src/containers/LoginForm';
 import Register from 'src/containers/Register';
 import Animal from 'src/components/Animal';
@@ -52,7 +52,7 @@ const App = ({ loadAnimals }) => {
           <Route path="/login">
             <LoginForm />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
         </Switch>
