@@ -1,23 +1,41 @@
-import { UPDATE_USER_FIELD } from 'src/actions/auth';
+import { UPDATE_USER_FIELD, SAVE_USER, LOG_OUT } from 'src/actions/auth';
 
 const initialState = {
-  email: '',
+  username: '',
   password: '',
+  isLogged: false,
+  token: null,
 };
 
 function authReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USER_FIELD:
-      if (action.name === 'email') {
+      if (action.name === 'username') {
         return {
           ...state,
-          email: action.newValue,
+          username: action.newValue,
         };
       }
       return {
         ...state,
         password: action.newValue,
       };
+
+      case SAVE_USER:
+        return {
+          ...state,
+          isLogged: action.isLogged,
+          token: action.token,
+          username: '',
+          password: '',
+        };
+  
+      case LOG_OUT:
+        return {
+          ...state,
+          isLogged: false,
+          token: null,
+        };
 
     default:
       return state;

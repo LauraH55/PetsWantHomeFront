@@ -1,0 +1,43 @@
+@use 'src/styles/vars';
+
+.shelter { 
+  h1 {
+    text-align: center;
+    font-size: 2em;
+    margin: .3em;
+  }
+  .shelter-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .shelter-image {
+      width: 50%;
+      height: auto;
+      object-fit: cover;
+      margin: 1em;
+
+    }
+    .shelter-characteristics {
+      font-family: vars.$avenir;
+      font-size: 0.8em;
+      line-height: 2em;
+      span {
+        font-weight: 900;
+      }
+    }
+
+  }
+
+  .shelter-animals {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .shelter-animals-image {
+      width: 70%;
+      height: auto;
+      object-fit: cover;
+      margin: 1em;
+    }
+  }  
+}

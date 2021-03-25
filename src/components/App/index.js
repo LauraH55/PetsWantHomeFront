@@ -5,11 +5,16 @@ import PropTypes from 'prop-types';
 
 // == Import
 import Nav from 'src/components/Nav';
-import Home from 'src/components/Home';
+import Home from 'src/containers/Home';
 import Footer from 'src/components/Footer';
-import Adoption from 'src/components/Adoption';
+import Adoption from 'src/containers/Adoption';
 import LoginForm from 'src/containers/LoginForm';
-import Register from 'src/components/Register';
+import Register from 'src/containers/Register';
+import Animal from 'src/components/Animal';
+import Shelter from 'src/components/Shelter';
+import Contact from 'src/components/Contact';
+import About from 'src/components/About';
+import LegalMentions from 'src/components/LegalMentions';
 import './styles.scss';
 
 // == Composant
@@ -26,13 +31,28 @@ const App = ({ loadAnimals }) => {
           <Route path="/adoption">
             <Adoption />
           </Route>
+          <Route path="/animal/1">
+            <Animal />
+          </Route>
+          <Route path="/shelter/1">
+            <Shelter />
+          </Route>
+          <Route path="/legal-mentions">
+            <LegalMentions />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
           <Route path="/register">
             <Register />
           </Route>
           <Route path="/login">
             <LoginForm />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
         </Switch>

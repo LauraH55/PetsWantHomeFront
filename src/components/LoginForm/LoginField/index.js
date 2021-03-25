@@ -27,7 +27,7 @@ const LoginField = ({
         className="loginfield-label"
       >
         {placeholder}
-      </label>
+      </label>    
       <input
         // React - state
         value={value}

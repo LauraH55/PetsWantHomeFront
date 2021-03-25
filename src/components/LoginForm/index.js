@@ -6,7 +6,7 @@ import LoginField from './LoginField';
 import './loginform.scss';
 
 const LoginForm = ({
-  email,
+  username,
   password,
   changeField,
   handleLogin,
@@ -20,13 +20,13 @@ const LoginForm = ({
   };
 
   return (
-    <div className="login-form">
-        <form autoComplete="off" className="login-form-element" onSubmit={handleSubmit}>
+    <div className="loginfield-form">
+        <form autoComplete="off" className="loginfield-form-element" onSubmit={handleSubmit}>
           <LoginField
-            name="email"
+            name="username"
             placeholder="Adresse Email"
             manageChange={changeField}
-            value={email}
+            value={username}
           />
           <LoginField
             name="password"
@@ -37,7 +37,7 @@ const LoginForm = ({
           />
           <button
             type="submit"
-            className="login-form-button"
+            className="loginfield-form-button"
           >
             Connexion
           </button>
@@ -48,7 +48,7 @@ const LoginForm = ({
 
 LoginForm.propTypes = {
   /** value for the email */
-  email: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
   /** value for the password */
   password: PropTypes.string.isRequired,
   /** called when onChange event is received by an input, two parameters :
