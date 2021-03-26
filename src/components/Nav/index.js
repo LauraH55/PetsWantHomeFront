@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 import './nav.scss';
-import Logo from '../../assets/img/B&W-Logo-PWH.png';
+import Logo from '../../assets/images/B&W-Logo-PWH.png';
 
 const Nav = () => (
   <nav className="nav">
@@ -62,13 +62,6 @@ const Nav = () => (
         >
           Adoptions
         </NavLink>
-        {/* <NavLink
-        to="/shelters"
-        className="nav-item"
-        activeClassName="nav-item--active"
-        >
-          Refuges
-        </NavLink> */}
       </ul>
     </div>
     <div className="menu-login">

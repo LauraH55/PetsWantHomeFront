@@ -12,6 +12,11 @@ const authMiddleware = (store) => (next) => (action) => {
       axios.post(`${API_URL}/login`, {
         username: username,
         password: password,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
         .then((response) => {
           console.log(response);
