@@ -7,6 +7,7 @@ import LoginForm from 'src/components/LoginForm';
 const mapStateToProps = (state) => ({
   username: state.auth.username,
   password: state.auth.password,
+  isLogged: state.auth.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({
