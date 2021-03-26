@@ -2,6 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { slugifyName } from 'src/utils';
+
 import './adoption.scss';
 import akita from '../../assets/images/akita.jpg';
 
@@ -11,7 +13,7 @@ const Adoption = ({ animals }) => (
     <div className="cards">
       {animals.map((animal) => (
         <Link
-        to="/animal/1"
+        to={`/animal/${slugifyName(animal.name)}`}
         className="card-link"
         key={animal.id}
       >
