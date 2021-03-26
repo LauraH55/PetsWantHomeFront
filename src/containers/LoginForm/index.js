@@ -17,9 +17,6 @@ const mapDispatchToProps = (dispatch) => ({
   handleLogin: () => {
     dispatch(logIn());
   },
-  handleLogout: () => {
-    console.log('C\'est le moment de se déconnecter');
-  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // == Import
-import Nav from 'src/components/Nav';
+import Nav from 'src/containers/Nav';
 import Home from 'src/containers/Home';
 import Footer from 'src/components/Footer';
 import Adoption from 'src/containers/Adoption';

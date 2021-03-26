@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
+import PropTypes from 'prop-types';
 import './nav.scss';
 import Logo from '../../assets/images/B&W-Logo-PWH.png';
 
-const Nav = () => (
+const Nav = ({ handleLogout, isLogged }) => (
   <nav className="nav">
     <div className="menu--link--mobile">
       <Menu {...Nav}>
@@ -65,25 +66,50 @@ const Nav = () => (
       </ul>
     </div>
     <div className="menu-login">
-      <ul>
-        <NavLink
-          to="/login"
-          className="nav-item"
-          activeClassName="nav-item--active"
-          exact
-        >
-          Connexion
-        </NavLink>
-        <NavLink
-          to="/register"
-          className="nav-item"
-          activeClassName="nav-item--active"
-        >
-          Inscription
-        </NavLink>
-      </ul>
+      
+        {isLogged && (
+          <button
+            type="button"
+            className=""
+            onClick={handleLogout}
+          >
+            Déconnexion
+          </button>
+        )}
+
+        {!isLogged && (
+          <ul>
+            <NavLink
+              to="/login"
+              className="nav-item"
+              activeClassName="nav-item--active"
+              exact
+            >
+              Connexion
+            </NavLink>
+            <NavLink
+              to="/register"
+              className="nav-item"
+              activeClassName="nav-item--active"
+            >
+              Inscription
+            </NavLink>
+          </ul>
+        )}
+      
     </div>
   </nav>
 );
+
+Nav.propTypes = {
+  handleLogout: PropTypes.func.isRequired,
+  /** toggle between "connected" or "not connected" */
+  isLogged: PropTypes.bool.isRequired,
+  /** message displayed when "connected" */
+};
+
+// Nav.defaultProps = {
+//   isLogged: false,
+// };
 
 export default Nav;

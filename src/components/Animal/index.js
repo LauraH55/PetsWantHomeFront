@@ -16,7 +16,7 @@ const Animal = ({ animals }) => {
 
   return (
     <div className="animal">
-      <img className="animal-image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/Images/" + animal.picture} alt="#" />
+      <img className="animal-image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/images/" + animal.picture} alt="#" />
       <div className="animal-aside">
         <div className="animal-shelter">
           <Link
