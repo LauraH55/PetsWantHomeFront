@@ -2,6 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { slugifyName } from 'src/utils';
+
 import './home.scss';
 import paw from '../../assets/images/pawnextb&w.png';
 
@@ -14,12 +16,12 @@ const Home = ({ animals }) => (
     <div className="thumbnails">
       {animals.map((animal) => (
         <Link
-        to="/animal/1"
+        to={`/animal/${slugifyName(animal.name)}`}
         className="thumbnails-link"
         key={animal.id}
       >
         {/* <h1>{animal.name}</h1> */}
-        <img className="thumbnails-image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/Images/" + animal.picture} alt="#" />
+        <img className="thumbnails-image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/images/" + animal.picture} alt="#" />
       </Link>
       ))}
       

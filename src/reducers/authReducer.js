@@ -24,7 +24,7 @@ function authReducer(state = initialState, action) {
       case SAVE_USER:
         return {
           ...state,
-          isLogged: action.isLogged,
+          isLogged: true,
           token: action.token,
           username: '',
           password: '',

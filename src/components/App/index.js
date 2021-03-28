@@ -4,13 +4,13 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // == Import
-import Nav from 'src/components/Nav';
+import Nav from 'src/containers/Nav';
 import Home from 'src/containers/Home';
 import Footer from 'src/components/Footer';
 import Adoption from 'src/containers/Adoption';
 import LoginForm from 'src/containers/LoginForm';
 import Register from 'src/containers/Register';
-import Animal from 'src/components/Animal';
+import Animal from 'src/containers/Animal';
 import Shelter from 'src/components/Shelter';
 import Contact from 'src/components/Contact';
 import About from 'src/components/About';
@@ -31,7 +31,7 @@ const App = ({ loadAnimals }) => {
           <Route path="/adoption">
             <Adoption />
           </Route>
-          <Route path="/animal/1">
+          <Route path="/animal/:slug">
             <Animal />
           </Route>
           <Route path="/shelter/1">

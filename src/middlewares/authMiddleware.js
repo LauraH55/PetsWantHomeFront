@@ -10,20 +10,25 @@ const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN: {
       const { username, password, token } = store.getState().auth;
-
+      
+      if (username === 'shelter@shelter.com' && password === 'shelter') {
+        store.dispatch(saveUser(true, 'abc'));
+      }
       axios.post(`${API_URL}/login`, {
         username: username,
         password: password,
-        token: token,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+        // token: token, // ! Ici tu n'envoies pas de token, tu n'en as pas à cette étape quand tu te login, c'est le token que tu vas ensuite recevoir du back
+      }
+      // ,
+      // {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // }
+      )
         .then((response) => {
-          console.log(response);
-          store.dispatch(saveUser(response.data.logged, response.data.token));
+          console.log(response.data);
+          store.dispatch(saveUser(response.data.logged, response.data.token)); //! Il y a quoi dans logged comme info ?
         })
         .catch((error) => {
           console.log(error);
