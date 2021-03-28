@@ -24,7 +24,7 @@ function authReducer(state = initialState, action) {
       case SAVE_USER:
         return {
           ...state,
-          isLogged: true, // ! Ici le isLogged ce n'est pas une valeur que tu lui donnes, c'est directement un booléen que tu passes manuellement à true
+          isLogged: true,
           token: action.token,
           username: '',
           password: '',
