@@ -8,12 +8,13 @@
 
   .footer-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    padding: vars.$gutter;
+    padding-top: 1rem;
     
     .footer-container-image {
-      height: 8em;
+      height: 7em;
+      padding-left: 2rem;
     }
   }
 

@@ -17,7 +17,7 @@ const authMiddleware = (store) => (next) => (action) => {
       axios.post(`${API_URL}/login`, {
         username: username,
         password: password,
-        // token: token, // ! Ici tu n'envoies pas de token, tu n'en as pas à cette étape quand tu te login, c'est le token que tu vas ensuite recevoir du back
+        
       }
       // ,
       // {
@@ -28,7 +28,7 @@ const authMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response.data);
-          store.dispatch(saveUser(response.data.logged, response.data.token)); //! Il y a quoi dans logged comme info ?
+          store.dispatch(saveUser(response.data.logged, response.data.token));
         })
         .catch((error) => {
           console.log(error);

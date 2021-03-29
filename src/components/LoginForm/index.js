@@ -59,7 +59,7 @@ LoginForm.propTypes = {
   /** called when the form is submitted */
   handleLogin: PropTypes.func.isRequired,
   /** called when the "Déconnexion" button is clicked */
-  handleLogout: PropTypes.func.isRequired,
+  //handleLogout: PropTypes.func.isRequired,
   /** toggle between "connected" or "not connected" */
   isLogged: PropTypes.bool,
   /** message displayed when "connected" */

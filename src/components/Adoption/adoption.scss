@@ -9,6 +9,7 @@
   
   width: 100%;
   background-color: vars.$backgroundColor;
+  background: rgba(246, 244, 210, 0.5);
   //background-image: radial-gradient(ellipse at 0% 0%,  #cbdfbd, #f6f4d2 );
 
   h1 {
@@ -30,7 +31,8 @@
         justify-content: center;
         align-items: stretch;
         width: 250px;
-        border: solid 2px black;
+        border: solid 2px vars.$footerColor;
+        box-shadow: 5px 5px 1px 1px rgba(0, 0, 0, .2);
         background-color: #fff;
         border-radius: 2rem;
         margin: vars.$gutter;
@@ -43,7 +45,7 @@
           height: 20%;
           font-family: 'Monsieur-Pomme', sans-serif;
           font-size: 4rem;
-          margin-top: 1rem;
+          margin: 1rem 0;
         }
 
         h4 {

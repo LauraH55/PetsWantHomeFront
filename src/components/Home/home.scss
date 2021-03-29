@@ -3,8 +3,9 @@
 .home {
 
   min-height: 100vh;
-  // background-color:#f3ecec;
-  background-image: radial-gradient(ellipse at 0% 0%,  #cbdfbd, #f6f4d2 );
+  background-color:vars.$backgroundColor;
+  background: rgba(246, 244, 210, 0.5);
+  //background-image: radial-gradient(ellipse at 0% 0%,  #cbdfbd, #f6f4d2 );
   padding-bottom: 2em;
 
   .banner {
@@ -33,12 +34,18 @@
     flex-wrap: wrap;
     justify-content: center;
 
+  
+  
     .thumbnails-image {
       width:200px;
       height: 200px;
       border-radius:50%;
       margin: 2rem;
       object-fit: cover;
+      border: solid 2px vars.$footerColor;
+      box-shadow: 7px 5px 8px 1px rgba(0, 0, 0, .2);
+
     }
-  }
+    }
+
 }

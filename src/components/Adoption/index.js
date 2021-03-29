@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { slugifyName } from 'src/utils';
+import { slugifyName, getDate, getGender } from 'src/utils';
 
 import './adoption.scss';
 import akita from '../../assets/images/akita.jpg';
@@ -20,9 +20,9 @@ const Adoption = ({ animals }) => (
         <div className="card">
           <img className="card-image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/images/" + animal.picture} alt="" />
           <h3>{animal.name}</h3>
-          <h4>Race : {animal.race.name}</h4>
-          <h4>Âge : {animal.birthdate}</h4>
-          <h4>Genre : {animal.gender}</h4>
+          {animal.race && <h4>Race : {animal.race.name}</h4>}
+          <h4>Âge : {getDate(animal.birthdate)} ans</h4>
+          <h4>Genre : {getGender(animal.gender)}</h4>
         </div>
       </Link>
       ))}

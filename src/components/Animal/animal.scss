@@ -3,9 +3,11 @@
 .animal {
   display: flex;
   flex-direction: row;
-  margin: 2em;
+  padding: 2em;
   font-family: 'Avenir', sans-serif;
   font-size: 0.7em;
+  background-color:vars.$backgroundColor;
+  background: rgba(246, 244, 210, 0.5);
 
   .animal-image {
     width: 50%;
@@ -13,11 +15,11 @@
     margin-right: 2em;
     object-fit: cover;
     
-
   }
   .animal-aside {
     .animal-shelter {
       margin-bottom: 1em;
+      line-height: 2rem;
       .animal-shelter-link {
         font-size: 1.5em;
         font-weight: 900;
@@ -35,11 +37,12 @@
         .animal-name {
           font-family: vars.$pomme;
           font-size: 4em;
+          margin: 2rem 0;
         }
 
       }
       .animal-description {
-
+        width: 100%;
       }
 
     }
