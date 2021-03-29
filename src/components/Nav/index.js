@@ -39,7 +39,7 @@ const Nav = ({ handleLogout, isLogged }) => (
             activeClassName="nav-item--active"
           >
             Inscription
-          </NavLink>
+          </NavLink>=
         </ul>
       </Menu>
       <img src={Logo} alt="logo" className="logo-mobile" />

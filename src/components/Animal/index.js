@@ -7,7 +7,6 @@ import { Link, useParams } from 'react-router-dom';
 import { getAnimalBySlug, getDate, getGender, getCohabitation } from 'src/utils';
 
 import './animal.scss';
-import akita from '../../assets/images/akita.jpg';
 
 const Animal = ({ animals }) => {
   const { slug } = useParams();
@@ -20,7 +19,7 @@ const Animal = ({ animals }) => {
       <div className="animal-aside">
         <div className="animal-shelter">
           <Link
-            to="/shelter/1"
+            to={`/shelter/${(animal.shelter.id)}`}
             className="animal-shelter-link"
           >
             <h1>{animal.shelter !== null ? animal.shelter.name : 'Pas de refuge'}</h1>
@@ -34,7 +33,7 @@ const Animal = ({ animals }) => {
             {animal.race && <h4>Race : {animal.race.name}</h4>}
             <h4>Âge : {getDate(animal.birthdate)} ans</h4>
             <h4>Genre : {getGender(animal.gender)}</h4>
-            <h4>Cohabitation : {getCohabitation(animal.cohabitation)}</h4>
+            {/* <h4>Cohabitation : {getCohabitation(animal.cohabitation)}</h4> */}
           </div>
           <div className="animal-description">
             <h4>{animal.description}</h4>
