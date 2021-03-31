@@ -1,0 +1,249 @@
+/*
+* Paws Changing Color
+* by SwiftySkull
+* GitHub : https://github.com/SwiftySkull
+* Instagram : https://www.instagram.com/swiftyskull
+*
+* Four little paws changing colors
+*/
+
+@use 'src/styles/_vars';
+
+/*
+* The main color is :#5f4513
+* The changing color is : #de9e6e
+* Of course the colors can be changed, here is just a reminder
+*/
+.pawsLoader {
+  flex: 1;
+  position: fixed;
+  /*
+  /*
+  * Chaging these both values will change the place of the paws
+  * Changing the rotate value will change the orientation of the paws
+  */
+  top: 60%;
+  left: 45%;
+  transform: rotate(25deg);
+  width: 100%;
+  background-color: rgba(246, 244, 210, 0.5);
+
+}
+
+.paw4 {
+  border: 20px solid transparent;
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  position: absolute;
+  left: 0px;
+  transform: rotate(0deg);
+}
+
+.paw3 {
+  border: 20px solid transparent;
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  position: absolute;
+  left: 50px;
+  top: 70px;
+  transform: rotate(0deg);
+}
+
+.paw2 {
+  border: 20px solid transparent;
+
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  position: absolute;
+  left: 0px;
+  top: 140px;
+  transform: rotate(0deg);
+}
+
+.paw1 {
+  border: 20px solid transparent;
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  position: absolute;
+  left: 50px;
+  top: 210px;
+  transform: rotate(0deg);
+}
+
+.finger1 {
+  border-radius: 40px;
+  border-top: 8px solid vars.$navColorMobile;
+  border-right: 5px solid vars.$navColorMobile;
+  border-bottom: 8px solid vars.$navColorMobile;
+  border-left: 5px solid vars.$navColorMobile;
+  position: absolute;
+  top: 0px;
+  left: -18px;
+  transform: rotate(-25deg);
+}
+
+.finger2 {
+  border-radius: 40px;
+  border-top: 8px solid vars.$navColorMobile;
+  border-right: 5px solid vars.$navColorMobile;
+  border-bottom: 8px solid vars.$navColorMobile;
+  border-left: 5px solid vars.$navColorMobile;
+  position: absolute;
+  top: -10px;
+  left: -7px;
+  transform: rotate(-10deg);
+}
+
+.finger3 {
+  border-radius: 40px;
+  border-top: 8px solid vars.$navColorMobile;
+  border-right: 5px solid vars.$navColorMobile;
+  border-bottom: 8px solid vars.$navColorMobile;
+  border-left: 5px solid vars.$navColorMobile;
+  position: absolute;
+  top: -10px;
+  right: -7px;
+  transform: rotate(10deg);
+}
+
+.finger4 {
+  border-radius: 40px;
+  border-top: 8px solid vars.$navColorMobile;
+  border-right: 5px solid vars.$navColorMobile;
+  border-bottom: 8px solid vars.$navColorMobile;
+  border-left: 5px solid vars.$navColorMobile;
+  position: absolute;
+  top: 0px;
+  left: 18px;
+  transform: rotate(25deg);
+}
+
+.coussinet {
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  position: absolute;
+}
+  ​
+.coussinet1 {
+
+}
+
+.coussinet1 {
+  border-top: 12px solid vars.$navColorMobile;
+  border-right: 5px solid vars.$navColorMobile;
+  border-bottom: 12px solid vars.$navColorMobile;
+  border-left: 5px solid vars.$navColorMobile;
+  background-color: vars.$navColorMobile;
+
+  border-radius: 40px;
+  transform: rotate(90deg);
+  position: relative;
+  top: 14px;
+  right: -8px;
+}
+  ​
+.coussinet2 {
+  
+}
+
+.coussinet2 {
+  border-top: 11px solid vars.$navColorMobile;
+  border-right: 5px solid vars.$navColorMobile;
+  border-bottom: 11px solid vars.$navColorMobile;
+  border-left: 5px solid vars.$navColorMobile;
+  background-color: vars.$navColorMobile;
+
+  border-radius: 40px;
+  position: relative;
+  top: 8px;
+  right: 6px;
+  transform: rotate(45deg);
+}
+​
+.coussinet3 {
+
+}
+
+.coussinet3 {
+  border-top: 11px solid vars.$navColorMobile;
+  border-right: 5px solid vars.$navColorMobile;
+  border-bottom: 11px solid vars.$navColorMobile;
+  border-left: 5px solid vars.$navColorMobile;
+  border-radius: 40px;
+  background-color: vars.$navColorMobile;
+  position: relative;
+  top: 8px;
+  right: 7px;
+  transform: rotate(-45deg);
+}
+
+
+.paw1 .finger1,
+.paw1 .finger2,
+.paw1 .finger3,
+.paw1 .finger4,
+.paw1 .coussinet1,
+.paw1 .coussinet2,
+.paw1 .coussinet3 {
+  animation: pawColor 2.5s infinite linear;
+}
+
+.paw2 .finger1,
+.paw2 .finger2,
+.paw2 .finger3,
+.paw2 .finger4,
+.paw2 .coussinet1,
+.paw2 .coussinet2,
+.paw2 .coussinet3 {
+  animation: pawColor 2.5s 0.5s infinite linear;
+}
+
+​.uselessButUsefull,
+.paw3 .finger1,
+.paw3 .finger2,
+.paw3 .finger3,
+.paw3 .finger4,
+.paw3 .coussinet1,
+.paw3 .coussinet2,
+.paw3 .coussinet3 {
+  animation: pawColor 2.5s 1s infinite linear;
+}
+​
+.uselessButUsefull,
+.paw4 .finger1,
+.paw4 .finger2,
+.paw4 .finger3,
+.paw4 .finger4,
+.paw4 .coussinet1,
+.paw4 .coussinet2,
+.paw4 .coussinet3 {
+  animation: pawColor 2.5s 1.5s infinite linear;
+}
+
+
+/*
+* Changing the percentage will have an effect on the persistence of the color
+* Here are some examples, "i" means the initial color and "n" the changing color
+* - 0i/20n/40i : the fingers will change color on after the other
+* - 20n : the color will be a little remanent on each finger
+* - 0n : gives an effect between the previous both
+*/
+@keyframes pawColor {
+  0% {
+    border-color: vars.$navColor;
+  }
+
+  /* 20% {
+    border-color: #de9e6e;
+  }
+
+  40% {
+    border-color: #5f4513;
+  } */
+}
+

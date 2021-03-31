@@ -53,6 +53,7 @@ const Register = ({
           />
           <RegisterField
             name="email"
+            type="email"
             placeholder="Adresse Email"
             manageChange={(value, identifier) => (changeField(value, identifier))}
             value={email}
@@ -66,7 +67,7 @@ const Register = ({
           />
           <RegisterField
             name="confirmPassword"
-            type="confirmPassword"
+            type="password"
             placeholder="Confirmation du mot de passe"
             manageChange={(value, identifier) => (changeField(value, identifier))}
             value={confirmPassword}

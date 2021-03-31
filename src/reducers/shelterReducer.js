@@ -1,4 +1,4 @@
-// import { UPDATE_USER_FIELD, SAVE_USER, LOG_OUT } from 'src/actions/auth';
+ import { UPDATE_USER_FIELD, SAVE_USER, LOG_OUT } from 'src/actions/auth';
 
 const initialState = {
     email: '',

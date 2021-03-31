@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { LOG_IN, NEW_SHELTER_CREATION, saveUser } from 'src/actions/auth';
+import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, saveUser, SAVE_USER } from 'src/actions/auth';
 
 const API_URL = 'http://107.22.27.42/apo-PetsWantHome-back/public/api';
 // URL local : http://laura-hantz.vpnuser.lan/Apotheose/apo-PetsWantHome-back/public/api
@@ -9,26 +9,20 @@ const API_URL = 'http://107.22.27.42/apo-PetsWantHome-back/public/api';
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN: {
-      const { username, password, token } = store.getState().auth;
+      const { username, password } = store.getState().auth;
       
-      if (username === 'shelter@shelter.com' && password === 'shelter') {
-        store.dispatch(saveUser(true, 'abc'));
-      }
       axios.post(`${API_URL}/login`, {
         username: username,
         password: password,
-        
-      }
-      // ,
-      // {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      // }
-      )
+      })
         .then((response) => {
           console.log(response.data);
+          localStorage.setItem('token', response.data.token);
+          //localStorage.setItem('saveUser', true);
+          console.log(localStorage);
           store.dispatch(saveUser(response.data.logged, response.data.token));
+          //window.location = '/shelter/1';
+           
         })
         .catch((error) => {
           console.log(error);
@@ -38,6 +32,7 @@ const authMiddleware = (store) => (next) => (action) => {
       break;
     }
 
+  
     //TODO Waiting for the axios URL
     case NEW_SHELTER_CREATION:{
       const {
@@ -61,7 +56,7 @@ const authMiddleware = (store) => (next) => (action) => {
 
       console.log(shelter);
       if (password === confirmPassword) {
-        axios.post(url, newShelter)
+        axios.post(`${API_URL}/register`, newShelter)
           .then((response) => {
             console.log(response);
           })
@@ -73,6 +68,12 @@ const authMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
+    case LOG_OUT:
+      window.location = '/';
+      localStorage.clear();
+      next(action);
+      break;
 
     default:
       next(action);

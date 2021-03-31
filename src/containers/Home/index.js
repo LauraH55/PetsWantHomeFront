@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Home from 'src/components/Home';
 
 const mapStateToProps = (state) => ({
-  animals: state.animals.animalsList,
+  randomAnimals: state.animals.animalsRandomList,
 });
 
 const mapDispatchToProps = (dispatch) => ({

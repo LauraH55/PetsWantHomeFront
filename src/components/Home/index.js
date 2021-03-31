@@ -7,14 +7,24 @@ import { slugifyName } from 'src/utils';
 import './home.scss';
 import paw from '../../assets/images/pawnextb&w.png';
 
-const Home = ({ animals }) => (
+const Home = ({ randomAnimals }) => {
+  
+ /*  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  };
+  const random = animals.filter(function(animal) {
+    return animal.id == random_id;
+  }); */
+  console.log(randomAnimals);
+
+  return(
   <main className="home">
     <div className="banner">
       <h1 className="title">Pets Want Home</h1>
     </div>
     <h2 className="subtitle">Quelques animaux disponibles à l'adoption</h2>
     <div className="thumbnails">
-      {animals.map((animal) => (
+      {randomAnimals.map((animal) => (
         <Link
         to={`/animal/${slugifyName(animal.name)}`}
         className="thumbnails-link"
@@ -33,6 +43,7 @@ const Home = ({ animals }) => (
       </Link>
     </div>
   </main>
-);
+  );
+};
 
 export default Home;
