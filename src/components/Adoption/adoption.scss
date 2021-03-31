@@ -6,11 +6,9 @@
   align-items: center;
   flex-direction: column;
   padding: 1em;
-  
   width: 100%;
   background-color: vars.$backgroundColor;
   background: rgba(246, 244, 210, 0.5);
-  //background-image: radial-gradient(ellipse at 0% 0%,  #cbdfbd, #f6f4d2 );
 
   h1 {
     text-align: center;
@@ -55,7 +53,6 @@
         .card-image {
           height: 180px;
           width: 100%;
-          padding: 0.5em;
           object-fit: cover;
         }
     }

@@ -12,7 +12,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
         console.log('response: ', response);
         setTimeout(() => {
           store.dispatch(saveAnimals(response.data));
-        }, 5000);
+        }, 1000);
         
       })
       .catch((error) => {

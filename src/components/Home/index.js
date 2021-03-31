@@ -8,14 +8,7 @@ import './home.scss';
 import paw from '../../assets/images/pawnextb&w.png';
 
 const Home = ({ randomAnimals }) => {
-  
- /*  function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  };
-  const random = animals.filter(function(animal) {
-    return animal.id == random_id;
-  }); */
-  console.log(randomAnimals);
+  // console.log(randomAnimals);
 
   return(
   <main className="home">

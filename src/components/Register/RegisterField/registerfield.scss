@@ -5,7 +5,7 @@
   margin-top: 1em;
 }
 .registerfield-input {
-  width: 80%;
+  width: 100%;
   padding: .7em;
   font-size: 1rem;
   border: 3px solid vars.$footerColor;
@@ -32,4 +32,5 @@
 .registerfield-label {
   color: vars.$footerColor;
   font-size: 1.3rem;
+  display: block;
 }

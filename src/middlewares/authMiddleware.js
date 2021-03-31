@@ -18,10 +18,10 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           localStorage.setItem('token', response.data.token);
-          //localStorage.setItem('saveUser', true);
           console.log(localStorage);
           store.dispatch(saveUser(response.data.logged, response.data.token));
-          //window.location = '/shelter/1';
+          console.log(saveUser);
+          // window.location = '/shelter/1';
            
         })
         .catch((error) => {

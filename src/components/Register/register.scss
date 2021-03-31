@@ -10,6 +10,11 @@
 .register-form-element {
   text-align: center;
 }
+.register-form-title {
+  font-family: vars.$pomme;
+  margin: 1rem;
+  font-size: 5rem;
+}
 .register-form-message {
   text-align: right;
   margin: .3em 1em;

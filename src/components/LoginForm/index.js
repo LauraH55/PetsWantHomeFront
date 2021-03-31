@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 import LoginField from './LoginField';
 
@@ -18,7 +19,7 @@ const LoginForm = ({
     evt.preventDefault();
     handleLogin();
   };
-
+  if (isLogged) return <Redirect to="/shelter/1" />;
   return (
     <div className="loginfield-form">
         <form autoComplete="off" className="loginfield-form-element" onSubmit={handleSubmit}>

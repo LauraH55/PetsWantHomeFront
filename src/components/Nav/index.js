@@ -39,7 +39,7 @@ const Nav = ({ handleLogout, isLogged }) => (
             activeClassName="nav-item--active"
           >
             Inscription
-          </NavLink>=
+          </NavLink>
         </ul>
       </Menu>
       <img src={Logo} alt="logo" className="logo-mobile" />
@@ -70,7 +70,7 @@ const Nav = ({ handleLogout, isLogged }) => (
         {isLogged && (
           <button
             type="button"
-            className=""
+            className="nav-button"
             onClick={handleLogout}
           >
             Déconnexion

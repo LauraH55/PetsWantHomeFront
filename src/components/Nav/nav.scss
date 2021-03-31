@@ -34,6 +34,18 @@
     display: flex;
     justify-content: flex-end;
 
+    .nav-button {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+      background-color: vars.$footerColor;
+      border-radius: 0.3em;
+      border: 0;
+      padding: 1rem;
+      height: 3rem;
+      margin: 2rem;
+    }
+
     ul {
       display: flex;
       margin-right: vars.$gutter;

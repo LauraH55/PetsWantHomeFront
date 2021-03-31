@@ -24,16 +24,17 @@ const Register = ({
   return (
     <div className="register-form">
         <form autoComplete="off" className="register-form-element" onSubmit={handleSubmit}>
+          <h1 className="register-form-title">Inscription refuge</h1>
           <RegisterField
             name="shelter"
-            placeholder="Nom du refuge"
+            placeholder="Nom"
             manageChange={(value, identifier) => (changeField(value, identifier))}
             value={shelter}
           />
           <RegisterField
             name="address"
             type="address"
-            placeholder="Adresse du refuge"
+            placeholder="Adresse"
             manageChange={(value, identifier) => (changeField(value, identifier))}
             value={address}
           />
