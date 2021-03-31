@@ -24,8 +24,8 @@ const Register = ({
   return (
     <div className="register-form">
         <form autoComplete="off" className="register-form-element" onSubmit={handleSubmit}>
-          <h1 className="register-form-title">Inscription refuge</h1>
-          <RegisterField
+          <h1 className="register-form-title">Inscription</h1>
+  {/*         <RegisterField
             name="shelter"
             placeholder="Nom"
             manageChange={(value, identifier) => (changeField(value, identifier))}
@@ -51,7 +51,7 @@ const Register = ({
             placeholder="Photo du refuge"
             manageChange={(value, identifier) => (changeField(value, identifier))}
             value={picture}
-          />
+          /> */}
           <RegisterField
             name="email"
             type="email"

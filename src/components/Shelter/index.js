@@ -32,7 +32,7 @@ const Shelter = ({ animals, isLogged }) => {
             </div>
             {isLogged && (
               <div>
-                <button className="shelter-button">Modifier le profil</button>
+                <a href={"http://107.22.27.42/apo-PetsWantHome-back/public/back/shelter/" + shelter.shelter.id + "/update"}><button className="shelter-button">Modifier le profil</button></a>
                 <a href={"http://107.22.27.42/apo-PetsWantHome-back/public/back/shelter/" + shelter.shelter.id}><button className="shelter-button">Gestion des animaux</button></a>
               </div>
             )}

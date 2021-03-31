@@ -8,11 +8,11 @@ import Register from 'src/components/Register';
 const mapStateToProps = (state) => ({
     email: state.register.email,
     password: state.register.password,
-    shelter: state.register.shelter,
+    //shelter: state.register.shelter,
     confirmPassword: state.register.confirmPassword,
-    address: state.register.address,
-    phoneNumber: state.register.phoneNumber,
-    picture: state.register.picture,
+    //address: state.register.address,
+    //phoneNumber: state.register.phoneNumber,
+    //picture: state.register.picture,
 });
 
 const mapDispatchToProps = (dispatch) => ({

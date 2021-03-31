@@ -21,7 +21,6 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(localStorage);
           store.dispatch(saveUser(response.data.logged, response.data.token));
           console.log(saveUser);
-          // window.location = '/shelter/1';
            
         })
         .catch((error) => {
@@ -39,22 +38,22 @@ const authMiddleware = (store) => (next) => (action) => {
         email,
         password,
         confirmPassword,
-        shelter,
-        address,
-        phoneNumber,
-        picture,
+        //shelter,
+       // address,
+        //phoneNumber,
+       // picture,
       } = store.getState().register;
 
       const newShelter = {
         email,
         password,
-        shelter,
-        address,
-        phoneNumber,
-        picture,
+        //shelter,
+        //address,
+        //phoneNumber,
+        //picture,
       };
 
-      console.log(shelter);
+      //console.log(shelter);
       if (password === confirmPassword) {
         axios.post(`${API_URL}/register`, newShelter)
           .then((response) => {
