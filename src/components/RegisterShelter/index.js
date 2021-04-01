@@ -49,7 +49,7 @@ const RegisterShelter = ({
           />
           <RegisterShelterField
             name="picture"
-            type="picture"
+            type="file"
             placeholder="Photo du refuge"
             manageChange={(value, identifier) => (changeField(value, identifier))}
             value={picture}

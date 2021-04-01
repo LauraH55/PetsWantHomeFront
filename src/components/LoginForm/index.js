@@ -26,6 +26,9 @@ const LoginForm = ({
     return <Redirect to={`/shelter/${(decoded.shelter_id)}`}/>;
   }
 
+
+  
+
   /* if (isLogged) return <Redirect to={`/shelter/${(decoded.shelter_id)}`}/>; */
 
   return (
