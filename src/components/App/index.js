@@ -20,10 +20,11 @@ import Loader from 'src/components/Loader';
 import './styles.scss';
 
 // == Composant
-const App = ({ loadAnimals,loadRandomAnimals, loading }) => {
+const App = ({ loadAnimals,loadRandomAnimals, loadShelters, loading }) => {
   useEffect(() => {
     loadAnimals();
     loadRandomAnimals();
+    loadShelters();
   }, []);
 
   return (
@@ -80,6 +81,7 @@ const App = ({ loadAnimals,loadRandomAnimals, loading }) => {
 App.propTypes = {
   loadAnimals: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  loadShelters: PropTypes.func.isRequired,
 };
 
 // == Export

@@ -5,9 +5,7 @@ import RegisterShelter from 'src/components/RegisterShelter';
 
 const mapStateToProps = (state) => ({
     email: state.shelter.email,
-    password: state.shelter.password,
     name: state.shelter.name,
-    confirmPassword: state.shelter.confirmPassword,
     address: state.shelter.address,
     phone_number: state.shelter.phone_number,
     picture: state.shelter.picture,

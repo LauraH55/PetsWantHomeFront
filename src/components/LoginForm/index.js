@@ -19,12 +19,12 @@ const LoginForm = ({
     handleLogin();
   };
   
-  if (isLogged) {
-    const token = localStorage.token;
-    const decoded = jwt_decode(token);
-    console.log(decoded.shelter_id);
-    return <Redirect to={`/shelter/${(decoded.shelter_id)}`}/>;
-  }
+  // if (isLogged) {
+  //   const token = localStorage.token;
+  //   const decoded = jwt_decode(token);
+  //   console.log(decoded.shelter_id);
+  //   return <Redirect to={`/shelter/${(decoded.shelter_id)}`}/>;
+  // }
 
 
   

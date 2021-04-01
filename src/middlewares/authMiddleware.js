@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwt_decode from "jwt-decode";
 
 import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, NEW_USER, saveUser, SAVE_USER } from 'src/actions/auth';
 
@@ -21,7 +22,17 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(localStorage);
           store.dispatch(saveUser(response.data.logged, response.data.token));
           //console.log(saveUser);
-           
+
+          const decoded = jwt_decode(response.data.token);
+          console.log(decoded.shelter_id);
+
+          if (decoded.shelter_id !== undefined) {
+            console.log('REDIRECTION');
+            localStorage.setItem('shelterID', decoded.shelter_id);
+            window.location = `/shelter/${decoded.shelter_id}`;
+          } 
+
+
         })
         .catch((error) => {
           console.log(error);
@@ -35,8 +46,6 @@ const authMiddleware = (store) => (next) => (action) => {
     case NEW_SHELTER_CREATION:{
       const {
         email,
-        password,
-        confirmPassword,
         name,
         address,
         phone_number,
@@ -45,7 +54,6 @@ const authMiddleware = (store) => (next) => (action) => {
 
       const newShelter = {
         email,
-        password,
         name,
         address,
         phone_number,
@@ -53,7 +61,7 @@ const authMiddleware = (store) => (next) => (action) => {
       };
 
       //console.log(shelter);
-      if (password === confirmPassword) {
+       {
         axios.post(`${API_URL}/shelter/create`, newShelter, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
           .then((response) => {
             console.log(response);

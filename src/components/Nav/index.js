@@ -72,19 +72,21 @@ const Nav = ({ handleLogout, isLogged }) => {
       
         {token && (
           <>
-          <NavLink
+          {localStorage.getItem('shelterID') === null
+          && (
+            <NavLink
             to="/admin/shelter/create"
             className="nav-item"
             activeClassName="nav-item--active"
-          >
-            <button
-              type="button"
-              className="nav-button"
             >
-              Inscrivez votre refuge
-            </button>
-          </NavLink>
-            <a href=""></a>
+              <button
+                type="button"
+                className="nav-button"
+              >
+                Inscrivez votre refuge
+              </button>
+            </NavLink>
+          )}
             
             <button
               type="button"

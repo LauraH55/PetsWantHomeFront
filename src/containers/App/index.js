@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchAnimals, fetchRandomAnimals } from 'src/actions/animals';
+import { fetchShelters } from 'src/actions/shelters';
 
 import App from 'src/components/App';
 
@@ -17,6 +18,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   loadRandomAnimals: () => {
     const action = fetchRandomAnimals();
+    dispatch(action);
+  },
+  loadShelters: () => {
+    const action = fetchShelters();
     dispatch(action);
   },
 });

@@ -8,9 +8,7 @@ import './registershelter.scss';
 
 const RegisterShelter = ({
   email,
-  password,
   name,
-  confirmPassword,
   address,
   phone_number,
   picture,
@@ -61,20 +59,6 @@ const RegisterShelter = ({
             manageChange={(value, identifier) => (changeField(value, identifier))}
             value={email}
           />
-          <RegisterShelterField
-            name="password"
-            type="password"
-            placeholder="Mot de passe"
-            manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={password}
-          />
-          <RegisterShelterField
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirmation du mot de passe"
-            manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={confirmPassword}
-          />
           <button
             type="submit"
             className="register-shelter-form-button"
@@ -90,7 +74,6 @@ RegisterShelter.propTypes = {
   /** value for the email */
   email: PropTypes.string.isRequired,
   /** value for the password */
-  password: PropTypes.string.isRequired,
   /** called when onChange event is received by an input, two parameters :
    * - new value
    * - name
@@ -98,11 +81,8 @@ RegisterShelter.propTypes = {
   changeField: PropTypes.func.isRequired,
   /** called when the form is submitted */
   handleLogin: PropTypes.func.isRequired,
-    /** value for the email */
   name: PropTypes.string.isRequired,
-  /** value for the email */
-  confirmPassword: PropTypes.string.isRequired,
-  /** value for the email */
+
   address: PropTypes.string.isRequired,
   /** value for the email */
   phone_number: PropTypes.string.isRequired,

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Shelter from 'src/components/Shelter';
 
 const mapStateToProps = (state) => ({
-  animals: state.animals.animalsList,
+  shelters: state.shelter.sheltersList,
   isLogged: state.auth.isLogged,
 });
 
