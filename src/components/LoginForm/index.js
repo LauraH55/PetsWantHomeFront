@@ -19,13 +19,15 @@ const LoginForm = ({
     handleLogin();
   };
   
+  if (isLogged) {
+    const token = localStorage.token;
+    const decoded = jwt_decode(token);
+    console.log(decoded.shelter_id);
+    return <Redirect to={`/shelter/${(decoded.shelter_id)}`}/>;
+  }
 
-  //const token = localStorage.token;
-  //const decoded = jwt_decode(token);
-  //console.log(token);
-  //console.log(decoded.username); 
+  /* if (isLogged) return <Redirect to={`/shelter/${(decoded.shelter_id)}`}/>; */
 
-  if (isLogged) return <Redirect to="/shelter/1" />;
   return (
     <div className="loginfield-form">
         <form autoComplete="off" className="loginfield-form-element" onSubmit={handleSubmit}>
