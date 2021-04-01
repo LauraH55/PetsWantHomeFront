@@ -37,24 +37,24 @@ const authMiddleware = (store) => (next) => (action) => {
         email,
         password,
         confirmPassword,
-        shelter,
+        name,
         address,
-        phoneNumber,
+        phone_number,
         picture,
       } = store.getState().shelter;
 
       const newShelter = {
         email,
         password,
-        shelter,
+        name,
         address,
-        phoneNumber,
+        phone_number,
         picture,
       };
 
       //console.log(shelter);
       if (password === confirmPassword) {
-        axios.post(`${API_URL}/shelter/create`, newShelter)
+        axios.post(`${API_URL}/shelter/create`, newShelter, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } })
           .then((response) => {
             console.log(response);
           })

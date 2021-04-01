@@ -6,14 +6,12 @@ import RegisterShelter from 'src/components/RegisterShelter';
 const mapStateToProps = (state) => ({
     email: state.shelter.email,
     password: state.shelter.password,
-    shelter: state.shelter.shelter,
+    name: state.shelter.name,
     confirmPassword: state.shelter.confirmPassword,
     address: state.shelter.address,
-    phoneNumber: state.shelter.phoneNumber,
+    phone_number: state.shelter.phone_number,
     picture: state.shelter.picture,
 });
-
-//console.log(mapStateToProps);
 
 const mapDispatchToProps = (dispatch) => ({
     changeField: (value, fieldName) => {

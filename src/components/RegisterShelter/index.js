@@ -9,10 +9,10 @@ import './registershelter.scss';
 const RegisterShelter = ({
   email,
   password,
-  shelter,
+  name,
   confirmPassword,
   address,
-  phoneNumber,
+  phone_number,
   picture,
   changeField,
   handleLogin,
@@ -28,10 +28,10 @@ const RegisterShelter = ({
         <form autoComplete="off" className="register-shelter-form-element" onSubmit={handleSubmit}>
           <h1 className="register-shelter-form-title">Inscription</h1>
           <RegisterShelterField
-            name="shelter"
+            name="name"
             placeholder="Nom"
             manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={shelter}
+            value={name}
           />
           <RegisterShelterField
             name="address"
@@ -41,11 +41,11 @@ const RegisterShelter = ({
             value={address}
           />
           <RegisterShelterField
-            name="phoneNumber"
-            type="phoneNumber"
+            name="phone_number"
+            type="phone_number"
             placeholder="Numéro de téléphone"
             manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={phoneNumber}
+            value={phone_number}
           />
           <RegisterShelterField
             name="picture"
@@ -99,13 +99,13 @@ RegisterShelter.propTypes = {
   /** called when the form is submitted */
   handleLogin: PropTypes.func.isRequired,
     /** value for the email */
-  shelter: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   /** value for the email */
   confirmPassword: PropTypes.string.isRequired,
   /** value for the email */
   address: PropTypes.string.isRequired,
   /** value for the email */
-  phoneNumber: PropTypes.string.isRequired,
+  phone_number: PropTypes.string.isRequired,
   /** value for the email */
   picture: PropTypes.string.isRequired,
 
