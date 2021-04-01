@@ -1,0 +1,36 @@
+@use 'src/styles/vars';
+
+.register-shelter-field {
+  text-align: center;
+  margin-top: 1em;
+}
+.register-shelter-field-input {
+  width: 100%;
+  padding: .7em;
+  font-size: 1rem;
+  border: 3px solid vars.$footerColor;
+  border-radius: .3em;
+  height: 2.5em;
+  margin-top: 0.2em;
+  margin-bottom: 1em;
+}
+.register-shelter-field-input:focus {
+  border-color: #f17f42;
+}
+.register-shelter-field-input:focus + .field-label {
+  color: vars.$outlineColor;
+}
+
+.register-shelter-field--has-content .field-label {
+  display: block;
+}
+
+.register-shelter-field--has-content .field-input {
+  padding: 1.4em .7em .4em;
+}
+
+.register-shelter-field-label {
+  color: vars.$footerColor;
+  font-size: 1.3rem;
+  display: block;
+}

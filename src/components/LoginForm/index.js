@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import jwt_decode from "jwt-decode";
 
 import LoginField from './LoginField';
 
@@ -11,14 +12,19 @@ const LoginForm = ({
   password,
   changeField,
   handleLogin,
-  handleLogout,
   isLogged,
-  loggedMessage,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
+  
+
+  //const token = localStorage.token;
+  //const decoded = jwt_decode(token);
+  //console.log(token);
+  //console.log(decoded.username); 
+
   if (isLogged) return <Redirect to="/shelter/1" />;
   return (
     <div className="loginfield-form">

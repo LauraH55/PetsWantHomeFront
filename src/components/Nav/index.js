@@ -5,7 +5,10 @@ import PropTypes from 'prop-types';
 import './nav.scss';
 import Logo from '../../assets/images/B&W-Logo-PWH.png';
 
-const Nav = ({ handleLogout, isLogged }) => (
+
+const Nav = ({ handleLogout, isLogged }) => {
+  const token = localStorage.token;
+  return(
   <nav className="nav">
     <div className="menu--link--mobile">
       <Menu {...Nav}>
@@ -67,17 +70,33 @@ const Nav = ({ handleLogout, isLogged }) => (
     </div>
     <div className="menu-login">
       
-        {isLogged && (
-          <button
-            type="button"
-            className="nav-button"
-            onClick={handleLogout}
+        {token && (
+          <>
+          <NavLink
+            to="/admin/shelter/create"
+            className="nav-item"
+            activeClassName="nav-item--active"
           >
-            Déconnexion
-          </button>
+            <button
+              type="button"
+              className="nav-button"
+            >
+              Inscrivez votre refuge
+            </button>
+          </NavLink>
+            <a href=""></a>
+            
+            <button
+              type="button"
+              className="nav-button"
+              onClick={handleLogout}
+            >
+              Déconnexion
+            </button>
+          </>
         )}
 
-        {!isLogged && (
+        {!token && (
           <ul>
             <NavLink
               to="/login"
@@ -99,7 +118,8 @@ const Nav = ({ handleLogout, isLogged }) => (
       
     </div>
   </nav>
-);
+  );
+};
 
 Nav.propTypes = {
   handleLogout: PropTypes.func.isRequired,

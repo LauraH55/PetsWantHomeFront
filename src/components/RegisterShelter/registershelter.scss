@@ -1,22 +1,22 @@
 @use 'src/styles/vars';
 
-.register-form {
+.register-shelter-form {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center; 
   font-family: 'Avenir', sans-serif;
 
-  .register-form-element {
+  .register-shelter-form-element {
     text-align: center;
 
-    .register-form-title {
+    .register-shelter-form-title {
       font-family: vars.$pomme;
       margin: 1rem;
       font-size: 5rem;
     }
 
-    .register-form-button {
+    .register-shelter-form-button {
       font-weight: 700;
       font-size: 1rem;
       color: #fff;

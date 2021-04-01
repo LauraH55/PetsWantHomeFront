@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
+import jwt_decode from "jwt-decode";
 
 import { slugifyName } from 'src/utils';
 
@@ -10,14 +11,17 @@ const Shelter = ({ animals, isLogged }) => {
   const { id_shelter } = useParams();
 
   const shelter = animals.find((animal) => animal.shelter.id == id_shelter);
-  console.log(shelter);
 
   const animalsShelter = animals.filter(function(animal) {
     return animal.shelter.id == id_shelter;
   });
 
-  console.log(animalsShelter);
-
+  if (isLogged) {
+    const token = localStorage.token;
+    const decoded = jwt_decode(token);
+    console.log(decoded);
+  }
+  
   return(
     <div className="shelter">
       <h1>{shelter.shelter.name}</h1>

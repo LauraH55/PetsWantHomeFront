@@ -10,6 +10,7 @@ import Footer from 'src/components/Footer';
 import Adoption from 'src/containers/Adoption';
 import LoginForm from 'src/containers/LoginForm';
 import Register from 'src/containers/Register';
+import RegisterShelter from 'src/containers/RegisterShelter';
 import Animal from 'src/containers/Animal';
 import Shelter from 'src/containers/Shelter';
 import Contact from 'src/components/Contact';
@@ -57,6 +58,9 @@ const App = ({ loadAnimals,loadRandomAnimals, loading }) => {
               </Route>
               <Route path="/register">
                 <Register />
+              </Route>
+              <Route path="/admin/shelter/create">
+                <RegisterShelter />
               </Route>
               <Route path="/login">
                 <LoginForm />

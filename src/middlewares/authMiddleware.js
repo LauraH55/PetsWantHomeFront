@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, saveUser, SAVE_USER } from 'src/actions/auth';
+import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, NEW_USER, saveUser, SAVE_USER } from 'src/actions/auth';
 
 const API_URL = 'http://107.22.27.42/apo-PetsWantHome-back/public/api';
 // URL local : http://laura-hantz.vpnuser.lan/Apotheose/apo-PetsWantHome-back/public/api
@@ -20,7 +20,7 @@ const authMiddleware = (store) => (next) => (action) => {
           localStorage.setItem('token', response.data.token);
           console.log(localStorage);
           store.dispatch(saveUser(response.data.logged, response.data.token));
-          console.log(saveUser);
+          //console.log(saveUser);
            
         })
         .catch((error) => {
@@ -32,30 +32,55 @@ const authMiddleware = (store) => (next) => (action) => {
     }
 
   
-    //TODO Waiting for the axios URL
     case NEW_SHELTER_CREATION:{
       const {
         email,
         password,
         confirmPassword,
-        //shelter,
-       // address,
-        //phoneNumber,
-       // picture,
-      } = store.getState().register;
+        shelter,
+        address,
+        phoneNumber,
+        picture,
+      } = store.getState().shelter;
 
       const newShelter = {
         email,
         password,
-        //shelter,
-        //address,
-        //phoneNumber,
-        //picture,
+        shelter,
+        address,
+        phoneNumber,
+        picture,
       };
 
       //console.log(shelter);
       if (password === confirmPassword) {
-        axios.post(`${API_URL}/register`, newShelter)
+        axios.post(`${API_URL}/shelter/create`, newShelter)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+
+      next(action);
+      break;
+    }
+
+    case NEW_USER:{
+      const {
+        email,
+        password,
+        confirmPassword,
+      } = store.getState().register;
+
+      const newUser = {
+        email,
+        password,
+      };
+
+      if (password === confirmPassword) {
+        axios.post(`${API_URL}/register`, newUser)
           .then((response) => {
             console.log(response);
           })
