@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { slugifyName, getDate, getGender } from 'src/utils';
 
 import './adoption.scss';
-import akita from '../../assets/images/akita.jpg';
 
 const Adoption = ({ animals }) => (
   <main className="adoption">
@@ -16,7 +15,7 @@ const Adoption = ({ animals }) => (
         to={`/animal/${slugifyName(animal.name)}`}
         className="card-link"
         key={animal.id}
-      >
+        >
         <div className="card">
           <img className="card-image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/images/" + animal.picture} alt="" />
           <h3>{animal.name}</h3>

@@ -33,7 +33,13 @@ const Animal = ({ animals }) => {
             {animal.race && <h4>Race : {animal.race.name}</h4>}
             <h4>Âge : {getDate(animal.birthdate)} ans</h4>
             <h4>Genre : {getGender(animal.gender)}</h4>
-            <h4>Cohabitation : {getCohabitation(animal.cohabitation)}</h4>
+            <h4>Cohabitation : 
+            {animal.catCohabitation ? ' Chats -' : ''}
+            {animal.dogCohabitation ? ' Chiens -' : ''}
+            {animal.nacCohabitation ? ' NAC -' : ''}
+            {animal.childCohabitation ? ' Enfants -' : ''}
+            {animal.unknownCohabitation ? ' Non renseigné -' : ''}
+            </h4>
           </div>
           <div className="animal-description">
             <h4>{animal.description}</h4>

@@ -6,8 +6,7 @@ import './nav.scss';
 import Logo from '../../assets/images/B&W-Logo-PWH.png';
 
 
-const Nav = ({ handleLogout, isLogged }) => {
-  const token = localStorage.token;
+const Nav = ({ handleLogout }) => {
   return(
   <nav className="nav">
     <div className="menu--link--mobile">
@@ -70,9 +69,9 @@ const Nav = ({ handleLogout, isLogged }) => {
     </div>
     <div className="menu-login">
       
-        {token && (
+        {localStorage.token && (
           <>
-          {localStorage.getItem('shelterID') === null
+          {localStorage.shelterID === undefined
           && (
             <NavLink
             to="/admin/shelter/create"
@@ -87,7 +86,23 @@ const Nav = ({ handleLogout, isLogged }) => {
               </button>
             </NavLink>
           )}
-            
+           
+          {localStorage.shelterID > 0
+          && (
+            <NavLink
+            to={`/shelter/${(localStorage.shelterID)}`}
+            className="nav-item"
+            activeClassName="nav-item--active"
+            >
+              <button
+                type="button"
+                className="nav-button"
+              >
+                Profil du refuge
+              </button>
+            </NavLink>
+          )}
+
             <button
               type="button"
               className="nav-button"
@@ -98,7 +113,7 @@ const Nav = ({ handleLogout, isLogged }) => {
           </>
         )}
 
-        {!token && (
+        {!localStorage.token && (
           <ul>
             <NavLink
               to="/login"

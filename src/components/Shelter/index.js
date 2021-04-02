@@ -12,18 +12,10 @@ const Shelter = ({ shelters, isLogged }) => {
 
   const shelter = shelters.find((shel) => shel.id == id_shelter);
 
-  // const animalsShelter = shelter.animals.filter((animal) {
-  //   return animal.shelter.id == id_shelter;
-  // });
-
+  console.log(shelter);
   const animalsShelter = shelter.animals;
+  console.log(localStorage);
 
-  // if (isLogged) {
-  //   const token = localStorage.token;
-  //   const decoded = jwt_decode(token);
-  //   console.log(decoded);
-  // }
-  
   return(
     <div className="shelter">
       <h1>{shelter.name}</h1>
@@ -36,7 +28,7 @@ const Shelter = ({ shelters, isLogged }) => {
               <h3><span>Téléphone :</span> {shelter.phoneNumber}</h3>
               <h3><span>Email :</span> {shelter.email}</h3>
             </div>
-            {isLogged && (
+            {localStorage.shelterID == id_shelter && (
               <div>
                 <a href={"http://107.22.27.42/apo-PetsWantHome-back/public/back/shelter/" + shelter.id + "/update"}><button className="shelter-button">Modifier le profil</button></a>
                 <a href={"http://107.22.27.42/apo-PetsWantHome-back/public/back/shelter/" + shelter.id}><button className="shelter-button">Gestion des animaux</button></a>
