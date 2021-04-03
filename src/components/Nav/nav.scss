@@ -10,7 +10,7 @@
   font-family: 'Avenir', sans-serif;
   font-size: 0.8em;
 
-  .menu-link {
+  .nav-link {
     display: flex;
     align-items: center;
     padding-left: vars.$gutter;
@@ -30,7 +30,7 @@
     }
   }
 
-  .menu-login {
+  .nav-login {
     display: flex;
     justify-content: flex-end;
 
@@ -56,11 +56,7 @@
     }
   }
 
-  .menu-login--mobile {
-    display: none;
-  }
-
-  .menu--link--mobile {
+  .nav-mobile {
     display: none;
   }
 
@@ -82,25 +78,21 @@
       margin-left: vars.$gutter;
     }
 
-    .menu-link {
+    .nav-link {
       display: none;
     }
     
-    .menu-login {
+    .nav-login {
       display: none;
     }
 
-    .menu--link--mobile {
+    .nav-mobile {
       display: flex;
-      align-items: center;
-    }
-
-    .link-mobile {
-      display: flex;
+      //align-items: center;
       flex-direction: column;
     }
 
-    .menu-item { 
+    .nav-mobile-link { 
       padding: 1rem;
       display: flex;
       flex-direction: column;

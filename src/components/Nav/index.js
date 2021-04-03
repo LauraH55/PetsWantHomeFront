@@ -9,65 +9,92 @@ import Logo from '../../assets/images/B&W-Logo-PWH.png';
 const Nav = ({ handleLogout }) => {
   return(
   <nav className="nav">
-    <div className="menu--link--mobile">
+    <div className="nav-mobile">
       <Menu {...Nav}>
         <ul>
           <NavLink
             to="/"
-            className="menu-item"
-            activeClassName="nav-item--active"
-            exact
+            className="nav-mobile-link"
           >
             Accueil
           </NavLink>
           <NavLink
             to="/adoption"
-            className="menu-item"
-            activeClassName="nav-item--active"
+            className="nav-mobile-link"
           >
             Adoptions
           </NavLink>
-          <NavLink
-            to="/login"
-            className="menu-item"
-            activeClassName="nav-item--active"
-            exact
-          >
-            Connexion
-          </NavLink>
-          <NavLink
-            to="/register"
-            className="menu-item"
-            activeClassName="nav-item--active"
-          >
-            Inscription
-          </NavLink>
+          {localStorage.token && (
+          <>
+          {localStorage.shelterID === undefined
+          && (
+            <NavLink
+            to="/admin/shelter/create"
+            className="nav-mobile-link"
+            >
+              Inscrivez votre refuge
+            </NavLink>
+          )}
+           
+          {localStorage.shelterID > 0
+          && (
+            <NavLink
+            to={`/shelter/${(localStorage.shelterID)}`}
+            className="nav-mobile-link"
+            >
+                Profil du refuge
+            </NavLink>
+          )}
+
+            <NavLink
+              to=""
+              className="nav-mobile-link"
+              onClick={handleLogout}
+            >
+              Déconnexion
+            </NavLink>
+          </>
+        )}
+
+        {!localStorage.token && (
+          <>
+            <NavLink
+              to="/login"
+              className="nav-mobile-link"
+            >
+              Connexion
+            </NavLink>
+            <NavLink
+              to="/register"
+              className="nav-mobile-link"
+            >
+              Inscription
+            </NavLink>
+            </>
+        )}
         </ul>
       </Menu>
       <img src={Logo} alt="logo" className="logo-mobile" />
     </div>
 
-    <div className="menu-link">
+    <div className="nav-link">
       <img src={Logo} alt="logo" />
       <ul>
         <NavLink
           to="/"
           className="nav-item"
-          activeClassName="nav-item--active"
-          exact
         >
           Accueil
         </NavLink>
         <NavLink
           to="/adoption"
           className="nav-item"
-          activeClassName="nav-item--active"
         >
           Adoptions
         </NavLink>
       </ul>
     </div>
-    <div className="menu-login">
+    <div className="nav-login">
       
         {localStorage.token && (
           <>
@@ -76,7 +103,6 @@ const Nav = ({ handleLogout }) => {
             <NavLink
             to="/admin/shelter/create"
             className="nav-item"
-            activeClassName="nav-item--active"
             >
               <button
                 type="button"
@@ -92,7 +118,6 @@ const Nav = ({ handleLogout }) => {
             <NavLink
             to={`/shelter/${(localStorage.shelterID)}`}
             className="nav-item"
-            activeClassName="nav-item--active"
             >
               <button
                 type="button"
@@ -118,15 +143,12 @@ const Nav = ({ handleLogout }) => {
             <NavLink
               to="/login"
               className="nav-item"
-              activeClassName="nav-item--active"
-              exact
             >
               Connexion
             </NavLink>
             <NavLink
               to="/register"
               className="nav-item"
-              activeClassName="nav-item--active"
             >
               Inscription
             </NavLink>
@@ -145,8 +167,6 @@ Nav.propTypes = {
   /** message displayed when "connected" */
 };
 
-// Nav.defaultProps = {
-//   isLogged: false,
-// };
+
 
 export default Nav;
