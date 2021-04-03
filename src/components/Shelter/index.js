@@ -1,17 +1,17 @@
 // == Import npm
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import jwt_decode from "jwt-decode";
 
 import { slugifyName } from 'src/utils';
 
 import './shelter.scss';
 
-const Shelter = ({ shelters, isLogged }) => {
+const Shelter = ({ shelters }) => {
+
   const { id_shelter } = useParams();
-
+  console.log(shelters);
   const shelter = shelters.find((shel) => shel.id == id_shelter);
-
+  
   console.log(shelter);
   const animalsShelter = shelter.animals;
   console.log(localStorage);
@@ -48,7 +48,6 @@ const Shelter = ({ shelters, isLogged }) => {
           ))}
         </div>
       </div>
-      
     </div>
   );
 };

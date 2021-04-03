@@ -1,6 +1,7 @@
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 
+
 import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, NEW_USER, saveUser, SAVE_USER } from 'src/actions/auth';
 import { loader } from 'src/actions/animals';
 const API_URL = 'http://107.22.27.42/apo-PetsWantHome-back/public/api';
@@ -27,10 +28,11 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(decoded.shelter_id);
 
           if (decoded.shelter_id !== undefined) {
-            store.dispatch(loader());
             console.log('REDIRECTION');
             localStorage.setItem('shelterID', decoded.shelter_id);
-            window.location = `/shelter/${decoded.shelter_id}`;
+            //window.location = `/shelter/${decoded.shelter_id}`;
+            window.location = '/';
+            store.dispatch(loader());  
           } 
           else {
             window.location = '/';

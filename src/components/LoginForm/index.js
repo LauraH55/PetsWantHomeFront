@@ -19,9 +19,6 @@ const LoginForm = ({
     handleLogin();
   };
   
-
-  /* if (isLogged) return <Redirect to={`/shelter/${(decoded.shelter_id)}`}/>; */
-
   return (
     <div className="loginfield-form">
         <form autoComplete="off" className="loginfield-form-element" onSubmit={handleSubmit}>

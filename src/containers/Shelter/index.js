@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { fetchAnimals } from 'src/actions/animals';
+import { fetchShelters } from 'src/actions/shelters';
 
 import Shelter from 'src/components/Shelter';
 
