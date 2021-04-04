@@ -55,3 +55,20 @@
     }
   }  
 }
+
+@media (max-width: 700px) {
+  .shelter {
+    .shelter-info {
+      display: flex;
+      flex-direction: column;
+
+      .shelter-image {
+        width: 90%;
+      }
+      .shelter-characteristics {
+        margin: 1rem;
+      }
+    }
+  }
+  
+}

@@ -61,11 +61,11 @@ const authMiddleware = (store) => (next) => (action) => {
       console.log(email);
 
       const bodyFormData = new FormData();
-      bodyFormData.append(email, email);
-      bodyFormData.append(name, name);
-      bodyFormData.append(address, address);
-      bodyFormData.append(phone_number, phone_number);
-      bodyFormData.append(picture, picture);
+      bodyFormData.append('email', email);
+      bodyFormData.append('name', name);
+      bodyFormData.append('address', address);
+      bodyFormData.append('phone_number', phone_number);
+      bodyFormData.append('picture', picture);
       console.log(bodyFormData);
 
        {

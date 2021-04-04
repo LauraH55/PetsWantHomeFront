@@ -33,6 +33,9 @@
 
       .animal-characteristics {
         margin-right: 2em ;
+        span {
+          font-weight: 900;
+        }
 
         .animal-name {
           font-family: vars.$pomme;
@@ -47,5 +50,32 @@
 
     }
     
+  }
+}
+@media (max-width: 850px) {
+  .animal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .animal-image {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .animal-aside {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .animal-info {
+        flex-direction: column;
+        text-align: center;
+        line-height: 3rem;
+
+        .animal-description {
+          line-height: 2rem;
+        }
+      }
+    }
   }
 }

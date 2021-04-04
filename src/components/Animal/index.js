@@ -29,11 +29,11 @@ const Animal = ({ animals }) => {
         <div className="animal-info">
           <div className="animal-characteristics"> 
             <h3 className="animal-name">{animal.name}</h3>
-            <h4>Espèce : {animal.species.name}</h4>
-            {animal.race && <h4>Race : {animal.race.name}</h4>}
-            <h4>Âge : {getDate(animal.birthdate)} ans</h4>
-            <h4>Genre : {getGender(animal.gender)}</h4>
-            <h4>Cohabitation : 
+            <h4><span>Espèce :</span> {animal.species.name}</h4>
+            {animal.race && <h4><span>Race :</span> {animal.race.name}</h4>}
+            <h4><span>Âge :</span> {getDate(animal.birthdate)} ans</h4>
+            <h4><span>Genre :</span> {getGender(animal.gender)}</h4>
+            <h4><span>Cohabitation :</span> 
             {animal.catCohabitation ? ' Chats -' : ''}
             {animal.dogCohabitation ? ' Chiens -' : ''}
             {animal.nacCohabitation ? ' NAC -' : ''}

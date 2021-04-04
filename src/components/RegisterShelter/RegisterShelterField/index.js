@@ -12,7 +12,6 @@ const RegisterShelterField = ({
   name,
   placeholder,
   manageChange,
-  isLogged,
 }) => {
   const handleChange = (evt) => {
     manageChange(evt.target.value, name);

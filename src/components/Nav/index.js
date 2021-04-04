@@ -74,11 +74,11 @@ const Nav = ({ handleLogout }) => {
         )}
         </ul>
       </Menu>
-      <img src={Logo} alt="logo" className="logo-mobile" />
+      <NavLink to="/"><img src={Logo} alt="logo" className="logo-mobile" /></NavLink>
     </div>
 
     <div className="nav-link">
-      <img src={Logo} alt="logo" />
+      <NavLink to="/"><img src={Logo} alt="logo" /></NavLink>
       <ul>
         <NavLink
           to="/"
