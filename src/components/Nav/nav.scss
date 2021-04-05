@@ -1,11 +1,14 @@
 @use 'src/styles/vars';
 
 .nav {
+  position: fixed;
+  top: 0;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: vars.$gutter * 3;
+  height: 5rem;
   background-color: vars.$navColor;
   font-family: 'Avenir', sans-serif;
   font-size: 0.8em;

@@ -1,3 +1,64 @@
+@use 'src/styles/vars';
+
 .about {
   flex: 1;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: vars.$avenir;
+  background: rgba(246, 244, 210, 0.5);
+  margin-top: 5rem;
+
+  .about-logo {
+    height: 200px;
+    position: absolute;
+    top: 30%;
+    left: 42%;
+  }
+
+  h2 {
+    font-family: vars.$pomme;
+    font-size: 5rem;
+    padding-left: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+  }
+
+
+  .about-picture1 {
+    display: flex;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+
+  }
+
+  .about-picture2 {
+    display: flex;
+    position: absolute;
+    right: 3%;
+    top: 35%;
+  }
+
+  .about-picture3 {
+    display: flex;
+    position: absolute;
+    left: 30%;
+    bottom: 3%;
+    
+  }
+
+  .picture {
+    width:150px;
+    height: 150px;
+    border-radius:50%;
+    object-fit: cover;
+    border: solid 2px vars.$footerColor;
+    box-shadow: 7px 5px 8px 1px rgba(0, 0, 0, .2);
+  }
 }
