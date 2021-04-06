@@ -14,8 +14,13 @@ const RegisterShelterField = ({
   manageChange,
 }) => {
   const handleChange = (evt) => {
-    manageChange(evt.target.value, name);
-  };
+    if (type === 'file'){   
+         manageChange(evt.target.files[0], name);
+    }
+    else {
+        manageChange(evt.target.value, name);
+    }
+};
 
   const inputId = `register-shelter-field-${name}`;
   return (

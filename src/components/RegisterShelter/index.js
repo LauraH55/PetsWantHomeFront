@@ -11,7 +11,6 @@ const RegisterShelter = ({
   name,
   address,
   phone_number,
-  picture,
   changeField,
   handleLogin,
 }) => {
@@ -50,7 +49,6 @@ const RegisterShelter = ({
             type="file"
             placeholder="Photo du refuge"
             manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={picture}
           />
           <RegisterShelterField
             name="email"
@@ -86,8 +84,6 @@ RegisterShelter.propTypes = {
   address: PropTypes.string.isRequired,
   /** value for the email */
   phone_number: PropTypes.string.isRequired,
-  /** value for the email */
-  picture: PropTypes.string.isRequired,
 
 };
 

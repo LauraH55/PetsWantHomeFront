@@ -1,6 +1,7 @@
 @use 'src/styles/vars';
 
 .animal {
+  flex: 1;
   display: flex;
   flex-direction: row;
   padding: 2em;
@@ -13,11 +14,17 @@
   .animal-image {
     width: 50%;
     height: auto;
+    max-height: 80vh;
     margin-right: 2em;
     object-fit: cover;
     
   }
   .animal-aside {
+    .animal-name {
+      font-family: vars.$pomme;
+      font-size: 4em;
+      margin: 2rem 0;
+    }
     .animal-shelter {
       margin-bottom: 1em;
       line-height: 2rem;
@@ -29,27 +36,22 @@
     }
     .animal-info {
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      margin-right: 2em ;
+      line-height: 3rem;
 
-      .animal-characteristics {
-        margin-right: 2em ;
+        .animal-bullet {
+          height: 40px;
+          vertical-align: middle;
+        }
         span {
           font-weight: 900;
-        }
-
-        .animal-name {
-          font-family: vars.$pomme;
-          font-size: 4em;
-          margin: 2rem 0;
         }
 
       }
       .animal-description {
         width: 100%;
       }
-
-    }
     
   }
 }

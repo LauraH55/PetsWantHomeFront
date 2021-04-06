@@ -58,15 +58,12 @@ const authMiddleware = (store) => (next) => (action) => {
         picture,
       } = store.getState().shelter;
 
-      console.log(picture);
-
       const bodyFormData = new FormData();
       bodyFormData.append('email', email);
       bodyFormData.append('name', name);
       bodyFormData.append('address', address);
       bodyFormData.append('phone_number', phone_number);
-      bodyFormData.append('picture', picture.files[0]);
-      console.log(bodyFormData);
+      bodyFormData.append('picture', picture);
 
        {
         axios({
@@ -77,6 +74,7 @@ const authMiddleware = (store) => (next) => (action) => {
         })
           .then((response) => {
             console.log(response);
+            window.location = '/';
           })
           .catch((error) => {
             console.log(error);
@@ -86,15 +84,6 @@ const authMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     }
-    /*       const newShelter = {
-        email,
-        name,
-        address,
-        phone_number,
-        picture,
-      }; */
-
-      /* axios.post(`${API_URL}/shelter/create`, bodyFormData, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } }) */
 
     case NEW_USER:{
       const {
