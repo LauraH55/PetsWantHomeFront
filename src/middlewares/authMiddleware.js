@@ -58,14 +58,14 @@ const authMiddleware = (store) => (next) => (action) => {
         picture,
       } = store.getState().shelter;
 
-      console.log(email);
+      console.log(picture);
 
       const bodyFormData = new FormData();
       bodyFormData.append('email', email);
       bodyFormData.append('name', name);
       bodyFormData.append('address', address);
       bodyFormData.append('phone_number', phone_number);
-      bodyFormData.append('picture', picture);
+      bodyFormData.append('picture', picture.files[0]);
       console.log(bodyFormData);
 
        {

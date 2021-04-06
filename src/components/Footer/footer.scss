@@ -12,6 +12,13 @@
     padding-top: 1rem;
     justify-content: space-between;
     padding-right: 4rem;
+
+    .footer-link {
+      &:hover{
+        font-weight: 800;
+        
+      }
+    }
     
     .footer-container-image {
       height: 7em;

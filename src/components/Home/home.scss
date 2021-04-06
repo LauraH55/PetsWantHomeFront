@@ -33,6 +33,7 @@
     flex-wrap: wrap;
     justify-content: center;
 
+
   
   
     .thumbnails-image {
@@ -43,6 +44,10 @@
       object-fit: cover;
       border: solid 2px vars.$footerColor;
       box-shadow: 7px 5px 8px 1px rgba(0, 0, 0, .2);
+      &:hover {
+        opacity: 0.7;
+      }
+   
     }
     }
 

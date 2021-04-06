@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { slugifyName } from 'src/utils';
 
 import './home.scss';
-import paw from '../../assets/images/pawnextb&w.png';
+import paw from '../../assets/images/nextPaw2.png';
 
 const Home = ({ randomAnimals }) => {
   // console.log(randomAnimals);

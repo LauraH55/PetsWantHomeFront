@@ -102,7 +102,6 @@ const Nav = ({ handleLogout }) => {
           && (
             <NavLink
             to="/admin/shelter/create"
-            className="nav-item"
             >
               <button
                 type="button"

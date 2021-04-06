@@ -29,6 +29,10 @@
       .nav-item {
         padding: 0 vars.$gutter - 1;
         margin: 0 vars.$gutter -1;
+        &:hover {
+          font-weight: 800;
+          color: vars.$footerColor;
+        }
       }
     }
   }
@@ -55,6 +59,10 @@
 
       .nav-item {
         padding: 0 vars.$gutter - 1.5;
+        &:hover {
+          font-weight: 800;
+          color: vars.$footerColor;
+        }
       }
     }
   }
