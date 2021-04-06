@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-import {  loader } from 'src/actions/animals';
 import { FETCH_SHELTERS, saveShelters } from 'src/actions/shelters';
 
 const URL_FETCH_SHELTERS = 'http://107.22.27.42/apo-PetsWantHome-back/public/api/shelters';
