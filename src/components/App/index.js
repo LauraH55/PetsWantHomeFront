@@ -13,6 +13,7 @@ import Register from 'src/containers/Register';
 import RegisterShelter from 'src/containers/RegisterShelter';
 import Animal from 'src/containers/Animal';
 import Shelter from 'src/containers/Shelter';
+import SheltersList from 'src/containers/SheltersList';
 import Contact from 'src/components/Contact';
 import About from 'src/components/About';
 import LegalMentions from 'src/components/LegalMentions';
@@ -47,6 +48,9 @@ const App = ({ loadAnimals,loadRandomAnimals, loadShelters, loading }) => {
               </Route>
               <Route path="/shelter/:id_shelter">
                 <Shelter />
+              </Route>
+              <Route path="/shelters">
+                <SheltersList />
               </Route>
               <Route path="/legal-mentions">
                 <LegalMentions />

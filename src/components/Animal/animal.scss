@@ -4,6 +4,7 @@
   flex: 1;
   display: flex;
   flex-direction: row;
+  align-items: center;
   padding: 2em;
   font-family: 'Avenir', sans-serif;
   font-size: 0.7em;
@@ -22,15 +23,22 @@
   .animal-aside {
     .animal-name {
       font-family: vars.$pomme;
-      font-size: 4em;
-      margin: 2rem 0;
+      font-size: 8rem;
+      //margin: 0.1rem 0;
+      color: vars.$footerColor;
     }
     .animal-shelter {
       margin-bottom: 1em;
       line-height: 2rem;
+
+      .animal-shelter-published {
+        font-style: italic;
+      }
+
       .animal-shelter-link {
         font-size: 1.5em;
         font-weight: 900;
+        color: vars.$footerColor;
       }
 
     }
@@ -38,7 +46,7 @@
       display: flex;
       flex-direction: column;
       margin-right: 2em ;
-      line-height: 3rem;
+      line-height: 2rem;
 
         .animal-bullet {
           height: 40px;
@@ -46,6 +54,7 @@
         }
         span {
           font-weight: 900;
+          color: vars.$footerColor;
         }
 
       }

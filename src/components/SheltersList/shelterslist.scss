@@ -1,0 +1,11 @@
+@use 'src/styles/vars';
+
+.shelterslist {
+  flex: 1;
+  margin-top: 5rem;
+  background: rgba(246, 244, 210, 0.5);
+
+  .card-image {
+    width: 50%;
+  }
+}

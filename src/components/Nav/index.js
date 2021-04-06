@@ -93,6 +93,12 @@ const Nav = ({ handleLogout }) => {
         >
           Adoptions
         </NavLink>
+        <NavLink
+          to="/shelters"
+          className="nav-item"
+        >
+          Refuges
+        </NavLink>
       </ul>
     </div>
     <div className="nav-login">
