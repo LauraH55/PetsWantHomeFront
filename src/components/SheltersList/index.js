@@ -18,9 +18,9 @@ const SheltersList = ({ shelters }) => (
             <img className="image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/images/" + shelter.picture} alt="" />
           <div className="card-info">
             <h3>{shelter.name}</h3>
-            <h4>Adresse : {shelter.address}</h4>
-            <h4>Téléphone : {shelter.phoneNumber}</h4>
-            <h4>Email : {shelter.email}</h4>
+            <h4><span>Adresse : </span>{shelter.address}</h4>
+            <h4><span>Téléphone : </span>{shelter.phoneNumber}</h4>
+            <h4><span>Email : </span>{shelter.email}</h4>
           </div>
         </div>
       </Link>

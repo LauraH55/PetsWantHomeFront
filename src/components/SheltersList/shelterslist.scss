@@ -3,6 +3,9 @@
 .shelterslist {
   flex: 1;
   margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   h1 {
     text-align: center;
@@ -11,22 +14,51 @@
     margin: 2rem;
   }
 
-  .card {
+  .card-link {
     display: flex;
-    padding: 2rem;
-    margin: 0 3rem 2rem 3rem;
-    border: 2px solid vars.$footerColor;
-    background-color: #fff;
-    border-radius: 10px;
+    justify-content: center;
+
+
+    .card {
+      display: flex;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 2px solid vars.$footerColor;
+      box-shadow: 5px 5px 1px 1px rgba(0, 0, 0, .2);
+      background-color: #fff;
+      border-radius: 10px;
+      width: 70%;
+    }
+  
+    .image {
+      height: 400px;
+      width: 50%;
+      object-fit: cover;
+      margin-right: 2rem;
+    }
+  
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: vars.$avenir;
+      font-size: 1.2rem;
+      line-height: 3rem;
+
+      span {
+        color: vars.$footerColor;
+        font-weight: bold;
+      }
+  
+      h3 {
+        font-family: vars.$pomme;
+        font-size: 4rem;
+        color: vars.$footerColor;
+        padding: 2rem 0;
+      }
+
   }
 
-  .image {
-    height: 400px;
-    width: 50%;
-    object-fit: cover;
-  }
-
-  .card-info {
-    text-align: center;
+  
   }
 }
