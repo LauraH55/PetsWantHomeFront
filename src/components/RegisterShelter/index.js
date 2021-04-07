@@ -23,7 +23,7 @@ const RegisterShelter = ({
   return (
     <div className="register-shelter-form">
         <form autoComplete="off" className="register-shelter-form-element" onSubmit={handleSubmit}>
-          <h1 className="register-shelter-form-title">Inscription</h1>
+          <h1 className="register-shelter-form-title">Inscription du refuge</h1>
           <RegisterShelterField
             name="name"
             placeholder="Nom"
@@ -45,17 +45,17 @@ const RegisterShelter = ({
             value={phone_number}
           />
           <RegisterShelterField
-            name="picture"
-            type="file"
-            placeholder="Photo du refuge"
-            manageChange={(value, identifier) => (changeField(value, identifier))}
-          />
-          <RegisterShelterField
             name="email"
             type="email"
             placeholder="Adresse Email"
             manageChange={(value, identifier) => (changeField(value, identifier))}
             value={email}
+          />
+          <RegisterShelterField
+            name="picture"
+            type="file"
+            placeholder="Photo du refuge"
+            manageChange={(value, identifier) => (changeField(value, identifier))}
           />
           <button
             type="submit"

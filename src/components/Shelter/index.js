@@ -30,8 +30,8 @@ const Shelter = ({ shelters }) => {
             </div>
             {localStorage.shelterID == id_shelter && (
               <div>
-                <a href={"http://107.22.27.42/apo-PetsWantHome-back/public/back/shelter/" + shelter.id + "/update"}><button className="shelter-button">Modifier le profil</button></a>
-                <a href={"http://107.22.27.42/apo-PetsWantHome-back/public/back/shelter/" + shelter.id}><button className="shelter-button">Gestion des animaux</button></a>
+                <a href={"http://107.22.27.42/apo-PetsWantHome-back/public/back/shelter/update"}><button className="shelter-button">Modifier le profil</button></a>
+                <a href={"http://107.22.27.42/apo-PetsWantHome-back/public/back/myshelter/"}><button className="shelter-button">Gestion des animaux</button></a>
               </div>
             )}
           </div>

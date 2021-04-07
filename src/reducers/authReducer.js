@@ -1,10 +1,11 @@
-import { UPDATE_USER_FIELD, SAVE_USER, LOG_OUT } from 'src/actions/auth';
+import { UPDATE_USER_FIELD, SAVE_USER, LOG_OUT, LOGIN_ERROR } from 'src/actions/auth';
 
 const initialState = {
   username: '',
   password: '',
   isLogged: false,
   token: null,
+  loginError: false,
 };
 
 function authReducer(state = initialState, action) {
@@ -35,6 +36,13 @@ function authReducer(state = initialState, action) {
           ...state,
           isLogged: false,
           token: null,
+        };
+      
+      case LOGIN_ERROR:
+        return {
+          ...state,
+          password: '',
+          loginError: true,
         };
 
     default:

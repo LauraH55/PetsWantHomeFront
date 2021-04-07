@@ -7,14 +7,26 @@
   justify-content: center; 
   font-family: 'Avenir', sans-serif;
   margin-top: 5rem;
+  background-color: vars.$backgroundColor;
 
   .register-form-element {
     text-align: center;
+    background-color: #fff;
+    border: 2px solid vars.$footerColor;
+    border-radius: 2%;
+    box-shadow: 5px 5px 1px 1px rgba(153, 107, 107, 0.2);
+    margin: 2rem;
+    padding: 2rem;
+    
+    p {
+      font-size: 0.8rem;
+    }
 
     .register-form-title {
       font-family: vars.$pomme;
       margin: 1rem;
       font-size: 5rem;
+      color: vars.$footerColor;
     }
 
     .register-form-button {
@@ -28,5 +40,11 @@
       height: 2.5em;
       margin: 2em;
     }
+  }
+  
+  .error {
+    color: vars.$footerColor;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 }

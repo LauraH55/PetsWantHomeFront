@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
-import jwt_decode from "jwt-decode";
 
 import LoginField from './LoginField';
 
@@ -12,13 +10,13 @@ const LoginForm = ({
   password,
   changeField,
   handleLogin,
-  isLogged,
+  loginError,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
   };
-  
+
   return (
     <div className="loginfield-form">
         <form autoComplete="off" className="loginfield-form-element" onSubmit={handleSubmit}>
@@ -35,6 +33,10 @@ const LoginForm = ({
             manageChange={changeField}
             value={password}
           />
+          {loginError
+          && (
+            <div className="login-error">Chat alors, vous vous êtes trompés d'identifiants !</div>
+          )}
           <button
             type="submit"
             className="loginfield-form-button"

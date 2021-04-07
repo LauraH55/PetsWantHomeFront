@@ -9,13 +9,11 @@ import './register.scss';
 const Register = ({
   email,
   password,
-  shelter,
   confirmPassword,
-  address,
-  phoneNumber,
-  picture,
   changeField,
   handleLogin,
+  emailError,
+  passwordError,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -41,6 +39,7 @@ const Register = ({
             manageChange={(value, identifier) => (changeField(value, identifier))}
             value={password}
           />
+            <p>Minimum 8 caractères, dont au moins un chiffre, une majuscule et un symbole</p>
           <RegisterField
             name="confirmPassword"
             type="password"
@@ -48,6 +47,15 @@ const Register = ({
             manageChange={(value, identifier) => (changeField(value, identifier))}
             value={confirmPassword}
           />
+        
+          {emailError
+          && (
+            <div className="error"> Cette adresse e-mail est déjà utilisée !</div>
+          )}
+          {passwordError
+          && (
+            <div className="error">Mot de passe incorrect !</div>
+          )}
           <button
             type="submit"
             className="register-form-button"

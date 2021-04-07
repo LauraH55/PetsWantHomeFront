@@ -7,7 +7,6 @@ import Logo from '../../assets/images/B&W-Logo-PWH.png';
 
 
 const Nav = ({ handleLogout }) => {
-  console.log(localStorage);
   return(
   <nav className="nav">
     <div className="nav-mobile">

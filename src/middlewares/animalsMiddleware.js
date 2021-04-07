@@ -9,7 +9,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
       store.dispatch(loader());
       axios.get('http://107.22.27.42/apo-PetsWantHome-back/public/api/animals')
       .then((response) => {
-        console.log('response: ', response);
+        //console.log('response: ', response);
         setTimeout(() => {
           store.dispatch(saveAnimals(response.data));
         }, 1000);
@@ -25,7 +25,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
       store.dispatch(loader());
       axios.get('http://107.22.27.42/apo-PetsWantHome-back/public/api/home')
       .then((response) => {
-        console.log('response: ', response);
+        //console.log('response: ', response);
         setTimeout(() => {
           store.dispatch(saveRandomAnimals(response.data));
           store.dispatch(loader());

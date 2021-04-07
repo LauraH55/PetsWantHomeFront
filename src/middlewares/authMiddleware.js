@@ -2,11 +2,10 @@ import axios from 'axios';
 import jwt_decode from "jwt-decode";
 
 
-import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, NEW_USER, saveUser, SAVE_USER } from 'src/actions/auth';
+import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, NEW_USER, saveUser, loginError, emailError, passwordError } from 'src/actions/auth';
 import { loader } from 'src/actions/animals';
+
 const API_URL = 'http://107.22.27.42/apo-PetsWantHome-back/public/api';
-// URL local : http://laura-hantz.vpnuser.lan/Apotheose/apo-PetsWantHome-back/public/api
-// URL prod : http://107.22.27.42/apo-PetsWantHome-back/public/api
 const myurl = 'http://107.22.27.42/apo-PetsWantHome-back/public/api/shelter/create';
 
 const authMiddleware = (store) => (next) => (action) => {
@@ -19,9 +18,7 @@ const authMiddleware = (store) => (next) => (action) => {
         password: password,
       })
         .then((response) => {
-          console.log(response.data);
           localStorage.setItem('token', response.data.token);
-          console.log(localStorage);
           store.dispatch(saveUser(response.data.logged, response.data.token));
 
           const decoded = jwt_decode(response.data.token);
@@ -30,7 +27,6 @@ const authMiddleware = (store) => (next) => (action) => {
           if (decoded.shelter_id !== undefined) {
             console.log('REDIRECTION');
             localStorage.setItem('shelterID', decoded.shelter_id);
-            //window.location = `/shelter/${decoded.shelter_id}`;
             window.location = '/';
             store.dispatch(loader());  
           } 
@@ -42,6 +38,7 @@ const authMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(loginError());
         });
 
       next(action);
@@ -104,9 +101,19 @@ const authMiddleware = (store) => (next) => (action) => {
             window.location = '/login';
           })
           .catch((error) => {
-            console.log(error);
+            console.log(error.response.status);
+            if (error.response.status == 500) {
+              return (store.dispatch(emailError()));
+            }
+            else {
+              store.dispatch(passwordError());
+            }
           });
-      };
+      }
+      else {
+        console.log('Les mots de passe saisis ne sont pas identiques !');
+        store.dispatch(passwordError());
+      }
 
       next(action);
       break;

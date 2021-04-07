@@ -1,9 +1,11 @@
-import { UPDATE_USER_FIELD } from 'src/actions/auth';
+import { UPDATE_USER_FIELD, EMAIL_ERROR, PASSWORD_ERROR } from 'src/actions/auth';
 
 const initialState = {
   email: '',
   password: '',
   confirmPassword: '',
+  emailError: false,
+  passwordError: false,
 };
 
 function registerReducer(state = initialState, action) {
@@ -17,6 +19,18 @@ function registerReducer(state = initialState, action) {
         confirmPassword: action.name === 'confirmPassword' ? action.newValue : state.confirmPassword,
 
       };
+
+      case EMAIL_ERROR:
+        return {
+          ...state,
+          emailError: true,
+        };
+      
+      case PASSWORD_ERROR:
+        return {
+          ...state,
+          passwordError: true,
+        };
 
     default:
       return state;

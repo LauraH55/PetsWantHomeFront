@@ -1,5 +1,3 @@
-import { logOut } from 'src/actions/auth';
-
 import { connect } from 'react-redux';
 
 import { updateUserField, newUser } from 'src/actions/auth';
@@ -9,6 +7,8 @@ const mapStateToProps = (state) => ({
     email: state.register.email,
     password: state.register.password,
     confirmPassword: state.register.confirmPassword,
+    emailError: state.register.emailError,
+    passwordError: state.register.passwordError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,7 +16,6 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(updateUserField(value, fieldName));
     },
     handleLogin: () => {
-        console.log('click');
         dispatch(newUser());
     },
 });

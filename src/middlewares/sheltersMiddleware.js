@@ -10,7 +10,7 @@ const sheltersMiddleware = (store) => (next) => (action) => {
     case FETCH_SHELTERS:
       axios.get(URL_FETCH_SHELTERS)
       .then((response) => {
-        console.log('response: ', response);
+        //console.log('response: ', response);
         setTimeout(() => {
           store.dispatch(saveShelters(response.data));
         }, 1000);
