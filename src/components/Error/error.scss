@@ -1,0 +1,14 @@
+@use 'src/styles/vars';
+
+.error {
+  flex: 1;
+  margin-top: 5rem;
+  background-color: vars.$backgroundColor;
+  
+
+  .error-image {
+    height: 80vh;
+    display: flex;
+    margin: auto;
+  }
+}

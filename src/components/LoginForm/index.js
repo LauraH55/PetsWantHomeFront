@@ -20,6 +20,7 @@ const LoginForm = ({
   return (
     <div className="loginfield-form">
         <form autoComplete="off" className="loginfield-form-element" onSubmit={handleSubmit}>
+          <h1 className="loginfield-form-title">Connexion</h1>
           <LoginField
             name="username"
             placeholder="Adresse Email"

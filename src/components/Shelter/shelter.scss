@@ -4,11 +4,7 @@
   flex: 1;
   margin-top: 5rem;
   background: rgba(246, 244, 210, 0.5);
-  h1 {
-    text-align: center;
-    font-size: 2em;
-    margin: .3em;
-  }
+  
   .shelter-info {
     display: flex;
     flex-direction: row;
@@ -26,6 +22,14 @@
       line-height: 2em;
       span {
         font-weight: 900;
+        color: vars.$footerColor;
+      }
+      h1 {
+        font-family: vars.$pomme;
+        text-align: center;
+        font-size: 5rem;
+        color: vars.$footerColor;
+        margin-bottom: 3rem;
       }
     }
 
@@ -54,6 +58,12 @@
       height: 200px;
       object-fit: cover;
       margin: 1em;
+      transform-origin: 0 0;
+      transition: transform .25s, visibility .25s ease-in;
+      &:hover {
+        //opacity: 0.7;
+        transform: scale(1.1);
+      }
     }
   }  
 }

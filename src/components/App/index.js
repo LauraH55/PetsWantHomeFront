@@ -18,6 +18,7 @@ import Contact from 'src/components/Contact';
 import About from 'src/components/About';
 import LegalMentions from 'src/components/LegalMentions';
 import Loader from 'src/components/Loader';
+import Error from 'src/components/Error';
 import './styles.scss';
 
 // == Composant
@@ -72,6 +73,12 @@ const App = ({ loadAnimals,loadRandomAnimals, loadShelters, loading }) => {
               </Route>
               <Route exact path="/">
                 <Home />
+              </Route>
+              <Route to="/error">
+                <Error />
+              </Route>
+              <Route to="">
+                <Error />
               </Route>
             </Switch>
           <Footer />

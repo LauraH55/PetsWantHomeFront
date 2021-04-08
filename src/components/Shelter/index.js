@@ -18,12 +18,12 @@ const Shelter = ({ shelters }) => {
 
   return(
     <div className="shelter">
-      <h1>{shelter.name}</h1>
       <div>
         <div className="shelter-info">
           <img className="shelter-image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/images/" + shelter.picture} alt="#" />
           <div>
             <div className="shelter-characteristics">
+              <h1>{shelter.name}</h1>
               <h3><span>Adresse :</span> {shelter.address}</h3>
               <h3><span>Téléphone :</span> {shelter.phoneNumber}</h3>
               <h3><span>Email :</span> {shelter.email}</h3>
