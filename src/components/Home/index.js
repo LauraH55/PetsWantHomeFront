@@ -6,6 +6,7 @@ import { slugifyName } from 'src/utils';
 
 import './home.scss';
 import paw from '../../assets/images/nextPaw2.png';
+import minipaw from '../../assets/images/PawSign.png';
 
 const Home = ({ randomAnimals }) => {
   // console.log(randomAnimals);
@@ -15,6 +16,12 @@ const Home = ({ randomAnimals }) => {
     <div className="banner">
       <h1 className="title">Pets Want Home</h1>
     </div>
+    <h3 className="description">
+      Le site Pets Want Home a été pensé et créé pour les refuges d’animaux afin de leur proposer un  outil    pour une gestion simplifiée des avis d’adoptions de leurs pensionnaires.
+      En centralisant les avis d’adoptions des refuges, nous souhaitons également simplifier la recherche des pensionnaires pour les particuliers souhaitant en adopter.
+      Le site aspire à de nombreuses améliorations et sera de ce fait régulièrement mis à jour.
+      <img className="description-image" src={minipaw} alt="mini patoune" />
+    </h3>
     <h2 className="subtitle">Quelques animaux disponibles à l'adoption</h2>
     <div className="thumbnails">
       {randomAnimals.map((animal) => (

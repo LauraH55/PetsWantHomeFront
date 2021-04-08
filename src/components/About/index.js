@@ -11,9 +11,9 @@ import Linkedin from '../../assets/images/linkedin.png';
 
 const About = () => (
   <div className="about">
-    <img className="about-logo" src={Logo} alt="logo" />
     <div className="about-picture1">
-      <img className="picture" src={Emilie} alt="Emilie" />
+      
+    <a href="https://github.com/EmilieDeplanche"><img className="picture" src={Emilie} alt="Emilie" /></a>
       <div>
         <h2>Émilie Deplanche</h2>
         <h3>Product Owner &#38; Git Master</h3>
@@ -21,17 +21,17 @@ const About = () => (
       </div>
     </div>
     <div className="about-picture2">
-      <img className="picture" src={Kevin} alt="Kevin" />
       <div>
-        <h2>Kévin Besnier</h2>
-        <h3>Lead Dev Front</h3>
-        <a href="https://www.linkedin.com/in/kevin-besnier/"><img className="linkedin" src={Linkedin} alt="Linkedin" /></a>
+        <h2 className="Kevin-name" >Kévin Besnier</h2>
+        <h3 className="Kevin-job" >Lead Dev Front</h3>
+        <a className="Kevin-linkedin" href="https://www.linkedin.com/in/kevin-besnier/"><img className="linkedin" src={Linkedin} alt="Linkedin" /></a>
       </div>
+      <a href="https://github.com/Kevin-Besnier"><img className="picture" src={Kevin} alt="Kevin" /></a>
     </div>
     <div className="about-picture3">
-      <img className="picture" src={Laura} alt="Laura" />
+      <a href="https://github.com/LauraH55"><img className="picture" src={Laura} alt="Laura" /></a>
       <div>
-        <h2 className="Laura">Laura Hantz</h2>
+        <h2 className="Laura-name">Laura Hantz</h2>
         <h3>Scrum Master &#38; Lead Dev Back</h3>
         <a href="https://www.linkedin.com/in/laura-hantz/"><img className="linkedin" src={Linkedin} alt="Linkedin" /></a>
       </div>

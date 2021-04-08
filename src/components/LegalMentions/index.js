@@ -52,6 +52,7 @@ const LegalMentions = () => (
     <h2>Propriété intellectuelle :</h2>
     <p>Tout le contenu du présent site <a href="http://petswanthome.surge.sh/">http://petswanthome.surge.sh/ </a> , incluant, de façon non limitative, les graphismes, images, textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de la société à l’exception des marques, logos ou contenus appartenant à d’autres sociétés partenaires ou auteurs.
     Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l’accord exprès par écrit de Pets Want Home. Cette représentation ou reproduction, par quelque procédé que ce soit, constitue une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle. Le non-respect de cette interdiction constitue une contrefaçon pouvant engager la responsabilité civile et pénale du contrefacteur. En outre, les propriétaires des Contenus copiés pourraient intenter une action en justice à votre encontre.
+    <p><a href="https://storyset.com/web">Illustration de la page 404 par Freepik Storyset.</a></p>
     </p>
     <h2>Déclaration à la CNIL :</h2>
     <p>Pets Want Home n’est pas encore déclaré auprès de la Commission nationale de l’informatique et des libertés (www.cnil.fr), mais cela doit être fait.

@@ -25,7 +25,31 @@
 
   .subtitle {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 4rem;
+    text-shadow: 3px 2px 1px rgba(0, 0, 0, .2);
+    color: vars.$footerColor;
+    margin: 3rem;
+  }
+
+  .description {
+    font-family: vars.$avenir;
+    font-size: 1.2rem;
+    margin: 2rem;
+    border: 2px solid vars.$footerColor;
+    border-left-width: 5px;
+    box-shadow: 5px 5px 1px 1px rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    padding: 2rem;
+    position: relative;
+
+    .description-image {
+      position: absolute;
+      bottom: -15%;
+      right: 1%;
+      height: 60px;
+      transform: rotate(-25deg);
+
+    }
   }
 
   .thumbnails {
@@ -44,8 +68,10 @@
       object-fit: cover;
       border: solid 2px vars.$footerColor;
       box-shadow: 7px 5px 8px 1px rgba(0, 0, 0, .2);
+      transform-origin: 0 0;
+      transition: transform .25s, visibility .25s ease-in;
       &:hover {
-        opacity: 0.7;
+        transform: scale(1.1);
       }
    
     }

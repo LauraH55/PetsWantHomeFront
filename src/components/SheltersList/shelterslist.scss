@@ -30,37 +30,43 @@
       background-color: #fff;
       border-radius: 10px;
       width: 70%;
+      transform-origin: 0 0;
+      transition: transform .25s, visibility .25s ease-in;
+
+      .image {
+        height: 400px;
+        width: 50%;
+        object-fit: cover;
+        margin-right: 2rem;
+      }
+    
+      .card-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-family: vars.$avenir;
+        font-size: 1.2rem;
+        line-height: 3rem;
+
+        span {
+          color: vars.$footerColor;
+          font-weight: bold;
+        }
+    
+        h3 {
+          font-family: vars.$pomme;
+          font-size: 4rem;
+          color: vars.$footerColor;
+          padding: 2rem 0;
+        }
+        
+      }
+
+      &:hover {
+          transform: scale(1.02);
+        }
     }
   
-    .image {
-      height: 400px;
-      width: 50%;
-      object-fit: cover;
-      margin-right: 2rem;
-    }
-  
-    .card-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-family: vars.$avenir;
-      font-size: 1.2rem;
-      line-height: 3rem;
-
-      span {
-        color: vars.$footerColor;
-        font-weight: bold;
-      }
-  
-      h3 {
-        font-family: vars.$pomme;
-        font-size: 4rem;
-        color: vars.$footerColor;
-        padding: 2rem 0;
-      }
-
   }
-
-  
-  }
+ 
 }

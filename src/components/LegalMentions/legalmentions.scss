@@ -18,5 +18,8 @@
 
   a {
     color: vars.$footerColor;
+    &:hover {
+      color: vars.$outlineColor;
+    }
   }
 }
