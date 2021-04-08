@@ -15,7 +15,7 @@ const SheltersList = ({ shelters }) => (
         key={shelter.id}
         >
         <div className="card">
-            <img className="image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/images/" + shelter.picture} alt="" />
+            <img className="image" src={"http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/" + shelter.picture} alt="" />
           <div className="card-info">
             <h3>{shelter.name}</h3>
             <h4><span>Adresse : </span>{shelter.address}</h4>

@@ -31,7 +31,7 @@ const Home = ({ randomAnimals }) => {
         key={animal.id}
       >
         {/* <h1>{animal.name}</h1> */}
-        <img className="thumbnails-image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/images/" + animal.picture} alt="#" />
+        <img className="thumbnails-image" src={"http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/" + animal.picture} alt="#" />
       </Link>
       ))}
       

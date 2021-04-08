@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { FETCH_SHELTERS, saveShelters } from 'src/actions/shelters';
 
-const URL_FETCH_SHELTERS = 'http://107.22.27.42/apo-PetsWantHome-back/public/api/shelters';
+const URL_FETCH_SHELTERS = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelters';
 
 const sheltersMiddleware = (store) => (next) => (action) => {
 

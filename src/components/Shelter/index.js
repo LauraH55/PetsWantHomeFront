@@ -20,7 +20,7 @@ const Shelter = ({ shelters }) => {
     <div className="shelter">
       <div>
         <div className="shelter-info">
-          <img className="shelter-image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/images/" + shelter.picture} alt="#" />
+          <img className="shelter-image" src={"http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/" + shelter.picture} alt="#" />
           <div>
             <div className="shelter-characteristics">
               <h1>{shelter.name}</h1>
@@ -30,8 +30,8 @@ const Shelter = ({ shelters }) => {
             </div>
             {localStorage.shelterID == id_shelter && (
               <div>
-                <a href={"http://107.22.27.42/apo-PetsWantHome-back/public/back/shelter/update"}><button className="shelter-button">Modifier le profil</button></a>
-                <a href={"http://107.22.27.42/apo-PetsWantHome-back/public/back/myshelter/"}><button className="shelter-button">Gestion des animaux</button></a>
+                <a href={"http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/shelter/update"}><button className="shelter-button">Modifier le profil</button></a>
+                <a href={"http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/myshelter/"}><button className="shelter-button">Gestion des animaux</button></a>
               </div>
             )}
           </div>
@@ -43,7 +43,7 @@ const Shelter = ({ shelters }) => {
             className=""
             key={animal.id}
             >
-            <img className="shelter-animals-image" src={"http://107.22.27.42/apo-PetsWantHome-back/public/images/" + animal.picture} alt="#" />
+            <img className="shelter-animals-image" src={"http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/" + animal.picture} alt="#" />
             </Link>
           ))}
         </div>

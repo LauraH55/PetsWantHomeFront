@@ -23,10 +23,12 @@
     align-items: center;
     flex-wrap: wrap;
     margin: 1rem;
-    transform-origin: 0 0;
-    transition: transform .25s, visibility .25s ease-in;
+    
 
     .card-link {
+      transform-origin: 0 0;
+      transition: transform .25s, visibility .25s ease-in;
+
       .card {
         display: flex;
         flex-direction: column;

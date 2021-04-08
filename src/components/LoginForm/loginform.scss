@@ -36,6 +36,11 @@
       padding: 1rem;
       height: 3rem;
       margin: 2rem;
+
+      &:hover {
+        background-color: vars.$outlineColor;
+      } 
+
     }
     
     .login-error {

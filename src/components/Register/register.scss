@@ -39,6 +39,11 @@
       padding: 0.7em;
       height: 2.5em;
       margin: 2em;
+      
+      &:hover {
+        background-color: vars.$outlineColor;
+      } 
+
     }
   }
   

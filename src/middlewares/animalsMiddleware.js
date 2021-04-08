@@ -7,7 +7,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_ANIMALS:
       store.dispatch(loader());
-      axios.get('http://107.22.27.42/apo-PetsWantHome-back/public/api/animals')
+      axios.get('http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/animals')
       .then((response) => {
         //console.log('response: ', response);
         setTimeout(() => {
@@ -23,7 +23,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
 
     case FETCH_RANDOM_ANIMALS:
       store.dispatch(loader());
-      axios.get('http://107.22.27.42/apo-PetsWantHome-back/public/api/home')
+      axios.get('http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/home')
       .then((response) => {
         //console.log('response: ', response);
         setTimeout(() => {

@@ -5,8 +5,8 @@ import jwt_decode from "jwt-decode";
 import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, NEW_USER, saveUser, loginError, emailError, passwordError } from 'src/actions/auth';
 import { loader } from 'src/actions/animals';
 
-const API_URL = 'http://107.22.27.42/apo-PetsWantHome-back/public/api';
-const myurl = 'http://107.22.27.42/apo-PetsWantHome-back/public/api/shelter/create';
+const API_URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
+const myurl = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelter/create';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
