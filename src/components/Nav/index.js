@@ -24,6 +24,25 @@ const Nav = ({ handleLogout }) => {
           >
             Adoptions
           </NavLink>
+          <NavLink
+            to="/shelters"
+            className="nav-mobile-link"
+          >
+            Refuges
+          </NavLink>
+          <a className="nav-mobile-link" href="mailto:petswanthome@gmail.com">Contact</a>
+          <NavLink
+            to="/about"
+            className="nav-mobile-link"
+          >
+            À propos
+          </NavLink>  
+          <NavLink
+            to="/legal-mentions"
+            className="nav-mobile-link"
+          >
+            Mentions Légales
+          </NavLink>
           {localStorage.token && (
           <>
           {localStorage.shelterID === undefined
