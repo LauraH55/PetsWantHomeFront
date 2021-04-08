@@ -15,12 +15,6 @@ const Footer = () => (
         >
           Mentions Légales
         </Link>
-        {/* <Link
-          mailto="petswanthome@gmail.com"
-          className="footer-link"
-        >
-          Contact
-        </Link> */}
         <a className="footer-link" href="mailto:petswanthome@gmail.com">Contact</a>
         <Link
           to="/about"
