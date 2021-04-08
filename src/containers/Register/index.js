@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     changeField: (value, fieldName) => {
+        console.log(fieldName, value);
         dispatch(updateUserField(value, fieldName));
     },
     handleLogin: () => {

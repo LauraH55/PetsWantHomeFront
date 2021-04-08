@@ -2,7 +2,7 @@ import axios from 'axios';
 import jwt_decode from "jwt-decode";
 
 
-import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, NEW_USER, saveUser, loginError, emailError, passwordError } from 'src/actions/auth';
+import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, NEW_USER, saveUser, loginError, emailError, passwordError, logOut, logIn } from 'src/actions/auth';
 import { loader } from 'src/actions/animals';
 
 const API_URL = 'http://107.22.27.42/apo-PetsWantHome-back/public/api';
@@ -11,10 +11,10 @@ const myurl = 'http://107.22.27.42/apo-PetsWantHome-back/public/api/shelter/crea
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN: {
-      const { username, password } = store.getState().auth;
+      const { email, password } = store.getState().auth;
       
       axios.post(`${API_URL}/login`, {
-        username: username,
+        username: email,
         password: password,
       })
         .then((response) => {
@@ -25,7 +25,6 @@ const authMiddleware = (store) => (next) => (action) => {
           console.log(decoded.shelter_id);
 
           if (decoded.shelter_id !== undefined) {
-            console.log('REDIRECTION');
             localStorage.setItem('shelterID', decoded.shelter_id);
             window.location = '/';
             store.dispatch(loader());  
@@ -62,21 +61,40 @@ const authMiddleware = (store) => (next) => (action) => {
       bodyFormData.append('phone_number', phone_number);
       bodyFormData.append('picture', picture);
 
-       {
-        axios({
-          method: "post",
-          url: myurl,
-          data: bodyFormData,
-          headers: { "Content-Type": "multipart/form-data", authorization: `Bearer ${localStorage.getItem('token')}`},
+
+      
+      // axios.post(myurl,
+      //   {
+      //     email,
+      //     name,
+      //     address,
+      //     phoneNumber: phone_number,
+      //     picture,
+      //   },
+      //   {
+      //     headers : {
+      //       'Content-type': "multipart/form-data",
+      //       Authorization: `Bearer ${localStorage.getItem('token')}`,
+      //     },
+      // })
+      
+      axios({
+        method: "post",
+        url: myurl,
+        data: bodyFormData,
+        headers: { "Content-Type": "multipart/form-data", authorization: `Bearer ${localStorage.getItem('token')}`},
+      })
+        .then((response) => {
+          console.log(response);
+          localStorage.setItem('shelterID', response.data.shelter.id);
+          // store.dispatch(logOut());
+          // store.dispatch(logIn());
+          window.location = '/';
         })
-          .then((response) => {
-            console.log(response);
-            window.location = '/';
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      };
+        .catch((error) => {
+          console.log(error);
+        });
+      
 
       next(action);
       break;
@@ -98,7 +116,8 @@ const authMiddleware = (store) => (next) => (action) => {
         axios.post(`${API_URL}/register`, newUser)
           .then((response) => {
             console.log(response);
-            window.location = '/login';
+            // window.location = '/login';
+            store.dispatch(logIn());
           })
           .catch((error) => {
             console.log(error.response.status);
