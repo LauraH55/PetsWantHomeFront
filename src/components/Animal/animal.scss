@@ -9,7 +9,6 @@
   font-family: 'Avenir', sans-serif;
   font-size: 0.7em;
   background-color:vars.$backgroundColor;
-  background: rgba(246, 244, 210, 0.5);
   margin-top: 5rem;
 
   .animal-image {
@@ -24,7 +23,7 @@
     .animal-name {
       font-family: vars.$pomme;
       font-size: 8rem;
-      //margin: 0.1rem 0;
+      margin-bottom: 1.8rem;
       color: vars.$footerColor;
     }
     .animal-shelter {

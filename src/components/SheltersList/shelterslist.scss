@@ -69,3 +69,22 @@
   }
  
 }
+
+@media (max-width: 800px) {
+  .shelterslist {
+    .card-link {
+      .card {
+        display: flex;
+        flex-direction: column;
+        .image {
+          height: 200px;
+          width: 100%;
+        }
+        h3 {
+          text-align: center;
+        }
+      }
+    }
+    
+  }
+}

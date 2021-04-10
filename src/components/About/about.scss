@@ -88,3 +88,25 @@
     }
   }
 }
+
+@media (max-width: 800px) {
+  .about {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: none;
+    
+    .about-picture1 {
+      position: static;
+    }
+    .about-picture2 {
+      position: static;
+      margin-top: 6rem;
+    }
+    .about-picture3 {
+      position: static;
+      margin-top: 6rem;
+    }
+  }
+}
