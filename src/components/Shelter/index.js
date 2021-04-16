@@ -8,21 +8,22 @@ import { slugifyName } from 'src/utils';
 
 import './shelter.scss';
 
-// == Composant
-const Shelter = ({ shelters }) => {
-  const { id_shelter } = useParams();
-  console.log(shelters);
-  const shelter = shelters.find((shel) => shel.id == id_shelter);
+// == Component
+const Shelter = ({
+  shelters,
+}) => {
+  const { idShelter } = useParams();
 
-  console.log(shelter);
+  // eslint-disable-next-line eqeqeq
+  const shelter = shelters.find((shel) => shel.id == idShelter);
+
   const animalsShelter = shelter.animals;
-  console.log(localStorage);
 
-  return(
+  return (
     <div className="shelter">
       <div>
         <div className="shelter-info">
-          <img className="shelter-image" src={"http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/" + shelter.picture} alt="#" />
+          <img className="shelter-image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${shelter.picture}`} alt="#" />
           <div>
             <div className="shelter-characteristics">
               <h1>{shelter.name}</h1>
@@ -30,10 +31,18 @@ const Shelter = ({ shelters }) => {
               <h3><span>Téléphone :</span> {shelter.phoneNumber}</h3>
               <h3><span>Email :</span> {shelter.email}</h3>
             </div>
-            {localStorage.shelterID == id_shelter && (
+            {localStorage.shelterID === idShelter && (
               <div>
-                <a href={"http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/shelter/update"}><button className="shelter-button">Modifier le profil</button></a>
-                <a href={"http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/myshelter/"}><button className="shelter-button">Gestion des animaux</button></a>
+                <a href="http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/shelter/update">
+                  <button className="shelter-button" type="button">
+                    Modifier le profil
+                  </button>
+                </a>
+                <a href="http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/myshelter/">
+                  <button className="shelter-button" type="button">
+                    Gestion des animaux
+                  </button>
+                </a>
               </div>
             )}
           </div>
@@ -41,11 +50,11 @@ const Shelter = ({ shelters }) => {
         <div className="shelter-animals">
           {animalsShelter.map((animal) => (
             <Link
-            to={`/animal/${slugifyName(animal.name)}`}
-            className=""
-            key={animal.id}
+              to={`/animal/${slugifyName(animal.name)}`}
+              className=""
+              key={animal.id}
             >
-            <img className="shelter-animals-image" src={"http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/" + animal.picture} alt="#" />
+              <img className="shelter-animals-image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${animal.picture}`} alt="#" />
             </Link>
           ))}
         </div>

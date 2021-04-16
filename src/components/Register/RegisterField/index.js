@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // == Import : local
 import './registerfield.scss';
 
-// == Composant
+// == Component
 const RegisterField = ({
   value,
   type,
@@ -18,8 +18,9 @@ const RegisterField = ({
   };
 
   const inputId = `registerfield-${name}`;
+
   return (
-    <div className="registerfield">  
+    <div className="registerfield">
       <label
         htmlFor={inputId}
         className="registerfield-label"

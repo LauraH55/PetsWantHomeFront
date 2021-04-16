@@ -5,63 +5,64 @@ import PropTypes from 'prop-types';
 import './nav.scss';
 import Logo from '../../assets/images/B&W-Logo-PWH.png';
 
+const Nav = ({
+  handleLogout,
+}) => (
+  <nav className="nav">
+    <div className="nav-mobile">
+      <Menu {...Nav}>
+        <ul>
+          <NavLink
+            to="/"
+            className="nav-mobile-link"
+          >
+            Accueil
+          </NavLink>
+          <NavLink
+            to="/adoption"
+            className="nav-mobile-link"
+          >
+            Adoptions
+          </NavLink>
+          <NavLink
+            to="/shelters"
+            className="nav-mobile-link"
+          >
+            Refuges
+          </NavLink>
+          <a className="nav-mobile-link" href="mailto:petswanthome@gmail.com">Contact</a>
+          <NavLink
+            to="/about"
+            className="nav-mobile-link"
+          >
+            À propos
+          </NavLink>
+          <NavLink
+            to="/legal-mentions"
+            className="nav-mobile-link"
+          >
+            Mentions Légales
+          </NavLink>
 
-const Nav = ({ handleLogout }) => {
-  return(
-    <nav className="nav">
-      <div className="nav-mobile">
-        <Menu {...Nav}>
-          <ul>
-            <NavLink
-              to="/"
-              className="nav-mobile-link"
-            >
-              Accueil
-            </NavLink>
-            <NavLink
-              to="/adoption"
-              className="nav-mobile-link"
-            >
-              Adoptions
-            </NavLink>
-            <NavLink
-              to="/shelters"
-              className="nav-mobile-link"
-            >
-              Refuges
-            </NavLink>
-            <a className="nav-mobile-link" href="mailto:petswanthome@gmail.com">Contact</a>
-            <NavLink
-              to="/about"
-              className="nav-mobile-link"
-            >
-              À propos
-            </NavLink>  
-            <NavLink
-              to="/legal-mentions"
-              className="nav-mobile-link"
-            >
-              Mentions Légales
-            </NavLink>
-            {localStorage.token && (
+          {localStorage.token && (
             <>
-            {localStorage.shelterID === undefined
+              {localStorage.shelterID === undefined
             && (
               <NavLink
-              to="/admin/shelter/create"
-              className="nav-mobile-link"
+                to="/admin/shelter/create"
+                className="nav-mobile-link"
               >
                 Inscrivez votre refuge
               </NavLink>
             )}
-            
-            {localStorage.shelterID > 0
+
+              {localStorage.shelterID > 0
             && (
               <NavLink
-              to={`/shelter/${(localStorage.shelterID)}`}
-              className="nav-mobile-link"
+                to={`/shelter/${(localStorage.shelterID)}`}
+                className="nav-mobile-link"
               >
-                  Profil du refuge
+                Profil du refuge
               </NavLink>
             )}
 
@@ -89,44 +90,50 @@ const Nav = ({ handleLogout }) => {
               >
                 Inscription
               </NavLink>
-              </>
+            </>
           )}
-          </ul>
-        </Menu>
-        <NavLink to="/"><img src={Logo} alt="logo" className="logo-mobile" /></NavLink>
-      </div>
 
-      <div className="nav-link">
-        <NavLink to="/"><img src={Logo} alt="logo" /></NavLink>
-        <ul>
-          <NavLink
-            to="/"
-            className="nav-item"
-          >
-            Accueil
-          </NavLink>
-          <NavLink
-            to="/adoption"
-            className="nav-item"
-          >
-            Adoptions
-          </NavLink>
-          <NavLink
-            to="/shelters"
-            className="nav-item"
-          >
-            Refuges
-          </NavLink>
         </ul>
-      </div>
-      <div className="nav-login">
-        
-          {localStorage.token && (
-            <>
-            {localStorage.shelterID === undefined
+      </Menu>
+      <NavLink to="/">
+        <img src={Logo} alt="logo" className="logo-mobile" />
+      </NavLink>
+    </div>
+
+    <div className="nav-link">
+      <NavLink to="/">
+        <img src={Logo} alt="logo" />
+      </NavLink>
+      <ul>
+        <NavLink
+          to="/"
+          className="nav-item"
+        >
+          Accueil
+        </NavLink>
+        <NavLink
+          to="/adoption"
+          className="nav-item"
+        >
+          Adoptions
+        </NavLink>
+        <NavLink
+          to="/shelters"
+          className="nav-item"
+        >
+          Refuges
+        </NavLink>
+      </ul>
+    </div>
+
+    <div className="nav-login">
+
+      {localStorage.token && (
+        <>
+          {localStorage.shelterID === undefined
             && (
               <NavLink
-              to="/admin/shelter/create"
+                to="/admin/shelter/create"
               >
                 <button
                   type="button"
@@ -136,12 +143,12 @@ const Nav = ({ handleLogout }) => {
                 </button>
               </NavLink>
             )}
-            
-            {localStorage.shelterID > 0
+
+          {localStorage.shelterID > 0
             && (
               <NavLink
-              to={`/shelter/${(localStorage.shelterID)}`}
-              className="nav-item"
+                to={`/shelter/${(localStorage.shelterID)}`}
+                className="nav-item"
               >
                 <button
                   type="button"
@@ -152,43 +159,40 @@ const Nav = ({ handleLogout }) => {
               </NavLink>
             )}
 
-              <button
-                type="button"
-                className="nav-button"
-                onClick={handleLogout}
-              >
-                Déconnexion
-              </button>
-            </>
-          )}
+          <button
+            type="button"
+            className="nav-button"
+            onClick={handleLogout}
+          >
+            Déconnexion
+          </button>
+        </>
+      )}
 
-          {!localStorage.token && (
-            <ul>
-              <NavLink
-                to="/login"
-                className="nav-item"
-              >
-                Connexion
-              </NavLink>
-              <NavLink
-                to="/register"
-                className="nav-item"
-              >
-                Inscription
-              </NavLink>
-            </ul>
-          )}
-        
-      </div>
-    </nav>
-  );
-};
+      {!localStorage.token && (
+        <ul>
+          <NavLink
+            to="/login"
+            className="nav-item"
+          >
+            Connexion
+          </NavLink>
+          <NavLink
+            to="/register"
+            className="nav-item"
+          >
+            Inscription
+          </NavLink>
+        </ul>
+      )}
+
+    </div>
+  </nav>
+);
 
 Nav.propTypes = {
   handleLogout: PropTypes.func.isRequired,
   /** toggle between "connected" or "not connected" */
 };
-
-
 
 export default Nav;

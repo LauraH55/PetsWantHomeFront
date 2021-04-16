@@ -17,7 +17,7 @@ const mapStateToProps = (state) => ({
   email: state.shelter.email,
   name: state.shelter.name,
   address: state.shelter.address,
-  phone_number: state.shelter.phone_number,
+  phoneNumber: state.shelter.phone_number,
   picture: state.shelter.picture,
 });
 

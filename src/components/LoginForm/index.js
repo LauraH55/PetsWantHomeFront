@@ -7,7 +7,7 @@ import LoginField from './LoginField';
 
 import './loginform.scss';
 
-// == Composant
+// == Component
 const LoginForm = ({
   email,
   password,
@@ -22,32 +22,32 @@ const LoginForm = ({
 
   return (
     <div className="loginfield-form">
-        <form autoComplete="off" className="loginfield-form-element" onSubmit={handleSubmit}>
-          <h1 className="loginfield-form-title">Connexion</h1>
-          <LoginField
-            name="email"
-            placeholder="Adresse Email"
-            manageChange={changeField}
-            value={email}
-          />
-          <LoginField
-            name="password"
-            type="password"
-            placeholder="Mot de passe"
-            manageChange={changeField}
-            value={password}
-          />
-          {loginError
+      <form autoComplete="off" className="loginfield-form-element" onSubmit={handleSubmit}>
+        <h1 className="loginfield-form-title">Connexion</h1>
+        <LoginField
+          name="email"
+          placeholder="Adresse Email"
+          manageChange={changeField}
+          value={email}
+        />
+        <LoginField
+          name="password"
+          type="password"
+          placeholder="Mot de passe"
+          manageChange={changeField}
+          value={password}
+        />
+        {loginError
           && (
             <div className="login-error">Chat alors, vous vous êtes trompés d'identifiants !</div>
           )}
-          <button
-            type="submit"
-            className="loginfield-form-button"
-          >
-            Connexion
-          </button>
-        </form>
+        <button
+          type="submit"
+          className="loginfield-form-button"
+        >
+          Connexion
+        </button>
+      </form>
     </div>
   );
 };

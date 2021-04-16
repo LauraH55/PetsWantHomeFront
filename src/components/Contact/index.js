@@ -4,7 +4,8 @@ import React from 'react';
 // == Import local
 import './contact.scss';
 
-// == Composant
+//! Actuellement non visible sur le site /!\
+// == Component
 const Contact = () => (
   <div className="contact">
     <h1>Page Contact en construction...</h1>

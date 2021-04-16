@@ -8,12 +8,12 @@ import RegisterShelterField from './RegisterShelterField';
 
 import './registershelter.scss';
 
-// == Composant
+// == Component
 const RegisterShelter = ({
   email,
   name,
   address,
-  phone_number,
+  phoneNumber,
   changeField,
   handleLogin,
 }) => {
@@ -45,7 +45,7 @@ const RegisterShelter = ({
           type="phone_number"
           placeholder="Numéro de téléphone"
           manageChange={(value, identifier) => (changeField(value, identifier))}
-          value={phone_number}
+          value={phoneNumber}
         />
         <RegisterShelterField
           name="email"
@@ -87,7 +87,7 @@ RegisterShelter.propTypes = {
 
   address: PropTypes.string.isRequired,
   /** value for the email */
-  phone_number: PropTypes.string.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
 };
 
 // == Export

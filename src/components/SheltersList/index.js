@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 // == Import local
 import './shelterslist.scss';
 
-// == Composant
-const SheltersList = ({ shelters }) => (
+// == Component
+const SheltersList = ({
+  shelters,
+}) => (
   <div className="shelterslist">
     <h1>Annuaire des refuges</h1>
     <div className="cards">
@@ -18,7 +20,7 @@ const SheltersList = ({ shelters }) => (
           key={shelter.id}
         >
           <div className="card">
-            <img className="image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${shelter.picture}`} alt="" />
+            <img className="image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${shelter.picture}`} alt={shelter.name} />
             <div className="card-info">
               <h3>{shelter.name}</h3>
               <h4><span>Adresse : </span>{shelter.address}</h4>

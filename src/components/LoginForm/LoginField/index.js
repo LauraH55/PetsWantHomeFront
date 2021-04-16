@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // == Import : local
 import './loginfield.scss';
 
-// == Composant
+// == Component
 const LoginField = ({
   value,
   type,

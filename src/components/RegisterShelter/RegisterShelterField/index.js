@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // == Import : local
 import './registershelterfield.scss';
 
-// == Composant
+// == Component
 const RegisterShelterField = ({
   value,
   type,

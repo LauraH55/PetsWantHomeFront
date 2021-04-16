@@ -21,8 +21,13 @@ import Loader from 'src/components/Loader';
 import Error from 'src/components/Error';
 import './styles.scss';
 
-// == Composant
-const App = ({ loadAnimals, loadRandomAnimals, loadShelters, loading }) => {
+// == Component
+const App = ({
+  loadAnimals,
+  loadRandomAnimals,
+  loadShelters,
+  loading,
+}) => {
   useEffect(() => {
     loadAnimals();
     loadRandomAnimals();
@@ -31,59 +36,63 @@ const App = ({ loadAnimals, loadRandomAnimals, loadShelters, loading }) => {
 
   return (
     <div className="app">
-      {loading && 
+
+      {loading
+      && (
       <>
-        <Nav /> 
+        <Nav />
         <Loader />
-      </>}
+      </>
+      )}
 
       {!loading && (
         <>
-          <Nav /> 
-            <Switch>
-              <Route path="/adoption">
-                <Adoption />
-              </Route>
-              <Route path="/animal/:slug">
-                <Animal />
-              </Route>
-              <Route path="/shelter/:id_shelter">
-                <Shelter />
-              </Route>
-              <Route path="/shelters">
-                <SheltersList />
-              </Route>
-              <Route path="/legal-mentions">
-                <LegalMentions />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/contact">
-                <Contact />
-              </Route>
-              <Route path="/register">
-                <Register />
-              </Route>
-              <Route path="/admin/shelter/create">
-                <RegisterShelter />
-              </Route>
-              <Route path="/login">
-                <LoginForm />
-              </Route>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route to="/error">
-                <Error />
-              </Route>
-              <Route to="">
-                <Error />
-              </Route>
-            </Switch>
+          <Nav />
+          <Switch>
+            <Route path="/adoption">
+              <Adoption />
+            </Route>
+            <Route path="/animal/:slug">
+              <Animal />
+            </Route>
+            <Route path="/shelter/:idShelter">
+              <Shelter />
+            </Route>
+            <Route path="/shelters">
+              <SheltersList />
+            </Route>
+            <Route path="/legal-mentions">
+              <LegalMentions />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/admin/shelter/create">
+              <RegisterShelter />
+            </Route>
+            <Route path="/login">
+              <LoginForm />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route to="/error">
+              <Error />
+            </Route>
+            <Route to="">
+              <Error />
+            </Route>
+          </Switch>
           <Footer />
         </>
       )}
+
     </div>
   );
 };
