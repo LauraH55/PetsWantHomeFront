@@ -14,8 +14,10 @@ const enhancers = composeWithDevTools(
     sheltersMiddleware,
   ),
 );
+
 const store = createStore(
   reducer,
   enhancers,
 );
+
 export default store;
