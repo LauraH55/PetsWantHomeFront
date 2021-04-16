@@ -8,6 +8,14 @@ import LoginField from './LoginField';
 import './loginform.scss';
 
 // == Component
+/**
+ * Component for the user to log in or go to registration page
+ * @param {String} email Email of the user
+ * @param {String} password Password of the user
+ * @param {Function} changeField Function to update the input fields' value
+ * @param {Function} handleLogin Function to log in the user
+ * @param {Boolean} loginError Boolean to display or not the login message error
+ */
 const LoginForm = ({
   email,
   password,

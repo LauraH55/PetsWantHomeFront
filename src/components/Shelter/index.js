@@ -9,6 +9,10 @@ import { slugifyName } from 'src/utils';
 import './shelter.scss';
 
 // == Component
+/**
+ * Component to display the informations of one shelter
+ * @param {Array} shelters List of all the shelters
+ */
 const Shelter = ({
   shelters,
 }) => {

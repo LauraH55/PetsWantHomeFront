@@ -9,6 +9,9 @@ import Kevin from '../../assets/images/Kevin.jpg';
 import Linkedin from '../../assets/images/linkedin.png';
 
 // == Component
+/**
+ * Component "About" for some informations of the creators of the website
+ */
 const About = () => (
   <div className="about">
     <div className="about-picture1">

@@ -1,10 +1,18 @@
+// == Import npm
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 import PropTypes from 'prop-types';
+
+// == Import local
 import './nav.scss';
 import Logo from '../../assets/images/B&W-Logo-PWH.png';
 
+// == Component
+/**
+ * Component to display a navigation
+ * @param {Function} handleLogout Function when the user disconnects
+ */
 const Nav = ({
   handleLogout,
 }) => (
@@ -190,9 +198,11 @@ const Nav = ({
   </nav>
 );
 
+// == PropTypes validation
 Nav.propTypes = {
   handleLogout: PropTypes.func.isRequired,
   /** toggle between "connected" or "not connected" */
 };
 
+// == Export
 export default Nav;

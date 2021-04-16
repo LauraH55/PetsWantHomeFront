@@ -7,6 +7,9 @@ import React from 'react';
 import './legalmentions.scss';
 
 // == Component
+/**
+ * Legal mentions component
+ */
 const LegalMentions = () => (
   <div className="legalmentions">
     <p>

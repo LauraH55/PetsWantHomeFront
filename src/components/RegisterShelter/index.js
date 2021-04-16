@@ -9,6 +9,16 @@ import RegisterShelterField from './RegisterShelterField';
 import './registershelter.scss';
 
 // == Component
+/**
+ * Component to display the registration form of a new shelter
+ * @param {String} email Email of the new shelter
+ * @param {String} name Name of the new shelter
+ * @param {String} address Address of the new shelter
+ * @param {String} phoneNumber Phone number of the new shelter
+ * @param {Function} changeField Function to update the input fields' value
+ * @param {Function} handleLogin Function to log in the actual user
+ *        so he can have access to the shelter profile
+ */
 const RegisterShelter = ({
   email,
   name,

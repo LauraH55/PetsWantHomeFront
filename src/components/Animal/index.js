@@ -14,6 +14,10 @@ import './animal.scss';
 import minipaw from '../../assets/images/paw-bullet.png';
 
 // == Component
+/**
+ * Component to display the informations of one animal
+ * @param {Array} animals List of all the animals
+ */
 const Animal = ({
   animals,
 }) => {

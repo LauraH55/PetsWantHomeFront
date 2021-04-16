@@ -4,6 +4,10 @@ import React from 'react';
 // == Import local
 import './loader.scss';
 
+// == Component
+/**
+ * Loading component
+ */
 const Loader = () => (
   <div className="pawsLoader">
     <div className="paw4">

@@ -7,6 +7,10 @@ import { Link } from 'react-router-dom';
 import './shelterslist.scss';
 
 // == Component
+/**
+ * Component to display the list of shelters
+ * @param {Array} shelters Array containing the list of the shelters
+ */
 const SheltersList = ({
   shelters,
 }) => (

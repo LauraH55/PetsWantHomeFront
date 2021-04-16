@@ -12,6 +12,10 @@ import paw from '../../assets/images/nextPaw2.png';
 import minipaw from '../../assets/images/PawSign.png';
 
 // == Component
+/**
+ * Component of the home page
+ * @param {Array} randomAnimals List of random animals to display on the page
+ */
 const Home = ({
   randomAnimals,
 }) => (

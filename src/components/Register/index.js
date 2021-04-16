@@ -1,11 +1,24 @@
+// == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
+// == Import local
 import RegisterField from './RegisterField';
 
 import './register.scss';
 
+// == Component
+/**
+ * Component to display the registration form of a new user
+ * @param {String} email Email of the new user
+ * @param {String} password Password of the new user
+ * @param {String} confirmPassword Confirmation password of the new user
+ * @param {Function} changeField Function to update the input fields' value
+ * @param {Function} handleLogin Function to log in the new user after registration
+ * @param {Boolean} emailError Boolean to display or not the email error message
+ * @param {Boolean} passwordError Boolean to display or not the password error message
+ */
 const Register = ({
   email,
   password,
@@ -66,6 +79,7 @@ const Register = ({
   );
 };
 
+// == PropTypes validation
 Register.propTypes = {
   /** value for the email */
   email: PropTypes.string.isRequired,

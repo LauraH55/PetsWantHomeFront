@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import './footer.scss';
 
 // == Component
+/**
+ * Footer component with navigation links
+ */
 const Footer = () => (
   <footer className="footer">
     <div />

@@ -9,7 +9,13 @@ import { slugifyName, getDate, getGender } from 'src/utils';
 import './adoption.scss';
 
 // == Component
-const Adoption = ({ animals }) => (
+/**
+ * Component to display all the animals available for adoption
+ * @param {*} animals List of all the animals
+ */
+const Adoption = ({
+  animals,
+}) => (
   <main className="adoption">
     <h1>Adoption des animaux</h1>
     <div className="cards">

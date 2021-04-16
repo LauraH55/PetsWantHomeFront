@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-// == Import
+// == Import local
 import Nav from 'src/containers/Nav';
 import Home from 'src/containers/Home';
 import Footer from 'src/components/Footer';
@@ -22,6 +22,13 @@ import Error from 'src/components/Error';
 import './styles.scss';
 
 // == Component
+/**
+ * Main component of the website in which there is the whole project
+ * @param {Function} loadAnimals Action to get all the animals from the API
+ * @param {Function} loadRandomAnimals Action to get the random animals from the API
+ * @param {Function} loadShelters Action to get all the shelters from the API
+ * @param {Boolean} loading Boolean to display or not the content of the page
+ */
 const App = ({
   loadAnimals,
   loadRandomAnimals,
@@ -97,6 +104,7 @@ const App = ({
   );
 };
 
+// == PropTypes validation
 App.propTypes = {
   loadAnimals: PropTypes.func.isRequired,
   loadRandomAnimals: PropTypes.func.isRequired,
