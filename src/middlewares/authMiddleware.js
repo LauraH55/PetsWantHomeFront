@@ -1,18 +1,34 @@
 import axios from 'axios';
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode';
 
+import {
+  LOG_IN,
+  LOG_OUT,
+  NEW_SHELTER_CREATION,
+  NEW_USER,
+  saveUser,
+  loginError,
+  emailError,
+  passwordError,
+  logOut,
+  logIn,
+} from 'src/actions/auth';
 
-import { LOG_IN, LOG_OUT, NEW_SHELTER_CREATION, NEW_USER, saveUser, loginError, emailError, passwordError, logOut, logIn } from 'src/actions/auth';
-import { loader } from 'src/actions/animals';
+import {
+  loader,
+} from 'src/actions/animals';
 
 const API_URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
 const myurl = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelter/create';
 
 const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
+    /**
+     * Request to log-in an user
+     */
     case LOG_IN: {
       const { email, password } = store.getState().auth;
-      
+
       axios.post(`${API_URL}/login`, {
         username: email,
         password: password,
@@ -27,16 +43,14 @@ const authMiddleware = (store) => (next) => (action) => {
           if (decoded.shelter_id !== undefined) {
             localStorage.setItem('shelterID', decoded.shelter_id);
             window.location = '/';
-            store.dispatch(loader());  
-          } 
+            store.dispatch(loader());
+          }
           else {
             window.location = '/';
           }
-
-
         })
         .catch((error) => {
-          console.log(error);
+          console.log('LOG IN ERROR : ', error);
           store.dispatch(loginError());
         });
 
@@ -44,8 +58,10 @@ const authMiddleware = (store) => (next) => (action) => {
       break;
     }
 
-  
-    case NEW_SHELTER_CREATION:{
+    /**
+     * Request POST sent to the API to create a new shelter for a logged-in user
+     */
+    case NEW_SHELTER_CREATION: {
       const {
         email,
         name,
@@ -61,8 +77,6 @@ const authMiddleware = (store) => (next) => (action) => {
       bodyFormData.append('phone_number', phone_number);
       bodyFormData.append('picture', picture);
 
-
-      
       // axios.post(myurl,
       //   {
       //     email,
@@ -77,12 +91,12 @@ const authMiddleware = (store) => (next) => (action) => {
       //       Authorization: `Bearer ${localStorage.getItem('token')}`,
       //     },
       // })
-      
+
       axios({
-        method: "post",
+        method: 'post',
         url: myurl,
         data: bodyFormData,
-        headers: { "Content-Type": "multipart/form-data", authorization: `Bearer ${localStorage.getItem('token')}`},
+        headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}`},
       })
         .then((response) => {
           console.log(response);
@@ -92,15 +106,17 @@ const authMiddleware = (store) => (next) => (action) => {
           window.location = '/';
         })
         .catch((error) => {
-          console.log(error);
+          console.log('NEW SHELTER CREATION ERROR : ', error);
         });
-      
 
       next(action);
       break;
     }
 
-    case NEW_USER:{
+    /**
+     * Request POST sent to the API to create a new user
+     */
+    case NEW_USER: {
       const {
         email,
         password,
@@ -120,9 +136,10 @@ const authMiddleware = (store) => (next) => (action) => {
             store.dispatch(logIn());
           })
           .catch((error) => {
-            console.log(error.response.status);
+            console.log('NEW USER ERROR : ', error.response.status);
+
             if (error.response.status == 500) {
-              return (store.dispatch(emailError()));
+              store.dispatch(emailError());
             }
             else {
               store.dispatch(passwordError());
@@ -138,6 +155,9 @@ const authMiddleware = (store) => (next) => (action) => {
       break;
     }
 
+    /**
+     * Action to log out the user
+     */
     case LOG_OUT:
       window.location = '/';
       localStorage.clear();
