@@ -96,7 +96,7 @@ const authMiddleware = (store) => (next) => (action) => {
         method: 'post',
         url: myurl,
         data: bodyFormData,
-        headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}`},
+        headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}` },
       })
         .then((response) => {
           console.log(response);
