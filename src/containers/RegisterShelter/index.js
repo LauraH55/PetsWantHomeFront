@@ -2,8 +2,11 @@ import { connect } from 'react-redux';
 
 import {
   updateUserField,
-  newShelterCreation,
 } from 'src/actions/auth';
+
+import {
+  newShelterCreation,
+} from 'src/actions/shelters';
 
 import RegisterShelter from 'src/components/RegisterShelter';
 

@@ -5,8 +5,11 @@ import {
   saveAnimals,
   FETCH_RANDOM_ANIMALS,
   saveRandomAnimals,
-  loader,
 } from 'src/actions/animals';
+
+import {
+  loader,
+} from 'src/actions/auth';
 
 const animalsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

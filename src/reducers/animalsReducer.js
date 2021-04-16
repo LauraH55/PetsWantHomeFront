@@ -1,8 +1,11 @@
 import {
   SAVE_ANIMALS,
   SAVE_RANDOM_ANIMALS,
-  loader,
 } from 'src/actions/animals';
+
+import {
+  loader,
+} from 'src/actions/auth';
 
 const initialState = {
   animalsList: [],

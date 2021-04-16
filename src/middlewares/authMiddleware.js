@@ -4,7 +4,6 @@ import jwt_decode from 'jwt-decode';
 import {
   LOG_IN,
   LOG_OUT,
-  NEW_SHELTER_CREATION,
   NEW_USER,
   saveUser,
   loginError,
@@ -12,11 +11,12 @@ import {
   passwordError,
   logOut,
   logIn,
+  loader,
 } from 'src/actions/auth';
 
 import {
-  loader,
-} from 'src/actions/animals';
+  NEW_SHELTER_CREATION,
+} from 'src/actions/shelters';
 
 const API_URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
 const myurl = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelter/create';
@@ -35,7 +35,7 @@ const authMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           localStorage.setItem('token', response.data.token);
-          store.dispatch(saveUser(response.data.logged, response.data.token));
+          store.dispatch(saveUser(response.data.token));
 
           const decoded = jwt_decode(response.data.token);
           console.log(decoded.shelter_id);
