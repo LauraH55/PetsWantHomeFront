@@ -6,7 +6,7 @@
   flex-direction: row;
   align-items: center;
   padding: 2em;
-  font-family: 'Avenir', sans-serif;
+  font-family: vars.$avenir;
   font-size: 0.7em;
   background-color:vars.$backgroundColor;
   margin-top: 5rem;
@@ -15,10 +15,10 @@
     width: 50%;
     height: auto;
     max-height: 80vh;
-    margin-right: 2em;
+    margin-right: vars.$gutter;
     object-fit: cover;
-    
   }
+
   .animal-aside {
     .animal-name {
       font-family: vars.$pomme;
@@ -26,9 +26,10 @@
       margin-bottom: 1.8rem;
       color: vars.$footerColor;
     }
+
     .animal-shelter {
       margin-bottom: 1em;
-      line-height: 2rem;
+      line-height: vars.$lineHeight;
 
       .animal-shelter-published {
         font-style: italic;
@@ -38,35 +39,37 @@
         font-size: 1.5em;
         font-weight: 900;
         color: vars.$footerColor;
+
         &:hover {
           color: vars.$outlineColor;
         }
       }
-
     }
+
     .animal-info {
       display: flex;
       flex-direction: column;
       margin-right: 2em ;
-      line-height: 2rem;
+      line-height: vars.$lineHeight;
 
-        .animal-bullet {
-          height: 40px;
-          vertical-align: middle;
-        }
-        span {
-          font-weight: 900;
-          color: vars.$footerColor;
-        }
+      .animal-bullet {
+        height: 40px;
+        vertical-align: middle;
+      }
 
+      span {
+        font-weight: 900;
+        color: vars.$footerColor;
       }
-      .animal-description {
-        width: 100%;
-        margin-top: 1rem;
-      }
-    
+    }
+
+    .animal-description {
+      width: 100%;
+      margin-top: 1rem;
+    }
   }
 }
+
 @media (max-width: 850px) {
   .animal {
     display: flex;
@@ -82,13 +85,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+
       .animal-info {
         flex-direction: column;
         text-align: center;
         line-height: 3rem;
 
         .animal-description {
-          line-height: 2rem;
+          line-height: vars.$lineHeight;
         }
       }
     }

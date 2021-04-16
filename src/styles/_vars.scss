@@ -1,21 +1,31 @@
 // == Colors
-$backgroundColor:  rgba(246, 244, 210, 0.5);
-$navColor : #cbdfbd;
-$navColorMobile : #a44b3fcc;
-$footerColor : #a44a3f;
-$outlineColor : #f19c79;
-$fifthColor : #d4e09b;
+$backgroundColor:  rgba(246, 244, 210, 0.5); // vars.$backgroundColor
+$navColor : #cbdfbd; // vars.$navColor
+$navColorMobile : #a44b3fcc; // vars.$navColorMobile
+$footerColor : #a44a3f; // vars.$footerColor
+$outlineColor : #f19c79; // vars.$outlineColor
+$fifthColor : #d4e09b; // vars.$fifthColor
+
+// == Shadow
+$boxShadowColor : rgba(0, 0, 0, .2); // vars.$boxShadowColor
+$thumbnailShadow : 7px 5px 8px 1px $boxShadowColor; // vars.$thumbnailShadow
+$cardShadow : 5px 5px 1px 1px $boxShadowColor; // vars.$cardShadow
+
+
+// == Transition
+$transition : transform .25s, visibility .25s ease-in; // vars.$transition
 
 // == Text colors
-$mainTextColor : #000;
-$secondaryTextColor : #fff;
-$thirdTextColor : #cbdfbd;
+$mainTextColor : #000; // vars.$mainTextColor
+$secondaryTextColor : #fff; // vars.$secondaryTextColor
+$thirdTextColor : #cbdfbd; // vars.$thirdTextColor
 
 // == Margin-Padding
-$gutter: 2rem;  
+$gutter: 2rem; // vars.$gutter
+
+// == Line-Height
+$lineHeight : $gutter; // vars.$lineHeight
 
 // == Police
-$pomme: 'Monsieur-Pomme', sans-serif;
-$avenir: 'Avenir', sans-serif;
-
-
+$pomme: 'Monsieur-Pomme', sans-serif; // vars.$pomme
+$avenir: 'Avenir', sans-serif; // vars.$avenir

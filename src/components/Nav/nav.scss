@@ -10,7 +10,7 @@
   width: 100%;
   height: 5rem;
   background-color: vars.$navColor;
-  font-family: 'Avenir', sans-serif;
+  font-family: vars.$avenir;
   font-size: 0.8em;
 
   .nav-link {
@@ -29,6 +29,7 @@
       .nav-item {
         padding: 0 vars.$gutter - 1;
         margin: 0 vars.$gutter -1;
+
         &:hover {
           color: vars.$footerColor;
         }
@@ -43,7 +44,7 @@
     .nav-button {
       font-weight: 700;
       font-size: 1rem;
-      color: #fff;
+      color: vars.$secondaryTextColor;
       background-color: vars.$footerColor;
       border-radius: 0.3em;
       border: 0;
@@ -53,8 +54,7 @@
 
       &:hover {
         background-color: vars.$outlineColor;
-      } 
-      
+      }
     }
 
     ul {
@@ -63,6 +63,7 @@
 
       .nav-item {
         padding: 0 vars.$gutter - 1.5;
+
         &:hover {
           color: vars.$footerColor;
         }
@@ -73,7 +74,6 @@
   .nav-mobile {
     display: none;
   }
-
 }
 
 @media (max-width: 800px) {
@@ -95,7 +95,7 @@
     .nav-link {
       display: none;
     }
-    
+
     .nav-login {
       display: none;
     }
@@ -106,7 +106,7 @@
       flex-direction: column;
     }
 
-    .nav-mobile-link { 
+    .nav-mobile-link {
       padding: 1rem;
       display: flex;
       flex-direction: column;
@@ -116,21 +116,21 @@
     .bm-item {
       display: flex;
       flex-direction: column;
-  
-    /* Our sidebar item styling */
+
+      /* Our sidebar item styling */
       text-decoration: none;
       margin-bottom: 10px;
-      color: #fff;
+      color: vars.$secondaryTextColor;
       transition: color 0.2s;
     }
-  
+
     /* Change color on hover */
     .bm-item:hover {
       color: white;
     }
-  
+
     /* The rest copied directly from react-burger-menu docs */
-  
+
     /* Position and sizing of burger button */
     .bm-burger-button {
       position: fixed;
@@ -139,7 +139,7 @@
       right: 30px;
       top: 30px;
     }
-  
+
     /* Color/shape of burger icon bars */
     .bm-burger-bars {
       background: vars.$footerColor;
@@ -153,7 +153,7 @@
 
     /* Color/shape of close button cross */
     .bm-cross {
-      background: #fff;
+      background: vars.$secondaryTextColor;
       height: 28px !important;
     }
 
@@ -179,5 +179,4 @@
       background: rgba(0, 0, 0, 0.3);
     }
   }
-  
 }

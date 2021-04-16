@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Avenir', sans-serif;
+  font-family: vars.$avenir;
   padding: 4rem;
   margin-top: 5rem;
   background-color: vars.$backgroundColor;
@@ -15,7 +15,7 @@
     background-color: #fff;
     border: 2px solid vars.$footerColor;
     border-radius: 2%;
-    box-shadow: 5px 5px 1px 1px rgba(153, 107, 107, 0.2);
+    box-shadow: vars.$cardShadow;
 
     .loginfield-form-title {
       font-family: vars.$pomme;
@@ -23,8 +23,6 @@
       font-size: 5rem;
       color: vars.$footerColor;
     }
-    
-
 
     .loginfield-form-button {
       font-weight: 700;
@@ -35,14 +33,13 @@
       border: 0;
       padding: 1rem;
       height: 3rem;
-      margin: 2rem;
+      margin: vars.$gutter;
 
       &:hover {
         background-color: vars.$outlineColor;
-      } 
-
+      }
     }
-    
+
     .login-error {
       color: vars.$footerColor;
       font-weight: bold;
@@ -50,9 +47,4 @@
       font-size: 1.5rem;
     }
   }
-
 }
-
-
-
-

@@ -4,20 +4,20 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center; 
-  font-family: 'Avenir', sans-serif;
+  justify-content: center;
+  font-family: vars.$avenir;
   margin-top: 5rem;
   background-color: vars.$backgroundColor;
 
   .register-form-element {
     text-align: center;
-    background-color: #fff;
+    background-color: vars.$secondaryTextColor;
     border: 2px solid vars.$footerColor;
     border-radius: 2%;
     box-shadow: 5px 5px 1px 1px rgba(153, 107, 107, 0.2);
-    margin: 2rem;
-    padding: 2rem;
-    
+    margin: vars.$gutter;
+    padding: vars.$gutter;
+
     p {
       font-size: 0.8rem;
     }
@@ -32,21 +32,20 @@
     .register-form-button {
       font-weight: 700;
       font-size: 1rem;
-      color: #fff;
+      color: vars.$secondaryTextColor;
       background-color: vars.$footerColor;
       border-radius: .3em;
       border: 0;
       padding: 0.7em;
       height: 2.5em;
       margin: 2em;
-      
+
       &:hover {
         background-color: vars.$outlineColor;
-      } 
-
+      }
     }
   }
-  
+
   .error {
     color: vars.$footerColor;
     font-size: 1.5rem;
