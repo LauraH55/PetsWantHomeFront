@@ -39,7 +39,7 @@ export const getAnimalBySlug = (slug, animals) => {
 export const getDate = (date) => {
   const event = new Date(date);
   const today = new Date();
-  const fullDate = (today - event.valueOf())/31536000000;
+  const fullDate = (today - event.valueOf()) / 31536000000;
   return fullDate.toFixed();
 };
 
@@ -50,15 +50,14 @@ export const getDate = (date) => {
  * @returns {String} The gender of the animal readable
  */
 export const getGender = (gender) => {
-  let result
-  console.log(gender);
+  let result;
   if (gender == 1) {
-    result = "Mâle";
+    result = 'Mâle';
   }
   else {
-    result = "Femelle"
+    result = 'Femelle';
   }
-  return result;  
+  return result;
 };
 
 /**
@@ -68,26 +67,21 @@ export const getGender = (gender) => {
  * @returns {String} The level of cohabitation
  */
 export const getCohabitation = (cohabitation) => {
-  let result
+  let result;
   if (cohabitation == 1) {
-    result = "Enfants";
+    result = 'Enfants';
   }
-  else if(cohabitation == 2) {
-    result = "Chats"
+  else if (cohabitation == 2) {
+    result = 'Chats';
   }
-  else if(cohabitation == 3) {
-    result = "Chiens"
+  else if (cohabitation == 3) {
+    result = 'Chiens';
   }
-  else if(cohabitation == 4) {
-    result = "Tous"
+  else if (cohabitation == 4) {
+    result = 'Tous';
   }
   else {
-    result = "Non précisé"
+    result = 'Non précisé';
   }
-  return result;  
+  return result;
 };
-
-
-
-
-

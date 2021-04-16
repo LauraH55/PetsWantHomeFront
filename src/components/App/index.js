@@ -22,7 +22,7 @@ import Error from 'src/components/Error';
 import './styles.scss';
 
 // == Composant
-const App = ({ loadAnimals,loadRandomAnimals, loadShelters, loading }) => {
+const App = ({ loadAnimals, loadRandomAnimals, loadShelters, loading }) => {
   useEffect(() => {
     loadAnimals();
     loadRandomAnimals();
@@ -85,12 +85,12 @@ const App = ({ loadAnimals,loadRandomAnimals, loadShelters, loading }) => {
         </>
       )}
     </div>
-    
   );
 };
 
 App.propTypes = {
   loadAnimals: PropTypes.func.isRequired,
+  loadRandomAnimals: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   loadShelters: PropTypes.func.isRequired,
 };

@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
 
+// == Import local
 import './about.scss';
 import Logo from '../../assets/images/B&W-Logo-PWH.png';
 import Emilie from '../../assets/images/Emilie.jpg';
@@ -8,7 +9,7 @@ import Laura from '../../assets/images/Laura.jpg';
 import Kevin from '../../assets/images/Kevin.jpg';
 import Linkedin from '../../assets/images/linkedin.png';
 
-
+// == Composant
 const About = () => (
   <div className="about">
     <div className="about-picture1">
@@ -39,4 +40,5 @@ const About = () => (
   </div>
 );
 
+// == Export
 export default About;

@@ -20,14 +20,14 @@ const LoginField = ({
   const inputId = `loginfield-${name}`;
 
   return (
-    <div className='loginfield'>
+    <div className="loginfield">
 
       <label
         htmlFor={inputId}
         className="loginfield-label"
       >
         {placeholder}
-      </label>    
+      </label>
       <input
         // React - state
         value={value}
@@ -43,6 +43,7 @@ const LoginField = ({
   );
 };
 
+// == PropTypes validation
 LoginField.propTypes = {
   /** text used as value for the input */
   value: PropTypes.string,

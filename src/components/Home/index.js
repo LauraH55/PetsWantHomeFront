@@ -1,13 +1,16 @@
 // == Import npm
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+// == Import local
 import { slugifyName } from 'src/utils';
 
 import './home.scss';
 import paw from '../../assets/images/nextPaw2.png';
 import minipaw from '../../assets/images/PawSign.png';
 
+// == Composant
 const Home = ({ randomAnimals }) => {
   // console.log(randomAnimals);
 
@@ -46,4 +49,16 @@ const Home = ({ randomAnimals }) => {
   );
 };
 
+// == PropTypes validation
+Home.propTypes = {
+  randomAnimals: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      picture: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+};
+
+// == Export
 export default Home;

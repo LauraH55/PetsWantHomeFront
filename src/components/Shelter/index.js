@@ -1,17 +1,19 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 
+// == Import local
 import { slugifyName } from 'src/utils';
 
 import './shelter.scss';
 
+// == Composant
 const Shelter = ({ shelters }) => {
-
   const { id_shelter } = useParams();
   console.log(shelters);
   const shelter = shelters.find((shel) => shel.id == id_shelter);
-  
+
   console.log(shelter);
   const animalsShelter = shelter.animals;
   console.log(localStorage);
@@ -52,4 +54,10 @@ const Shelter = ({ shelters }) => {
   );
 };
 
+// == PropTypes validation
+Shelter.propTypes = {
+  shelters: PropTypes.array.isRequired,
+};
+
+// == Export
 export default Shelter;

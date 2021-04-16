@@ -12,7 +12,6 @@ const RegisterField = ({
   name,
   placeholder,
   manageChange,
-  isLogged,
 }) => {
   const handleChange = (evt) => {
     manageChange(evt.target.value, name);
@@ -20,7 +19,7 @@ const RegisterField = ({
 
   const inputId = `registerfield-${name}`;
   return (
-    <div className='registerfield'>  
+    <div className="registerfield">  
       <label
         htmlFor={inputId}
         className="registerfield-label"

@@ -18,51 +18,50 @@ const Register = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
-    <Redirect to="/" />
+      <Redirect to="/" />;
   };
 
   return (
     <div className="register-form">
-        <form autoComplete="off" className="register-form-element" onSubmit={handleSubmit}>
-          <h1 className="register-form-title">Inscription</h1>
-          <RegisterField
-            name="email"
-            type="email"
-            placeholder="Adresse Email"
-            manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={email}
-          />
-          <RegisterField
-            name="password"
-            type="password"
-            placeholder="Mot de passe"
-            manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={password}
-          />
-            <p>Minimum 8 caractères, dont au moins un chiffre, une majuscule et un symbole</p>
-          <RegisterField
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirmation du mot de passe"
-            manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={confirmPassword}
-          />
-        
-          {emailError
+      <form autoComplete="off" className="register-form-element" onSubmit={handleSubmit}>
+        <h1 className="register-form-title">Inscription</h1>
+        <RegisterField
+          name="email"
+          type="email"
+          placeholder="Adresse Email"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+          value={email}
+        />
+        <RegisterField
+          name="password"
+          type="password"
+          placeholder="Mot de passe"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+          value={password}
+        />
+        <p>Minimum 8 caractères, dont au moins un chiffre, une majuscule et un symbole</p>
+        <RegisterField
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirmation du mot de passe"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+          value={confirmPassword}
+        />
+        {emailError
           && (
             <div className="error"> Cette adresse e-mail est déjà utilisée !</div>
           )}
-          {passwordError
+        {passwordError
           && (
             <div className="error">Mot de passe incorrect !</div>
           )}
-          <button
-            type="submit"
-            className="register-form-button"
-          >
-            Valider
-          </button>
-        </form>
+        <button
+          type="submit"
+          className="register-form-button"
+        >
+          Valider
+        </button>
+      </form>
     </div>
   );
 };
@@ -81,7 +80,9 @@ Register.propTypes = {
   handleLogin: PropTypes.func.isRequired,
 
   confirmPassword: PropTypes.string.isRequired,
+  emailError: PropTypes.bool.isRequired,
+  passwordError: PropTypes.bool.isRequired,
 };
 
-
+// == Export
 export default Register;

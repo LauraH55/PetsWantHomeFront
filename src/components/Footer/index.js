@@ -2,10 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// == Import local
 import './footer.scss';
 import Logo from '../../assets/images/B&W-Logo-PWH.png';
 import FooterPNG from '../../assets/images/FooterPatounes.png';
 
+// == Composant
 const Footer = () => (
   <footer className="footer"> 
     <div></div>
@@ -31,4 +33,5 @@ const Footer = () => (
   </footer>
 );
 
+// == Export
 export default Footer;

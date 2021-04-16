@@ -1,8 +1,10 @@
 // == Import npm
 import React from 'react';
 
+// == Import local
 import './legalmentions.scss';
 
+// == Composant
 const LegalMentions = () => (
   <div className="legalmentions">
     <p>Merci de lire avec attention les différentes modalités d’utilisation du présent site avant d’y parcourir ses pages. En vous connectant sur ce site, vous acceptez, sans réserves, les présentes modalités.
@@ -70,4 +72,5 @@ const LegalMentions = () => (
   </div>
 );
 
+// == Export
 export default LegalMentions;

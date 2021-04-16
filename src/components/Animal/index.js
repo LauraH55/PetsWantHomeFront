@@ -1,7 +1,7 @@
 // == Import npm
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 
 // == Import local
 import { getAnimalBySlug, getDate, getGender, getCohabitation } from 'src/utils';
@@ -9,6 +9,7 @@ import { getAnimalBySlug, getDate, getGender, getCohabitation } from 'src/utils'
 import './animal.scss';
 import minipaw from '../../assets/images/paw-bullet.png';
 
+// == Composant
 const Animal = ({ animals }) => {
   const { slug } = useParams();
   const animal = getAnimalBySlug(slug, animals);
@@ -67,4 +68,10 @@ const Animal = ({ animals }) => {
   );
 };
 
+// == PropTypes validation
+Animal.propTypes = {
+  animals: PropTypes.array.isRequired,
+};
+
+// == Export
 export default Animal;

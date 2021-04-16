@@ -1,10 +1,13 @@
+// == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// == Import local
 import LoginField from './LoginField';
 
 import './loginform.scss';
 
+// == Composant
 const LoginForm = ({
   email,
   password,
@@ -49,6 +52,7 @@ const LoginForm = ({
   );
 };
 
+// == PropTypes validation
 LoginForm.propTypes = {
   /** value for the email */
   email: PropTypes.string.isRequired,
@@ -61,17 +65,9 @@ LoginForm.propTypes = {
   changeField: PropTypes.func.isRequired,
   /** called when the form is submitted */
   handleLogin: PropTypes.func.isRequired,
-  /** called when the "Déconnexion" button is clicked */
-  //handleLogout: PropTypes.func.isRequired,
-  /** toggle between "connected" or "not connected" */
-  isLogged: PropTypes.bool,
-  /** message displayed when "connected" */
-  loggedMessage: PropTypes.string,
+
+  loginError: PropTypes.bool.isRequired,
 };
 
-LoginForm.defaultProps = {
-  isLogged: false,
-  loggedMessage: 'Connecté',
-};
-
+// == Export
 export default LoginForm;
