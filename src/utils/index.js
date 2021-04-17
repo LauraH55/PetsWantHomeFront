@@ -59,29 +59,3 @@ export const getGender = (gender) => {
   }
   return result;
 };
-
-/**
- * Function to get the degree of cohabitation the animal has
- * @param {Number} cohabitation Number indicates the degree of cohabitation
- *        if not 1-4 then it's not indicated 
- * @returns {String} The level of cohabitation
- */
-export const getCohabitation = (cohabitation) => {
-  let result;
-  if (cohabitation == 1) {
-    result = 'Enfants';
-  }
-  else if (cohabitation == 2) {
-    result = 'Chats';
-  }
-  else if (cohabitation == 3) {
-    result = 'Chiens';
-  }
-  else if (cohabitation == 4) {
-    result = 'Tous';
-  }
-  else {
-    result = 'Non précisé';
-  }
-  return result;
-};
