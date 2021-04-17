@@ -4,6 +4,7 @@
   text-align: center;
   margin-top: 1em;
 }
+
 .loginfield-input {
   width: 80%;
   padding: 1rem;
@@ -14,10 +15,12 @@
   margin-top: 0.2em;
   margin-bottom: 1em;
 }
+
 .loginfield-input:focus {
   border-color: #f17f42;
 }
-.loginfield-input:focus + .field-label {
+
+.loginfield-input:focus+.field-label {
   color: vars.$outlineColor;
 }
 
@@ -33,4 +36,3 @@
   color: vars.$footerColor;
   font-size: 1.4rem;
 }
-

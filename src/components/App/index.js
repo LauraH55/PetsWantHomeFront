@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-// == Import
+// == Import local
 import Nav from 'src/containers/Nav';
 import Home from 'src/containers/Home';
 import Footer from 'src/components/Footer';
@@ -21,8 +21,20 @@ import Loader from 'src/components/Loader';
 import Error from 'src/components/Error';
 import './styles.scss';
 
-// == Composant
-const App = ({ loadAnimals,loadRandomAnimals, loadShelters, loading }) => {
+// == Component
+/**
+ * Main component of the website in which there is the whole project
+ * @param {Function} loadAnimals Action to get all the animals from the API
+ * @param {Function} loadRandomAnimals Action to get the random animals from the API
+ * @param {Function} loadShelters Action to get all the shelters from the API
+ * @param {Boolean} loading Boolean to display or not the content of the page
+ */
+const App = ({
+  loadAnimals,
+  loadRandomAnimals,
+  loadShelters,
+  loading,
+}) => {
   useEffect(() => {
     loadAnimals();
     loadRandomAnimals();
@@ -31,66 +43,71 @@ const App = ({ loadAnimals,loadRandomAnimals, loadShelters, loading }) => {
 
   return (
     <div className="app">
-      {loading && 
+
+      {loading
+      && (
       <>
-        <Nav /> 
+        <Nav />
         <Loader />
-      </>}
+      </>
+      )}
 
       {!loading && (
         <>
-          <Nav /> 
-            <Switch>
-              <Route path="/adoption">
-                <Adoption />
-              </Route>
-              <Route path="/animal/:slug">
-                <Animal />
-              </Route>
-              <Route path="/shelter/:id_shelter">
-                <Shelter />
-              </Route>
-              <Route path="/shelters">
-                <SheltersList />
-              </Route>
-              <Route path="/legal-mentions">
-                <LegalMentions />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/contact">
-                <Contact />
-              </Route>
-              <Route path="/register">
-                <Register />
-              </Route>
-              <Route path="/admin/shelter/create">
-                <RegisterShelter />
-              </Route>
-              <Route path="/login">
-                <LoginForm />
-              </Route>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route to="/error">
-                <Error />
-              </Route>
-              <Route to="">
-                <Error />
-              </Route>
-            </Switch>
+          <Nav />
+          <Switch>
+            <Route path="/adoption">
+              <Adoption />
+            </Route>
+            <Route path="/animal/:slug">
+              <Animal />
+            </Route>
+            <Route path="/shelter/:idShelter">
+              <Shelter />
+            </Route>
+            <Route path="/shelters">
+              <SheltersList />
+            </Route>
+            <Route path="/legal-mentions">
+              <LegalMentions />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/admin/shelter/create">
+              <RegisterShelter />
+            </Route>
+            <Route path="/login">
+              <LoginForm />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route to="/error">
+              <Error />
+            </Route>
+            <Route to="">
+              <Error />
+            </Route>
+          </Switch>
           <Footer />
         </>
       )}
+
     </div>
-    
   );
 };
 
+// == PropTypes validation
 App.propTypes = {
   loadAnimals: PropTypes.func.isRequired,
+  loadRandomAnimals: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   loadShelters: PropTypes.func.isRequired,
 };

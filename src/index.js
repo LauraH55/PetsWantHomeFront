@@ -8,7 +8,7 @@ import ScrollToTop from 'react-router-scroll-top';
 import store from 'src/store';
 
 // == Import : local
-// Composants
+// Components
 import App from 'src/containers/App';
 
 // == Render

@@ -1,4 +1,9 @@
-import { UPDATE_USER_FIELD, SAVE_USER, LOG_OUT, LOGIN_ERROR } from 'src/actions/auth';
+import {
+  UPDATE_USER_FIELD,
+  SAVE_USER,
+  LOG_OUT,
+  LOGIN_ERROR,
+} from 'src/actions/auth';
 
 const initialState = {
   email: '',
@@ -10,6 +15,9 @@ const initialState = {
 
 function authReducer(state = initialState, action) {
   switch (action.type) {
+    /**
+     * Update the authentificator fields' value
+     */
     case UPDATE_USER_FIELD:
       return {
         ...state,
@@ -17,6 +25,9 @@ function authReducer(state = initialState, action) {
         password: action.name === 'password' ? action.newValue : state.password,
       };
 
+    /**
+     * Set the logged status as true when the user is connected
+     */
     case SAVE_USER:
       return {
         ...state,
@@ -26,13 +37,19 @@ function authReducer(state = initialState, action) {
         password: '',
       };
 
+    /**
+     * Log out the user
+     */
     case LOG_OUT:
       return {
         ...state,
         isLogged: false,
         token: null,
       };
-    
+
+    /**
+     * Display the authentification error message
+     */
     case LOGIN_ERROR:
       return {
         ...state,

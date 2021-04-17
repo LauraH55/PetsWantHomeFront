@@ -1,5 +1,10 @@
 import slugify from 'slugify';
 
+/**
+ * Function to get the slug from a name.
+ * @param {String} name The string to transform into slug
+ * @returns {String} The string slugified
+ */
 export const slugifyName = (name) => {
   const slug = slugify(
     name,
@@ -26,45 +31,31 @@ export const getAnimalBySlug = (slug, animals) => {
   return animal;
 };
 
+/**
+ * Function to get the number of years between a date and today
+ * @param {String} date Selected date to compare to
+ * @returns {String} Number of years between the selected date and today
+ */
 export const getDate = (date) => {
   const event = new Date(date);
   const today = new Date();
-  const fullDate = (today - event.valueOf())/31536000000;
+  const fullDate = (today - event.valueOf()) / 31536000000;
   return fullDate.toFixed();
 };
 
+//! PETITE QUESTION CONCERNANT LA POSSIBILITE D'AVOIR UN AUTRE NUMERO QUE 1 OU 2 ??
+/**
+ * Function to get the gender of the animal male/female
+ * @param {Number} gender Number for the gender 1/2
+ * @returns {String} The gender of the animal readable
+ */
 export const getGender = (gender) => {
-  let result
+  let result;
   if (gender == 1) {
-    result = "Mâle";
+    result = 'Mâle';
   }
   else {
-    result = "Femelle"
+    result = 'Femelle';
   }
-  return result;  
+  return result;
 };
-
-export const getCohabitation = (cohabitation) => {
-  let result
-  if (cohabitation == 1) {
-    result = "Enfants";
-  }
-  else if(cohabitation == 2) {
-    result = "Chats"
-  }
-  else if(cohabitation == 3) {
-    result = "Chiens"
-  }
-  else if(cohabitation == 4) {
-    result = "Tous"
-  }
-  else {
-    result = "Non précisé"
-  }
-  return result;  
-};
-
-
-
-
-

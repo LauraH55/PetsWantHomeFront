@@ -1,11 +1,24 @@
+// == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
+// == Import local
 import RegisterField from './RegisterField';
 
 import './register.scss';
 
+// == Component
+/**
+ * Component to display the registration form of a new user
+ * @param {String} email Email of the new user
+ * @param {String} password Password of the new user
+ * @param {String} confirmPassword Confirmation password of the new user
+ * @param {Function} changeField Function to update the input fields' value
+ * @param {Function} handleLogin Function to log in the new user after registration
+ * @param {Boolean} emailError Boolean to display or not the email error message
+ * @param {Boolean} passwordError Boolean to display or not the password error message
+ */
 const Register = ({
   email,
   password,
@@ -18,55 +31,55 @@ const Register = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogin();
-    <Redirect to="/" />
+      <Redirect to="/" />;
   };
 
   return (
     <div className="register-form">
-        <form autoComplete="off" className="register-form-element" onSubmit={handleSubmit}>
-          <h1 className="register-form-title">Inscription</h1>
-          <RegisterField
-            name="email"
-            type="email"
-            placeholder="Adresse Email"
-            manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={email}
-          />
-          <RegisterField
-            name="password"
-            type="password"
-            placeholder="Mot de passe"
-            manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={password}
-          />
-            <p>Minimum 8 caractères, dont au moins un chiffre, une majuscule et un symbole</p>
-          <RegisterField
-            name="confirmPassword"
-            type="password"
-            placeholder="Confirmation du mot de passe"
-            manageChange={(value, identifier) => (changeField(value, identifier))}
-            value={confirmPassword}
-          />
-        
-          {emailError
+      <form autoComplete="off" className="register-form-element" onSubmit={handleSubmit}>
+        <h1 className="register-form-title">Inscription</h1>
+        <RegisterField
+          name="email"
+          type="email"
+          placeholder="Adresse Email"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+          value={email}
+        />
+        <RegisterField
+          name="password"
+          type="password"
+          placeholder="Mot de passe"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+          value={password}
+        />
+        <p>Minimum 8 caractères, dont au moins un chiffre, une majuscule et un symbole</p>
+        <RegisterField
+          name="confirmPassword"
+          type="password"
+          placeholder="Confirmation du mot de passe"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+          value={confirmPassword}
+        />
+        {emailError
           && (
             <div className="error"> Cette adresse e-mail est déjà utilisée !</div>
           )}
-          {passwordError
+        {passwordError
           && (
             <div className="error">Mot de passe incorrect !</div>
           )}
-          <button
-            type="submit"
-            className="register-form-button"
-          >
-            Valider
-          </button>
-        </form>
+        <button
+          type="submit"
+          className="register-form-button"
+        >
+          Valider
+        </button>
+      </form>
     </div>
   );
 };
 
+// == PropTypes validation
 Register.propTypes = {
   /** value for the email */
   email: PropTypes.string.isRequired,
@@ -81,7 +94,9 @@ Register.propTypes = {
   handleLogin: PropTypes.func.isRequired,
 
   confirmPassword: PropTypes.string.isRequired,
+  emailError: PropTypes.bool.isRequired,
+  passwordError: PropTypes.bool.isRequired,
 };
 
-
+// == Export
 export default Register;

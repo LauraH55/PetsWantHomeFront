@@ -4,14 +4,14 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center; 
-  font-family: 'Avenir', sans-serif;
+  justify-content: center;
+  font-family: vars.$avenir;
   margin-top: 5rem;
   background-color: vars.$backgroundColor;
 
   .register-shelter-form-element {
     text-align: center;
-    background-color: #fff;
+    background-color: vars.$secondaryTextColor;
     border: 2px solid vars.$footerColor;
     border-radius: 1%;
     box-shadow: 5px 5px 1px 1px rgba(153, 107, 107, 0.2);
@@ -28,7 +28,7 @@
     .register-shelter-form-button {
       font-weight: 700;
       font-size: 1rem;
-      color: #fff;
+      color: vars.$secondaryTextColor;
       background-color: vars.$footerColor;
       border-radius: .3em;
       border: 0;
@@ -38,8 +38,7 @@
 
       &:hover {
         background-color: vars.$outlineColor;
-      } 
-
+      }
     }
   }
 }

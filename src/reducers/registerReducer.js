@@ -1,4 +1,8 @@
-import { UPDATE_USER_FIELD, EMAIL_ERROR, PASSWORD_ERROR } from 'src/actions/auth';
+import {
+  UPDATE_USER_FIELD,
+  EMAIL_ERROR,
+  PASSWORD_ERROR,
+} from 'src/actions/auth';
 
 const initialState = {
   email: '',
@@ -10,8 +14,10 @@ const initialState = {
 
 function registerReducer(state = initialState, action) {
   switch (action.type) {
-
-      case UPDATE_USER_FIELD:
+    /**
+     * Update the new user registration fields' value
+     */
+    case UPDATE_USER_FIELD:
       return {
         ...state,
         email: action.name === 'email' ? action.newValue : state.email,
@@ -20,17 +26,23 @@ function registerReducer(state = initialState, action) {
 
       };
 
-      case EMAIL_ERROR:
-        return {
-          ...state,
-          emailError: true,
-        };
-      
-      case PASSWORD_ERROR:
-        return {
-          ...state,
-          passwordError: true,
-        };
+    /**
+     * Display the email error message
+     */
+    case EMAIL_ERROR:
+      return {
+        ...state,
+        emailError: true,
+      };
+
+    /**
+     * Display the password error message
+     */
+    case PASSWORD_ERROR:
+      return {
+        ...state,
+        passwordError: true,
+      };
 
     default:
       return state;

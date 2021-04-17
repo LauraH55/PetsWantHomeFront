@@ -3,7 +3,7 @@
 .footer {
   background-image: url("../../assets/images/FooterPatounes.png");
   background-color: vars.$backgroundColor;
-  font-family: 'Avenir', sans-serif;
+  font-family: vars.$avenir;
   font-size: 0.7em;
   width: 100%;
   height: 30vh;
@@ -16,15 +16,13 @@
     position: absolute;
     right: 13%;
     bottom: 15%;
-   
 
     .footer-link {
-      &:hover{
+      &:hover {
         font-weight: 800;
-        color: vars.$outlineColor; 
+        color: vars.$outlineColor;
       }
     }
-    
   }
 
   .footer-copyright {
@@ -34,7 +32,6 @@
     font-size: 1.3rem;
     padding: 0.5rem;
   }
-
 }
 
 @media (max-width: 1400px) {
@@ -58,6 +55,7 @@
   .footer {
     display: flex;
     justify-content: center;
+
     .footer-container {
       display: none;
     }
@@ -70,4 +68,3 @@
     }
   }
 }
-

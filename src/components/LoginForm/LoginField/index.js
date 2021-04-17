@@ -1,11 +1,19 @@
-// == Import : npm
+// == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// == Import : local
+// == Import local
 import './loginfield.scss';
 
-// == Composant
+// == Component
+/**
+ * Component of a field input for the user who's logging in
+ * @param {String} value Value of the input (default = empty)
+ * @param {String} type Type of the input (default = text)
+ * @param {String} name Name of the input
+ * @param {String} placeholder Message display on the placeholder of the input
+ * @param {Function} manageChange Function to update the input fields' value
+ */
 const LoginField = ({
   value,
   type,
@@ -20,14 +28,14 @@ const LoginField = ({
   const inputId = `loginfield-${name}`;
 
   return (
-    <div className='loginfield'>
+    <div className="loginfield">
 
       <label
         htmlFor={inputId}
         className="loginfield-label"
       >
         {placeholder}
-      </label>    
+      </label>
       <input
         // React - state
         value={value}
@@ -43,6 +51,7 @@ const LoginField = ({
   );
 };
 
+// == PropTypes validation
 LoginField.propTypes = {
   /** text used as value for the input */
   value: PropTypes.string,

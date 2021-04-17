@@ -1,9 +1,8 @@
 @use 'src/styles/vars';
 
 .home {
-
   min-height: 100vh;
-  background: rgba(246, 244, 210, 0.5);
+  background: vars.$backgroundColor;
   padding-bottom: 2em;
   margin-top: 5rem;
 
@@ -15,6 +14,7 @@
     background-position: center;
     margin-bottom: 1em;
   }
+
   .title {
     color: vars.$secondaryTextColor;
     text-align: center;
@@ -26,7 +26,7 @@
   .subtitle {
     text-align: center;
     font-size: 4rem;
-    text-shadow: 3px 2px 1px rgba(0, 0, 0, .2);
+    text-shadow: 3px 2px 1px vars.$boxShadowColor;
     color: vars.$footerColor;
     margin: 3rem;
   }
@@ -37,7 +37,7 @@
     margin: 2rem;
     border: 2px solid vars.$footerColor;
     border-left-width: 5px;
-    box-shadow: 5px 5px 1px 1px rgba(0, 0, 0, .2);
+    box-shadow:  vars.$cardShadow;
     border-radius: 3px;
     padding: 2rem;
     position: relative;
@@ -48,7 +48,6 @@
       right: 1%;
       height: 60px;
       transform: rotate(-25deg);
-
     }
   }
 
@@ -57,24 +56,20 @@
     flex-wrap: wrap;
     justify-content: center;
 
-
-  
-  
     .thumbnails-image {
-      width:200px;
+      width: 200px;
       height: 200px;
-      border-radius:50%;
+      border-radius: 50%;
       margin: 2rem;
       object-fit: cover;
       border: solid 2px vars.$footerColor;
-      box-shadow: 7px 5px 8px 1px rgba(0, 0, 0, .2);
+      box-shadow: vars.$thumbnailShadow;
       transform-origin: 0 0;
-      transition: transform .25s, visibility .25s ease-in;
+      transition: vars.$transition;
+
       &:hover {
         transform: scale(1.1);
       }
-   
     }
-    }
-
+  }
 }

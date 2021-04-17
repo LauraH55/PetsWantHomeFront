@@ -4,6 +4,7 @@
   text-align: center;
   margin-top: 1em;
 }
+
 .registerfield-input {
   width: 100%;
   padding: .7em;
@@ -14,10 +15,12 @@
   margin-top: 0.2em;
   margin-bottom: 1em;
 }
+
 .registerfield-input:focus {
   border-color: #f17f42;
 }
-.registerfield-input:focus + .field-label {
+
+.registerfield-input:focus+.field-label {
   color: vars.$outlineColor;
 }
 
