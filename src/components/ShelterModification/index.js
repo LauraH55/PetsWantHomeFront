@@ -17,6 +17,7 @@ import './shelterModification.scss';
  * @param {Function} changeField Function to update the input fields' value
  * @param {Function} submitModification Function to submit the form
  *        and new informations for the shelter
+ * @param {Number} shelterUpdateError Number which displays or not the error message
  */
 const ShelterModification = ({
   shelters,
@@ -27,6 +28,7 @@ const ShelterModification = ({
   loadProfile,
   changeField,
   submitModification,
+  shelterUpdateError,
 }) => {
   const { idShelter } = useParams();
 
@@ -46,6 +48,14 @@ const ShelterModification = ({
     <div className="shelterModification">
       <h1>{shelter.name}</h1>
       <h2>Modification du refuge</h2>
+      {shelterUpdateError === 1
+      && (
+        <h3 className="updateFail">Les modifications n'ont pas été prise en compte</h3>
+      )}
+      {shelterUpdateError === 2
+      && (
+        <h3 className="updateSuccess">Les modifications ont bien été prise en compte</h3>
+      )}
       <form className="modificationForm" onSubmit={submitForm}>
         <div className="field field-name">
           <label htmlFor="shelterModificationName">Nom :
@@ -124,6 +134,7 @@ ShelterModification.propTypes = {
   loadProfile: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
   submitModification: PropTypes.func.isRequired,
+  shelterUpdateError: PropTypes.number.isRequired,
 };
 
 // == Export

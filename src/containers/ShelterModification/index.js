@@ -21,6 +21,7 @@ const mapStateToProps = (state) => ({
   shelterModificationAdress: state.shelter.shelterModificationAdress,
   shelterModificationPhone: state.shelter.shelterModificationPhone,
   shelterModificationEmail: state.shelter.shelterModificationEmail,
+  shelterUpdateError: state.shelter.shelterUpdateError,
 });
 
 /**
@@ -33,7 +34,6 @@ const mapDispatchToProps = (dispatch) => ({
    * @param {string} fieldName : Name of the input
    */
   changeField: (value, fieldName) => {
-    console.log(fieldName, value);
     const action = updateUserField(value, fieldName);
     dispatch(action);
   },

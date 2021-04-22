@@ -5,6 +5,7 @@ import {
   saveShelters,
   SUBMIT_SHELTER_MODIFICATION,
   shelterUpdateError,
+  shelterUpdateSuccess,
 } from 'src/actions/shelters';
 
 import {
@@ -52,22 +53,24 @@ const sheltersMiddleware = (store) => (next) => (action) => {
       bodyFormData.append('email', shelterModificationEmail);
       bodyFormData.append('id', shelterModificationId);
       bodyFormData.append('name', shelterModificationName);
-      bodyFormData.append('address', shelterModificationAdress);
       bodyFormData.append('phone_number', shelterModificationPhone);
+      bodyFormData.append('address', shelterModificationAdress);
       if (shelterModificationPicture !== shelterPicture) {
         bodyFormData.append('picture', shelterModificationPicture);
       }
 
       axios({
-        method: 'put',
+        method: 'patch',
         url: MODIFICATION_URL,
         data: bodyFormData,
         headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}` },
       })
         .then((response) => {
           console.log(response);
-          localStorage.setItem('shelterID', response.data.shelter.id);
-          window.location = `/shelter/${shelterModificationId}`;
+          store.dispatch(shelterUpdateSuccess());
+          setTimeout(() => {
+            window.location = `/shelter/${shelterModificationId}`;
+          }, 2000);
         })
         .catch((error) => {
           console.log('SHELTER UPDATE ERROR : ', error);

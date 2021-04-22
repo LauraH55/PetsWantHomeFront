@@ -6,6 +6,7 @@ export const NEW_SHELTER_CREATION = 'NEW_SHELTER_CREATION';
 export const SET_MODIFICATION_PROFILE = 'SET_MODIFICATION_PROFILE';
 export const SUBMIT_SHELTER_MODIFICATION = 'SUBMIT_SHELTER_MODIFICATION';
 export const SHELTER_UPDATE_ERROR = 'SHELTER_UPDATE_ERROR';
+export const SHELTER_UPDATE_SUCCESS = 'SHELTER_UPDATE_SUCCESS';
 
 // === Action Creators
 
@@ -53,4 +54,11 @@ export const submitShelterModification = () => ({
  */
 export const shelterUpdateError = () => ({
   type: SHELTER_UPDATE_ERROR,
+});
+
+/**
+ * Action to display error messages if the update has successed
+ */
+export const shelterUpdateSuccess = () => ({
+  type: SHELTER_UPDATE_SUCCESS,
 });

@@ -6,6 +6,7 @@ import {
   SAVE_SHELTERS,
   SET_MODIFICATION_PROFILE,
   SHELTER_UPDATE_ERROR,
+  SHELTER_UPDATE_SUCCESS,
 } from 'src/actions/shelters';
 
 const initialState = {
@@ -22,7 +23,7 @@ const initialState = {
   shelterModificationEmail: '',
   shelterModificationPicture: '',
   shelterPicture: '',
-  shelterUpdateError: false,
+  shelterUpdateError: 0,
 };
 
 function shelterReducer(state = initialState, action) {
@@ -67,7 +68,7 @@ function shelterReducer(state = initialState, action) {
         shelterModificationEmail: action.profile.email,
         shelterModificationPicture: action.profile.picture,
         shelterPicture: action.profile.picture,
-        shelterUpdateError: false,
+        shelterUpdateError: 0,
       };
 
     /**
@@ -76,7 +77,16 @@ function shelterReducer(state = initialState, action) {
     case SHELTER_UPDATE_ERROR:
       return {
         ...state,
-        shelterUpdateError: true,
+        shelterUpdateError: 1,
+      };
+
+    /**
+     * Display the error message if the update has successed
+     */
+    case SHELTER_UPDATE_SUCCESS:
+      return {
+        ...state,
+        shelterUpdateError: 2,
       };
 
     default:
