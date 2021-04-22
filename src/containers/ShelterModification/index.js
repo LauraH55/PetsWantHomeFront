@@ -43,7 +43,6 @@ const mapDispatchToProps = (dispatch) => ({
    * @param {Object} profile Informations of the shelter
    */
   loadProfile: (profile) => {
-    dispatch(loader());
     const action = setModificationProfile(profile);
     dispatch(action);
   },

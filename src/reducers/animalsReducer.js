@@ -4,13 +4,18 @@ import {
 } from 'src/actions/animals';
 
 import {
-  loader,
+  SAVE_SHELTERS,
+} from 'src/actions/shelters';
+
+import {
+  LOADER,
 } from 'src/actions/auth';
 
 const initialState = {
   animalsList: [],
   animalsRandomList: [],
   loading: true,
+  waiting: 0,
 };
 
 function animalsReducer(state = initialState, action) {
@@ -18,10 +23,11 @@ function animalsReducer(state = initialState, action) {
     /**
      * Activate the loading screen
      */
-    case loader:
+    case LOADER:
       return {
         ...state,
         loading: true,
+        waiting: state.waiting + 1,
       };
 
     /**
@@ -31,7 +37,8 @@ function animalsReducer(state = initialState, action) {
       return {
         ...state,
         animalsList: action.animals,
-        loading: false,
+        waiting: state.waiting - 1,
+        loading: state.waiting - 1 !== 0,
       };
 
     /**
@@ -41,7 +48,18 @@ function animalsReducer(state = initialState, action) {
       return {
         ...state,
         animalsRandomList: action.randomAnimals,
-        loading: false,
+        waiting: state.waiting - 1,
+        loading: state.waiting - 1 !== 0,
+      };
+
+    /**
+     * Decrese the waiting number for the loader
+     */
+    case SAVE_SHELTERS:
+      return {
+        ...state,
+        waiting: state.waiting - 1,
+        loading: state.waiting - 1 !== 0,
       };
 
     default:

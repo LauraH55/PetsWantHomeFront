@@ -29,7 +29,7 @@ const sheltersMiddleware = (store) => (next) => (action) => {
           // console.log('response: ', response);
           setTimeout(() => {
             store.dispatch(saveShelters(response.data));
-          }, 1000);
+          }, 0);
         })
         .catch((error) => {
           console.log('FETCH SHELTERS ERROR : ', error);
