@@ -84,6 +84,9 @@ const sheltersMiddleware = (store) => (next) => (action) => {
       break;
     }
 
+    /**
+     * Request to update the picture of the shelter
+     */
     case UPDATE_SHELTER_IMAGE: {
       const {
         shelterModificationId,
