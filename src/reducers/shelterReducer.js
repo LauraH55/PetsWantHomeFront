@@ -5,13 +5,14 @@ import {
 import {
   SAVE_SHELTERS,
   SET_MODIFICATION_PROFILE,
+  SHELTER_UPDATE_ERROR,
 } from 'src/actions/shelters';
 
 const initialState = {
   email: '',
   name: '',
   address: '',
-  phone_number: '',
+  phoneNumber: '',
   picture: '',
   sheltersList: [],
   shelterModificationId: '',
@@ -20,6 +21,8 @@ const initialState = {
   shelterModificationPhone: '',
   shelterModificationEmail: '',
   shelterModificationPicture: '',
+  shelterPicture: '',
+  shelterUpdateError: false,
 };
 
 function shelterReducer(state = initialState, action) {
@@ -42,7 +45,7 @@ function shelterReducer(state = initialState, action) {
         email: action.name === 'email' ? action.newValue : state.email,
         name: action.name === 'name' ? action.newValue : state.name,
         address: action.name === 'address' ? action.newValue : state.address,
-        phone_number: action.name === 'phone_number' ? action.newValue : state.phone_number,
+        phoneNumber: action.name === 'phone_number' ? action.newValue : state.phoneNumber,
         picture: action.name === 'picture' ? action.newValue : state.picture,
         shelterModificationName: action.name === 'shelterModificationName' ? action.newValue : state.shelterModificationName,
         shelterModificationAdress: action.name === 'shelterModificationAdress' ? action.newValue : state.shelterModificationAdress,
@@ -63,6 +66,17 @@ function shelterReducer(state = initialState, action) {
         shelterModificationPhone: action.profile.phoneNumber,
         shelterModificationEmail: action.profile.email,
         shelterModificationPicture: action.profile.picture,
+        shelterPicture: action.profile.picture,
+        shelterUpdateError: false,
+      };
+
+    /**
+     * Display the error message if the update has failed
+     */
+    case SHELTER_UPDATE_ERROR:
+      return {
+        ...state,
+        shelterUpdateError: true,
       };
 
     default:

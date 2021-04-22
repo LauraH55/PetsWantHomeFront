@@ -7,6 +7,7 @@ import {
 
 import {
   setModificationProfile,
+  submitShelterModification,
 } from 'src/actions/shelters';
 
 import ShelterModification from 'src/components/ShelterModification';
@@ -44,6 +45,14 @@ const mapDispatchToProps = (dispatch) => ({
   loadProfile: (profile) => {
     dispatch(loader());
     const action = setModificationProfile(profile);
+    dispatch(action);
+  },
+
+  /**
+   * Action to submit the new updated informations of the shelter
+   */
+  submitModification: () => {
+    const action = submitShelterModification();
     dispatch(action);
   },
 });

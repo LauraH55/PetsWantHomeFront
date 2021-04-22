@@ -15,6 +15,8 @@ import './shelterModification.scss';
  * @param {String} shelterModificationEmail Updating shelter email
  * @param {Function} loadProfile Function to load the profile informations in the state
  * @param {Function} changeField Function to update the input fields' value
+ * @param {Function} submitModification Function to submit the form
+ *        and new informations for the shelter
  */
 const ShelterModification = ({
   shelters,
@@ -24,6 +26,7 @@ const ShelterModification = ({
   shelterModificationEmail,
   loadProfile,
   changeField,
+  submitModification,
 }) => {
   const { idShelter } = useParams();
 
@@ -34,11 +37,16 @@ const ShelterModification = ({
     loadProfile(shelter);
   }, []);
 
+  const submitForm = (evt) => {
+    evt.preventDefault();
+    submitModification();
+  };
+
   return (
     <div className="shelterModification">
       <h1>{shelter.name}</h1>
       <h2>Modification du refuge</h2>
-      <form className="modificationForm">
+      <form className="modificationForm" onSubmit={submitForm}>
         <div className="field field-name">
           <label htmlFor="shelterModificationName">Nom :
             <input
@@ -93,7 +101,7 @@ const ShelterModification = ({
             />
           </label>
         </div>
-        <button type="button" className="saveChanges">
+        <button type="submit" className="saveChanges">
           Enregistrer
         </button>
       </form>
@@ -115,6 +123,7 @@ ShelterModification.propTypes = {
   shelterModificationEmail: PropTypes.string.isRequired,
   loadProfile: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
+  submitModification: PropTypes.func.isRequired,
 };
 
 // == Export

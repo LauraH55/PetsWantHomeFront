@@ -4,6 +4,8 @@ export const FETCH_SHELTERS= 'FETCH_SHELTERS';
 export const SAVE_SHELTERS = 'SAVE_SHELTERS';
 export const NEW_SHELTER_CREATION = 'NEW_SHELTER_CREATION';
 export const SET_MODIFICATION_PROFILE = 'SET_MODIFICATION_PROFILE';
+export const SUBMIT_SHELTER_MODIFICATION = 'SUBMIT_SHELTER_MODIFICATION';
+export const SHELTER_UPDATE_ERROR = 'SHELTER_UPDATE_ERROR';
 
 // === Action Creators
 
@@ -37,4 +39,18 @@ export const newShelterCreation = () => ({
 export const setModificationProfile = (profile) => ({
   type: SET_MODIFICATION_PROFILE,
   profile,
+});
+
+/**
+ * Action to dispatch to submit the updated informations of the shelter
+ */
+export const submitShelterModification = () => ({
+  type: SUBMIT_SHELTER_MODIFICATION,
+});
+
+/**
+ * Action to display error messages if the update has failed
+ */
+export const shelterUpdateError = () => ({
+  type: SHELTER_UPDATE_ERROR,
 });
