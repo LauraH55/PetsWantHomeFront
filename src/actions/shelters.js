@@ -3,6 +3,7 @@
 export const FETCH_SHELTERS= 'FETCH_SHELTERS';
 export const SAVE_SHELTERS = 'SAVE_SHELTERS';
 export const NEW_SHELTER_CREATION = 'NEW_SHELTER_CREATION';
+export const SET_MODIFICATION_PROFILE = 'SET_MODIFICATION_PROFILE';
 
 // === Action Creators
 
@@ -27,4 +28,13 @@ export const saveShelters = (shelters) => ({
  */
 export const newShelterCreation = () => ({
   type: NEW_SHELTER_CREATION,
+});
+
+/**
+ * Action to dispatch to get the main informations of a shelter to update them
+ * @param {Object} profile Informations of the profile to update shelter's informations
+ */
+export const setModificationProfile = (profile) => ({
+  type: SET_MODIFICATION_PROFILE,
+  profile,
 });

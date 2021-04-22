@@ -1,10 +1,7 @@
 // == Import npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
-
-// == Import local
-import { slugifyName } from 'src/utils';
 
 import './shelterModification.scss';
 
@@ -12,14 +9,30 @@ import './shelterModification.scss';
 /**
  * Component to display the informations of one shelter
  * @param {Array} shelters List of all the shelters
+ * @param {String} shelterModificationName Updating shelter name
+ * @param {String} shelterModificationAdress Updating shelter address
+ * @param {String} shelterModificationPhone Updating shelter phone number
+ * @param {String} shelterModificationEmail Updating shelter email
+ * @param {Function} loadProfile Function to load the profile informations in the state
+ * @param {Function} changeField Function to update the input fields' value
  */
 const ShelterModification = ({
   shelters,
+  shelterModificationName,
+  shelterModificationAdress,
+  shelterModificationPhone,
+  shelterModificationEmail,
+  loadProfile,
+  changeField,
 }) => {
   const { idShelter } = useParams();
 
   // eslint-disable-next-line eqeqeq
   const shelter = shelters.find((shel) => shel.id == idShelter);
+
+  useEffect(() => {
+    loadProfile(shelter);
+  }, []);
 
   return (
     <div className="shelterModification">
@@ -27,46 +40,56 @@ const ShelterModification = ({
       <h2>Modification du refuge</h2>
       <form className="modificationForm">
         <div className="field field-name">
-          <label htmlFor="shelterName">Nom :
+          <label htmlFor="shelterModificationName">Nom :
             <input
-              id="shelterName"
+              id="shelterModificationName"
               type="text"
-              value={shelter.name}
+              value={shelterModificationName}
+              placeholder="Nom du refuge"
+              onChange={(evt) => (changeField(evt.target.value, 'shelterModificationName'))}
             />
           </label>
         </div>
         <div className="field field-adress">
-          <label htmlFor="shelterAdress">Adresse :
+          <label htmlFor="shelterModificationAdress">Adresse :
             <input
-              id="shelterAdress"
+              id="shelterModificationAdress"
               type="text"
-              value={shelter.address}
+              value={shelterModificationAdress}
+              placeholder="Adresse du refuge"
+              onChange={(evt) => (changeField(evt.target.value, 'shelterModificationAdress'))}
             />
           </label>
         </div>
         <div className="field field-phoneNumber">
-          <label htmlFor="shelterPhone">Numéro de téléphone :
+          <label htmlFor="shelterModificationPhone">Numéro de téléphone :
             <input
-              id="shelterPhone"
+              id="shelterModificationPhone"
               type="text"
-              value={shelter.phoneNumber}
+              value={shelterModificationPhone}
+              placeholder="Numéro de téléphone"
+              onChange={(evt) => (changeField(evt.target.value, 'shelterModificationPhone'))}
             />
           </label>
         </div>
         <div className="field field-email">
-          <label htmlFor="shelterEmail">Email du refuge :
+          <label htmlFor="shelterModificationEmail">Email du refuge :
             <input
-              id="shelterEmail"
+              id="shelterModificationEmail"
               type="text"
-              value={shelter.email}
+              value={shelterModificationEmail}
+              placeholder="Adresse Email"
+              onChange={(evt) => (changeField(evt.target.value, 'shelterModificationEmail'))}
             />
           </label>
         </div>
         <div className="field field-picture">
-          <label htmlFor="shelterPicture">Photo du refuge :
+          <label htmlFor="shelterModificationPicture">Photo du refuge :
             <input
-              id="shelterPicture"
+              id="shelterModificationPicture"
               type="file"
+              placeholder="Photo du refuge"
+              onChange={(evt) => (changeField(evt.target.files[0], 'shelterModificationPicture'))}
             />
           </label>
         </div>
@@ -86,6 +109,12 @@ const ShelterModification = ({
 // == PropTypes validation
 ShelterModification.propTypes = {
   shelters: PropTypes.array.isRequired,
+  shelterModificationName: PropTypes.string.isRequired,
+  shelterModificationAdress: PropTypes.string.isRequired,
+  shelterModificationPhone: PropTypes.string.isRequired,
+  shelterModificationEmail: PropTypes.string.isRequired,
+  loadProfile: PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired,
 };
 
 // == Export

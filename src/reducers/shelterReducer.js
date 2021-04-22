@@ -4,6 +4,7 @@ import {
 
 import {
   SAVE_SHELTERS,
+  SET_MODIFICATION_PROFILE,
 } from 'src/actions/shelters';
 
 const initialState = {
@@ -13,6 +14,12 @@ const initialState = {
   phone_number: '',
   picture: '',
   sheltersList: [],
+  shelterModificationId: '',
+  shelterModificationName: '',
+  shelterModificationAdress: '',
+  shelterModificationPhone: '',
+  shelterModificationEmail: '',
+  shelterModificationPicture: '',
 };
 
 function shelterReducer(state = initialState, action) {
@@ -37,6 +44,25 @@ function shelterReducer(state = initialState, action) {
         address: action.name === 'address' ? action.newValue : state.address,
         phone_number: action.name === 'phone_number' ? action.newValue : state.phone_number,
         picture: action.name === 'picture' ? action.newValue : state.picture,
+        shelterModificationName: action.name === 'shelterModificationName' ? action.newValue : state.shelterModificationName,
+        shelterModificationAdress: action.name === 'shelterModificationAdress' ? action.newValue : state.shelterModificationAdress,
+        shelterModificationPhone: action.name === 'shelterModificationPhone' ? action.newValue : state.shelterModificationPhone,
+        shelterModificationEmail: action.name === 'shelterModificationEmail' ? action.newValue : state.shelterModificationEmail,
+        shelterModificationPicture: action.name === 'shelterModificationPicture' ? action.newValue : state.shelterModificationPicture,
+      };
+
+    /**
+     * Set the informations of the shelter to update them
+     */
+    case SET_MODIFICATION_PROFILE:
+      return {
+        ...state,
+        shelterModificationId: action.profile.id,
+        shelterModificationName: action.profile.name,
+        shelterModificationAdress: action.profile.address,
+        shelterModificationPhone: action.profile.phoneNumber,
+        shelterModificationEmail: action.profile.email,
+        shelterModificationPicture: action.profile.picture,
       };
 
     default:
