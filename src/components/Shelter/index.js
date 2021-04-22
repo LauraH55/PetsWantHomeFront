@@ -19,6 +19,7 @@ const Shelter = ({
   const { idShelter } = useParams();
 
   // eslint-disable-next-line eqeqeq
+  console.log(shelters);
   const shelter = shelters.find((shel) => shel.id == idShelter);
 
   const animalsShelter = shelter.animals;
@@ -37,11 +38,16 @@ const Shelter = ({
             </div>
             {localStorage.shelterID === idShelter && (
               <div>
-                <a href="http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/shelter/update">
+                <Link to={`/shelter/modification/${idShelter}`}>
                   <button className="shelter-button" type="button">
                     Modifier le profil
                   </button>
-                </a>
+                </Link>
+                {/* <a href="http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/shelter/update">
+                  <button className="shelter-button" type="button">
+                    Modifier le profil
+                  </button>
+                </a> */}
                 <a href="http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/myshelter/">
                   <button className="shelter-button" type="button">
                     Gestion des animaux
