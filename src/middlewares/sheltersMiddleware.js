@@ -6,6 +6,8 @@ import {
   SUBMIT_SHELTER_MODIFICATION,
   shelterUpdateError,
   shelterUpdateSuccess,
+  updateShelterImage,
+  UPDATE_SHELTER_IMAGE,
 } from 'src/actions/shelters';
 
 import {
@@ -49,31 +51,65 @@ const sheltersMiddleware = (store) => (next) => (action) => {
         shelterPicture,
       } = store.getState().shelter;
 
+      const data = {
+        name: shelterModificationName,
+        address: shelterModificationAdress,
+        phone_number: shelterModificationPhone,
+        email: shelterModificationEmail,
+      };
+
+      axios({
+        method: 'patch',
+        url: MODIFICATION_URL,
+        data,
+        headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
+      })
+        .then((response) => {
+          console.log(response);
+          if (shelterModificationPicture === shelterPicture) {
+            store.dispatch(shelterUpdateSuccess());
+            setTimeout(() => {
+              window.location = `/shelter/${shelterModificationId}`;
+            }, 2000);
+          }
+          else {
+            store.dispatch(updateShelterImage());
+          }
+        })
+        .catch((error) => {
+          console.log('SHELTER UPDATE ERROR : ', error);
+          store.dispatch(shelterUpdateError());
+        });
+      next(action);
+      break;
+    }
+
+    case UPDATE_SHELTER_IMAGE: {
+      const {
+        shelterModificationId,
+        shelterModificationPicture,
+        shelterPicture,
+      } = store.getState().shelter;
+
       const bodyFormData = new FormData();
-      bodyFormData.append('email', shelterModificationEmail);
-      bodyFormData.append('id', shelterModificationId);
-      bodyFormData.append('name', shelterModificationName);
-      bodyFormData.append('phone_number', shelterModificationPhone);
-      bodyFormData.append('address', shelterModificationAdress);
       if (shelterModificationPicture !== shelterPicture) {
         bodyFormData.append('picture', shelterModificationPicture);
       }
 
       axios({
-        method: 'patch',
-        url: MODIFICATION_URL,
+        method: 'post',
+        url: `${MODIFICATION_URL}/image`,
         data: bodyFormData,
-        headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}` },
+        headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
       })
         .then((response) => {
-          console.log(response);
           store.dispatch(shelterUpdateSuccess());
           setTimeout(() => {
             window.location = `/shelter/${shelterModificationId}`;
           }, 2000);
         })
         .catch((error) => {
-          console.log('SHELTER UPDATE ERROR : ', error);
+          console.log('SHELTER PICTURE UPDATE ERROR : ', error);
           store.dispatch(shelterUpdateError());
         });
       next(action);
