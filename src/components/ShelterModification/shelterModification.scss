@@ -37,9 +37,12 @@
   .modificationForm {
     display: flex;
     flex-wrap: wrap;
-    padding: vars.$gutter;
+    padding: 1rem vars.$gutter;
     margin: vars.$gutter auto;
     background-color: vars.$secondaryTextColor;
+    border: 2px solid vars.$footerColor;
+    border-radius: 2%;
+    box-shadow: vars.$cardShadow;
     width: 60%;
     transform-origin: 0 0;
     transition: vars.$transition;
@@ -87,22 +90,20 @@
     }
 
     .saveChanges {
-      background-color: vars.$fifthColor;
-      transition: all .25s, visibility .25s ease-in;
-      color: vars.$footerColor;
+      background-color: vars.$footerColor;
+      color: vars.$secondaryTextColor;
       font-weight: 700;
       font-size: 1rem;
       border-radius: 0.3em;
-      border: 1px solid #869634;
+      border: 0;
       padding: 1rem;
       height: 3rem;
-      width: 100%;
+      margin: auto;
+      margin-bottom: 1rem;
 
       &:hover,
       &:focus {
-        background-color: #869634;
-        transition: all .25s, visibility .25s ease-in;
-        color: vars.$mainTextColor;
+        background-color: vars.$outlineColor;
       }
     }
   }
