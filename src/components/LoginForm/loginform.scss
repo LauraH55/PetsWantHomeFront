@@ -12,7 +12,7 @@
 
   .loginfield-form-element {
     text-align: center;
-    background-color: #fff;
+    background-color: vars.$secondaryTextColor;
     border: 2px solid vars.$footerColor;
     border-radius: 2%;
     box-shadow: vars.$cardShadow;
@@ -27,7 +27,7 @@
     .loginfield-form-button {
       font-weight: 700;
       font-size: 1rem;
-      color: #fff;
+      color: vars.$secondaryTextColor;
       background-color: vars.$footerColor;
       border-radius: 0.3em;
       border: 0;

@@ -21,9 +21,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
       axios.get('http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/animals')
         .then((response) => {
           // console.log('response: ', response);
-          setTimeout(() => {
-            store.dispatch(saveAnimals(response.data));
-          }, 1000);
+          store.dispatch(saveAnimals(response.data));
         })
         .catch((error) => {
           console.log('FETCH ANIMALS ERROR :', error);
@@ -39,10 +37,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
       axios.get('http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/home')
         .then((response) => {
           // console.log('response: ', response);
-          setTimeout(() => {
-            store.dispatch(saveRandomAnimals(response.data));
-            store.dispatch(loader());
-          }, 3000);
+          store.dispatch(saveRandomAnimals(response.data));
         })
         .catch((error) => {
           console.log('FETCH RANDOM ANIMALS ERROR : ', error);

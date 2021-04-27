@@ -15,7 +15,7 @@ import App from 'src/containers/App';
 const rootReactElement = (
   <Provider store={store}>
     <Router>
-     <ScrollToTop>
+      <ScrollToTop>
         <App />
       </ScrollToTop>
     </Router>

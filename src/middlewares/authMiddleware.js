@@ -66,7 +66,7 @@ const authMiddleware = (store) => (next) => (action) => {
         email,
         name,
         address,
-        phone_number,
+        phoneNumber,
         picture,
       } = store.getState().shelter;
 
@@ -74,7 +74,7 @@ const authMiddleware = (store) => (next) => (action) => {
       bodyFormData.append('email', email);
       bodyFormData.append('name', name);
       bodyFormData.append('address', address);
-      bodyFormData.append('phone_number', phone_number);
+      bodyFormData.append('phone_number', phoneNumber);
       bodyFormData.append('picture', picture);
 
       // axios.post(myurl,
@@ -82,7 +82,7 @@ const authMiddleware = (store) => (next) => (action) => {
       //     email,
       //     name,
       //     address,
-      //     phoneNumber: phone_number,
+      //     phoneNumber: phoneNumber,
       //     picture,
       //   },
       //   {
