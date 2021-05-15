@@ -1,9 +1,132 @@
 @use 'src/styles/vars';
 
-.animallsListModification {
+.animalsListModification {
   margin: 5rem auto 0;
   padding-top: 1rem;
   font-family: vars.$avenir;
+
+  h1 {
+    font-family: vars.$pomme;
+    font-size: 6rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  h2 {
+    color: vars.$footerColor;
+    font-weight: bold;
+    font-size: 2.5rem;
+    text-align: center;
+    width: 100%;
+    margin-top: 5rem;
+  }
+
+  .adopting-animals-list {
+    background-color: vars.$secondaryTextColor;
+    border: 2px solid vars.$footerColor;
+    box-shadow: vars.$cardShadow;
+    margin: vars.$gutter auto;
+    
+    th,
+    td {
+      padding: 1.5rem vars.$gutter;
+      vertical-align: bottom;
+      text-align: left;
+    }
+
+    thead tr {
+      border-bottom: 3px solid vars.$footerColor;
+      font-weight: bold;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid vars.$footerColor;
+      color: vars.$footerColor;
+    }
+  }
+
+  .adopted-animals-list {
+    background-color: vars.$secondaryTextColor;
+    border: 2px solid vars.$footerColor;
+    box-shadow: vars.$cardShadow;
+    margin: vars.$gutter auto;
+    
+    th,
+    td {
+      padding: 1.5rem vars.$gutter;
+      vertical-align: bottom;
+      text-align: left;
+    }
+
+    thead tr {
+      border-bottom: 3px solid vars.$footerColor;
+      font-weight: bold;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid vars.$footerColor;
+      color: vars.$footerColor;
+    }
+  }
+
+  .archiveAnimal {
+    background-color: #F19C79;
+    border: thin solid #a44a3f;
+    color: #8c4729;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 0.3em;
+    padding: 1rem;
+    height: 3rem;
+    margin: auto;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: #a44a3f;
+      color: black;
+    }
+  }
+
+  .updateAnimal {
+    background-color: #CBDFBD;
+    border: thin solid #80ac60;
+    color: #8c4729;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 0.3em;
+    padding: 1rem;
+    height: 3rem;
+    margin: auto;
+    margin-right: 0.5rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: #80ac60;
+      color: black;
+    }
+  }
+
+  .addAnimal {
+    background-color: #D4E09B;
+    border: thin solid #869634;
+    color: #8c4729;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 0.3em;
+    padding: 1rem;
+    height: 3rem;
+    margin: auto;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: #869634;
+      color: black;
+    }
+  }
 }
 
 @media (max-width: 700px) {

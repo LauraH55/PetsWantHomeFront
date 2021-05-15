@@ -53,7 +53,7 @@ const Shelter = ({
                     Gestion des animaux
                   </button>
                 </a> */}
-                <Link to={`/shelter/${idShelter}/animals-list-modification`}>
+                <Link to={`/animals-modification/shelter/${idShelter}`}>
                   <button className="shelter-button" type="button">
                     Gestion des animaux
                   </button>

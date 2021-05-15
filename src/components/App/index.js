@@ -62,17 +62,17 @@ const App = ({
             <Route path="/adoption">
               <Adoption />
             </Route>
+            <Route path="/animal/modification/:slugAnimal">
+              <AnimalModification />
+            </Route>
             <Route path="/animal/:slug">
               <Animal />
             </Route>
             <Route path="/shelter/modification/:idShelter">
               <ShelterModification />
             </Route>
-            <Route path="/shelter/:idShelter/animals-modification">
+            <Route path="/animals-modification/shelter/:idShelter">
               <AnimalsListModification />
-            </Route>
-            <Route path="/animal/modification/:slugAnimal">
-              <AnimalModification />
             </Route>
             <Route path="/shelter/:idShelter">
               <Shelter />
