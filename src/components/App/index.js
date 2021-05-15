@@ -12,6 +12,8 @@ import LoginForm from 'src/containers/LoginForm';
 import Register from 'src/containers/Register';
 import RegisterShelter from 'src/containers/RegisterShelter';
 import Animal from 'src/containers/Animal';
+import AnimalsListModification from 'src/containers/AnimalsListModification';
+import AnimalModification from 'src/containers/AnimalModification';
 import Shelter from 'src/containers/Shelter';
 import ShelterModification from 'src/containers/ShelterModification';
 import SheltersList from 'src/containers/SheltersList';
@@ -65,6 +67,12 @@ const App = ({
             </Route>
             <Route path="/shelter/modification/:idShelter">
               <ShelterModification />
+            </Route>
+            <Route path="/shelter/:idShelter/animals-modification">
+              <AnimalsListModification />
+            </Route>
+            <Route path="/animal/modification/:slugAnimal">
+              <AnimalModification />
             </Route>
             <Route path="/shelter/:idShelter">
               <Shelter />
