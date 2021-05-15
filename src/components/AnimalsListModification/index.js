@@ -1,10 +1,9 @@
 // == Import npm
 import React, { useEffect } from 'react';
-import PropTypes, { arrayOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 
 import { getGender, getBirthdateDate } from 'src/utils';
-import AnimalModification from 'src/containers/AnimalsListModification/AnimalModification';
 
 import './animalsListModification.scss';
 
@@ -16,7 +15,7 @@ const AnimalsListModification = ({
   animalsList,
   sheltersList,
   updateAnimal,
-  modificationStatus,
+  // modificationStatus,
 }) => {
   const { idShelter } = useParams();
 
@@ -54,7 +53,12 @@ const AnimalsListModification = ({
               <td>{getGender(animal.gender)}</td>
               <td>{getBirthdateDate(animal.birthdate)}</td>
               <td>{animal.race === null ? '' : animal.race.name}</td>
-              <td><button type="button" className="updateAnimal" onClick={updatingAnimal} value={animal.id}>Modifier</button><button type="button" className="archiveAnimal">Archiver</button></td>
+              <td>
+                <Link to={`/animal/modification/${animal.id}/${idShelter}`}>
+                  <button type="button" className="updateAnimal" onClick={updatingAnimal} value={animal.id}>Modifier</button>
+                </Link>
+                <button type="button" className="archiveAnimal">Archiver</button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -77,14 +81,16 @@ const AnimalsListModification = ({
               <td>{getGender(animal.gender)}</td>
               <td>{getBirthdateDate(animal.birthdate)}</td>
               <td>{animal.race === null ? '' : animal.race.name}</td>
-              <td><button type="button" className="updateAnimal" onClick={updatingAnimal} value={animal.id}>Modifier</button><button type="button" className="archiveAnimal">Archiver</button></td>
+              <td>
+                <Link to={`/animal/modification/${animal.id}/${idShelter}`}>
+                  <button type="button" className="updateAnimal" onClick={updatingAnimal} value={animal.id}>Modifier</button>
+                </Link>
+                <button type="button" className="archiveAnimal">Archiver</button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="overlay" style={{ display: `${modificationStatus ? 'block' : 'none'}` }}>
-        <AnimalModification />
-      </div>
     </div>
   );
 };
@@ -102,7 +108,7 @@ AnimalsListModification.propTypes = {
     }).isRequired,
   ).isRequired,
   updateAnimal: PropTypes.func.isRequired,
-  modificationStatus: PropTypes.bool.isRequired,
+  // modificationStatus: PropTypes.bool.isRequired,
 };
 
 // == Export

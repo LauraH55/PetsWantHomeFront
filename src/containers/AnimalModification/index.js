@@ -10,7 +10,7 @@ import {
 
 import { getInfoBirthDate } from 'src/utils';
 
-import AnimalModification from 'src/components/AnimalsListModification/AnimalModification';
+import AnimalModification from 'src/components/AnimalModification';
 
 /**
  * To display data in the component
@@ -20,8 +20,8 @@ const mapStateToProps = (state) => ({
   animalModificationBirthdate: getInfoBirthDate(state.animals.birthdate),
   animalModificationStatus: state.animals.status,
   animalModificationGender: state.animals.gender,
-  animalModificationSpecies: state.animals.species.id,
-  animalModificationRace: state.animals.race.id,
+  animalModificationSpecies: state.animals.species,
+  animalModificationRace: state.animals.race,
   animalModificationCatCohabitation: state.animals.catCohabitation,
   animalModificationChildCohabitation: state.animals.childCohabitation,
   animalModificationDogCohabitation: state.animals.dogCohabitation,
@@ -29,6 +29,7 @@ const mapStateToProps = (state) => ({
   animalModificationUnknownCohabitation: state.animals.unknownCohabitation,
   animalModificationdescription: state.animals.description,
   animalModificationPicture: state.animals.picture,
+  sheltersList: state.shelter.sheltersList,
 });
 
 /**

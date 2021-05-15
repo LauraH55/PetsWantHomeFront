@@ -1,7 +1,7 @@
 // == Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import './animalModification.scss';
 
@@ -25,33 +25,24 @@ const AnimalModification = ({
   animalModificationUnknownCohabitation,
   animalModificationdescription,
   animalModificationPicture,
+  sheltersList,
 }) => {
+  const { idAnimal, idShelter } = useParams();
+
+  console.log(idAnimal);
+  
+  const shelterName = sheltersList.find((shelter) => shelter.id == idShelter);
+  console.log(shelterName);
+
   const submitForm = (evt) => {
     evt.preventDefault();
     saveUpdateAnimal();
   };
 
-  console.log(animalModificationName);
-  console.log(animalModificationBirthdate);
-  console.log(animalModificationStatus);
-  console.log(animalModificationGender);
-  console.log(animalModificationSpecies);
-  console.log(animalModificationRace);
-  console.log(animalModificationCatCohabitation);
-  console.log(animalModificationChildCohabitation);
-  console.log(animalModificationDogCohabitation);
-  console.log(animalModificationNacCohabitation);
-  console.log(animalModificationUnknownCohabitation);
-  console.log(animalModificationdescription);
-  console.log(animalModificationPicture);
-
-  const change = (evt) => {
-    console.log(evt.target.checked);
-  };
-
   return (
     <div className="animalModification">
-      <h2>Modification de XXX</h2>
+      <h1>{shelterName.name}</h1>
+      <h2>Modification de {animalModificationName}</h2>
       <form className="AnimalModificationForm" onSubmit={submitForm}>
         <div className="field field-name">
           <label htmlFor="animalModificationName">Nom :
@@ -64,7 +55,7 @@ const AnimalModification = ({
             />
           </label>
         </div>
-        <div className="field field-name">
+        <div className="field field-birthdate">
           <label htmlFor="animalModificationBirthdate">Date de naissance :
             <input
               id="animalModificationBirthdate"
@@ -74,51 +65,107 @@ const AnimalModification = ({
             />
           </label>
         </div>
-        {/* <div className="field field-name">
-          <label htmlFor="animalModificationStatus">L'animal est :
+        <div className="field field-adopted">
+          <p>L'animal est :</p>
+          <label htmlFor="adoptedAnimal">
             <input
-              id="animalModificationStatus"
+              id="adoptedAnimal"
               type="radio"
-              value={animalModificationStatus}
-              placeholder="Nom de l'animal"
+              name="adoptionStatus"
+              value="1"
+              checked={animalModificationStatus == 1}
               onChange={(evt) => (changeField(evt.target.value, 'animalModificationStatus'))}
             />
+            A adopter
           </label>
-        </div> */}
-        {/* <div className="field field-name">
-          <label htmlFor="animalModificationGender">Genre :
+          <label htmlFor="animaltoAdopt">
             <input
-              id="animalModificationGender"
-              type="text"
-              value={animalModificationGender}
-              placeholder="Nom de l'animal"
+              id="animaltoAdopt"
+              type="radio"
+              name="adoptionStatus"
+              value="2"
+              checked={animalModificationStatus == 2}
+              onChange={(evt) => (changeField(evt.target.value, 'animalModificationStatus'))}
+            />
+            Adopté/e
+          </label>
+        </div>
+        <div className="field field-gender">
+          <p>Genre :</p>
+          <label htmlFor="genderMale">
+            <input
+              id="genderMale"
+              type="radio"
+              name="genderStatus"
+              value="1"
+              checked={animalModificationGender == 1}
               onChange={(evt) => (changeField(evt.target.value, 'animalModificationGender'))}
             />
+            Mâle
           </label>
-        </div> */}
-        {/* <div className="field field-name">
-          <label htmlFor="animalModificationSpecies">Expèce :
+          <label htmlFor="genderFemale">
             <input
-              id="animalModificationSpecies"
-              type="text"
-              value={animalModificationSpecies}
-              placeholder="Nom de l'animal"
+              id="genderFemale"
+              type="radio"
+              name="genderStatus"
+              value="2"
+              checked={animalModificationGender == 2}
+              onChange={(evt) => (changeField(evt.target.value, 'animalModificationGender'))}
+            />
+            Femelle
+          </label>
+        </div>
+        <div className="field field-species">
+          <p>Expèce :</p>
+          <label htmlFor="speciesCat">
+            <input
+              id="speciesCat"
+              type="radio"
+              name="speciesStatus"
+              value="1"
+              checked={animalModificationSpecies == 1}
               onChange={(evt) => (changeField(evt.target.value, 'animalModificationSpecies'))}
             />
+            Chat
           </label>
-        </div> */}
-        {/* <div className="field field-name">
-          <label htmlFor="animalModificationRace">Race :
+          <label htmlFor="speciesDog">
             <input
-              id="animalModificationRace"
-              type="text"
-              value={animalModificationRace}
-              placeholder="Nom de l'animal"
-              onChange={(evt) => (changeField(evt.target.value, 'animalModificationRace'))}
+              id="speciesDog"
+              type="radio"
+              name="speciesStatus"
+              value="2"
+              checked={animalModificationSpecies == 2}
+              onChange={(evt) => (changeField(evt.target.value, 'animalModificationSpecies'))}
             />
+            Chien
           </label>
-        </div> */}
-        <div className="field field-name">
+          <label htmlFor="speciesNac">
+            <input
+              id="speciesNac"
+              type="radio"
+              name="speciesStatus"
+              value="3"
+              checked={animalModificationSpecies == 3}
+              onChange={(evt) => (changeField(evt.target.value, 'animalModificationSpecies'))}
+            />
+            NAC
+          </label>
+        </div>
+        <div className="field field-race">
+          <label htmlFor="animalModificationRace">Race :
+            <select
+              id="animalModificationRace"
+              onChange={(evt) => (changeField(evt.target.value, 'animalModificationRace'))}
+            >
+              <option value="0">- Sélectionnez -</option>
+              <option value="1" selected={animalModificationRace == 1}>Chienchien</option>
+              <option value="2" selected={animalModificationRace == 2}>NacNac</option>
+              <option value="3" selected={animalModificationRace == 3}>ChatChat</option>
+              <option value="56" selected={animalModificationRace == 56}>American Shorthair</option>
+            </select>
+          </label>
+        </div>
+        <div className="field field-cohabitation">
           <p>L'animal s'entend bien avec :</p>
           <label htmlFor="animalModificationCatCohabitation">
             <input
@@ -171,28 +218,27 @@ const AnimalModification = ({
             Non Testé / Ne sais pas
           </label>
         </div>
-        <div className="field field-name">
+        <div className="field field-bio">
           <label htmlFor="animalModificationdescription">Description de l'animal :
-            <input
+            <textarea
               id="animalModificationdescription"
-              type="text"
               value={animalModificationdescription}
               placeholder="Description de l'animal"
+              spellCheck=""
               onChange={(evt) => (changeField(evt.target.value, 'animalModificationdescription'))}
             />
           </label>
         </div>
-        {/* <div className="field field-name">
+        <div className="field field-picture">
           <label htmlFor="animalModificationPicture">Photo de l'animal :
             <input
               id="animalModificationPicture"
-              type="text"
-              value={animalModificationPicture}
-              placeholder="Nom de l'animal"
-              onChange={(evt) => (changeField(evt.target.value, 'animalModificationPicture'))}
+              type="file"
+              onChange={(evt) => (changeField(evt.target.files[0], 'animalModificationPicture'))}
             />
           </label>
-        </div> */}
+        </div>
+        {/* <img className="shelter-image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${animalModificationPicture}`} alt="#" /> */}
         <button type="button" onClick={saveUpdateAnimal}>Enregistrer</button>
       </form>
     </div>
@@ -243,6 +289,11 @@ AnimalModification.propTypes = {
   ]).isRequired,
   animalModificationdescription: PropTypes.string.isRequired,
   animalModificationPicture: PropTypes.string.isRequired,
+  sheltersList: PropTypes.arrayOf(
+    PropTypes.shape({
+
+    }).isRequired,
+  ).isRequired,
 };
 
 // == Export
