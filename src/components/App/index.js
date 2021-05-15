@@ -13,7 +13,7 @@ import Register from 'src/containers/Register';
 import RegisterShelter from 'src/containers/RegisterShelter';
 import Animal from 'src/containers/Animal';
 import AnimalsListModification from 'src/containers/AnimalsListModification';
-import AnimalModification from 'src/containers/AnimalModification';
+// import AnimalModification from 'src/containers/AnimalsListModification/AnimalModification';
 import Shelter from 'src/containers/Shelter';
 import ShelterModification from 'src/containers/ShelterModification';
 import SheltersList from 'src/containers/SheltersList';
@@ -62,9 +62,9 @@ const App = ({
             <Route path="/adoption">
               <Adoption />
             </Route>
-            <Route path="/animal/modification/:slugAnimal">
+            {/* <Route path="/animal/modification/:slugAnimal">
               <AnimalModification />
-            </Route>
+            </Route> */}
             <Route path="/animal/:slug">
               <Animal />
             </Route>
