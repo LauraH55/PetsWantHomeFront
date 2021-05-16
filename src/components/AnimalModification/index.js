@@ -1,7 +1,7 @@
 // == Import npm
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import './animalModification.scss';
 
@@ -61,6 +61,10 @@ const AnimalModification = ({
   const submitForm = (evt) => {
     evt.preventDefault();
     saveUpdateAnimal();
+  };
+
+  const backToList = () => {
+    window.location = `/animals-modification/shelter/${idShelter}`;
   };
 
   return (
@@ -286,9 +290,7 @@ const AnimalModification = ({
         <h3 className="updateFail">Les modifications n'ont pas été prise en compte</h3>
       )}
       <div className="backToList">
-        <Link to={`/animals-modification/shelter/${idShelter}`}>
-          <button type="button">Retour à la liste</button>
-        </Link>
+        <button type="button" onClick={backToList}>Retour à la liste</button>
       </div>
     </div>
   );

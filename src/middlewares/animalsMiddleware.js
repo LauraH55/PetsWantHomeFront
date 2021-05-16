@@ -94,10 +94,12 @@ const animalsMiddleware = (store) => (next) => (action) => {
         actualPicture,
       } = store.getState().animals;
 
+      const statusNumber = parseInt(status, 10);
+
       const data = {
         name,
         birthdate,
-        status,
+        status: statusNumber,
         gender,
         species,
         race,
