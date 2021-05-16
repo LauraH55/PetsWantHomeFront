@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import {
-  saveUpdateAnimal,
+  animalUpdated,
+  updateAnimal,
 } from 'src/actions/animals';
 
 import {
@@ -16,6 +17,7 @@ import AnimalModification from 'src/components/AnimalModification';
  * To display data in the component
  */
 const mapStateToProps = (state) => ({
+  actualName: state.animals.actualName,
   animalModificationName: state.animals.name,
   animalModificationBirthdate: getInfoBirthDate(state.animals.birthdate),
   animalModificationStatus: state.animals.status,
@@ -28,8 +30,9 @@ const mapStateToProps = (state) => ({
   animalModificationNacCohabitation: state.animals.nacCohabitation,
   animalModificationUnknownCohabitation: state.animals.unknownCohabitation,
   animalModificationdescription: state.animals.description,
-  animalModificationPicture: state.animals.picture,
-  sheltersList: state.shelter.sheltersList,
+  animalModificationPicture: state.animals.actualPicture,
+  animalsList: state.animals.animalsList,
+  modificationStatus: state.animals.modificationStatus,
 });
 
 /**
@@ -40,7 +43,7 @@ const mapDispatchToProps = (dispatch) => ({
    * Action which will save the update of the informations for an animal
    */
   saveUpdateAnimal: () => {
-    const action = saveUpdateAnimal();
+    const action = animalUpdated();
     dispatch(action);
   },
 
@@ -51,6 +54,14 @@ const mapDispatchToProps = (dispatch) => ({
    */
   changeField: (value, fieldName) => {
     const action = updateUserField(value, fieldName);
+    dispatch(action);
+  },
+
+  /**
+   * Action which will set the modification status to true to update an animal informations
+   */
+  updateAnimal: (animalToUpdate) => {
+    const action = updateAnimal(animalToUpdate);
     dispatch(action);
   },
 });

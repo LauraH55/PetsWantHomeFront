@@ -23,6 +23,20 @@
     margin-bottom: 1rem;
   }
 
+  .updateFail {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin: 1.5rem;
+  }
+
+  .updateSuccess {
+    color: rgb(21, 190, 21);
+    font-weight: bold;
+    text-align: center;
+    margin: 1.5rem;
+  }
+
   form {
     background-color: #fff;
     margin: 0 10rem;
@@ -156,23 +170,37 @@
       }
     }
 
-    button {
-      background-color: vars.$footerColor;
-      color: vars.$secondaryTextColor;
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 0.3em;
-      border: 0;
-      padding: 1rem;
-      height: 3rem;
-      margin: auto;
-      margin-bottom: 1rem;
+    .picture {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 2rem;
 
-      &:hover,
-      &:focus {
-        background-color: vars.$outlineColor;
+      .shelter-image {
+        height: 400px;
       }
     }
+  }
+
+  button {
+    background-color: vars.$footerColor;
+    color: vars.$secondaryTextColor;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 0.3em;
+    border: 0;
+    padding: 1rem;
+    height: 3rem;
+    margin: auto;
+    margin-bottom: 1rem;
+
+    &:hover,
+    &:focus {
+      background-color: vars.$outlineColor;
+    }
+  }
+
+  .backToList {
+    text-align: center;
   }
 }
 

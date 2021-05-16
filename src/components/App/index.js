@@ -37,11 +37,13 @@ const App = ({
   loadRandomAnimals,
   loadShelters,
   loading,
+  loadRaces,
 }) => {
   useEffect(() => {
     loadAnimals();
     loadRandomAnimals();
     loadShelters();
+    loadRaces();
   }, []);
 
   return (
@@ -122,6 +124,7 @@ App.propTypes = {
   loadRandomAnimals: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   loadShelters: PropTypes.func.isRequired,
+  loadRaces: PropTypes.func.isRequired,
 };
 
 // == Export

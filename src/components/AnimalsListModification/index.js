@@ -1,5 +1,5 @@
 // == Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 
@@ -9,13 +9,16 @@ import './animalsListModification.scss';
 
 // == Component
 /**
-
+ * Component for the Back-Office of the app which handle the list of all the actual animals
+ * of a shelter to update their informations
+ * @param {Array} animalsList List of all the animals to display the animals
+ * @param {Array} sheltersList List of all the shelters to get the actual one
  */
 const AnimalsListModification = ({
   animalsList,
   sheltersList,
-  updateAnimal,
-  // modificationStatus,
+  archiveAnimal,
+  desarchiveAnimal,
 }) => {
   const { idShelter } = useParams();
 
@@ -26,10 +29,12 @@ const AnimalsListModification = ({
 
   const actualShelter = sheltersList.find((shelter) => shelter.id == idShelter);
 
-  const updatingAnimal = (evt) => {
-    const animalToUpdate = animalsList.find((animal) => animal.id == evt.target.value);
-    console.log(animalToUpdate);
-    updateAnimal(animalToUpdate);
+  const archive = (evt) => {
+    archiveAnimal(evt.target.value);
+  };
+
+  const desarchive = (evt) => {
+    desarchiveAnimal(evt.target.value);
   };
 
   return (
@@ -55,9 +60,9 @@ const AnimalsListModification = ({
               <td>{animal.race === null ? '' : animal.race.name}</td>
               <td>
                 <Link to={`/animal/modification/${animal.id}/${idShelter}`}>
-                  <button type="button" className="updateAnimal" onClick={updatingAnimal} value={animal.id}>Modifier</button>
+                  <button type="button" className="updateAnimal">Modifier</button>
                 </Link>
-                <button type="button" className="archiveAnimal">Archiver</button>
+                <button type="button" className="archiveAnimal" onClick={archive} value={animal.id}>Archiver</button>
               </td>
             </tr>
           ))}
@@ -71,7 +76,7 @@ const AnimalsListModification = ({
             <th>Genre</th>
             <th>Date de naissance</th>
             <th>Race</th>
-            <th><button type="button" className="addAnimal">Ajouter un animal</button></th>
+            <th> </th>
           </tr>
         </thead>
         <tbody>
@@ -83,9 +88,9 @@ const AnimalsListModification = ({
               <td>{animal.race === null ? '' : animal.race.name}</td>
               <td>
                 <Link to={`/animal/modification/${animal.id}/${idShelter}`}>
-                  <button type="button" className="updateAnimal" onClick={updatingAnimal} value={animal.id}>Modifier</button>
+                  <button type="button" className="updateAnimal">Modifier</button>
                 </Link>
-                <button type="button" className="archiveAnimal">Archiver</button>
+                <button type="button" className="archiveAnimal" onClick={desarchive} value={animal.id}>Desarchiver</button>
               </td>
             </tr>
           ))}
@@ -107,8 +112,8 @@ AnimalsListModification.propTypes = {
 
     }).isRequired,
   ).isRequired,
-  updateAnimal: PropTypes.func.isRequired,
-  // modificationStatus: PropTypes.bool.isRequired,
+  archiveAnimal: PropTypes.func.isRequired,
+  desarchiveAnimal: PropTypes.func.isRequired,
 };
 
 // == Export

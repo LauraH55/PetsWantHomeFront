@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 
-import { updateAnimal } from 'src/actions/animals';
+import {
+  setArchiveAnimal,
+} from 'src/actions/animals';
 
 import AnimalsListModification from 'src/components/AnimalsListModification';
 
@@ -10,7 +12,6 @@ import AnimalsListModification from 'src/components/AnimalsListModification';
 const mapStateToProps = (state) => ({
   animalsList: state.animals.animalsList,
   sheltersList: state.shelter.sheltersList,
-  modificationStatus: state.animals.modificationStatus,
 });
 
 /**
@@ -18,10 +19,20 @@ const mapStateToProps = (state) => ({
  */
 const mapDispatchToProps = (dispatch) => ({
   /**
-   * Action which will set the modification status to true to update an animal informations
+   * Function to archive an animal after being adopted
+   * @param {*} id ID of the selected animal
    */
-  updateAnimal: (animalToUpdate) => {
-    const action = updateAnimal(animalToUpdate);
+  archiveAnimal: (id) => {
+    const action = setArchiveAnimal(id, 2);
+    dispatch(action);
+  },
+
+  /**
+   * Function to desarchive an animal if he returned to the shelter
+   * @param {*} id ID of the selected animal
+   */
+  desarchiveAnimal: (id) => {
+    const action = setArchiveAnimal(id, 1);
     dispatch(action);
   },
 });

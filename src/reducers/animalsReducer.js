@@ -3,6 +3,7 @@ import {
   SAVE_RANDOM_ANIMALS,
   UPDATE_ANIMAL,
   SAVE_UPDATE_ANIMAL,
+  ANIMAL_UPDATE_ERROR,
 } from 'src/actions/animals';
 
 import {
@@ -19,9 +20,9 @@ const initialState = {
   animalsRandomList: [],
   loading: true,
   waiting: 0,
-  modificationStatus: false,
   id: '',
   name: '',
+  actualName: '',
   birthdate: '',
   status: '',
   gender: '',
@@ -34,6 +35,8 @@ const initialState = {
   unknownCohabitation: '',
   description: '',
   picture: '',
+  actualPicture: '',
+  modificationStatus: 0,
 };
 
 function animalsReducer(state = initialState, action) {
@@ -81,14 +84,14 @@ function animalsReducer(state = initialState, action) {
       };
 
     /**
-     * Set the modifications status to true to display the modification form
+     * Set the informations to update for the form
      */
     case UPDATE_ANIMAL:
       return {
         ...state,
-        modificationStatus: true,
         id: action.id,
         name: action.name,
+        actualName: action.name,
         birthdate: action.birthdate,
         status: action.status,
         gender: action.gender,
@@ -101,15 +104,25 @@ function animalsReducer(state = initialState, action) {
         unknownCohabitation: action.unknownCohabitation,
         description: action.description,
         picture: action.picture,
+        actualPicture: action.picture,
       };
 
     /**
-     * Set the modifications status to false to hide the modification form
+     * Set the modification status to success value
      */
     case SAVE_UPDATE_ANIMAL:
       return {
         ...state,
-        modificationStatus: false,
+        modificationStatus: 1,
+      };
+
+    /**
+     * Set the modification status to failure value
+     */
+    case ANIMAL_UPDATE_ERROR:
+      return {
+        ...state,
+        modificationStatus: 2,
       };
 
     /**

@@ -91,13 +91,11 @@ const sheltersMiddleware = (store) => (next) => (action) => {
       const {
         shelterModificationId,
         shelterModificationPicture,
-        shelterPicture,
       } = store.getState().shelter;
 
       const bodyFormData = new FormData();
-      if (shelterModificationPicture !== shelterPicture) {
-        bodyFormData.append('picture', shelterModificationPicture);
-      }
+      bodyFormData.append('picture', shelterModificationPicture);
+
 
       axios({
         method: 'post',

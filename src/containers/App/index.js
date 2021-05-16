@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   fetchAnimals,
   fetchRandomAnimals,
+  fetchRaces,
 } from 'src/actions/animals';
 
 import {
@@ -23,7 +24,7 @@ const mapStateToProps = (state) => ({
  */
 const mapDispatchToProps = (dispatch) => ({
   /**
-   * Action to make the request to get the animals list
+   * Function to make the request to get the animals list
    */
   loadAnimals: () => {
     const action = fetchAnimals();
@@ -31,7 +32,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   /**
-   * Action to make the request to get the random animals list
+   * Function to make the request to get the random animals list
    */
   loadRandomAnimals: () => {
     const action = fetchRandomAnimals();
@@ -39,10 +40,18 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   /**
-   * Action to make the request to get the shelters list
+   * Function to make the request to get the shelters list
    */
   loadShelters: () => {
     const action = fetchShelters();
+    dispatch(action);
+  },
+
+  /**
+   * Function to make the request to get the races list
+   */
+  loadRaces: () => {
+    const action = fetchRaces();
     dispatch(action);
   },
 });
