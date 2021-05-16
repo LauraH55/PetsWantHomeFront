@@ -33,6 +33,7 @@ const mapStateToProps = (state) => ({
   animalModificationPicture: state.animals.actualPicture,
   animalsList: state.animals.animalsList,
   modificationStatus: state.animals.modificationStatus,
+  racesList: state.animals.racesList,
 });
 
 /**

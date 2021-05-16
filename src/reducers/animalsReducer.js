@@ -4,6 +4,7 @@ import {
   UPDATE_ANIMAL,
   SAVE_UPDATE_ANIMAL,
   ANIMAL_UPDATE_ERROR,
+  SAVE_RACES,
 } from 'src/actions/animals';
 
 import {
@@ -18,6 +19,7 @@ import {
 const initialState = {
   animalsList: [],
   animalsRandomList: [],
+  racesList: [],
   loading: true,
   waiting: 0,
   id: '',
@@ -79,6 +81,14 @@ function animalsReducer(state = initialState, action) {
     case SAVE_SHELTERS:
       return {
         ...state,
+        waiting: state.waiting - 1,
+        loading: state.waiting - 1 !== 0,
+      };
+
+    case SAVE_RACES:
+      return {
+        ...state,
+        racesList: action.racesList,
         waiting: state.waiting - 1,
         loading: state.waiting - 1 !== 0,
       };

@@ -27,6 +27,7 @@ import './animalModification.scss';
  * @param {Array} animalsList List of all the animals
  * @param {Function} updateAnimal Function to set the informations of the actual animal in the form
  * @param {Number} modificationStatus Status to display success/error message
+ * @param {Array} racesList List of all the animals races
  */
 const AnimalModification = ({
   saveUpdateAnimal,
@@ -48,6 +49,7 @@ const AnimalModification = ({
   animalsList,
   updateAnimal,
   modificationStatus,
+  racesList,
 }) => {
   const { idAnimal, idShelter } = useParams();
   const animalToUpdate = animalsList.find((animal) => animal.id == idAnimal);
@@ -188,10 +190,11 @@ const AnimalModification = ({
               onChange={(evt) => (changeField(evt.target.value, 'animalModificationRace'))}
             >
               <option value="0">- Sélectionnez -</option>
-              <option value="1" selected={animalModificationRace == 1}>Chienchien</option>
-              <option value="2" selected={animalModificationRace == 2}>NacNac</option>
-              <option value="3" selected={animalModificationRace == 3}>ChatChat</option>
-              <option value="56" selected={animalModificationRace == 56}>American Shorthair</option>
+              {racesList.map((race) => (
+                <option value={race.id} selected={animalModificationRace == race.id}>
+                  {race.name}
+                </option>
+              ))}
             </select>
           </label>
         </div>
@@ -339,6 +342,7 @@ AnimalModification.propTypes = {
   animalsList: PropTypes.array.isRequired,
   updateAnimal: PropTypes.func.isRequired,
   modificationStatus: PropTypes.number.isRequired,
+  racesList: PropTypes.array.isRequired,
 };
 
 // == Export
