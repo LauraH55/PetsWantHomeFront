@@ -52,7 +52,18 @@ const AnimalModification = ({
   racesList,
 }) => {
   const { idAnimal, idShelter } = useParams();
-  const animalToUpdate = animalsList.find((animal) => animal.id == idAnimal);
+  let animalToUpdate = animalsList.find((animal) => animal.id == idAnimal);
+
+  console.log(animalToUpdate);
+
+  if (animalToUpdate.species.id == 3) {
+    animalToUpdate = {
+      ...animalToUpdate,
+      race: {
+        id: 0,
+      },
+    };
+  }
 
   useEffect(() => {
     updateAnimal(animalToUpdate);
@@ -66,6 +77,8 @@ const AnimalModification = ({
   const backToList = () => {
     window.location = `/animals-modification/shelter/${idShelter}`;
   };
+
+  const racesToDisplay = racesList.filter((race) => race.species.id == animalModificationSpecies);
 
   return (
     <div className="animalModification">
@@ -187,21 +200,25 @@ const AnimalModification = ({
             NAC
           </label>
         </div>
-        <div className="field field-race">
-          <label htmlFor="animalModificationRace">Race :
-            <select
-              id="animalModificationRace"
-              onChange={(evt) => (changeField(evt.target.value, 'animalModificationRace'))}
-            >
-              <option value="0">- Sélectionnez -</option>
-              {racesList.map((race) => (
-                <option value={race.id} selected={animalModificationRace == race.id}>
-                  {race.name}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
+        {animalModificationSpecies != 3
+        && (
+          <div className="field field-race">
+            <label htmlFor="animalModificationRace">Race :
+              <select
+                id="animalModificationRace"
+                value={animalModificationRace}
+                onChange={(evt) => (changeField(evt.target.value, 'animalModificationRace'))}
+              >
+                <option value="0">- Sélectionnez -</option>
+                {racesToDisplay.map((race) => (
+                  <option key={race.id} value={race.id}>
+                    {race.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+        )}
         <div className="field field-cohabitation">
           <p>L'animal s'entend bien avec :</p>
           <label htmlFor="animalModificationCatCohabitation">

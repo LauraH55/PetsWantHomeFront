@@ -96,13 +96,12 @@ const animalsMiddleware = (store) => (next) => (action) => {
 
       const statusNumber = parseInt(status, 10);
 
-      const data = {
+      let data = {
         name,
         birthdate,
         status: statusNumber,
         gender,
         species,
-        race,
         catCohabitation,
         childCohabitation,
         dogCohabitation,
@@ -110,6 +109,13 @@ const animalsMiddleware = (store) => (next) => (action) => {
         unknownCohabitation,
         description,
       };
+
+      if (species != 3) {
+        data = {
+          ...data,
+          race,
+        };
+      }
 
       axios({
         method: 'patch',
