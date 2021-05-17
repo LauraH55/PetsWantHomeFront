@@ -101,6 +101,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
         birthdate,
         status: statusNumber,
         gender,
+        race,
         species,
         catCohabitation,
         childCohabitation,
@@ -109,13 +110,6 @@ const animalsMiddleware = (store) => (next) => (action) => {
         unknownCohabitation,
         description,
       };
-
-      if (species != 3) {
-        data = {
-          ...data,
-          race,
-        };
-      }
 
       axios({
         method: 'patch',

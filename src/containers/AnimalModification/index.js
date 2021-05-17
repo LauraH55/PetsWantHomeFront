@@ -50,11 +50,20 @@ const mapDispatchToProps = (dispatch) => ({
 
   /**
    * Action which will modify the value of an input
+   * If it's the species input there may be a double dispatch :
+   *      - One for the actual species field
+   *      - One for the race value if the species field selected is NAC
    * @param {string} value : Value entered in the input
    * @param {string} fieldName : Name of the input
    */
   changeField: (value, fieldName) => {
     const action = updateUserField(value, fieldName);
+
+    if (fieldName === 'animalModificationSpecies' && value === '3') {
+      const actionBis = updateUserField(0, 'animalModificationRace');
+      dispatch(actionBis);
+    }
+
     dispatch(action);
   },
 

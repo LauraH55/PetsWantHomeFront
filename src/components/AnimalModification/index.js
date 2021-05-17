@@ -54,8 +54,6 @@ const AnimalModification = ({
   const { idAnimal, idShelter } = useParams();
   let animalToUpdate = animalsList.find((animal) => animal.id == idAnimal);
 
-  console.log(animalToUpdate);
-
   if (animalToUpdate.species.id == 3) {
     animalToUpdate = {
       ...animalToUpdate,
