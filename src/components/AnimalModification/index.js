@@ -50,9 +50,13 @@ const AnimalModification = ({
   updateAnimal,
   modificationStatus,
   racesList,
+  sheltersList,
 }) => {
   const { idAnimal, idShelter } = useParams();
   let animalToUpdate = animalsList.find((animal) => animal.id == idAnimal);
+
+  console.log(animalToUpdate.species.id);
+  console.log(animalToUpdate);
 
   if (animalToUpdate.species.id == 3) {
     animalToUpdate = {
@@ -78,9 +82,11 @@ const AnimalModification = ({
 
   const racesToDisplay = racesList.filter((race) => race.species.id == animalModificationSpecies);
 
+  const shelterName = sheltersList.find((shelter) => shelter.id == idShelter);
+
   return (
     <div className="animalModification">
-      <h1>{actualName}</h1>
+      <h1>{shelterName.name}</h1>
       <h2>Modification de {actualName}</h2>
       {modificationStatus === 1
       && (
@@ -294,7 +300,7 @@ const AnimalModification = ({
         <div className="picture">
           <img className="shelter-image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${animalModificationPicture}`} alt="#" />
         </div>
-        <button type="button" onClick={saveUpdateAnimal}>Enregistrer</button>
+        <button type="button" onClick={submitForm}>Enregistrer</button>
       </form>
       {modificationStatus === 1
       && (
@@ -360,6 +366,7 @@ AnimalModification.propTypes = {
   updateAnimal: PropTypes.func.isRequired,
   modificationStatus: PropTypes.number.isRequired,
   racesList: PropTypes.array.isRequired,
+  sheltersList: PropTypes.array.isRequired,
 };
 
 // == Export

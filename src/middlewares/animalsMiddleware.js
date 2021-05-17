@@ -14,6 +14,8 @@ import {
   animalUpdateError,
   updateAnimal,
   SET_ARCHIVE_ANIMAL,
+  ANIMAL_CREATION,
+  animalCreated,
 } from 'src/actions/animals';
 
 import {
@@ -21,6 +23,7 @@ import {
 } from 'src/actions/auth';
 
 const URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
+const URLBIS = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public';
 
 const animalsMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -31,7 +34,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
       store.dispatch(loader());
       axios.get(`${URL}/animals`)
         .then((response) => {
-          // console.log('response: ', response);
+          console.log('response: ', response);
           store.dispatch(saveAnimals(response.data));
         })
         .catch((error) => {
@@ -96,7 +99,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
 
       const statusNumber = parseInt(status, 10);
 
-      let data = {
+      const data = {
         name,
         birthdate,
         status: statusNumber,
@@ -199,6 +202,78 @@ const animalsMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log('ANIMAL DES/ARCHIVE ERROR', error);
+        });
+      next(action);
+      break;
+    }
+
+    case ANIMAL_CREATION: {
+      const {
+        name,
+        birthdate,
+        status,
+        gender,
+        species,
+        race,
+        catCohabitation,
+        childCohabitation,
+        dogCohabitation,
+        nacCohabitation,
+        unknownCohabitation,
+        description,
+        picture,
+      } = store.getState().animals;
+
+      const statusNumber = parseInt(status, 10);
+      const raceNumber = parseInt(race, 10);
+
+      // const data = {
+      //   name, // not null
+      //   birthdate, // NULL
+      //   status: statusNumber, // not null
+      //   gender, // not null
+      //   race, // NULL
+      //   species, // not null
+      //   catCohabitation, // not null
+      //   childCohabitation, // not null
+      //   dogCohabitation, // not null
+      //   nacCohabitation, // not null
+      //   unknownCohabitation, // not null
+      //   description, // not null
+      //   picture, // not null
+      // };
+
+      const bodyFormData = new FormData();
+      bodyFormData.append('name', name);
+      bodyFormData.append('birthdate', birthdate);
+      bodyFormData.append('status', statusNumber);
+      bodyFormData.append('gender', gender);
+      bodyFormData.append('race_id', raceNumber);
+      // if (raceNumber === 0) {
+      //   bodyFormData.append('race_id', null);
+      // }
+      bodyFormData.append('species_id', species);
+      bodyFormData.append('cat_cohabitation', catCohabitation);
+      bodyFormData.append('child_cohabitation', childCohabitation);
+      bodyFormData.append('dog_cohabitation', dogCohabitation);
+      bodyFormData.append('nac_cohabitation', nacCohabitation);
+      bodyFormData.append('unknown_cohabitation', unknownCohabitation);
+      bodyFormData.append('description', description);
+      bodyFormData.append('picture', picture);
+
+      axios({
+        method: 'post',
+        url: `${URL}/animal/create`,
+        data: bodyFormData,
+        headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}` },
+      })
+        .then((response) => {
+          console.log(response);
+          store.dispatch(saveUpdateAnimal());
+        })
+        .catch((error) => {
+          console.log('ANIMAL CREATION ERROR', error);
+          store.dispatch(animalUpdateError());
         });
       next(action);
       break;

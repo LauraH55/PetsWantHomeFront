@@ -48,7 +48,11 @@ const AnimalsListModification = ({
             <th>Genre</th>
             <th>Date de naissance</th>
             <th>Race</th>
-            <th><button type="button" className="addAnimal">Ajouter un animal</button></th>
+            <th>
+              <Link to={`/animal/creation/${idShelter}`}>
+                <button type="button" className="addAnimal">Ajouter un animal</button>
+              </Link>
+            </th>
           </tr>
         </thead>
         <tbody>
