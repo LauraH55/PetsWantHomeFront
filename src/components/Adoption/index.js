@@ -15,9 +15,15 @@ import './adoption.scss';
  */
 const Adoption = ({
   animals,
+  genderFilter,
 }) => (
   <main className="adoption">
     <h1>Adoption des animaux</h1>
+    <select onChange={(evt) => genderFilter(evt.target.value)}>
+      <option value="0">- Sélectionnez -</option>
+      <option value="1">Mâle</option>
+      <option value="2">Femelle</option>
+    </select>
     <div className="cards">
       {animals.map((animal) => (
         <Link
@@ -50,6 +56,7 @@ Adoption.propTypes = {
       gender: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
+  genderFilter: PropTypes.func.isRequired,
 };
 
 // == Export

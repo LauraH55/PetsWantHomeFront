@@ -13,6 +13,7 @@ export const FETCH_RACES = 'FETCH_RACES';
 export const SAVE_RACES = 'SAVE_RACES';
 export const ANIMAL_CREATED = 'ANIMAL_CREATED';
 export const ANIMAL_CREATION = 'ANIMAL_CREATION';
+export const GENDER_FILTER = 'GENDER_FILTER';
 
 // === Action Creators
 
@@ -152,4 +153,9 @@ export const animalCreated = () => ({
  */
 export const animalCreation = () => ({
   type: ANIMAL_CREATION,
+});
+
+export const genderFilter = (genderValue) => ({
+  type: GENDER_FILTER,
+  genderValue,
 });
