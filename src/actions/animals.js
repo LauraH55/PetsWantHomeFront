@@ -11,6 +11,10 @@ export const ANIMAL_UPDATE_ERROR = 'ANIMAL_UPDATE_ERROR';
 export const SET_ARCHIVE_ANIMAL = 'SET_ARCHIVE_ANIMAL';
 export const FETCH_RACES = 'FETCH_RACES';
 export const SAVE_RACES = 'SAVE_RACES';
+export const ANIMAL_CREATED = 'ANIMAL_CREATED';
+export const ANIMAL_CREATION = 'ANIMAL_CREATION';
+export const GENDER_FILTER = 'GENDER_FILTER';
+export const SPECIES_FILTER = 'SPECIES_FILTER';
 
 // === Action Creators
 
@@ -129,7 +133,35 @@ export const fetchRaces = () => ({
   type: FETCH_RACES,
 });
 
+/**
+ * Action to display all the animal races
+ * @param {Array} racesList List of all the races
+ */
 export const saveRaces = (racesList) => ({
   type: SAVE_RACES,
   racesList,
+});
+
+/**
+ * Action validate in the reducer the creation of the new animal
+ */
+export const animalCreated = () => ({
+  type: ANIMAL_CREATED,
+});
+
+/**
+ * Action to set the request to the API to create the new animal's profile
+ */
+export const animalCreation = () => ({
+  type: ANIMAL_CREATION,
+});
+
+export const genderFilter = (genderValue) => ({
+  type: GENDER_FILTER,
+  genderValue,
+});
+
+export const speciesFilter = (speciesValue) => ({
+  type: SPECIES_FILTER,
+  speciesValue,
 });

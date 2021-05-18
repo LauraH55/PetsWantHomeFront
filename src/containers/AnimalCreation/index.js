@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 
 import {
-  animalUpdated,
-  updateAnimal,
+  animalCreation,
 } from 'src/actions/animals';
 
 import {
@@ -11,13 +10,12 @@ import {
 
 import { getInfoBirthDate } from 'src/utils';
 
-import AnimalModification from 'src/components/AnimalModification';
+import AnimalCreation from 'src/components/AnimalCreation';
 
 /**
  * To display data in the component
  */
 const mapStateToProps = (state) => ({
-  actualName: state.animals.actualName,
   animalModificationName: state.animals.name,
   animalModificationBirthdate: getInfoBirthDate(state.animals.birthdate),
   animalModificationStatus: state.animals.status,
@@ -30,9 +28,7 @@ const mapStateToProps = (state) => ({
   animalModificationNacCohabitation: state.animals.nacCohabitation,
   animalModificationUnknownCohabitation: state.animals.unknownCohabitation,
   animalModificationdescription: state.animals.description,
-  animalModificationPicture: state.animals.actualPicture,
-  animalsList: state.animals.animalsList,
-  modificationStatus: state.animals.modificationStatus,
+  creationStatus: state.animals.modificationStatus,
   racesList: state.animals.racesList,
   sheltersList: state.shelter.sheltersList,
 });
@@ -44,8 +40,8 @@ const mapDispatchToProps = (dispatch) => ({
   /**
    * Action which will save the update of the informations for an animal
    */
-  saveUpdateAnimal: () => {
-    const action = animalUpdated();
+  saveCreationAnimal: () => {
+    const action = animalCreation();
     dispatch(action);
   },
 
@@ -67,15 +63,7 @@ const mapDispatchToProps = (dispatch) => ({
 
     dispatch(action);
   },
-
-  /**
-   * Action which will set the modification status to true to update an animal informations
-   */
-  updateAnimal: (animalToUpdate) => {
-    const action = updateAnimal(animalToUpdate);
-    dispatch(action);
-  },
 });
 
 // === Assistant creation for the component
-export default connect(mapStateToProps, mapDispatchToProps)(AnimalModification);
+export default connect(mapStateToProps, mapDispatchToProps)(AnimalCreation);

@@ -14,6 +14,7 @@ import RegisterShelter from 'src/containers/RegisterShelter';
 import Animal from 'src/containers/Animal';
 import AnimalsListModification from 'src/containers/AnimalsListModification';
 import AnimalModification from 'src/containers/AnimalModification';
+import AnimalCreation from 'src/containers/AnimalCreation';
 import Shelter from 'src/containers/Shelter';
 import ShelterModification from 'src/containers/ShelterModification';
 import SheltersList from 'src/containers/SheltersList';
@@ -63,6 +64,9 @@ const App = ({
           <Switch>
             <Route path="/adoption">
               <Adoption />
+            </Route>
+            <Route path="/animal/creation/:idShelter">
+              <AnimalCreation />
             </Route>
             <Route path="/animal/modification/:idAnimal/:idShelter">
               <AnimalModification />

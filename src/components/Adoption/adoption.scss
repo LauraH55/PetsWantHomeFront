@@ -40,18 +40,23 @@
         margin: vars.$gutter;
         font-family: vars.$avenir;
         font-size: 1.2rem;
-        padding: 1em;
+        overflow: hidden;
       
         h3 {
           text-align: center;
           height: 20%;
           font-family: vars.$pomme;
           font-size: 4rem;
-          margin: 1rem 0;
+          margin: 1rem;
         }
 
         h4 {
           line-height: vars.$lineHeight;
+          margin: 0 1rem;
+
+          &:last-of-type {
+            margin-bottom: 0.5rem;
+          }
         }
   
         .card-image {

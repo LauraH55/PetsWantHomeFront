@@ -1,16 +1,15 @@
 // == Import npm
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 
-import './animalModification.scss';
+import './animalCreation.scss';
 
 // == Component
 /**
  * Component to update the informations of one animal
- * @param {Function} saveUpdateAnimal Function to save the updates of the animal
+ * @param {Function} saveCreationAnimal Function to save the updates of the animal
  * @param {Function} changeField Function to update the input fields' value
- * @param {String} actualName Actual name of the animal
  * @param {String} animalModificationName Name of the animal
  * @param {String} animalModificationBirthdate Birthdate of the animal
  * @param {String/Number} animalModificationStatus Adoption status of the animal
@@ -23,16 +22,12 @@ import './animalModification.scss';
  * @param {String/Boolean} animalModificationNacCohabitation Cohabitation possibility with NACs
  * @param {String/Boolean} animalModificationUnknownCohabitation Unknow Cohabitation possibility
  * @param {String} animalModificationdescription Description of the animal
- * @param {String} animalModificationPicture Picture of the animal
- * @param {Array} animalsList List of all the animals
- * @param {Function} updateAnimal Function to set the informations of the actual animal in the form
- * @param {Number} modificationStatus Status to display success/error message
+ * @param {Number} creationStatus Status to display success/error message
  * @param {Array} racesList List of all the animals races
  */
-const AnimalModification = ({
-  saveUpdateAnimal,
+const AnimalCreation = ({
+  saveCreationAnimal,
   changeField,
-  actualName,
   animalModificationName,
   animalModificationBirthdate,
   animalModificationStatus,
@@ -45,35 +40,15 @@ const AnimalModification = ({
   animalModificationNacCohabitation,
   animalModificationUnknownCohabitation,
   animalModificationdescription,
-  animalModificationPicture,
-  animalsList,
-  updateAnimal,
-  modificationStatus,
+  creationStatus,
   racesList,
   sheltersList,
 }) => {
-  const { idAnimal, idShelter } = useParams();
-  let animalToUpdate = animalsList.find((animal) => animal.id == idAnimal);
-
-  console.log(animalToUpdate.species.id);
-  console.log(animalToUpdate);
-
-  if (animalToUpdate.species.id == 3) {
-    animalToUpdate = {
-      ...animalToUpdate,
-      race: {
-        id: 0,
-      },
-    };
-  }
-
-  useEffect(() => {
-    updateAnimal(animalToUpdate);
-  }, []);
+  const { idShelter } = useParams();
 
   const submitForm = (evt) => {
     evt.preventDefault();
-    saveUpdateAnimal();
+    saveCreationAnimal();
   };
 
   const backToList = () => {
@@ -87,14 +62,14 @@ const AnimalModification = ({
   return (
     <div className="animalModification">
       <h1>{shelterName.name}</h1>
-      <h2>Modification de {actualName}</h2>
-      {modificationStatus === 1
+      <h2>Création d'un nouvel animal</h2>
+      {creationStatus === 1
       && (
-        <h3 className="updateSuccess">Les modifications ont bien été prise en compte</h3>
+        <h3 className="updateSuccess">La création du profil de {animalModificationName} a bien été effectuée</h3>
       )}
-      {modificationStatus === 2
+      {creationStatus === 2
       && (
-        <h3 className="updateFail">Les modifications n'ont pas été prise en compte</h3>
+        <h3 className="updateFail">Il y a eu une erreur lors de la création du profil de {animalModificationName}</h3>
       )}
       <form className="AnimalModificationForm" onSubmit={submitForm}>
         <div className="field field-name">
@@ -297,18 +272,18 @@ const AnimalModification = ({
             />
           </label>
         </div>
-        <div className="picture">
+        {/* <div className="picture">
           <img className="shelter-image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${animalModificationPicture}`} alt="#" />
-        </div>
-        <button type="button" onClick={submitForm}>Enregistrer</button>
+        </div> */}
+        <button type="button" onClick={saveCreationAnimal}>Enregistrer</button>
       </form>
-      {modificationStatus === 1
+      {creationStatus === 1
       && (
-        <h3 className="updateSuccess">Les modifications ont bien été prise en compte</h3>
+        <h3 className="updateSuccess">La création du profil de {animalModificationName} a bien été effectuée</h3>
       )}
-      {modificationStatus === 2
+      {creationStatus === 2
       && (
-        <h3 className="updateFail">Les modifications n'ont pas été prise en compte</h3>
+        <h3 className="updateFail">Il y a eu une erreur lors de la création du profil de {animalModificationName}</h3>
       )}
       <div className="backToList">
         <button type="button" onClick={backToList}>Retour à la liste</button>
@@ -318,10 +293,9 @@ const AnimalModification = ({
 };
 
 // == PropTypes validation
-AnimalModification.propTypes = {
-  saveUpdateAnimal: PropTypes.func.isRequired,
+AnimalCreation.propTypes = {
+  saveCreationAnimal: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
-  actualName: PropTypes.string.isRequired,
   animalModificationName: PropTypes.string.isRequired,
   animalModificationBirthdate: PropTypes.string.isRequired,
   animalModificationStatus: PropTypes.oneOfType([
@@ -361,13 +335,10 @@ AnimalModification.propTypes = {
     PropTypes.bool,
   ]).isRequired,
   animalModificationdescription: PropTypes.string.isRequired,
-  animalModificationPicture: PropTypes.string.isRequired,
-  animalsList: PropTypes.array.isRequired,
-  updateAnimal: PropTypes.func.isRequired,
-  modificationStatus: PropTypes.number.isRequired,
+  creationStatus: PropTypes.number.isRequired,
   racesList: PropTypes.array.isRequired,
   sheltersList: PropTypes.array.isRequired,
 };
 
 // == Export
-export default AnimalModification;
+export default AnimalCreation;
