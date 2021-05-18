@@ -98,13 +98,15 @@ const animalsMiddleware = (store) => (next) => (action) => {
       } = store.getState().animals;
 
       const statusNumber = parseInt(status, 10);
+      const genderNumber = parseInt(gender, 10);
+      const raceNumber = parseInt(race, 10);
 
       const data = {
         name,
         birthdate,
         status: statusNumber,
-        gender,
-        race,
+        gender: genderNumber,
+        race: raceNumber,
         species,
         catCohabitation,
         childCohabitation,
@@ -226,6 +228,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
 
       const statusNumber = parseInt(status, 10);
       const raceNumber = parseInt(race, 10);
+      const genderNumber = parseInt(gender, 10);
 
       // const data = {
       //   name, // not null
@@ -247,7 +250,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
       bodyFormData.append('name', name);
       bodyFormData.append('birthdate', birthdate);
       bodyFormData.append('status', statusNumber);
-      bodyFormData.append('gender', gender);
+      bodyFormData.append('gender', genderNumber);
       bodyFormData.append('race_id', raceNumber);
       // if (raceNumber === 0) {
       //   bodyFormData.append('race_id', null);

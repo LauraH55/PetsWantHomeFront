@@ -16,13 +16,22 @@ import './adoption.scss';
 const Adoption = ({
   animals,
   genderFilter,
+  speciesFilter,
+  genderValue,
+  speciesValue,
 }) => (
   <main className="adoption">
     <h1>Adoption des animaux</h1>
-    <select onChange={(evt) => genderFilter(evt.target.value)}>
+    <select value={genderValue} onChange={(evt) => genderFilter(evt.target.value)}>
       <option value="0">- Sélectionnez -</option>
       <option value="1">Mâle</option>
       <option value="2">Femelle</option>
+    </select>
+    <select value={speciesValue} onChange={(evt) => speciesFilter(evt.target.value)}>
+      <option value="0">- Sélectionnez -</option>
+      <option value="1">Chat</option>
+      <option value="2">Chien</option>
+      <option value="3">NAC</option>
     </select>
     <div className="cards">
       {animals.map((animal) => (
@@ -57,6 +66,9 @@ Adoption.propTypes = {
     }).isRequired,
   ).isRequired,
   genderFilter: PropTypes.func.isRequired,
+  speciesFilter: PropTypes.func.isRequired,
+  genderValue: PropTypes.string.isRequired,
+  speciesValue: PropTypes.string.isRequired,
 };
 
 // == Export

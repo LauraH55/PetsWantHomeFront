@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { genderFilter } from 'src/actions/animals';
+import { genderFilter, speciesFilter } from 'src/actions/animals';
 
 import Adoption from 'src/components/Adoption';
 
@@ -17,9 +17,16 @@ const mapStateToProps = (state) => {
   // if (state.animals.filterGender == 0) {
   //   filteredByGender = adoptingAnimals;
   // }
+  console.log(state.animals.filterGender);
+  console.log(state.animals.filterSpecies);
 
+  console.log(filteredByGender);
   if (state.animals.filterGender != 0) {
-    filteredByGender = adoptingAnimals.filter((animal) => animal.gender == state.animals.filterGender);
+    filteredByGender = filteredByGender.filter((animal) => animal.gender == state.animals.filterGender);
+  }
+
+  if (state.animals.filterSpecies != 0) {
+    filteredByGender = filteredByGender.filter((animal) => animal.species.id == state.animals.filterSpecies);
   }
 
 
@@ -36,6 +43,8 @@ const mapStateToProps = (state) => {
 
   return {
     animals,
+    genderValue: state.animals.filterGender,
+    speciesValue: state.animals.filterSpecies,
   };
 };
 
@@ -45,6 +54,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   genderFilter: (genderValue) => {
     const action = genderFilter(genderValue);
+    dispatch(action);
+  },
+
+  speciesFilter: (speciesValue) => {
+    const action = speciesFilter(speciesValue);
     dispatch(action);
   },
 });
