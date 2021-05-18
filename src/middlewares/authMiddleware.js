@@ -101,8 +101,6 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           localStorage.setItem('shelterID', response.data.shelter.id);
-          // store.dispatch(logOut());
-          // store.dispatch(logIn());
           window.location = '/';
         })
         .catch((error) => {

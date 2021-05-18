@@ -43,6 +43,34 @@ export const getDate = (date) => {
   return fullDate.toFixed();
 };
 
+/**
+ * Function to get the birthdate readable for humans like DD/MM/YYYY
+ * @param {String} date Selected date to formate
+ * @returns {String} Date in a specific format
+ */
+export const getBirthdateDate = (date) => {
+  const event = new Date(date);
+  const month = event.getMonth() + 1 < 10 ? `0${event.getMonth() + 1}` : event.getMonth() + 1;
+  const fullDate = `${event.getDate()}/${month}/${event.getFullYear()}`;
+  return fullDate;
+};
+
+/**
+ * Function to get the birthdate for input date like YYYY-MM-DD
+ * @param {String} date Selected date formate
+ * @returns {String} Date in a specific format
+ */
+export const getInfoBirthDate = (date) => {
+  const event = new Date(date);
+
+  const day = event.getDate() < 10 ? `0${event.getDate()}` : event.getDate();
+  const month = event.getMonth() + 1 < 10 ? `0${event.getMonth() + 1}` : event.getMonth() + 1;
+
+  const birdthdate = `${event.getFullYear()}-${month}-${day}`;
+
+  return birdthdate;
+};
+
 //! PETITE QUESTION CONCERNANT LA POSSIBILITE D'AVOIR UN AUTRE NUMERO QUE 1 OU 2 ??
 /**
  * Function to get the gender of the animal male/female

@@ -12,6 +12,9 @@ import LoginForm from 'src/containers/LoginForm';
 import Register from 'src/containers/Register';
 import RegisterShelter from 'src/containers/RegisterShelter';
 import Animal from 'src/containers/Animal';
+import AnimalsListModification from 'src/containers/AnimalsListModification';
+import AnimalModification from 'src/containers/AnimalModification';
+import AnimalCreation from 'src/containers/AnimalCreation';
 import Shelter from 'src/containers/Shelter';
 import ShelterModification from 'src/containers/ShelterModification';
 import SheltersList from 'src/containers/SheltersList';
@@ -35,11 +38,13 @@ const App = ({
   loadRandomAnimals,
   loadShelters,
   loading,
+  loadRaces,
 }) => {
   useEffect(() => {
     loadAnimals();
     loadRandomAnimals();
     loadShelters();
+    loadRaces();
   }, []);
 
   return (
@@ -60,11 +65,20 @@ const App = ({
             <Route path="/adoption">
               <Adoption />
             </Route>
+            <Route path="/animal/creation/:idShelter">
+              <AnimalCreation />
+            </Route>
+            <Route path="/animal/modification/:idAnimal/:idShelter">
+              <AnimalModification />
+            </Route>
             <Route path="/animal/:slug">
               <Animal />
             </Route>
             <Route path="/shelter/modification/:idShelter">
               <ShelterModification />
+            </Route>
+            <Route path="/animals-modification/shelter/:idShelter">
+              <AnimalsListModification />
             </Route>
             <Route path="/shelter/:idShelter">
               <Shelter />
@@ -114,6 +128,7 @@ App.propTypes = {
   loadRandomAnimals: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   loadShelters: PropTypes.func.isRequired,
+  loadRaces: PropTypes.func.isRequired,
 };
 
 // == Export

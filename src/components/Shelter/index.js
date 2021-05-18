@@ -48,11 +48,16 @@ const Shelter = ({
                     Modifier le profil
                   </button>
                 </a> */}
-                <a href="http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/myshelter/">
+                {/* <a href="http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/back/myshelter/">
                   <button className="shelter-button" type="button">
                     Gestion des animaux
                   </button>
-                </a>
+                </a> */}
+                <Link to={`/animals-modification/shelter/${idShelter}`}>
+                  <button className="shelter-button" type="button">
+                    Gestion des animaux
+                  </button>
+                </Link>
               </div>
             )}
           </div>
