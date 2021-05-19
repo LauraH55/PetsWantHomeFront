@@ -22,6 +22,10 @@ import {
   loader,
 } from 'src/actions/auth';
 
+import {
+  validationAnimalCreation,
+} from 'src/utils/validation';
+
 const URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
 const URLBIS = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public';
 
@@ -209,75 +213,85 @@ const animalsMiddleware = (store) => (next) => (action) => {
       break;
     }
 
+    /**
+     * Request to create the profile of a new animal
+     */
     case ANIMAL_CREATION: {
       const {
-        name,
         birthdate,
         status,
         gender,
         species,
-        race,
-        catCohabitation,
-        childCohabitation,
-        dogCohabitation,
-        nacCohabitation,
-        unknownCohabitation,
-        description,
         picture,
       } = store.getState().animals;
 
+      const name = store.getState().animals.name.trim();
+      const animalName = name.slice(0, 1);
+      const animalNameCapitalized = name.replace(animalName, animalName.toUpperCase());
+
+      const description = store.getState().animals.description.trim();
+      const animalDescription = description.slice(0, 1);
+      const animalDescriptionCapitalized = description.replace(animalDescription, animalDescription.toUpperCase());
+
+      const animalRace = store.getState().animals.race === '' ? 0 : store.getState().animals.race;
+      const animalCatCohabitation = store.getState().animals.catCohabitation !== '';
+      const animalChildCohabitation = store.getState().animals.childCohabitation !== '';
+      const animalDogCohabitation = store.getState().animals.dogCohabitation !== '';
+      const animalNacCohabitation = store.getState().animals.nacCohabitation !== '';
+      const animalUnknownCohabitation = store.getState().animals.unknownCohabitation !== '';
+
+      const validation = validationAnimalCreation(
+        animalNameCapitalized,
+        status,
+        gender,
+        species,
+        animalRace,
+        animalCatCohabitation,
+        animalChildCohabitation,
+        animalDogCohabitation,
+        animalNacCohabitation,
+        animalUnknownCohabitation,
+        animalDescriptionCapitalized,
+        picture,
+      );
+
+      console.log(validation);
+
       const statusNumber = parseInt(status, 10);
-      const raceNumber = parseInt(race, 10);
+      const raceNumber = parseInt(animalRace, 10);
       const genderNumber = parseInt(gender, 10);
 
-      // const data = {
-      //   name, // not null
-      //   birthdate, // NULL
-      //   status: statusNumber, // not null
-      //   gender, // not null
-      //   race, // NULL
-      //   species, // not null
-      //   catCohabitation, // not null
-      //   childCohabitation, // not null
-      //   dogCohabitation, // not null
-      //   nacCohabitation, // not null
-      //   unknownCohabitation, // not null
-      //   description, // not null
-      //   picture, // not null
-      // };
-
       const bodyFormData = new FormData();
-      bodyFormData.append('name', name);
+      bodyFormData.append('name', animalName);
       bodyFormData.append('birthdate', birthdate);
       bodyFormData.append('status', statusNumber);
       bodyFormData.append('gender', genderNumber);
       bodyFormData.append('race_id', raceNumber);
-      // if (raceNumber === 0) {
-      //   bodyFormData.append('race_id', null);
-      // }
       bodyFormData.append('species_id', species);
-      bodyFormData.append('cat_cohabitation', catCohabitation);
-      bodyFormData.append('child_cohabitation', childCohabitation);
-      bodyFormData.append('dog_cohabitation', dogCohabitation);
-      bodyFormData.append('nac_cohabitation', nacCohabitation);
-      bodyFormData.append('unknown_cohabitation', unknownCohabitation);
-      bodyFormData.append('description', description);
+      bodyFormData.append('cat_cohabitation', animalCatCohabitation);
+      bodyFormData.append('child_cohabitation', animalChildCohabitation);
+      bodyFormData.append('dog_cohabitation', animalDogCohabitation);
+      bodyFormData.append('nac_cohabitation', animalNacCohabitation);
+      bodyFormData.append('unknown_cohabitation', animalUnknownCohabitation);
+      bodyFormData.append('description', animalDescription);
       bodyFormData.append('picture', picture);
 
-      axios({
-        method: 'post',
-        url: `${URL}/animal/create`,
-        data: bodyFormData,
-        headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}` },
-      })
-        .then((response) => {
-          console.log(response);
-          store.dispatch(saveUpdateAnimal());
-        })
-        .catch((error) => {
-          console.log('ANIMAL CREATION ERROR', error);
-          store.dispatch(animalUpdateError());
-        });
+      
+
+      // axios({
+      //   method: 'post',
+      //   url: `${URL}/animal/create`,
+      //   data: bodyFormData,
+      //   headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}` },
+      // })
+      //   .then((response) => {
+      //     console.log(response);
+      //     store.dispatch(saveUpdateAnimal());
+      //   })
+      //   .catch((error) => {
+      //     console.log('ANIMAL CREATION ERROR', error);
+      //     store.dispatch(animalUpdateError());
+      //   });
       next(action);
       break;
     }

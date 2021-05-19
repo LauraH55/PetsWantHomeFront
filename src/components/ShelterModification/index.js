@@ -71,7 +71,7 @@ const ShelterModification = ({
           id="shelterModificationName"
           value={shelterModificationName}
           placeholder="Nom du refuge"
-          pattern="[a-zA-Z0-9 '-_éèàçêîïëôù]{1,}"
+          pattern="[a-zA-Zéèàçêîïëôù\-' ]{1,}"
           required="true"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />
@@ -81,7 +81,7 @@ const ShelterModification = ({
           id="shelterModificationAdress"
           value={shelterModificationAdress}
           placeholder="Adresse du refuge"
-          pattern="[a-zA-Z0-9 '-_éèàçêîïëôù]{1,}"
+          pattern="[a-zA-Zéèàçêîïëôù\-' ]{1,}"
           required="true"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />

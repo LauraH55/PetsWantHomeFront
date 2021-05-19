@@ -188,7 +188,8 @@ const AnimalCreation = ({
                 value={animalModificationRace}
                 onChange={(evt) => (changeField(evt.target.value, 'animalModificationRace'))}
               >
-                <option value="0">- Sélectionnez -</option>
+                <option value="">- Sélectionnez -</option>
+                <option value="0">Non Connue</option>
                 {racesToDisplay.map((race) => (
                   <option key={race.id} value={race.id}>
                     {race.name}
