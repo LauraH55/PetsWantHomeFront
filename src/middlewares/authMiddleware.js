@@ -66,6 +66,8 @@ const authMiddleware = (store) => (next) => (action) => {
         email,
         name,
         address,
+        city,
+        zip,
         phoneNumber,
         picture,
       } = store.getState().shelter;
@@ -74,23 +76,10 @@ const authMiddleware = (store) => (next) => (action) => {
       bodyFormData.append('email', email);
       bodyFormData.append('name', name);
       bodyFormData.append('address', address);
+      bodyFormData.append('city', city);
+      bodyFormData.append('zip', zip);
       bodyFormData.append('phone_number', phoneNumber);
       bodyFormData.append('picture', picture);
-
-      // axios.post(myurl,
-      //   {
-      //     email,
-      //     name,
-      //     address,
-      //     phoneNumber: phoneNumber,
-      //     picture,
-      //   },
-      //   {
-      //     headers : {
-      //       'Content-type': "multipart/form-data",
-      //       Authorization: `Bearer ${localStorage.getItem('token')}`,
-      //     },
-      // })
 
       axios({
         method: 'post',

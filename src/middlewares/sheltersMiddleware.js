@@ -45,6 +45,8 @@ const sheltersMiddleware = (store) => (next) => (action) => {
         shelterModificationId,
         shelterModificationName,
         shelterModificationAdress,
+        shelterModificationCity,
+        shelterModificationZip,
         shelterModificationPhone,
         shelterModificationEmail,
         shelterModificationPicture,
@@ -54,6 +56,8 @@ const sheltersMiddleware = (store) => (next) => (action) => {
       const data = {
         name: shelterModificationName,
         address: shelterModificationAdress,
+        city: shelterModificationCity,
+        zip: shelterModificationZip,
         phone_number: shelterModificationPhone,
         email: shelterModificationEmail,
       };

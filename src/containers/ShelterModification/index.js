@@ -19,6 +19,8 @@ const mapStateToProps = (state) => ({
   shelters: state.shelter.sheltersList,
   shelterModificationName: state.shelter.shelterModificationName,
   shelterModificationAdress: state.shelter.shelterModificationAdress,
+  shelterModificationCity: state.shelter.shelterModificationCity,
+  shelterModificationZip: state.shelter.shelterModificationZip,
   shelterModificationPhone: state.shelter.shelterModificationPhone,
   shelterModificationEmail: state.shelter.shelterModificationEmail,
   shelterUpdateError: state.shelter.shelterUpdateError,

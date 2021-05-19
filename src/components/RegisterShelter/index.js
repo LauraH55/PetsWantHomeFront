@@ -14,6 +14,8 @@ import './registershelter.scss';
  * @param {String} email Email of the new shelter
  * @param {String} name Name of the new shelter
  * @param {String} address Address of the new shelter
+ * @param {String} city City of the new shelter
+ * @param {String} zip Zip code of the new shelter
  * @param {String} phoneNumber Phone number of the new shelter
  * @param {Function} changeField Function to update the input fields' value
  * @param {Function} handleLogin Function to log in the actual user
@@ -23,6 +25,8 @@ const RegisterShelter = ({
   email,
   name,
   address,
+  city,
+  zip,
   phoneNumber,
   changeField,
   handleLogin,
@@ -45,14 +49,24 @@ const RegisterShelter = ({
         />
         <RegisterShelterField
           name="address"
-          type="address"
           placeholder="Adresse"
           manageChange={(value, identifier) => (changeField(value, identifier))}
           value={address}
         />
         <RegisterShelterField
+          name="zip"
+          placeholder="Code postal"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+          value={zip}
+        />
+        <RegisterShelterField
+          name="city"
+          placeholder="Ville du refuge"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+          value={city}
+        />
+        <RegisterShelterField
           name="phone_number"
-          type="phone_number"
           placeholder="Numéro de téléphone"
           manageChange={(value, identifier) => (changeField(value, identifier))}
           value={phoneNumber}
@@ -96,6 +110,8 @@ RegisterShelter.propTypes = {
   name: PropTypes.string.isRequired,
 
   address: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  zip: PropTypes.string.isRequired,
   /** value for the email */
   phoneNumber: PropTypes.string.isRequired,
 };

@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 
+import ShelterModificationField from './ShelterModificationfield';
+
 import './shelterModification.scss';
 
 // == Component
@@ -11,6 +13,8 @@ import './shelterModification.scss';
  * @param {Array} shelters List of all the shelters
  * @param {String} shelterModificationName Updating shelter name
  * @param {String} shelterModificationAdress Updating shelter address
+ * @param {String} shelterModificationCity Updating shelter city
+ * @param {String} shelterModificationZip Updating shelter zip code
  * @param {String} shelterModificationPhone Updating shelter phone number
  * @param {String} shelterModificationEmail Updating shelter email
  * @param {Function} loadProfile Function to load the profile informations in the state
@@ -23,6 +27,8 @@ const ShelterModification = ({
   shelters,
   shelterModificationName,
   shelterModificationAdress,
+  shelterModificationCity,
+  shelterModificationZip,
   shelterModificationPhone,
   shelterModificationEmail,
   loadProfile,
@@ -34,6 +40,8 @@ const ShelterModification = ({
 
   // eslint-disable-next-line eqeqeq
   const shelter = shelters.find((shel) => shel.id == idShelter);
+
+  console.log(shelter);
 
   useEffect(() => {
     loadProfile(shelter);
@@ -50,71 +58,96 @@ const ShelterModification = ({
       <h2>Modification du refuge</h2>
       {shelterUpdateError === 1
       && (
-        <h3 className="updateFail">Les modifications n'ont pas été prise en compte</h3>
+        <h3 className="updateFail">Les modifications n'ont pas été prise en compte.</h3>
       )}
       {shelterUpdateError === 2
       && (
-        <h3 className="updateSuccess">Les modifications ont bien été prise en compte</h3>
+        <h3 className="updateSuccess">Les modifications ont bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
       )}
       <form className="modificationForm" onSubmit={submitForm}>
-        <div className="field field-name">
-          <label htmlFor="shelterModificationName">Nom :
-            <input
-              id="shelterModificationName"
-              type="text"
-              value={shelterModificationName}
-              placeholder="Nom du refuge"
-              onChange={(evt) => (changeField(evt.target.value, 'shelterModificationName'))}
-            />
-          </label>
-        </div>
-        <div className="field field-adress">
-          <label htmlFor="shelterModificationAdress">Adresse :
-            <input
-              id="shelterModificationAdress"
-              type="text"
-              value={shelterModificationAdress}
-              placeholder="Adresse du refuge"
-              onChange={(evt) => (changeField(evt.target.value, 'shelterModificationAdress'))}
-            />
-          </label>
-        </div>
-        <div className="field field-phoneNumber">
-          <label htmlFor="shelterModificationPhone">Numéro de téléphone :
-            <input
-              id="shelterModificationPhone"
-              type="text"
-              value={shelterModificationPhone}
-              placeholder="Numéro de téléphone"
-              onChange={(evt) => (changeField(evt.target.value, 'shelterModificationPhone'))}
-            />
-          </label>
-        </div>
-        <div className="field field-email">
-          <label htmlFor="shelterModificationEmail">Email du refuge :
-            <input
-              id="shelterModificationEmail"
-              type="text"
-              value={shelterModificationEmail}
-              placeholder="Adresse Email"
-              onChange={(evt) => (changeField(evt.target.value, 'shelterModificationEmail'))}
-            />
-          </label>
-        </div>
-        <div className="field field-picture">
-          <label htmlFor="shelterModificationPicture">Photo du refuge :
-            <input
-              id="shelterModificationPicture"
-              type="file"
-              placeholder="Photo du refuge"
-              onChange={(evt) => (changeField(evt.target.files[0], 'shelterModificationPicture'))}
-            />
-          </label>
-        </div>
+        <ShelterModificationField
+          name="name"
+          label="Nom"
+          id="shelterModificationName"
+          value={shelterModificationName}
+          placeholder="Nom du refuge"
+          pattern="[a-zA-Z0-9 '-_éèàçêîïëôù]{1,}"
+          required="true"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+        />
+        <ShelterModificationField
+          name="address"
+          label="Adresse"
+          id="shelterModificationAdress"
+          value={shelterModificationAdress}
+          placeholder="Adresse du refuge"
+          pattern="[a-zA-Z0-9 '-_éèàçêîïëôù]{1,}"
+          required="true"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+        />
+        <ShelterModificationField
+          name="zip"
+          label="Code postal"
+          id="shelterModificationZip"
+          value={shelterModificationZip}
+          placeholder="Code postal du refuge"
+          pattern="[0-9]{5}"
+          required="true"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+        />
+        <ShelterModificationField
+          name="city"
+          label="Ville"
+          id="shelterModificationCity"
+          value={shelterModificationCity}
+          placeholder="Ville du refuge"
+          pattern="[a-zA-Zéèàçêîïëôù\-' ]{1,}"
+          required="true"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+        />
+        <ShelterModificationField
+          name="phoneNumber"
+          label="Numéro de téléphone (au format 0123456789)"
+          id="shelterModificationPhone"
+          value={shelterModificationPhone}
+          placeholder="Numéro de téléphone du refuge"
+          pattern="[0-9]{10}"
+          required="true"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+        />
+        <ShelterModificationField
+          name="email"
+          type="email"
+          label="Email du refuge"
+          id="shelterModificationEmail"
+          value={shelterModificationEmail}
+          placeholder="Adresse Email du refuge"
+          pattern="[a-z0-9-.]{1,}@[a-z0-9]{1,}\.[a-z]{1,}"
+          required="true"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+        />
+        <ShelterModificationField
+          name="picture"
+          label="Photo du refuge"
+          id="shelterModificationPicture"
+          type="file"
+          value=""
+          accept="image/*"
+          placeholder="Photo du refuge"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+        />
         <button type="submit" className="saveChanges">
           Enregistrer
         </button>
       </form>
+      {shelterUpdateError === 1
+      && (
+        <h3 className="updateFail">Les modifications n'ont pas été prise en compte.</h3>
+      )}
+      {shelterUpdateError === 2
+      && (
+        <h3 className="updateSuccess">Les modifications ont bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
+      )}
       <Link to={`/shelter/${idShelter}`} className="backLink">
         <button type="button" className="backList">
           Retour à la liste
@@ -129,6 +162,8 @@ ShelterModification.propTypes = {
   shelters: PropTypes.array.isRequired,
   shelterModificationName: PropTypes.string.isRequired,
   shelterModificationAdress: PropTypes.string.isRequired,
+  shelterModificationCity: PropTypes.string.isRequired,
+  shelterModificationZip: PropTypes.string.isRequired,
   shelterModificationPhone: PropTypes.string.isRequired,
   shelterModificationEmail: PropTypes.string.isRequired,
   loadProfile: PropTypes.func.isRequired,
