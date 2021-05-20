@@ -60,7 +60,7 @@ const AnimalCreation = ({
   const shelterName = sheltersList.find((shelter) => shelter.id == idShelter);
 
   return (
-    <div className="animalModification">
+    <div className="animalCreation">
       <h1>{shelterName.name}</h1>
       <h2>Création d'un nouvel animal</h2>
       {creationStatus === 1
