@@ -8,6 +8,7 @@ import {
   GENDER_FILTER,
   SPECIES_FILTER,
   ANIMAL_UPDATE_ERRORS_ARRAY,
+  RACES_FILTER,
 } from 'src/actions/animals';
 
 import {
@@ -45,6 +46,7 @@ const initialState = {
   errorsArray: {},
   filterGender: 0,
   filterSpecies: 0,
+  filterRaces: 0,
 };
 
 function animalsReducer(state = initialState, action) {
@@ -163,22 +165,40 @@ function animalsReducer(state = initialState, action) {
         picture: action.name === 'animalModificationPicture' ? action.newValue : state.picture,
       };
 
+    /**
+     * display the array of errors when updating/creating an animal profile
+     */
     case ANIMAL_UPDATE_ERRORS_ARRAY:
       return {
         ...state,
         errorsArray: action.errorsArray,
       };
 
+    /**
+     * Filter the animals by gender
+     */
     case GENDER_FILTER:
       return {
         ...state,
         filterGender: action.genderValue,
       };
 
+    /**
+     * Filter the animals by species
+     */
     case SPECIES_FILTER:
       return {
         ...state,
         filterSpecies: action.speciesValue,
+      };
+
+    /**
+     * Filter the animals by races
+     */
+    case RACES_FILTER:
+      return {
+        ...state,
+        filterRaces: action.racesValue,
       };
 
     default:

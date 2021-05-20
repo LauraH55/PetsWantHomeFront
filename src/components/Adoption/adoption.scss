@@ -16,6 +16,28 @@
     color: vars.$footerColor;
   }
 
+  .filters {
+    width: 80%;
+    margin-top: 1.5rem;
+
+    select {
+      background-color: vars.$footerColor;
+      padding: 0.5rem 1rem;
+      color: white;
+      border-radius: 0.3em;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      width: 100%;
+    }  
+  }
+
+  p {
+    font-family: vars.$avenir;
+    width: 60%;
+    text-align: center;
+    margin-top: 8rem;
+  }
+
   .cards {
     display: flex;
     justify-content: center;
@@ -69,6 +91,20 @@
       &:hover {
         transform: scale(1.1);
       }
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .adoption {
+    .filters {
+      display: flex;
+      justify-content: space-evenly;
+
+      select {
+        margin-bottom: unset;
+        width: unset;
+      }  
     }
   }
 }

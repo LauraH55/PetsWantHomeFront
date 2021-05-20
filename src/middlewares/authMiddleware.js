@@ -12,6 +12,7 @@ import {
   logOut,
   logIn,
   loader,
+  regError,
 } from 'src/actions/auth';
 
 import {
@@ -22,6 +23,7 @@ import {
 
 import {
   validationShelter,
+  validationUser,
 } from 'src/utils/validator';
 
 const API_URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
@@ -134,39 +136,39 @@ const authMiddleware = (store) => (next) => (action) => {
      */
     case NEW_USER: {
       const {
-        email,
         password,
         confirmPassword,
       } = store.getState().register;
+      const email = store.getState().register.email.trim();
 
-      const newUser = {
+      const validation = validationUser(
         email,
         password,
-      };
+        confirmPassword,
+      );
 
-      if (password === confirmPassword) {
+      if (validation.validate) {
+        const newUser = {
+          email,
+          password,
+        };
+
         axios.post(`${API_URL}/register`, newUser)
           .then((response) => {
             console.log(response);
-            // window.location = '/login';
             store.dispatch(logIn());
           })
           .catch((error) => {
             console.log('NEW USER ERROR : ', error.response);
 
             if (error.response.status == 500) {
-              store.dispatch(emailError());
-            }
-            else {
-              store.dispatch(passwordError());
+              store.dispatch(regError(5));
             }
           });
       }
       else {
-        console.log('Les mots de passe saisis ne sont pas identiques !');
-        store.dispatch(passwordError());
+        store.dispatch(regError(validation.errors));
       }
-
       next(action);
       break;
     }

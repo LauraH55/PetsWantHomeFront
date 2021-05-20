@@ -16,8 +16,7 @@ import './register.scss';
  * @param {String} confirmPassword Confirmation password of the new user
  * @param {Function} changeField Function to update the input fields' value
  * @param {Function} handleLogin Function to log in the new user after registration
- * @param {Boolean} emailError Boolean to display or not the email error message
- * @param {Boolean} passwordError Boolean to display or not the password error message
+ * @param {Number} regError Number of the error message to display
  */
 const Register = ({
   email,
@@ -25,8 +24,7 @@ const Register = ({
   confirmPassword,
   changeField,
   handleLogin,
-  emailError,
-  passwordError,
+  regError,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -52,7 +50,13 @@ const Register = ({
           manageChange={(value, identifier) => (changeField(value, identifier))}
           value={password}
         />
-        <p>Minimum 8 caractères, dont au moins un chiffre, une majuscule et un symbole</p>
+        <p>Minimum 8 caractères, dont au moins :</p>
+        <ul>
+          <li>une lettre minuscule</li>
+          <li>une lettre Majuscule</li>
+          <li>un chiffre</li>
+          <li>un caractère spécial parmi -+!*$@%</li>
+        </ul>
         <RegisterField
           name="confirmPassword"
           type="password"
@@ -60,13 +64,21 @@ const Register = ({
           manageChange={(value, identifier) => (changeField(value, identifier))}
           value={confirmPassword}
         />
-        {emailError
+        {regError === 2
+          && (
+            <div className="error">Format de l'adresse e-mail invalide !</div>
+          )}
+        {regError === 3
+          && (
+            <div className="error">Format du mot de passe, ou confirmation, incorrect !</div>
+          )}
+        {regError === 4
+          && (
+            <div className="error">Format de l'e-mail et du mot de passe, ou confirmation, invalides !</div>
+          )}
+        {regError === 5
           && (
             <div className="error"> Cette adresse e-mail est déjà utilisée !</div>
-          )}
-        {passwordError
-          && (
-            <div className="error">Mot de passe incorrect !</div>
           )}
         <button
           type="submit"
@@ -94,8 +106,7 @@ Register.propTypes = {
   handleLogin: PropTypes.func.isRequired,
 
   confirmPassword: PropTypes.string.isRequired,
-  emailError: PropTypes.bool.isRequired,
-  passwordError: PropTypes.bool.isRequired,
+  regError: PropTypes.number.isRequired,
 };
 
 // == Export

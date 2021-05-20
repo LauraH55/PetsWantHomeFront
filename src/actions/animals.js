@@ -16,6 +16,7 @@ export const ANIMAL_CREATION = 'ANIMAL_CREATION';
 export const ANIMAL_UPDATE_ERRORS_ARRAY = 'ANIMAL_UPDATE_ERRORS_ARRAY';
 export const GENDER_FILTER = 'GENDER_FILTER';
 export const SPECIES_FILTER = 'SPECIES_FILTER';
+export const RACES_FILTER = 'RACES_FILTER';
 
 // === Action Creators
 
@@ -165,12 +166,29 @@ export const animalUpdateErrorsArray = (errorsArray) => ({
   errorsArray,
 });
 
+/**
+ * Action to filter to list of animals by gender
+ * @param {String} genderValue 
+ */
 export const genderFilter = (genderValue) => ({
   type: GENDER_FILTER,
   genderValue,
 });
 
+/**
+ * Action to filter to list of animals by species
+ * @param {String} speciesValue
+ */
 export const speciesFilter = (speciesValue) => ({
   type: SPECIES_FILTER,
   speciesValue,
+});
+
+/**
+ * Action to filter to list of animals by races
+ * @param {String} racesValue
+ */
+export const racesFilter = (racesValue) => ({
+  type: RACES_FILTER,
+  racesValue,
 });

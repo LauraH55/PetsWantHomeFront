@@ -155,3 +155,49 @@ export const validationShelter = (
 
   return valid ? { validate: true } : { validate: false, errors: errors };
 };
+
+/**
+ * Validation for the form of registration for a new user
+ * @param {String} email Email address of the new user
+ * @param {String} password Password of the new user
+ * @param {String} confirmPassword Confirmation password for the new user
+ * @returns A boolean as an answer of the validation with or without the number of the error message
+ *        If returns 2 : Invalid email
+ *        If returns 3 : Invalid password
+ *        If returns 4 : Invalid email & password
+ */
+export const validationUser = (
+  email,
+  password,
+  confirmPassword,
+) => {
+  let valid = true;
+  let errors = 0;
+
+  const regMail = new RegExp('^[a-zA-Z0-9.-]+@[a-z]{1,}.[a-z]{1,}$');
+  const regPassword = new RegExp('^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*$@%_])([-+!*$@%\\w]{8,15})$');
+
+  if (!regMail.test(email)) {
+    valid = false;
+    errors += 2;
+  }
+
+  if (!regPassword.test(password)) {
+    valid = false;
+    errors += 3;
+  }
+
+  if (password !== confirmPassword) {
+    valid = false;
+    errors += 4;
+  }
+
+  if (errors === 3 || errors === 4 || errors === 7) {
+    errors = 3;
+  }
+  else if (errors === 5 || errors === 6 || errors === 9) {
+    errors = 4;
+  }
+
+  return valid ? { validate: true } : { validate: false, errors: errors };
+};
