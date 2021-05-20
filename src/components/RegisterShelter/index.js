@@ -14,18 +14,24 @@ import './registershelter.scss';
  * @param {String} email Email of the new shelter
  * @param {String} name Name of the new shelter
  * @param {String} address Address of the new shelter
+ * @param {String} city City of the new shelter
+ * @param {String} zip Zip code of the new shelter
  * @param {String} phoneNumber Phone number of the new shelter
  * @param {Function} changeField Function to update the input fields' value
  * @param {Function} handleLogin Function to log in the actual user
  *        so he can have access to the shelter profile
+ * @param {Number} shelterUpdateError Number which displays or not the error message
  */
 const RegisterShelter = ({
   email,
   name,
   address,
+  city,
+  zip,
   phoneNumber,
   changeField,
   handleLogin,
+  shelterUpdateError,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -35,8 +41,16 @@ const RegisterShelter = ({
 
   return (
     <div className="register-shelter-form">
+      <h1 className="register-shelter-form-title">Inscription du refuge</h1>
+      {shelterUpdateError === 1
+      && (
+        <h3 className="updateSuccess">La création du refuge a bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
+      )}
+      {shelterUpdateError === 2
+      && (
+        <h3 className="updateFail">La création du refuge pas été prise en compte.</h3>
+      )}
       <form autoComplete="off" className="register-shelter-form-element" onSubmit={handleSubmit}>
-        <h1 className="register-shelter-form-title">Inscription du refuge</h1>
         <RegisterShelterField
           name="name"
           placeholder="Nom"
@@ -45,14 +59,24 @@ const RegisterShelter = ({
         />
         <RegisterShelterField
           name="address"
-          type="address"
           placeholder="Adresse"
           manageChange={(value, identifier) => (changeField(value, identifier))}
           value={address}
         />
         <RegisterShelterField
+          name="zip"
+          placeholder="Code postal"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+          value={zip}
+        />
+        <RegisterShelterField
+          name="city"
+          placeholder="Ville du refuge"
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+          value={city}
+        />
+        <RegisterShelterField
           name="phone_number"
-          type="phone_number"
           placeholder="Numéro de téléphone"
           manageChange={(value, identifier) => (changeField(value, identifier))}
           value={phoneNumber}
@@ -77,6 +101,14 @@ const RegisterShelter = ({
           Valider
         </button>
       </form>
+      {shelterUpdateError === 1
+      && (
+        <h3 className="updateSuccess">La création du refuge a bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
+      )}
+      {shelterUpdateError === 2
+      && (
+        <h3 className="updateFail">La création du refuge pas été prise en compte.</h3>
+      )}
     </div>
   );
 };
@@ -96,8 +128,11 @@ RegisterShelter.propTypes = {
   name: PropTypes.string.isRequired,
 
   address: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  zip: PropTypes.string.isRequired,
   /** value for the email */
   phoneNumber: PropTypes.string.isRequired,
+  shelterUpdateError: PropTypes.number.isRequired,
 };
 
 // == Export

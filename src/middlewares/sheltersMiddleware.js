@@ -8,11 +8,16 @@ import {
   shelterUpdateSuccess,
   updateShelterImage,
   UPDATE_SHELTER_IMAGE,
+  shelterErrorsArray,
 } from 'src/actions/shelters';
 
 import {
   loader,
 } from 'src/actions/auth';
+
+import {
+  validationShelter,
+} from 'src/utils/validator';
 
 const URL_FETCH_SHELTERS = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelters';
 const MODIFICATION_URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelter/update';
@@ -42,44 +47,67 @@ const sheltersMiddleware = (store) => (next) => (action) => {
      */
     case SUBMIT_SHELTER_MODIFICATION: {
       const {
-        shelterModificationId,
-        shelterModificationName,
-        shelterModificationAdress,
-        shelterModificationPhone,
-        shelterModificationEmail,
         shelterModificationPicture,
         shelterPicture,
       } = store.getState().shelter;
 
-      const data = {
-        name: shelterModificationName,
-        address: shelterModificationAdress,
-        phone_number: shelterModificationPhone,
-        email: shelterModificationEmail,
-      };
+      const address = store.getState().shelter.shelterModificationAdress.trim();
+      const zip = store.getState().shelter.shelterModificationZip.trim();
+      const phoneNumber = store.getState().shelter.shelterModificationPhone.trim();
+      const email = store.getState().shelter.shelterModificationEmail.trim();
 
-      axios({
-        method: 'patch',
-        url: MODIFICATION_URL,
-        data,
-        headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
-      })
-        .then((response) => {
-          console.log(response);
-          if (shelterModificationPicture === shelterPicture) {
-            store.dispatch(shelterUpdateSuccess());
-            setTimeout(() => {
-              window.location = `/shelter/${shelterModificationId}`;
-            }, 2000);
-          }
-          else {
-            store.dispatch(updateShelterImage());
-          }
+      const name = store.getState().shelter.shelterModificationName.trim();
+
+      const city = store.getState().shelter.shelterModificationCity.trim();
+      const refugeCity = city.slice(0, 1);
+      const refugeCityCapitalized = city.replace(refugeCity, refugeCity.toUpperCase());
+
+      const validation = validationShelter(
+        name,
+        address,
+        zip,
+        refugeCityCapitalized,
+        phoneNumber,
+        email,
+        shelterPicture,
+        false,
+      );
+
+      if (validation.validate) {
+        const data = {
+          name,
+          address,
+          city: refugeCityCapitalized,
+          zip,
+          phone_number: phoneNumber,
+          email,
+        };
+
+        axios({
+          method: 'patch',
+          url: MODIFICATION_URL,
+          data,
+          headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
         })
-        .catch((error) => {
-          console.log('SHELTER UPDATE ERROR : ', error);
-          store.dispatch(shelterUpdateError());
-        });
+          .then((response) => {
+            console.log(response);
+            if (shelterModificationPicture === shelterPicture) {
+              store.dispatch(shelterUpdateSuccess());
+            }
+            else {
+              store.dispatch(updateShelterImage());
+            }
+          })
+          .catch((error) => {
+            console.log('SHELTER UPDATE ERROR : ', error.response.data.violations);
+            store.dispatch(shelterUpdateError());
+            store.dispatch(shelterErrorsArray(error.response.data.violations));
+          });
+      }
+      else {
+        store.dispatch(shelterUpdateError());
+        store.dispatch(shelterErrorsArray(validation.errors));
+      }
       next(action);
       break;
     }

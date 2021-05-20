@@ -8,7 +8,7 @@ export const SUBMIT_SHELTER_MODIFICATION = 'SUBMIT_SHELTER_MODIFICATION';
 export const UPDATE_SHELTER_IMAGE = 'UPDATE_SHELTER_IMAGE';
 export const SHELTER_UPDATE_ERROR = 'SHELTER_UPDATE_ERROR';
 export const SHELTER_UPDATE_SUCCESS = 'SHELTER_UPDATE_SUCCESS';
-
+export const SHELTER_ERRORS_ARRAY = 'SHELTER_ERRORS_ARRAY';
 // === Action Creators
 
 /**
@@ -69,4 +69,13 @@ export const shelterUpdateError = () => ({
  */
 export const shelterUpdateSuccess = () => ({
   type: SHELTER_UPDATE_SUCCESS,
+});
+
+/**
+ * 
+ * Action to display the error messages when creating/updating a shelter
+ */
+export const shelterErrorsArray = (errorsArray) => ({
+  type: SHELTER_ERRORS_ARRAY,
+  errorsArray,
 });

@@ -1,15 +1,14 @@
 import {
   UPDATE_USER_FIELD,
-  EMAIL_ERROR,
-  PASSWORD_ERROR,
+  REG_ERROR,
+  LOG_IN,
 } from 'src/actions/auth';
 
 const initialState = {
   email: '',
   password: '',
   confirmPassword: '',
-  emailError: false,
-  passwordError: false,
+  regError: 0,
 };
 
 function registerReducer(state = initialState, action) {
@@ -27,21 +26,23 @@ function registerReducer(state = initialState, action) {
       };
 
     /**
-     * Display the email error message
+     * Set the error number when the registration fails
      */
-    case EMAIL_ERROR:
+    case REG_ERROR:
       return {
         ...state,
-        emailError: true,
+        password: '',
+        confirmPassword: '',
+        regError: action.errorNumber,
       };
 
     /**
-     * Display the password error message
+     * Set the success message when the registration is good
      */
-    case PASSWORD_ERROR:
+    case LOG_IN:
       return {
         ...state,
-        passwordError: true,
+        regError: 1,
       };
 
     default:

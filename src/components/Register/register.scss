@@ -18,8 +18,26 @@
     margin: vars.$gutter;
     padding: vars.$gutter;
 
+    @media (min-width: 800px) {
+      max-width: 50%;
+      min-width: 50%;  
+    }
+  
     p {
-      font-size: 0.8rem;
+      font-size: 1rem;
+      text-align: left;
+      margin: 0.5rem 0;
+    }
+
+    ul {
+      font-size: 1rem;
+      text-align: left;
+      list-style: circle;
+
+      li {
+        margin-bottom: 0.2rem;
+        margin-left: 1.3rem;
+      }
     }
 
     .register-form-title {
@@ -47,6 +65,7 @@
   }
 
   .error {
+    margin: 0 auto;
     color: vars.$footerColor;
     font-size: 1.5rem;
     font-weight: bold;

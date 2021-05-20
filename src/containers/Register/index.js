@@ -14,8 +14,7 @@ const mapStateToProps = (state) => ({
   email: state.register.email,
   password: state.register.password,
   confirmPassword: state.register.confirmPassword,
-  emailError: state.register.emailError,
-  passwordError: state.register.passwordError,
+  regError: state.register.regError,
 });
 
 /**
@@ -28,7 +27,6 @@ const mapDispatchToProps = (dispatch) => ({
    * @param {string} fieldName : Name of the input
    */
   changeField: (value, fieldName) => {
-    console.log(fieldName, value);
     const action = updateUserField(value, fieldName);
     dispatch(action);
   },

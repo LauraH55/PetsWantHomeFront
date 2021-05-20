@@ -19,20 +19,38 @@ const Adoption = ({
   speciesFilter,
   genderValue,
   speciesValue,
+  racesValue,
+  racesFilter,
+  racesList,
 }) => (
   <main className="adoption">
     <h1>Adoption des animaux</h1>
-    <select value={genderValue} onChange={(evt) => genderFilter(evt.target.value)}>
-      <option value="0">- Sélectionnez -</option>
-      <option value="1">Mâle</option>
-      <option value="2">Femelle</option>
-    </select>
-    <select value={speciesValue} onChange={(evt) => speciesFilter(evt.target.value)}>
-      <option value="0">- Sélectionnez -</option>
-      <option value="1">Chat</option>
-      <option value="2">Chien</option>
-      <option value="3">NAC</option>
-    </select>
+    <div className="filters">
+      <select value={genderValue} onChange={(evt) => genderFilter(evt.target.value)}>
+        <option value="0">Tous les genres</option>
+        <option value="1">Mâle</option>
+        <option value="2">Femelle</option>
+      </select>
+      <select value={speciesValue} onChange={(evt) => speciesFilter(evt.target.value)}>
+        <option value="0">Toutes les espèces</option>
+        <option value="1">Chat</option>
+        <option value="2">Chien</option>
+        <option value="3">NAC</option>
+      </select>
+      {speciesValue != 3
+      && (
+        <select value={racesValue} onChange={(evt) => racesFilter(evt.target.value)}>
+          <option value="0">Toutes les races</option>
+          {racesList.map((race) => (
+            <option key={race.id} value={race.id}>{race.name}</option>
+          ))}
+        </select>
+      )}
+    </div>
+    {animals.length === 0
+    && (
+      <p>Il n'y a aucun animaux disponibles dans vos critères de recherche..!</p>
+    )}
     <div className="cards">
       {animals.map((animal) => (
         <Link
@@ -67,8 +85,20 @@ Adoption.propTypes = {
   ).isRequired,
   genderFilter: PropTypes.func.isRequired,
   speciesFilter: PropTypes.func.isRequired,
-  genderValue: PropTypes.string.isRequired,
-  speciesValue: PropTypes.string.isRequired,
+  genderValue: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
+  speciesValue: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
+  racesValue: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
+  racesFilter: PropTypes.func.isRequired,
+  racesList: PropTypes.array.isRequired,
 };
 
 // == Export

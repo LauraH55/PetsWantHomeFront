@@ -87,3 +87,19 @@ export const getGender = (gender) => {
   }
   return result;
 };
+
+/**
+ * Function to get the creation date of an animal's profile readable for humans
+ * @param {String} date Date of the creation of the animal with the informatic date format
+ * @returns {String} The date of the creation of the profile of the animal
+ */
+export const getCreationDate = (date) => {
+  const event = new Date(date);
+
+  const day = event.getDate() < 10 ? `0${event.getDate()}` : event.getDate();
+  const month = event.getMonth() + 1 < 10 ? `0${event.getMonth() + 1}` : event.getMonth() + 1;
+
+  const creationDate = `${day}/${month}/${event.getFullYear()}`;
+
+  return creationDate;
+};

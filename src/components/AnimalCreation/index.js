@@ -60,7 +60,7 @@ const AnimalCreation = ({
   const shelterName = sheltersList.find((shelter) => shelter.id == idShelter);
 
   return (
-    <div className="animalModification">
+    <div className="animalCreation">
       <h1>{shelterName.name}</h1>
       <h2>Création d'un nouvel animal</h2>
       {creationStatus === 1
@@ -188,7 +188,8 @@ const AnimalCreation = ({
                 value={animalModificationRace}
                 onChange={(evt) => (changeField(evt.target.value, 'animalModificationRace'))}
               >
-                <option value="0">- Sélectionnez -</option>
+                <option value="">- Sélectionnez -</option>
+                <option value="0">Non Connue</option>
                 {racesToDisplay.map((race) => (
                   <option key={race.id} value={race.id}>
                     {race.name}
