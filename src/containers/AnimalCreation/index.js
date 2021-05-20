@@ -38,7 +38,7 @@ const mapStateToProps = (state) => ({
  */
 const mapDispatchToProps = (dispatch) => ({
   /**
-   * Action which will save the update of the informations for an animal
+   * Action which will save the creation of the informations for the new animal
    */
   saveCreationAnimal: () => {
     const action = animalCreation();

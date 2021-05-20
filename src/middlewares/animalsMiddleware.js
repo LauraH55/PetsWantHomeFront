@@ -16,6 +16,7 @@ import {
   SET_ARCHIVE_ANIMAL,
   ANIMAL_CREATION,
   animalCreated,
+  animalUpdateErrorsArray,
 } from 'src/actions/animals';
 
 import {
@@ -85,69 +86,106 @@ const animalsMiddleware = (store) => (next) => (action) => {
     case ANIMAL_UPDATED: {
       const {
         id,
-        name,
         birthdate,
         status,
         gender,
         species,
-        race,
-        catCohabitation,
-        childCohabitation,
-        dogCohabitation,
-        nacCohabitation,
-        unknownCohabitation,
-        description,
         picture,
         actualPicture,
       } = store.getState().animals;
 
+      const name = store.getState().animals.name.trim();
+      const animalName = name.slice(0, 1);
+      const animalNameCapitalized = name.replace(animalName, animalName.toUpperCase());
+
+      const description = store.getState().animals.description.trim();
+      const animalDescription = description.slice(0, 1);
+      const animalDescriptionCapitalized = description.replace(
+        animalDescription, animalDescription.toUpperCase(),
+      );
+
+      const animalRace = store.getState().animals.race === '' ? '0' : store.getState().animals.race;
+      const animalCatCohabitation = store.getState().animals.catCohabitation !== '';
+      const animalChildCohabitation = store.getState().animals.childCohabitation !== '';
+      const animalDogCohabitation = store.getState().animals.dogCohabitation !== '';
+      const animalNacCohabitation = store.getState().animals.nacCohabitation !== '';
+      const animalUnknownCohabitation = store.getState().animals.unknownCohabitation !== '';
+
       const statusNumber = parseInt(status, 10);
+      const raceNumber = parseInt(animalRace, 10);
       const genderNumber = parseInt(gender, 10);
-      const raceNumber = parseInt(race, 10);
+      const speciesNumber = parseInt(species, 10);
 
-      const data = {
-        name,
-        birthdate,
-        status: statusNumber,
-        gender: genderNumber,
-        race: raceNumber,
-        species,
-        catCohabitation,
-        childCohabitation,
-        dogCohabitation,
-        nacCohabitation,
-        unknownCohabitation,
-        description,
-      };
+      /**
+       * Function to validation the data when creating/updating animal informations
+       * The last value must be true when creating an animal or false when updating
+       * It concerns the picture
+       */
+      const validation = validationAnimalCreation(
+        animalNameCapitalized,
+        statusNumber,
+        genderNumber,
+        speciesNumber,
+        raceNumber,
+        animalCatCohabitation,
+        animalChildCohabitation,
+        animalDogCohabitation,
+        animalNacCohabitation,
+        animalUnknownCohabitation,
+        animalDescriptionCapitalized,
+        picture,
+        false,
+      );
 
-      axios({
-        method: 'patch',
-        url: `${URL}/animal/${id}/update`,
-        data,
-        headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
-      })
-        .then((response) => {
-          console.log(response);
-          if (picture === actualPicture) {
-            store.dispatch(saveUpdateAnimal());
-            axios({
-              method: 'get',
-              url: `${URL}/animal/${id}`,
-              headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
-            })
-              .then((responseBis) => {
-                store.dispatch(updateAnimal(responseBis.data));
-              })
-              .catch();
-          }
-          else {
-            store.dispatch(updateAnimalImage());
-          }
+      if (validation.validate) {
+        const data = {
+          name: animalNameCapitalized,
+          birthdate,
+          status: statusNumber,
+          gender: genderNumber,
+          race: raceNumber,
+          species,
+          catCohabitation: animalCatCohabitation,
+          childCohabitation: animalChildCohabitation,
+          dogCohabitation: animalDogCohabitation,
+          nacCohabitation: animalNacCohabitation,
+          unknownCohabitation: animalUnknownCohabitation,
+          description: animalDescriptionCapitalized,
+        };
+
+        axios({
+          method: 'patch',
+          url: `${URL}/animal/${id}/update`,
+          data,
+          headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
         })
-        .catch((error) => {
-          console.log('ANIMAL UPDATE ERROR', error);
-          store.dispatch(animalUpdateError());
-        });
+          .then((response) => {
+            console.log(response);
+            if (picture === actualPicture || (picture === '' && actualPicture === '')) {
+              store.dispatch(saveUpdateAnimal());
+              axios({
+                method: 'get',
+                url: `${URL}/animal/${id}`,
+                headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
+              })
+                .then((responseBis) => {
+                  store.dispatch(updateAnimal(responseBis.data));
+                })
+                .catch();
+            }
+            else {
+              store.dispatch(updateAnimalImage());
+            }
+          })
+          .catch((error) => {
+            console.log('ANIMAL UPDATE ERROR', error.response.data.violations);
+            store.dispatch(animalUpdateError());
+          });
+      }
+      else {
+        store.dispatch(animalUpdateErrorsArray(validation.errors));
+        store.dispatch(animalUpdateError());
+      }
       next(action);
       break;
     }
@@ -231,21 +269,33 @@ const animalsMiddleware = (store) => (next) => (action) => {
 
       const description = store.getState().animals.description.trim();
       const animalDescription = description.slice(0, 1);
-      const animalDescriptionCapitalized = description.replace(animalDescription, animalDescription.toUpperCase());
+      const animalDescriptionCapitalized = description.replace(
+        animalDescription, animalDescription.toUpperCase(),
+      );
 
-      const animalRace = store.getState().animals.race === '' ? 0 : store.getState().animals.race;
+      const animalRace = store.getState().animals.race === '' ? '0' : store.getState().animals.race;
       const animalCatCohabitation = store.getState().animals.catCohabitation !== '';
       const animalChildCohabitation = store.getState().animals.childCohabitation !== '';
       const animalDogCohabitation = store.getState().animals.dogCohabitation !== '';
       const animalNacCohabitation = store.getState().animals.nacCohabitation !== '';
       const animalUnknownCohabitation = store.getState().animals.unknownCohabitation !== '';
 
+      const statusNumber = parseInt(status, 10);
+      const raceNumber = parseInt(animalRace, 10);
+      const genderNumber = parseInt(gender, 10);
+      const speciesNumber = parseInt(species, 10);
+
+      /**
+       * Function to validation the data when creating/updating animal informations
+       * The last value must be true when creating an animal or false when updating
+       * It concerns the picture
+       */
       const validation = validationAnimalCreation(
         animalNameCapitalized,
-        status,
-        gender,
-        species,
-        animalRace,
+        statusNumber,
+        genderNumber,
+        speciesNumber,
+        raceNumber,
         animalCatCohabitation,
         animalChildCohabitation,
         animalDogCohabitation,
@@ -253,45 +303,45 @@ const animalsMiddleware = (store) => (next) => (action) => {
         animalUnknownCohabitation,
         animalDescriptionCapitalized,
         picture,
+        true,
       );
 
-      console.log(validation);
+      if (validation.validate) {
+        const bodyFormData = new FormData();
+        bodyFormData.append('name', animalName);
+        bodyFormData.append('birthdate', birthdate);
+        bodyFormData.append('status', statusNumber);
+        bodyFormData.append('gender', genderNumber);
+        bodyFormData.append('race_id', raceNumber);
+        bodyFormData.append('species_id', species);
+        bodyFormData.append('cat_cohabitation', animalCatCohabitation);
+        bodyFormData.append('child_cohabitation', animalChildCohabitation);
+        bodyFormData.append('dog_cohabitation', animalDogCohabitation);
+        bodyFormData.append('nac_cohabitation', animalNacCohabitation);
+        bodyFormData.append('unknown_cohabitation', animalUnknownCohabitation);
+        bodyFormData.append('description', animalDescription);
+        bodyFormData.append('picture', picture);
 
-      const statusNumber = parseInt(status, 10);
-      const raceNumber = parseInt(animalRace, 10);
-      const genderNumber = parseInt(gender, 10);
-
-      const bodyFormData = new FormData();
-      bodyFormData.append('name', animalName);
-      bodyFormData.append('birthdate', birthdate);
-      bodyFormData.append('status', statusNumber);
-      bodyFormData.append('gender', genderNumber);
-      bodyFormData.append('race_id', raceNumber);
-      bodyFormData.append('species_id', species);
-      bodyFormData.append('cat_cohabitation', animalCatCohabitation);
-      bodyFormData.append('child_cohabitation', animalChildCohabitation);
-      bodyFormData.append('dog_cohabitation', animalDogCohabitation);
-      bodyFormData.append('nac_cohabitation', animalNacCohabitation);
-      bodyFormData.append('unknown_cohabitation', animalUnknownCohabitation);
-      bodyFormData.append('description', animalDescription);
-      bodyFormData.append('picture', picture);
-
-      
-
-      // axios({
-      //   method: 'post',
-      //   url: `${URL}/animal/create`,
-      //   data: bodyFormData,
-      //   headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}` },
-      // })
-      //   .then((response) => {
-      //     console.log(response);
-      //     store.dispatch(saveUpdateAnimal());
-      //   })
-      //   .catch((error) => {
-      //     console.log('ANIMAL CREATION ERROR', error);
-      //     store.dispatch(animalUpdateError());
-      //   });
+        axios({
+          method: 'post',
+          url: `${URL}/animal/create`,
+          data: bodyFormData,
+          headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}` },
+        })
+          .then((response) => {
+            console.log(response);
+            store.dispatch(saveUpdateAnimal());
+          })
+          .catch((error) => {
+            console.log('ANIMAL CREATION ERROR', error);
+            store.dispatch(animalUpdateError());
+            store.dispatch(animalUpdateErrorsArray(error.response.data.violations));
+          });
+      }
+      else {
+        store.dispatch(animalUpdateErrorsArray(validation.errors));
+        store.dispatch(animalUpdateError());
+      }
       next(action);
       break;
     }

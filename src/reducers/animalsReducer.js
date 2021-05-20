@@ -7,6 +7,7 @@ import {
   SAVE_RACES,
   GENDER_FILTER,
   SPECIES_FILTER,
+  ANIMAL_UPDATE_ERRORS_ARRAY,
 } from 'src/actions/animals';
 
 import {
@@ -41,6 +42,7 @@ const initialState = {
   picture: '',
   actualPicture: '',
   modificationStatus: 0,
+  errorsArray: {},
   filterGender: 0,
   filterSpecies: 0,
 };
@@ -128,6 +130,7 @@ function animalsReducer(state = initialState, action) {
       return {
         ...state,
         modificationStatus: 1,
+        errorsArray: {},
       };
 
     /**
@@ -158,6 +161,12 @@ function animalsReducer(state = initialState, action) {
         unknownCohabitation: action.name === 'animalModificationUnknownCohabitation' ? action.newValue : state.unknownCohabitation,
         description: action.name === 'animalModificationdescription' ? action.newValue : state.description,
         picture: action.name === 'animalModificationPicture' ? action.newValue : state.picture,
+      };
+
+    case ANIMAL_UPDATE_ERRORS_ARRAY:
+      return {
+        ...state,
+        errorsArray: action.errorsArray,
       };
 
     case GENDER_FILTER:
