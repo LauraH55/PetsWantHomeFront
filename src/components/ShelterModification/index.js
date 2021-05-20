@@ -58,11 +58,11 @@ const ShelterModification = ({
       <h2>Modification du refuge</h2>
       {shelterUpdateError === 1
       && (
-        <h3 className="updateFail">Les modifications n'ont pas été prise en compte.</h3>
+        <h3 className="updateSuccess">Les modifications ont bien été prise en compte.</h3>
       )}
       {shelterUpdateError === 2
       && (
-        <h3 className="updateSuccess">Les modifications ont bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
+        <h3 className="updateFail">Les modifications n'ont pas été prise en compte.</h3>
       )}
       <form className="modificationForm" onSubmit={submitForm}>
         <ShelterModificationField
@@ -81,7 +81,7 @@ const ShelterModification = ({
           id="shelterModificationAdress"
           value={shelterModificationAdress}
           placeholder="Adresse du refuge"
-          pattern="[a-zA-Zéèàçêîïëôù\-' ]{1,}"
+          pattern="[a-zA-Z0-9éèàçêîïëôù\-' ]{1,}"
           required="true"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />
@@ -142,11 +142,11 @@ const ShelterModification = ({
       </form>
       {shelterUpdateError === 1
       && (
-        <h3 className="updateFail">Les modifications n'ont pas été prise en compte.</h3>
+        <h3 className="updateSuccess">Les modifications ont bien été prise en compte.</h3>
       )}
       {shelterUpdateError === 2
       && (
-        <h3 className="updateSuccess">Les modifications ont bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
+        <h3 className="updateFail">Les modifications n'ont pas été prise en compte.</h3>
       )}
       <Link to={`/shelter/${idShelter}`} className="backLink">
         <button type="button" className="backList">

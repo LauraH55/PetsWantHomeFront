@@ -7,6 +7,7 @@ import {
   SET_MODIFICATION_PROFILE,
   SHELTER_UPDATE_ERROR,
   SHELTER_UPDATE_SUCCESS,
+  SHELTER_ERRORS_ARRAY,
 } from 'src/actions/shelters';
 
 const initialState = {
@@ -28,6 +29,7 @@ const initialState = {
   shelterModificationPicture: '',
   shelterPicture: '',
   shelterUpdateError: 0,
+  errorsArray: {},
 };
 
 function shelterReducer(state = initialState, action) {
@@ -82,21 +84,31 @@ function shelterReducer(state = initialState, action) {
       };
 
     /**
-     * Display the error message if the update has failed
-     */
-    case SHELTER_UPDATE_ERROR:
-      return {
-        ...state,
-        shelterUpdateError: 1,
-      };
-
-    /**
      * Display the error message if the update has successed
      */
     case SHELTER_UPDATE_SUCCESS:
       return {
         ...state,
+        shelterUpdateError: 1,
+        errorsArray: {},
+      };
+
+    /**
+     * Display the error message if the update has failed
+     */
+    case SHELTER_UPDATE_ERROR:
+      return {
+        ...state,
         shelterUpdateError: 2,
+      };
+
+    /**
+     * Display the error messagesq when creating/updating a shelter
+     */
+    case SHELTER_ERRORS_ARRAY:
+      return {
+        ...state,
+        errorsArray: action.errorsArray,
       };
 
     default:

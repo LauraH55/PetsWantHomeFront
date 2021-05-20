@@ -20,6 +20,7 @@ import './registershelter.scss';
  * @param {Function} changeField Function to update the input fields' value
  * @param {Function} handleLogin Function to log in the actual user
  *        so he can have access to the shelter profile
+ * @param {Number} shelterUpdateError Number which displays or not the error message
  */
 const RegisterShelter = ({
   email,
@@ -30,6 +31,7 @@ const RegisterShelter = ({
   phoneNumber,
   changeField,
   handleLogin,
+  shelterUpdateError,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -39,8 +41,16 @@ const RegisterShelter = ({
 
   return (
     <div className="register-shelter-form">
+      <h1 className="register-shelter-form-title">Inscription du refuge</h1>
+      {shelterUpdateError === 1
+      && (
+        <h3 className="updateSuccess">La création du refuge a bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
+      )}
+      {shelterUpdateError === 2
+      && (
+        <h3 className="updateFail">La création du refuge pas été prise en compte.</h3>
+      )}
       <form autoComplete="off" className="register-shelter-form-element" onSubmit={handleSubmit}>
-        <h1 className="register-shelter-form-title">Inscription du refuge</h1>
         <RegisterShelterField
           name="name"
           placeholder="Nom"
@@ -91,6 +101,14 @@ const RegisterShelter = ({
           Valider
         </button>
       </form>
+      {shelterUpdateError === 1
+      && (
+        <h3 className="updateSuccess">La création du refuge a bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
+      )}
+      {shelterUpdateError === 2
+      && (
+        <h3 className="updateFail">La création du refuge pas été prise en compte.</h3>
+      )}
     </div>
   );
 };
@@ -114,6 +132,7 @@ RegisterShelter.propTypes = {
   zip: PropTypes.string.isRequired,
   /** value for the email */
   phoneNumber: PropTypes.string.isRequired,
+  shelterUpdateError: PropTypes.number.isRequired,
 };
 
 // == Export

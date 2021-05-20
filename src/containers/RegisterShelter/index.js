@@ -21,6 +21,7 @@ const mapStateToProps = (state) => ({
   zip: state.shelter.zip,
   phoneNumber: state.shelter.phone_number,
   picture: state.shelter.picture,
+  shelterUpdateError: state.shelter.shelterUpdateError,
 });
 
 /**

@@ -16,7 +16,13 @@ import {
 
 import {
   NEW_SHELTER_CREATION,
+  shelterUpdateError,
+  shelterErrorsArray,
 } from 'src/actions/shelters';
+
+import {
+  validationShelter,
+} from 'src/utils/validator';
 
 const API_URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
 const myurl = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelter/create';
@@ -63,39 +69,62 @@ const authMiddleware = (store) => (next) => (action) => {
      */
     case NEW_SHELTER_CREATION: {
       const {
-        email,
-        name,
-        address,
-        city,
-        zip,
-        phoneNumber,
         picture,
       } = store.getState().shelter;
 
-      const bodyFormData = new FormData();
-      bodyFormData.append('email', email);
-      bodyFormData.append('name', name);
-      bodyFormData.append('address', address);
-      bodyFormData.append('city', city);
-      bodyFormData.append('zip', zip);
-      bodyFormData.append('phone_number', phoneNumber);
-      bodyFormData.append('picture', picture);
+      const address = store.getState().shelter.address.trim();
+      const zip = store.getState().shelter.zip.trim();
+      const phoneNumber = store.getState().shelter.phoneNumber.trim();
+      const email = store.getState().shelter.email.trim();
 
-      axios({
-        method: 'post',
-        url: myurl,
-        data: bodyFormData,
-        headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}` },
-      })
-        .then((response) => {
-          console.log(response);
-          localStorage.setItem('shelterID', response.data.shelter.id);
-          window.location = '/';
+      const name = store.getState().shelter.name.trim();
+
+      const city = store.getState().shelter.city.trim();
+      const refugeCity = city.slice(0, 1);
+      const refugeCityCapitalized = city.replace(refugeCity, refugeCity.toUpperCase());
+
+      const validation = validationShelter(
+        name,
+        address,
+        zip,
+        refugeCityCapitalized,
+        phoneNumber,
+        email,
+        picture,
+        true,
+      );
+
+      if (validation.validate) {
+        const bodyFormData = new FormData();
+        bodyFormData.append('name', name);
+        bodyFormData.append('address', address);
+        bodyFormData.append('city', refugeCityCapitalized);
+        bodyFormData.append('zip', zip);
+        bodyFormData.append('phone_number', phoneNumber);
+        bodyFormData.append('email', email);
+        bodyFormData.append('picture', picture);
+
+        axios({
+          method: 'post',
+          url: myurl,
+          data: bodyFormData,
+          headers: { 'Content-Type': 'multipart/form-data', authorization: `Bearer ${localStorage.getItem('token')}` },
         })
-        .catch((error) => {
-          console.log('NEW SHELTER CREATION ERROR : ', error);
-        });
-
+          .then((response) => {
+            console.log(response);
+            localStorage.setItem('shelterID', response.data.shelter.id);
+            window.location = '/';
+          })
+          .catch((error) => {
+            console.log('NEW SHELTER CREATION ERROR : ', error.response.data.violations);
+            store.dispatch(shelterUpdateError());
+            store.dispatch(shelterErrorsArray(error.response.data.violations));
+          });
+      }
+      else {
+        store.dispatch(shelterUpdateError());
+        store.dispatch(shelterErrorsArray(validation.errors));
+      }
       next(action);
       break;
     }
@@ -123,7 +152,7 @@ const authMiddleware = (store) => (next) => (action) => {
             store.dispatch(logIn());
           })
           .catch((error) => {
-            console.log('NEW USER ERROR : ', error.response.status);
+            console.log('NEW USER ERROR : ', error.response);
 
             if (error.response.status == 500) {
               store.dispatch(emailError());

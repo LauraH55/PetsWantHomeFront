@@ -24,8 +24,8 @@ import {
 } from 'src/actions/auth';
 
 import {
-  validationAnimalCreation,
-} from 'src/utils/validation';
+  validationCreation,
+} from 'src/utils/validator';
 
 const URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
 const URLBIS = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public';
@@ -121,7 +121,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
        * The last value must be true when creating an animal or false when updating
        * It concerns the picture
        */
-      const validation = validationAnimalCreation(
+      const validation = validationCreation(
         animalNameCapitalized,
         statusNumber,
         genderNumber,
@@ -180,6 +180,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
           .catch((error) => {
             console.log('ANIMAL UPDATE ERROR', error.response.data.violations);
             store.dispatch(animalUpdateError());
+            store.dispatch(animalUpdateErrorsArray(error.response.data.violations));
           });
       }
       else {
@@ -290,7 +291,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
        * The last value must be true when creating an animal or false when updating
        * It concerns the picture
        */
-      const validation = validationAnimalCreation(
+      const validation = validationCreation(
         animalNameCapitalized,
         statusNumber,
         genderNumber,
@@ -333,7 +334,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
             store.dispatch(saveUpdateAnimal());
           })
           .catch((error) => {
-            console.log('ANIMAL CREATION ERROR', error);
+            console.log('ANIMAL CREATION ERROR', error.response.data.violations);
             store.dispatch(animalUpdateError());
             store.dispatch(animalUpdateErrorsArray(error.response.data.violations));
           });

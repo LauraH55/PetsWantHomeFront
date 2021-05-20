@@ -16,11 +16,11 @@
  *        or failed for other options
  * @param {String} description Description of the animal
  * @param {String} picture Picture of the animal, necessary when creating a new animal profile
- * @param {Boolean} animalPictureCreation Value when creating or updating a profile ;
+ * @param {Boolean} animalCreation Value when creating or updating a profile ;
  *        true when creating / false when updating
  * @returns A boolean as an answer of the validation with or without an array of all the errors
  */
-export const validationAnimalCreation = (
+export const validationCreation = (
   name,
   status,
   gender,
@@ -33,13 +33,13 @@ export const validationAnimalCreation = (
   unknownCohabitation,
   description,
   picture,
-  animalPictureCreation,
+  animalCreation,
 ) => {
   let valid = true;
   const errors = {};
 
   const regName = new RegExp('^[A-Z][ \'-]?[a-zA-Zéèêàçëöïäùô \'-]*$');
-  const regBio = new RegExp('^[a-zA-Z0-9éèêàçëöïäùô \':!?.;,"&/-]+$');
+  const regBio = new RegExp('^[a-zA-Z0-9éèêàçëöïäùô \':!?.;,"&-]+$');
 
   if (!regName.test(name)) {
     errors.name = 'Veuillez renseigner un nom correct';
@@ -61,7 +61,7 @@ export const validationAnimalCreation = (
     valid = false;
   }
 
-  if (picture === '' && animalPictureCreation) {
+  if (picture === '' && animalCreation) {
     errors.picture = 'Veuillez renseigner une photo avec un format correct';
     valid = false;
   }
@@ -84,6 +84,74 @@ export const validationAnimalCreation = (
   return valid ? { validate: true } : { validate: false, errors: errors };
 };
 
-export const validationCreationShelter = () => {
+/**
+ * Function of validation for the data entered when creating or updating a shelter
+ * The last value must be either true when creating a new shelter
+ * OR false when updating a shelter
+ * And it only concerns the picture which is necessary when creating a shelter but not when updating
+ * @param {String} name Name of the shelter
+ * @param {String} address Address of the shelter
+ * @param {String} zip Zip code of the shelter
+ * @param {String} city City of the shelter
+ * @param {String} phoneNumber Phone number of the shelter
+ * @param {String} email Email address of the shelter
+ * @param {String} picture Picture of the shelter
+ * @param {Boolean} shelterCreation Value when creating or updating a shelter for the picture
+ * @returns A boolean as an answer of the validation with or without an array of all the errors
+ */
+export const validationShelter = (
+  name,
+  address,
+  zip,
+  city,
+  phoneNumber,
+  email,
+  picture,
+  shelterCreation,
+) => {
+  let valid = true;
+  const errors = {};
 
+  const regName = new RegExp('^[a-zA-Z0-9éèêàçëöïäùô \'.-]+$');
+  const regZip = new RegExp('^[0-9]{5}$');
+  const regCity = new RegExp('^[A-Z][ \'-]?[a-zA-Zéèêàçëöïäùô \'-]*$');
+  const regPhone = new RegExp('^0[0-9]{9}$');
+  const regMail = new RegExp('^[a-zA-Z0-9.-]+@[a-z]{1,}.[a-z]{1,}$');
+
+  if (!regName.test(name)) {
+    valid = false;
+    errors.name = 'Veuillez renseigner un nom avec un format correct';
+  }
+
+  if (!regName.test(address)) {
+    valid = false;
+    errors.address = 'Veuillez renseigner une adresse avec un format correct';
+  }
+
+  if (!regZip.test(zip)) {
+    valid = false;
+    errors.zip = 'Veuillez renseigner un code postal avec format correct';
+  }
+
+  if (!regCity.test(city)) {
+    valid = false;
+    errors.city = 'Veuillez renseigner un nom de ville avec un format correct';
+  }
+
+  if (!regPhone.test(phoneNumber)) {
+    valid = false;
+    errors.phoneNumber = 'Veuillez renseigner un numéro de téléphone avec un format correct';
+  }
+
+  if (!regMail.test(email)) {
+    valid = false;
+    errors.email = 'Veuillez renseigner un email avec un format correct';
+  }
+
+  if (picture === '' && shelterCreation) {
+    valid = false;
+    errors.picture = 'Veuillez renseigner une photo avec un format correct';
+  }
+
+  return valid ? { validate: true } : { validate: false, errors: errors };
 };
