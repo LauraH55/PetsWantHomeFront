@@ -181,7 +181,11 @@ const authMiddleware = (store) => (next) => (action) => {
      * Request sent to delete the user account and all the informations associated
      */
     case DELETE_ACCOUNT:
-      axios.delete(`${API_URL}/user/delete`)
+      axios({
+        method: 'delete',
+        url: `${API_URL}/user/delete`,
+        headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
+      })
         .then((response) => {
           console.log(response);
           localStorage.setItem('regError', 2);

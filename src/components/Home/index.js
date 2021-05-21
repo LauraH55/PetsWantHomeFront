@@ -20,6 +20,9 @@ const Home = ({
   randomAnimals,
 }) => {
   const closeSuccess = () => {
+    if (localStorage.regError == 2) {
+      localStorage.clear();
+    }
     localStorage.removeItem('regError');
     window.location = '/';
   };
