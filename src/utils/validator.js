@@ -20,7 +20,7 @@
  *        true when creating / false when updating
  * @returns A boolean as an answer of the validation with or without an array of all the errors
  */
-export const validationCreation = (
+export const validationAnimal = (
   name,
   status,
   gender,
@@ -57,7 +57,7 @@ export const validationCreation = (
   }
 
   if (!(gender !== '' && (status == 1 || status == 2))) {
-    errors.status = 'Veuillez renseigner un genre correct';
+    errors.gender = 'Veuillez renseigner un genre correct';
     valid = false;
   }
 

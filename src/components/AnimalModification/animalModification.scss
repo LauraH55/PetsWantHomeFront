@@ -169,6 +169,14 @@
           width: 20px;
         }
       }
+
+      .error {
+        margin: -1rem 0 1.5rem;
+        color: vars.$footerColor;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: normal;
+      }  
     }
 
     .picture {

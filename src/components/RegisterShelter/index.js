@@ -21,6 +21,7 @@ import './registershelter.scss';
  * @param {Function} handleLogin Function to log in the actual user
  *        so he can have access to the shelter profile
  * @param {Number} shelterUpdateError Number which displays or not the error message
+ * @param {Object} errorsArray List of all the errors found during updating the fields
  */
 const RegisterShelter = ({
   email,

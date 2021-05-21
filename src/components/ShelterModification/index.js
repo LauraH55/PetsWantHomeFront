@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect, useParams } from 'react-router-dom';
 
-import ShelterModificationField from './ShelterModificationfield';
+import InputField from 'src/components/InputField';
 
 import './shelterModification.scss';
 
@@ -22,6 +22,7 @@ import './shelterModification.scss';
  * @param {Function} submitModification Function to submit the form
  *        and new informations for the shelter
  * @param {Number} shelterUpdateError Number which displays or not the error message
+ * @param {Object} errorsArray List of all the errors found during updating the fields
  */
 const ShelterModification = ({
   shelters,
@@ -71,7 +72,7 @@ const ShelterModification = ({
         <h3 className="updateFail">Les modifications n'ont pas été prise en compte.</h3>
       )}
       <form className="modificationForm" onSubmit={submitForm}>
-        <ShelterModificationField
+        <InputField
           name="name"
           label="Nom"
           id="shelterModificationName"
@@ -85,7 +86,7 @@ const ShelterModification = ({
           && (
             <div className="error">{errorsArray.name}</div>
           )}
-        <ShelterModificationField
+        <InputField
           name="address"
           label="Adresse"
           id="shelterModificationAdress"
@@ -99,7 +100,7 @@ const ShelterModification = ({
           && (
             <div className="error">{errorsArray.address}</div>
           )}
-        <ShelterModificationField
+        <InputField
           name="zip"
           label="Code postal"
           id="shelterModificationZip"
@@ -113,7 +114,7 @@ const ShelterModification = ({
           && (
             <div className="error">{errorsArray.zip}</div>
           )}
-        <ShelterModificationField
+        <InputField
           name="city"
           label="Ville"
           id="shelterModificationCity"
@@ -127,7 +128,7 @@ const ShelterModification = ({
           && (
             <div className="error">{errorsArray.city}</div>
           )}
-        <ShelterModificationField
+        <InputField
           name="phoneNumber"
           label="Numéro de téléphone (au format 0123456789)"
           id="shelterModificationPhone"
@@ -141,7 +142,7 @@ const ShelterModification = ({
           && (
             <div className="error">{errorsArray.phoneNumber}</div>
           )}
-        <ShelterModificationField
+        <InputField
           name="email"
           type="email"
           label="Email du refuge"
@@ -156,7 +157,7 @@ const ShelterModification = ({
           && (
             <div className="error">{errorsArray.email}</div>
           )}
-        <ShelterModificationField
+        <InputField
           name="picture"
           label="Photo du refuge"
           id="shelterModificationPicture"

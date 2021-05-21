@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams, Redirect } from 'react-router-dom';
 
+import InputField from 'src/components/InputField';
+
 import './animalModification.scss';
 
 // == Component
@@ -28,6 +30,7 @@ import './animalModification.scss';
  * @param {Function} updateAnimal Function to set the informations of the actual animal in the form
  * @param {Number} modificationStatus Status to display success/error message
  * @param {Array} racesList List of all the animals races
+ * @param {Object} errorsArray List of all the errors found during updating the fields
  */
 const AnimalModification = ({
   saveUpdateAnimal,
@@ -51,6 +54,7 @@ const AnimalModification = ({
   modificationStatus,
   racesList,
   sheltersList,
+  errorsArray,
 }) => {
   const { idAnimal, idShelter } = useParams();
 
@@ -101,17 +105,20 @@ const AnimalModification = ({
         <h3 className="updateFail">Les modifications n'ont pas été prise en compte</h3>
       )}
       <form className="AnimalModificationForm" onSubmit={submitForm}>
-        <div className="field field-name">
-          <label htmlFor="animalModificationName">Nom :
-            <input
-              id="animalModificationName"
-              type="text"
-              value={animalModificationName}
-              placeholder="Nom de l'animal"
-              onChange={(evt) => (changeField(evt.target.value, 'animalModificationName'))}
-            />
-          </label>
-        </div>
+        <InputField
+          name="name"
+          label="Nom"
+          id="animalModificationName"
+          value={animalModificationName}
+          placeholder="Nom de l'animal"
+          pattern="[a-zA-Zéèàçêîïëôù\-' ]{1,}"
+          required
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+        />
+        {errorsArray.name !== undefined
+        && (
+          <div className="error">{errorsArray.name}</div>
+        )}
         <div className="field field-birthdate">
           <label htmlFor="animalModificationBirthdate">Date de naissance :
             <input
@@ -146,6 +153,10 @@ const AnimalModification = ({
             />
             Adopté/e
           </label>
+          {errorsArray.status !== undefined
+          && (
+            <div className="error">{errorsArray.status}</div>
+          )}
         </div>
         <div className="field field-gender">
           <p>Genre :</p>
@@ -171,6 +182,10 @@ const AnimalModification = ({
             />
             Femelle
           </label>
+          {errorsArray.gender !== undefined
+          && (
+            <div className="error">{errorsArray.gender}</div>
+          )}
         </div>
         <div className="field field-species">
           <p>Expèce :</p>
@@ -207,6 +222,10 @@ const AnimalModification = ({
             />
             NAC
           </label>
+          {errorsArray.species !== undefined
+          && (
+            <div className="error">{errorsArray.species}</div>
+          )}
         </div>
         {animalModificationSpecies != 3
         && (
@@ -225,6 +244,10 @@ const AnimalModification = ({
                 ))}
               </select>
             </label>
+            {errorsArray.race !== undefined
+            && (
+              <div className="error">{errorsArray.race}</div>
+            )}
           </div>
         )}
         <div className="field field-cohabitation">
@@ -279,6 +302,10 @@ const AnimalModification = ({
             />
             Non Testé / Ne sais pas
           </label>
+          {errorsArray.cohabitation !== undefined
+          && (
+            <div className="error">{errorsArray.cohabitation}</div>
+          )}
         </div>
         <div className="field field-bio">
           <label htmlFor="animalModificationdescription">Description de l'animal :
@@ -287,9 +314,15 @@ const AnimalModification = ({
               value={animalModificationdescription}
               placeholder="Description de l'animal"
               spellCheck=""
+              required
+              pattern="[a-zA-Z0-9éèêàçëöïäùô \':!?.;,&-]{1,}"
               onChange={(evt) => (changeField(evt.target.value, 'animalModificationdescription'))}
             />
           </label>
+          {errorsArray.description !== undefined
+          && (
+            <div className="error">{errorsArray.description}</div>
+          )}
         </div>
         <div className="field field-picture">
           <label htmlFor="animalModificationPicture">Photo de l'animal :
@@ -300,6 +333,10 @@ const AnimalModification = ({
               onChange={(evt) => (changeField(evt.target.files[0], 'animalModificationPicture'))}
             />
           </label>
+          {errorsArray.picture !== undefined
+          && (
+            <div className="error">{errorsArray.picture}</div>
+          )}
         </div>
         <div className="picture">
           <img className="shelter-image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${animalModificationPicture}`} alt="#" />
@@ -371,6 +408,7 @@ AnimalModification.propTypes = {
   modificationStatus: PropTypes.number.isRequired,
   racesList: PropTypes.array.isRequired,
   sheltersList: PropTypes.array.isRequired,
+  errorsArray: PropTypes.object.isRequired,
 };
 
 // == Export

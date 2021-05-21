@@ -2,14 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../shelterModification.scss';
+import './inputField.scss';
 
 // == Component
 /**
  * 
  * @param {Array} 
  */
-const ShelterModificationField = ({
+const Inputfield = ({
   name,
   label,
   id,
@@ -49,7 +49,7 @@ const ShelterModificationField = ({
 };
 
 // == PropTypes validation
-ShelterModificationField.propTypes = {
+Inputfield.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
@@ -65,7 +65,7 @@ ShelterModificationField.propTypes = {
   manageChange: PropTypes.func.isRequired,
 };
 
-ShelterModificationField.defaultProps = {
+Inputfield.defaultProps = {
   type: 'text',
   required: false,
   pattern: '',
@@ -73,4 +73,4 @@ ShelterModificationField.defaultProps = {
 };
 
 // == Export
-export default ShelterModificationField;
+export default Inputfield;

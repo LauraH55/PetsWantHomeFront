@@ -24,7 +24,7 @@ import {
 } from 'src/actions/auth';
 
 import {
-  validationCreation,
+  validationAnimal,
 } from 'src/utils/validator';
 
 const URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
@@ -121,7 +121,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
        * The last value must be true when creating an animal or false when updating
        * It concerns the picture
        */
-      const validation = validationCreation(
+      const validation = validationAnimal(
         animalNameCapitalized,
         statusNumber,
         genderNumber,
@@ -160,7 +160,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
           headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
         })
           .then((response) => {
-            console.log(response);
+            // console.log(response);
             if (picture === actualPicture || (picture === '' && actualPicture === '')) {
               store.dispatch(saveUpdateAnimal());
               axios({
@@ -291,7 +291,7 @@ const animalsMiddleware = (store) => (next) => (action) => {
        * The last value must be true when creating an animal or false when updating
        * It concerns the picture
        */
-      const validation = validationCreation(
+      const validation = validationAnimal(
         animalNameCapitalized,
         statusNumber,
         genderNumber,

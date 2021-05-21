@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useParams, Redirect } from 'react-router-dom';
 
+import InputField from 'src/components/InputField';
+
 import './animalCreation.scss';
 
 // == Component
@@ -24,6 +26,7 @@ import './animalCreation.scss';
  * @param {String} animalModificationdescription Description of the animal
  * @param {Number} creationStatus Status to display success/error message
  * @param {Array} racesList List of all the animals races
+ * @param {Object} errorsArray List of all the errors found during creating the profile
  */
 const AnimalCreation = ({
   saveCreationAnimal,
@@ -43,6 +46,7 @@ const AnimalCreation = ({
   creationStatus,
   racesList,
   sheltersList,
+  errorsArray,
 }) => {
   const { idShelter } = useParams();
 
@@ -75,20 +79,23 @@ const AnimalCreation = ({
       )}
       {creationStatus === 2
       && (
-        <h3 className="updateFail">Il y a eu une erreur lors de la création du profil de {animalModificationName}</h3>
+        <h3 className="updateFail">Il y a eu une erreur lors de la création du profil de {animalModificationName === '' ? 'l\'animal' : animalModificationName}</h3>
       )}
       <form className="AnimalModificationForm" onSubmit={submitForm}>
-        <div className="field field-name">
-          <label htmlFor="animalModificationName">Nom :
-            <input
-              id="animalModificationName"
-              type="text"
-              value={animalModificationName}
-              placeholder="Nom de l'animal"
-              onChange={(evt) => (changeField(evt.target.value, 'animalModificationName'))}
-            />
-          </label>
-        </div>
+        <InputField
+          name="name"
+          label="Nom"
+          id="animalModificationName"
+          value={animalModificationName}
+          placeholder="Nom de l'animal"
+          pattern="[a-zA-Zéèàçêîïëôù\-' ]{1,}"
+          required
+          manageChange={(value, identifier) => (changeField(value, identifier))}
+        />
+        {errorsArray.name !== undefined
+          && (
+            <div className="error">{errorsArray.name}</div>
+          )}
         <div className="field field-birthdate">
           <label htmlFor="animalModificationBirthdate">Date de naissance :
             <input
@@ -123,6 +130,10 @@ const AnimalCreation = ({
             />
             Adopté/e
           </label>
+          {errorsArray.status !== undefined
+          && (
+            <div className="error">{errorsArray.status}</div>
+          )}
         </div>
         <div className="field field-gender">
           <p>Genre :</p>
@@ -148,6 +159,10 @@ const AnimalCreation = ({
             />
             Femelle
           </label>
+          {errorsArray.gender !== undefined
+          && (
+            <div className="error">{errorsArray.gender}</div>
+          )}
         </div>
         <div className="field field-species">
           <p>Expèce :</p>
@@ -184,6 +199,10 @@ const AnimalCreation = ({
             />
             NAC
           </label>
+          {errorsArray.species !== undefined
+          && (
+            <div className="error">{errorsArray.species}</div>
+          )}
         </div>
         {animalModificationSpecies != 3
         && (
@@ -203,6 +222,10 @@ const AnimalCreation = ({
                 ))}
               </select>
             </label>
+            {errorsArray.race !== undefined
+            && (
+              <div className="error">{errorsArray.race}</div>
+            )}
           </div>
         )}
         <div className="field field-cohabitation">
@@ -257,6 +280,10 @@ const AnimalCreation = ({
             />
             Non Testé / Ne sais pas
           </label>
+          {errorsArray.cohabitation !== undefined
+          && (
+            <div className="error">{errorsArray.cohabitation}</div>
+          )}
         </div>
         <div className="field field-bio">
           <label htmlFor="animalModificationdescription">Description de l'animal :
@@ -265,9 +292,15 @@ const AnimalCreation = ({
               value={animalModificationdescription}
               placeholder="Description de l'animal"
               spellCheck=""
+              required
+              pattern="[a-zA-Z0-9éèêàçëöïäùô \':!?.;,&-]{1,}"
               onChange={(evt) => (changeField(evt.target.value, 'animalModificationdescription'))}
             />
           </label>
+          {errorsArray.description !== undefined
+          && (
+            <div className="error">{errorsArray.description}</div>
+          )}
         </div>
         <div className="field field-picture">
           <label htmlFor="animalModificationPicture">Photo de l'animal :
@@ -275,13 +308,15 @@ const AnimalCreation = ({
               id="animalModificationPicture"
               type="file"
               accept="image/*"
+              required
               onChange={(evt) => (changeField(evt.target.files[0], 'animalModificationPicture'))}
             />
           </label>
+          {errorsArray.picture !== undefined
+          && (
+            <div className="error">{errorsArray.picture}</div>
+          )}
         </div>
-        {/* <div className="picture">
-          <img className="shelter-image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${animalModificationPicture}`} alt="#" />
-        </div> */}
         <button type="button" onClick={saveCreationAnimal}>Enregistrer</button>
       </form>
       {creationStatus === 1
@@ -290,7 +325,7 @@ const AnimalCreation = ({
       )}
       {creationStatus === 2
       && (
-        <h3 className="updateFail">Il y a eu une erreur lors de la création du profil de {animalModificationName}</h3>
+        <h3 className="updateFail">Il y a eu une erreur lors de la création du profil de {animalModificationName === '' ? 'l\'animal' : animalModificationName}</h3>
       )}
       <div className="backToList">
         <button type="button" onClick={backToList}>Retour à la liste</button>
@@ -345,6 +380,7 @@ AnimalCreation.propTypes = {
   creationStatus: PropTypes.number.isRequired,
   racesList: PropTypes.array.isRequired,
   sheltersList: PropTypes.array.isRequired,
+  errorsArray: PropTypes.object.isRequired,
 };
 
 // == Export
