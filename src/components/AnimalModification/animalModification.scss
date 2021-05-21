@@ -186,6 +186,14 @@
 
       .shelter-image {
         height: 400px;
+
+        @media (max-width: 1080px) {
+          height: 200px;
+        }  
+      }
+
+      @media (max-width: 700px) {
+        display: none;
       }
     }
   }
@@ -211,8 +219,4 @@
   .backToList {
     text-align: center;
   }
-}
-
-@media (max-width: 700px) {
-
 }

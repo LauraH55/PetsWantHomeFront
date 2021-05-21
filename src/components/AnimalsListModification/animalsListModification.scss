@@ -39,11 +39,29 @@
     thead tr {
       border-bottom: 3px solid vars.$footerColor;
       font-weight: bold;
+
+      @media (max-width: 1300px) {
+        th {
+          &:nth-child(2),
+          &:nth-child(3) {
+            display: none;
+          }  
+        } 
+      }
     }
 
     tbody tr {
       border-bottom: 1px solid vars.$footerColor;
       color: vars.$footerColor;
+
+      @media (max-width: 1300px) {
+        td {
+          &:nth-child(2),
+          &:nth-child(3) {
+            display: none;
+          }  
+        }
+      }
     }
   }
 
@@ -64,11 +82,29 @@
     thead tr {
       border-bottom: 3px solid vars.$footerColor;
       font-weight: bold;
+
+      @media (max-width: 1300px) {
+        th {
+          &:nth-child(2),
+          &:nth-child(3) {
+            display: none;
+          }  
+        } 
+      }
     }
 
     tbody tr {
       border-bottom: 1px solid vars.$footerColor;
       color: vars.$footerColor;
+
+      @media (max-width: 1300px) {
+        td {
+          &:nth-child(2),
+          &:nth-child(3) {
+            display: none;
+          }  
+        }
+      }
     }
   }
 

@@ -67,7 +67,7 @@ const AnimalsListModification = ({
               <td>{animal.name}</td>
               <td>{getGender(animal.gender)}</td>
               <td>{getBirthdateDate(animal.birthdate)}</td>
-              <td>{animal.race === null ? '' : animal.race.name}</td>
+              <td>{animal.race === null ? 'NAC' : animal.race.name}</td>
               <td>
                 <Link to={`/animal/modification/${animal.id}/${idShelter}`}>
                   <button type="button" className="updateAnimal">Modifier</button>
@@ -95,7 +95,7 @@ const AnimalsListModification = ({
               <td>{animal.name}</td>
               <td>{getGender(animal.gender)}</td>
               <td>{getBirthdateDate(animal.birthdate)}</td>
-              <td>{animal.race === null ? '' : animal.race.name}</td>
+              <td>{animal.race === null ? 'NAC' : animal.race.name}</td>
               <td>
                 <Link to={`/animal/modification/${animal.id}/${idShelter}`}>
                   <button type="button" className="updateAnimal">Modifier</button>
