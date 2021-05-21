@@ -46,6 +46,7 @@ const ShelterModification = ({
   regError,
   deleteConfirm,
   passwordDelete,
+  deleteCancel,
 }) => {
   const { idShelter } = useParams();
 
@@ -77,6 +78,7 @@ const ShelterModification = ({
       && (
         <div className="overlay">
           <div className="successReg">
+            <button type="button" className="cancel-button" onClick={deleteCancel}>Annuler suppression</button>
             <p>Toutes les informations entrées concernant les animaux seront perdues.</p>
             <p>Cette action est irréversible !</p>
             <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
@@ -314,6 +316,7 @@ ShelterModification.propTypes = {
   regError: PropTypes.number.isRequired,
   deleteConfirm: PropTypes.func.isRequired,
   passwordDelete: PropTypes.string.isRequired,
+  deleteCancel: PropTypes.func.isRequired,
 };
 
 // == Export

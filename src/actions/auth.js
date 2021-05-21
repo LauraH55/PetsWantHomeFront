@@ -12,6 +12,7 @@ export const CHANGE_PASSWORD_STATUS = 'CHANGE_PASSWORD_STATUS';
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 export const DELETE_CONFIRM = 'DELETE_CONFIRM';
+export const DELETE_CANCEL = 'DELETE_CANCEL';
 
 // === Action Creators
 
@@ -106,4 +107,11 @@ export const deleteAccount = () => ({
  */
 export const deleteConfirm = () => ({
   type: DELETE_CONFIRM,
+});
+
+/**
+ * Action to cancel the delete of the delete of the account
+ */
+export const deleteCancel = () => ({
+  type: DELETE_CANCEL,
 });

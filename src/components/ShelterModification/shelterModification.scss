@@ -222,7 +222,7 @@
       align-self: center;
       background-color: rgba(246, 244, 210);
       border: 3px solid vars.$footerColor;
-      height: 45%;
+      height: 50%;
       width: 60%;
       text-align: center;
       font-family: vars.$avenir;
@@ -230,7 +230,7 @@
       
       @media (max-width: 1200px) {
         margin: 20% auto 0;
-        height: 50%;
+        height: 55%;
       }
 
       @media (max-width: 750px) {
@@ -239,7 +239,7 @@
       }
 
       @media (min-width: 1650px) {
-        height: 40%;
+        height: 43%;
       }
 
       p {
@@ -259,12 +259,17 @@
         font-weight: 700;
         font-size: 1rem;
         color: vars.$secondaryTextColor;
-        background-color: vars.$footerColor;
+        background-color: red;
         border-radius: .3em;
         border: 0;
         padding: 0.7em;
         height: 2.5em;
         margin: 2em;
+
+        &.cancel-button {
+          margin-top: unset;
+          background-color: vars.$footerColor;
+        }
 
         @media (max-width: 750px) {
           font-size: 0.8rem;

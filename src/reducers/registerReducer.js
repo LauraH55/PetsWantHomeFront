@@ -3,6 +3,7 @@ import {
   REG_ERROR,
   LOG_IN,
   DELETE_ACCOUNT,
+  DELETE_CANCEL,
 } from 'src/actions/auth';
 
 import {
@@ -66,6 +67,17 @@ function registerReducer(state = initialState, action) {
     case SHELTER_ERRORS_ARRAY:
       return {
         ...state,
+        passwordDelete: '',
+      };
+
+    /**
+     * Set the regError to 0 to hide the overlay
+     * when canceling the process of deletion of the account
+     */
+    case DELETE_CANCEL:
+      return {
+        ...state,
+        regError: 0,
         passwordDelete: '',
       };
 

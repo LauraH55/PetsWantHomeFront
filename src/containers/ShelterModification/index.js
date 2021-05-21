@@ -5,6 +5,7 @@ import {
   changePasswordStatus,
   deleteAccount,
   deleteConfirm,
+  deleteCancel,
 } from 'src/actions/auth';
 
 import {
@@ -87,6 +88,14 @@ const mapDispatchToProps = (dispatch) => ({
    */
   deleteConfirm: () => {
     const action = deleteConfirm();
+    dispatch(action);
+  },
+
+  /**
+   * Action to cancel the delete of the account
+   */
+  deleteCancel: () => {
+    const action = deleteCancel();
     dispatch(action);
   },
 });
