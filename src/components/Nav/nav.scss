@@ -55,6 +55,14 @@
       &:hover {
         background-color: vars.$outlineColor;
       }
+
+      @media (max-width: 920px) {
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 1000px) {
+        padding: 0 1rem;
+      }
     }
 
     ul {

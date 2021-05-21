@@ -20,7 +20,7 @@
  *        true when creating / false when updating
  * @returns A boolean as an answer of the validation with or without an array of all the errors
  */
-export const validationCreation = (
+export const validationAnimal = (
   name,
   status,
   gender,
@@ -57,7 +57,7 @@ export const validationCreation = (
   }
 
   if (!(gender !== '' && (status == 1 || status == 2))) {
-    errors.status = 'Veuillez renseigner un genre correct';
+    errors.gender = 'Veuillez renseigner un genre correct';
     valid = false;
   }
 
@@ -140,7 +140,7 @@ export const validationShelter = (
 
   if (!regPhone.test(phoneNumber)) {
     valid = false;
-    errors.phoneNumber = 'Veuillez renseigner un numéro de téléphone avec un format correct';
+    errors.phoneNumber = 'Veuillez renseigner un numéro de téléphone au bon format';
   }
 
   if (!regMail.test(email)) {
@@ -197,6 +197,39 @@ export const validationUser = (
   }
   else if (errors === 5 || errors === 6 || errors === 9) {
     errors = 4;
+  }
+
+  return valid ? { validate: true } : { validate: false, errors: errors };
+};
+
+/**
+ * Validation for the password whether it's new or updating
+ * @param {String} password Password of the user
+ * @param {String} passwordConfirm Password confirmation of the user
+ * @returns A boolean as an answer of the validation with or without an array of all the errors
+ */
+export const validationPassword = (
+  password,
+  passwordConfirm,
+) => {
+  let valid = true;
+  const errors = {};
+
+  const regPassword = new RegExp('^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*$@%_])([-+!*$@%\\w]{8,15})$');
+
+  if (!regPassword.test(password)) {
+    valid = false;
+    errors.password = 'Le format du mot de passe n\'est pas correct';
+  }
+
+  if (!regPassword.test(passwordConfirm)) {
+    valid = false;
+    errors.password = 'Le format du mot de passe n\'est pas correct';
+  }
+
+  if (password !== passwordConfirm) {
+    valid = false;
+    errors.password = 'La confirmation du mot de passe ne correspond pas';
   }
 
   return valid ? { validate: true } : { validate: false, errors: errors };

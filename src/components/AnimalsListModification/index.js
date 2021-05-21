@@ -1,7 +1,7 @@
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Redirect } from 'react-router-dom';
 
 import { getGender, getBirthdateDate } from 'src/utils';
 
@@ -21,6 +21,12 @@ const AnimalsListModification = ({
   desarchiveAnimal,
 }) => {
   const { idShelter } = useParams();
+
+  if (idShelter !== localStorage.shelterID) {
+    return (
+      <Redirect to="/error" />
+    );
+  }
 
   const adoptingAnimals = animalsList.filter((animal) => animal.shelter.id == idShelter
     && animal.status === 1);
@@ -61,7 +67,7 @@ const AnimalsListModification = ({
               <td>{animal.name}</td>
               <td>{getGender(animal.gender)}</td>
               <td>{getBirthdateDate(animal.birthdate)}</td>
-              <td>{animal.race === null ? '' : animal.race.name}</td>
+              <td>{animal.race === null ? 'Non communiquée' : animal.race.name}</td>
               <td>
                 <Link to={`/animal/modification/${animal.id}/${idShelter}`}>
                   <button type="button" className="updateAnimal">Modifier</button>
@@ -89,7 +95,7 @@ const AnimalsListModification = ({
               <td>{animal.name}</td>
               <td>{getGender(animal.gender)}</td>
               <td>{getBirthdateDate(animal.birthdate)}</td>
-              <td>{animal.race === null ? '' : animal.race.name}</td>
+              <td>{animal.race === null ? 'Non communiquée' : animal.race.name}</td>
               <td>
                 <Link to={`/animal/modification/${animal.id}/${idShelter}`}>
                   <button type="button" className="updateAnimal">Modifier</button>

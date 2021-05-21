@@ -20,6 +20,9 @@ const RegisterShelterField = ({
   name,
   placeholder,
   manageChange,
+  required,
+  pattern,
+  accept,
 }) => {
   const handleChange = (evt) => {
     if (type === 'file') {
@@ -49,6 +52,9 @@ const RegisterShelterField = ({
         className="register-shelter-field-input"
         placeholder={placeholder}
         name={name}
+        pattern={pattern}
+        accept={accept}
+        required={required === 'true'}
       />
     </div>
   );
@@ -69,12 +75,21 @@ RegisterShelterField.propTypes = {
    * - name
    */
   manageChange: PropTypes.func.isRequired,
+  required: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
+  pattern: PropTypes.string,
+  accept: PropTypes.string,
 };
 
 // Valeurs par défaut pour les props
 RegisterShelterField.defaultProps = {
   value: '',
   type: 'text',
+  required: false,
+  pattern: '',
+  accept: '',
 };
 
 // == Export

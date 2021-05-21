@@ -52,7 +52,7 @@ const Nav = ({
             Mentions Légales
           </NavLink>
 
-          {localStorage.token && (
+          {localStorage.isLogged && (
             <>
               {localStorage.shelterID === undefined
             && (
@@ -84,7 +84,7 @@ const Nav = ({
             </>
           )}
 
-          {!localStorage.token && (
+          {!localStorage.isLogged && (
             <>
               <NavLink
                 to="/login"
@@ -136,7 +136,7 @@ const Nav = ({
 
     <div className="nav-login">
 
-      {localStorage.token && (
+      {localStorage.isLogged && (
         <>
           {localStorage.shelterID === undefined
             && (
@@ -177,7 +177,7 @@ const Nav = ({
         </>
       )}
 
-      {!localStorage.token && (
+      {!localStorage.isLogged && (
         <ul>
           <NavLink
             to="/login"

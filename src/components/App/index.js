@@ -47,6 +47,8 @@ const App = ({
     loadRaces();
   }, []);
 
+  const valid = localStorage.shelterID > 0 && localStorage.isLogged === 'true';
+
   return (
     <div className="app">
 
@@ -65,22 +67,34 @@ const App = ({
             <Route path="/adoption">
               <Adoption />
             </Route>
-            <Route path="/animal/creation/:idShelter">
-              <AnimalCreation />
-            </Route>
-            <Route path="/animal/modification/:idAnimal/:idShelter">
-              <AnimalModification />
-            </Route>
-            <Route path="/animal/:slug">
+            {valid
+            && (
+              <Route path="/animal/creation/:idShelter">
+                <AnimalCreation />
+              </Route>
+            )}
+            {valid
+            && (
+              <Route path="/animal/modification/:idAnimal/:idShelter">
+                <AnimalModification />
+              </Route>
+            )}
+            {valid
+            && (
+              <Route path="/shelter/modification/:idShelter">
+                <ShelterModification />
+              </Route>
+            )}
+            {valid
+            && (
+              <Route path="/animals-modification/shelter/:idShelter">
+                <AnimalsListModification />
+              </Route>
+            )}
+            <Route exact path="/animal/:slug">
               <Animal />
             </Route>
-            <Route path="/shelter/modification/:idShelter">
-              <ShelterModification />
-            </Route>
-            <Route path="/animals-modification/shelter/:idShelter">
-              <AnimalsListModification />
-            </Route>
-            <Route path="/shelter/:idShelter">
+            <Route exact path="/shelter/:idShelter">
               <Shelter />
             </Route>
             <Route path="/shelters">
@@ -110,7 +124,7 @@ const App = ({
             <Route to="/error">
               <Error />
             </Route>
-            <Route to="">
+            <Route>
               <Error />
             </Route>
           </Switch>

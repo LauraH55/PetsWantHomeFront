@@ -13,14 +13,19 @@ import {
 
 import {
   loader,
+  UPDATE_PASSWORD,
+  updatePassword,
 } from 'src/actions/auth';
 
 import {
   validationShelter,
+  validationPassword,
 } from 'src/utils/validator';
 
 const URL_FETCH_SHELTERS = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelters';
 const MODIFICATION_URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelter/update';
+const URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
+const API_URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
 
 const sheltersMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -73,6 +78,17 @@ const sheltersMiddleware = (store) => (next) => (action) => {
         false,
       );
 
+      const {
+        userActualPassword,
+        userNewPassword,
+        userConfirmPassword,
+      } = store.getState().auth;
+
+      const passwordNoTUpdate = userActualPassword.length === 0
+        && userNewPassword.length === 0
+        && userConfirmPassword.length === 0;
+      const pictureNotUpdate = shelterModificationPicture === shelterPicture;
+
       if (validation.validate) {
         const data = {
           name,
@@ -91,11 +107,46 @@ const sheltersMiddleware = (store) => (next) => (action) => {
         })
           .then((response) => {
             console.log(response);
-            if (shelterModificationPicture === shelterPicture) {
+
+            if (pictureNotUpdate && passwordNoTUpdate) {
               store.dispatch(shelterUpdateSuccess());
             }
-            else {
+            else if (!pictureNotUpdate && passwordNoTUpdate) {
               store.dispatch(updateShelterImage());
+            }
+            else if (pictureNotUpdate && !passwordNoTUpdate) {
+              axios.post(`${API_URL}/login`, {
+                username: localStorage.email,
+                password: userActualPassword,
+              })
+                .then(() => {
+                  store.dispatch(updatePassword());
+                })
+                .catch((failure) => {
+                  console.log('PASSWORD UPDATE ERROR', failure.response.data.violations);
+                  store.dispatch(shelterUpdateError());
+                  const passwordError = {
+                    password: 'Le mise à jour du mot de passe n\'a pu s\'effectuer',
+                  };
+                  store.dispatch(shelterErrorsArray(passwordError));
+                });
+            }
+            else if (!pictureNotUpdate && !passwordNoTUpdate) {
+              axios.post(`${API_URL}/login`, {
+                username: localStorage.email,
+                password: userActualPassword,
+              })
+                .then(() => {
+                  store.dispatch(updatePassword());
+                })
+                .catch((failure) => {
+                  console.log('PASSWORD UPDATE ERROR', failure.response.data.violations);
+                  store.dispatch(shelterUpdateError());
+                  const passwordError = {
+                    password: 'Le mise à jour du mot de passe n\'a pu s\'effectuer',
+                  };
+                  store.dispatch(shelterErrorsArray(passwordError));
+                });
             }
           })
           .catch((error) => {
@@ -117,13 +168,11 @@ const sheltersMiddleware = (store) => (next) => (action) => {
      */
     case UPDATE_SHELTER_IMAGE: {
       const {
-        shelterModificationId,
         shelterModificationPicture,
       } = store.getState().shelter;
 
       const bodyFormData = new FormData();
       bodyFormData.append('picture', shelterModificationPicture);
-
 
       axios({
         method: 'post',
@@ -131,16 +180,73 @@ const sheltersMiddleware = (store) => (next) => (action) => {
         data: bodyFormData,
         headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
       })
-        .then((response) => {
+        .then(() => {
           store.dispatch(shelterUpdateSuccess());
-          setTimeout(() => {
-            window.location = `/shelter/${shelterModificationId}`;
-          }, 2000);
         })
         .catch((error) => {
           console.log('SHELTER PICTURE UPDATE ERROR : ', error);
           store.dispatch(shelterUpdateError());
+          const errors = {
+            picture: 'Un problème est survenu pour la mise à jour de la photo',
+          };
+          store.dispatch(shelterErrorsArray(errors));
         });
+      next(action);
+      break;
+    }
+
+    /**
+     * Request to update the password of the shelter/user
+     */
+    case UPDATE_PASSWORD: {
+      const {
+        userNewPassword,
+        userConfirmPassword,
+      } = store.getState().auth;
+
+      const {
+        shelterModificationPicture,
+        shelterPicture,
+      } = store.getState().shelter;
+
+      const validation = validationPassword(
+        userNewPassword,
+        userConfirmPassword,
+      );
+
+      if (validation.validate) {
+        const data = {
+          password: userNewPassword,
+        };
+
+        axios({
+          method: 'patch',
+          url: `${URL}/user/update`,
+          data,
+          headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
+        })
+          .then((response) => {
+            console.log(response);
+            if (shelterModificationPicture === shelterPicture) {
+              store.dispatch(updateShelterImage());
+            }
+            else {
+              store.dispatch(shelterUpdateSuccess());
+            }
+          })
+          .catch((error) => {
+            console.log('SHELTER PASSWORD UPDATE ERROR : ', error.response.data.violations);
+            store.dispatch(shelterUpdateError());
+            const passwordError = {
+              password: 'Un problème est survenu pour la mise à jour du mot de passe',
+            };
+            store.dispatch(shelterErrorsArray(passwordError));
+          });
+      }
+      else {
+        store.dispatch(shelterUpdateError());
+        store.dispatch(shelterErrorsArray(validation.errors));
+      }
       next(action);
       break;
     }

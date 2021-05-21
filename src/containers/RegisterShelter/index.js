@@ -19,9 +19,10 @@ const mapStateToProps = (state) => ({
   address: state.shelter.address,
   city: state.shelter.city,
   zip: state.shelter.zip,
-  phoneNumber: state.shelter.phone_number,
+  phoneNumber: state.shelter.phoneNumber,
   picture: state.shelter.picture,
   shelterUpdateError: state.shelter.shelterUpdateError,
+  errorsArray: state.shelter.errorsArray,
 });
 
 /**
@@ -34,6 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
    * @param {string} fieldName : Name of the input
    */
   changeField: (value, fieldName) => {
+    console.log(value, fieldName);
     const action = updateUserField(value, fieldName);
     dispatch(action);
   },

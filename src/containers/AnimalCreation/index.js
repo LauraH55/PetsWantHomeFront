@@ -31,6 +31,7 @@ const mapStateToProps = (state) => ({
   creationStatus: state.animals.modificationStatus,
   racesList: state.animals.racesList,
   sheltersList: state.shelter.sheltersList,
+  errorsArray: state.animals.errorsArray,
 });
 
 /**

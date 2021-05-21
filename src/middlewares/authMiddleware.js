@@ -7,12 +7,11 @@ import {
   NEW_USER,
   saveUser,
   loginError,
-  emailError,
-  passwordError,
   logOut,
   logIn,
   loader,
   regError,
+  DELETE_CONFIRM,
 } from 'src/actions/auth';
 
 import {
@@ -43,7 +42,11 @@ const authMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           localStorage.setItem('token', response.data.token);
+          localStorage.setItem('isLogged', true);
+          localStorage.setItem('email', email);
+
           store.dispatch(saveUser(response.data.token));
+
 
           const decoded = jwt_decode(response.data.token);
           console.log(decoded.shelter_id);
@@ -156,6 +159,7 @@ const authMiddleware = (store) => (next) => (action) => {
         axios.post(`${API_URL}/register`, newUser)
           .then((response) => {
             console.log(response);
+            localStorage.setItem('regError', 1);
             store.dispatch(logIn());
           })
           .catch((error) => {
@@ -169,6 +173,45 @@ const authMiddleware = (store) => (next) => (action) => {
       else {
         store.dispatch(regError(validation.errors));
       }
+      next(action);
+      break;
+    }
+
+    /**
+     * Request sent to delete the user account and all the informations associated
+     */
+    case DELETE_CONFIRM: {
+      const { passwordDelete } = store.getState().register;
+
+      axios.post(`${API_URL}/login`, {
+        username: localStorage.email,
+        password: passwordDelete,
+      })
+        .then(() => {
+          axios({
+            method: 'delete',
+            url: `${API_URL}/user/delete`,
+            headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
+          })
+            .then((response) => {
+              console.log(response);
+              store.dispatch(regError(8));
+            })
+            .catch((error) => {
+              console.log('DELETE USER ERROR : ', error.response);
+              const deleteError = {
+                deleteError: 'La suppression du compte ne s\'est pas effectuée. Veuillez essayer ultérieurement.',
+              };
+              store.dispatch(shelterErrorsArray(deleteError));
+            });
+        })
+        .catch((failure) => {
+          console.log('DELETE ACCOUNT ERROR', failure.response.data.violations);
+          const deleteError = {
+            deleteError: 'La suppression du compte ne s\'est pas effectuée.',
+          };
+          store.dispatch(shelterErrorsArray(deleteError));
+        });
       next(action);
       break;
     }

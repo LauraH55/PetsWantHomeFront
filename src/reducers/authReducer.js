@@ -3,7 +3,12 @@ import {
   SAVE_USER,
   LOG_OUT,
   LOGIN_ERROR,
+  CHANGE_PASSWORD_STATUS,
 } from 'src/actions/auth';
+
+import {
+  SHELTER_UPDATE_SUCCESS,
+} from 'src/actions/shelters';
 
 const initialState = {
   email: '',
@@ -11,6 +16,10 @@ const initialState = {
   isLogged: false,
   token: null,
   loginError: false,
+  userActualPassword: '',
+  userNewPassword: '',
+  userConfirmPassword: '',
+  passwordStatus: false,
 };
 
 function authReducer(state = initialState, action) {
@@ -23,6 +32,9 @@ function authReducer(state = initialState, action) {
         ...state,
         email: action.name === 'email' ? action.newValue : state.email,
         password: action.name === 'password' ? action.newValue : state.password,
+        userActualPassword: action.name === 'userActualPassword' ? action.newValue : state.userActualPassword,
+        userNewPassword: action.name === 'userNewPassword' ? action.newValue : state.userNewPassword,
+        userConfirmPassword: action.name === 'userConfirmPassword' ? action.newValue : state.userConfirmPassword,
       };
 
     /**
@@ -55,6 +67,27 @@ function authReducer(state = initialState, action) {
         ...state,
         password: '',
         loginError: true,
+      };
+
+    /**
+     * Set the password status to true/false to display/hide the form to update the password
+     */
+    case CHANGE_PASSWORD_STATUS:
+      return {
+        ...state,
+        passwordStatus: !state.passwordStatus,
+      };
+
+    /**
+     * Update the user's informations/password
+     */
+    case SHELTER_UPDATE_SUCCESS:
+      return {
+        ...state,
+        userActualPassword: '',
+        userNewPassword: '',
+        userConfirmPassword: '',
+        passwordStatus: false,
       };
 
     default:

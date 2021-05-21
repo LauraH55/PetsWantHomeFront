@@ -114,7 +114,7 @@ function animalsReducer(state = initialState, action) {
         status: action.status,
         gender: action.gender,
         species: action.species.id,
-        race: action.race.id,
+        race: action.race === null ? 0 : action.race.id,
         catCohabitation: action.catCohabitation,
         childCohabitation: action.childCohabitation,
         dogCohabitation: action.dogCohabitation,
