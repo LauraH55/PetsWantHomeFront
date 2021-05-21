@@ -22,6 +22,7 @@ const mapStateToProps = (state) => ({
   phoneNumber: state.shelter.phone_number,
   picture: state.shelter.picture,
   shelterUpdateError: state.shelter.shelterUpdateError,
+  errorsArray: state.shelter.errorsArray,
 });
 
 /**

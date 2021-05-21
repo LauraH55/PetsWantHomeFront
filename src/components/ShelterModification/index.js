@@ -35,13 +35,13 @@ const ShelterModification = ({
   changeField,
   submitModification,
   shelterUpdateError,
+  errorsArray,
 }) => {
   const { idShelter } = useParams();
 
-  // eslint-disable-next-line eqeqeq
   const shelter = shelters.find((shel) => shel.id == idShelter);
 
-  console.log(shelter);
+  console.log(errorsArray);
 
   useEffect(() => {
     loadProfile(shelter);
@@ -81,6 +81,10 @@ const ShelterModification = ({
           required="true"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />
+        {errorsArray.name !== undefined
+          && (
+            <div className="error">{errorsArray.name}</div>
+          )}
         <ShelterModificationField
           name="address"
           label="Adresse"
@@ -91,6 +95,10 @@ const ShelterModification = ({
           required="true"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />
+        {errorsArray.address !== undefined
+          && (
+            <div className="error">{errorsArray.address}</div>
+          )}
         <ShelterModificationField
           name="zip"
           label="Code postal"
@@ -101,6 +109,10 @@ const ShelterModification = ({
           required="true"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />
+        {errorsArray.zip !== undefined
+          && (
+            <div className="error">{errorsArray.zip}</div>
+          )}
         <ShelterModificationField
           name="city"
           label="Ville"
@@ -111,6 +123,10 @@ const ShelterModification = ({
           required="true"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />
+        {errorsArray.city !== undefined
+          && (
+            <div className="error">{errorsArray.city}</div>
+          )}
         <ShelterModificationField
           name="phoneNumber"
           label="Numéro de téléphone (au format 0123456789)"
@@ -121,6 +137,10 @@ const ShelterModification = ({
           required="true"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />
+        {errorsArray.phoneNumber !== undefined
+          && (
+            <div className="error">{errorsArray.phoneNumber}</div>
+          )}
         <ShelterModificationField
           name="email"
           type="email"
@@ -132,6 +152,10 @@ const ShelterModification = ({
           required="true"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />
+        {errorsArray.email !== undefined
+          && (
+            <div className="error">{errorsArray.email}</div>
+          )}
         <ShelterModificationField
           name="picture"
           label="Photo du refuge"
@@ -142,6 +166,10 @@ const ShelterModification = ({
           placeholder="Photo du refuge"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />
+        {errorsArray.picture !== undefined
+          && (
+            <div className="error">{errorsArray.picture}</div>
+          )}
         <button type="submit" className="saveChanges">
           Enregistrer
         </button>
@@ -176,6 +204,7 @@ ShelterModification.propTypes = {
   changeField: PropTypes.func.isRequired,
   submitModification: PropTypes.func.isRequired,
   shelterUpdateError: PropTypes.number.isRequired,
+  errorsArray: PropTypes.object.isRequired,
 };
 
 // == Export

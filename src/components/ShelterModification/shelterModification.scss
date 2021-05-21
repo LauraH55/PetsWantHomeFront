@@ -106,6 +106,14 @@
         background-color: vars.$outlineColor;
       }
     }
+
+    .error {
+      margin: 0 auto 1rem;
+      color: vars.$footerColor;
+      font-size: 1.2rem;
+      font-weight: bold;
+      line-height: normal;
+    }
   }
 
   .backList {

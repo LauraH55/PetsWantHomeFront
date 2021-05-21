@@ -140,7 +140,7 @@ export const validationShelter = (
 
   if (!regPhone.test(phoneNumber)) {
     valid = false;
-    errors.phoneNumber = 'Veuillez renseigner un numéro de téléphone avec un format correct';
+    errors.phoneNumber = 'Veuillez renseigner un numéro de téléphone au bon format';
   }
 
   if (!regMail.test(email)) {
