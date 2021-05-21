@@ -1,7 +1,7 @@
 // == Import npm
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 
 import './animalModification.scss';
 
@@ -53,10 +53,14 @@ const AnimalModification = ({
   sheltersList,
 }) => {
   const { idAnimal, idShelter } = useParams();
-  let animalToUpdate = animalsList.find((animal) => animal.id == idAnimal);
 
-  console.log(animalToUpdate.species.id);
-  console.log(animalToUpdate);
+  if (idShelter !== localStorage.shelterID) {
+    return (
+      <Redirect to="/error" />
+    );
+  }
+
+  let animalToUpdate = animalsList.find((animal) => animal.id == idAnimal);
 
   if (animalToUpdate.species.id == 3) {
     animalToUpdate = {

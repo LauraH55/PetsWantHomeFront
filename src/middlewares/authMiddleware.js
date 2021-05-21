@@ -43,6 +43,7 @@ const authMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           localStorage.setItem('token', response.data.token);
+          localStorage.setItem('isLogged', true);
           store.dispatch(saveUser(response.data.token));
 
           const decoded = jwt_decode(response.data.token);

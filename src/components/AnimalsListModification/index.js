@@ -1,7 +1,7 @@
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Redirect } from 'react-router-dom';
 
 import { getGender, getBirthdateDate } from 'src/utils';
 
@@ -21,6 +21,12 @@ const AnimalsListModification = ({
   desarchiveAnimal,
 }) => {
   const { idShelter } = useParams();
+
+  if (idShelter !== localStorage.shelterID) {
+    return (
+      <Redirect to="/error" />
+    );
+  }
 
   const adoptingAnimals = animalsList.filter((animal) => animal.shelter.id == idShelter
     && animal.status === 1);

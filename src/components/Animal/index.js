@@ -24,7 +24,7 @@ const Animal = ({
 }) => {
   const { slug } = useParams();
   const animal = getAnimalBySlug(slug, animals);
-console.log(animal);
+
   return (
     <div className="animal">
       <img className="animal-image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${animal.picture}`} alt="#" />

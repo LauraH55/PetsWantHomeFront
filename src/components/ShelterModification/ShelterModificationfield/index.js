@@ -37,7 +37,7 @@ const ShelterModificationField = ({
           id={id}
           type={type}
           value={value}
-          required={required}
+          required={required === 'true'}
           pattern={pattern}
           accept={accept}
           placeholder={placeholder !== '' ? placeholder : label}
@@ -56,7 +56,10 @@ ShelterModificationField.propTypes = {
   type: PropTypes.string,
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  required: PropTypes.bool,
+  required: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
   accept: PropTypes.string,
   pattern: PropTypes.string,
   manageChange: PropTypes.func.isRequired,

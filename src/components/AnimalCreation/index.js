@@ -1,7 +1,7 @@
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 
 import './animalCreation.scss';
 
@@ -45,6 +45,12 @@ const AnimalCreation = ({
   sheltersList,
 }) => {
   const { idShelter } = useParams();
+
+  if (idShelter !== localStorage.shelterID) {
+    return (
+      <Redirect to="/error" />
+    );
+  }
 
   const submitForm = (evt) => {
     evt.preventDefault();

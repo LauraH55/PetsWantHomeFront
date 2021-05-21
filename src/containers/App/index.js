@@ -17,6 +17,7 @@ import App from 'src/components/App';
  */
 const mapStateToProps = (state) => ({
   loading: state.animals.loading,
+  isLogged: state.auth.isLogged,
 });
 
 /**
