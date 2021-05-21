@@ -7,12 +7,11 @@ import {
   NEW_USER,
   saveUser,
   loginError,
-  emailError,
-  passwordError,
   logOut,
   logIn,
   loader,
   regError,
+  DELETE_ACCOUNT,
 } from 'src/actions/auth';
 
 import {
@@ -44,7 +43,10 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           localStorage.setItem('token', response.data.token);
           localStorage.setItem('isLogged', true);
+          localStorage.setItem('email', email);
+
           store.dispatch(saveUser(response.data.token));
+
 
           const decoded = jwt_decode(response.data.token);
           console.log(decoded.shelter_id);
@@ -157,6 +159,7 @@ const authMiddleware = (store) => (next) => (action) => {
         axios.post(`${API_URL}/register`, newUser)
           .then((response) => {
             console.log(response);
+            localStorage.setItem('regError', 1);
             store.dispatch(logIn());
           })
           .catch((error) => {
@@ -173,6 +176,22 @@ const authMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
+    /**
+     * Request sent to delete the user account and all the informations associated
+     */
+    case DELETE_ACCOUNT:
+      axios.delete(`${API_URL}/user/delete`)
+        .then((response) => {
+          console.log(response);
+          localStorage.setItem('regError', 2);
+          window.location = '/';
+        })
+        .catch((error) => {
+          console.log('DELETE USER ERROR : ', error.response);
+        });
+      next(action);
+      break;
 
     /**
      * Action to log out the user

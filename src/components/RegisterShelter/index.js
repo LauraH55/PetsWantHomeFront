@@ -44,14 +44,14 @@ const RegisterShelter = ({
   return (
     <div className="register-shelter-form">
       <h1 className="register-shelter-form-title">Inscription du refuge</h1>
-      {shelterUpdateError === 1
+      {/* {shelterUpdateError === 1
       && (
         <h3 className="updateSuccess">La création du refuge a bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
       )}
       {shelterUpdateError === 2
       && (
         <h3 className="updateFail">La création du refuge n'a pas été prise en compte.</h3>
-      )}
+      )} */}
       <form autoComplete="off" className="register-shelter-form-element" onSubmit={handleSubmit}>
         <RegisterShelterField
           name="name"
@@ -132,7 +132,6 @@ const RegisterShelter = ({
           placeholder="Photo du refuge"
           accept="image/*"
           manageChange={(value, identifier) => (changeField(value, identifier))}
-          required="true"
         />
         {errorsArray.picture !== undefined
           && (
@@ -145,14 +144,14 @@ const RegisterShelter = ({
           Valider
         </button>
       </form>
-      {shelterUpdateError === 1
+      {/* {shelterUpdateError === 1
       && (
         <h3 className="updateSuccess">La création du refuge a bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
       )}
       {shelterUpdateError === 2
       && (
         <h3 className="updateFail">La création du refuge n'a pas été prise en compte.</h3>
-      )}
+      )} */}
     </div>
   );
 };

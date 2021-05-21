@@ -8,6 +8,9 @@ export const NEW_USER = 'NEW_USER';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOADER = 'LOADER';
 export const REG_ERROR = 'REG_ERROR';
+export const CHANGE_PASSWORD_STATUS = 'CHANGE_PASSWORD_STATUS';
+export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
+export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 
 // === Action Creators
 
@@ -74,4 +77,25 @@ export const loader = () => ({
 export const regError = (errorNumber) => ({
   type: REG_ERROR,
   errorNumber,
+});
+
+/**
+ * Action to change the status of the password modification
+ */
+export const changePasswordStatus = () => ({
+  type: CHANGE_PASSWORD_STATUS,
+});
+
+/**
+ * Action to send the request to update the password
+ */
+export const updatePassword = () => ({
+  type: UPDATE_PASSWORD,
+});
+
+/**
+ * Action to delete an user account
+ */
+export const deleteAccount = () => ({
+  type: DELETE_ACCOUNT,
 });

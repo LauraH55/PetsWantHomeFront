@@ -37,12 +37,16 @@ const ShelterModification = ({
   submitModification,
   shelterUpdateError,
   errorsArray,
+  userActualPassword,
+  userNewPassword,
+  userConfirmPassword,
+  passwordStatus,
+  changePasswordStatus,
+  deleteAccount,
 }) => {
   const { idShelter } = useParams();
 
   const shelter = shelters.find((shel) => shel.id == idShelter);
-
-  console.log(errorsArray);
 
   useEffect(() => {
     loadProfile(shelter);
@@ -157,6 +161,53 @@ const ShelterModification = ({
           && (
             <div className="error">{errorsArray.email}</div>
           )}
+        {!passwordStatus
+        && (
+          <button type="button" className="changePassword" onClick={changePasswordStatus}>Modifier mot de passe</button>
+        )}
+        {passwordStatus
+        && (
+          <button type="button" className="changePassword" onClick={changePasswordStatus}>Fermer modification du mot de passe</button>
+        )}
+        {passwordStatus
+        && (
+          <>
+            <InputField
+              name="password"
+              type="password"
+              label="Mot de passe actuel"
+              id="userActualPassword"
+              value={userActualPassword}
+              placeholder="Mot de passe actuel"
+              pattern="[a-zA-Z0-9-+!*$@%_]{8,15}"
+              manageChange={(value, identifier) => (changeField(value, identifier))}
+            />
+            <InputField
+              name="newPassword"
+              type="password"
+              label="Nouveau mot de passe"
+              id="userNewPassword"
+              value={userNewPassword}
+              placeholder="Nouveau mot de passe"
+              pattern="[a-zA-Z0-9-+!*$@%_]{8,15}"
+              manageChange={(value, identifier) => (changeField(value, identifier))}
+            />
+            <InputField
+              name="confirmPassword"
+              type="password"
+              label="Confirmation nouveau mot de passe"
+              id="userConfirmPassword"
+              value={userConfirmPassword}
+              placeholder="Confirmation nouveau mot de passe"
+              pattern="[a-zA-Z0-9-+!*$@%_]{8,15}"
+              manageChange={(value, identifier) => (changeField(value, identifier))}
+            />
+            {errorsArray.password !== undefined
+            && (
+              <div className="error">{errorsArray.password}</div>
+            )}
+          </>
+        )}
         <InputField
           name="picture"
           label="Photo du refuge"
@@ -183,11 +234,16 @@ const ShelterModification = ({
       && (
         <h3 className="updateFail">Les modifications n'ont pas été prise en compte.</h3>
       )}
-      <Link to={`/shelter/${idShelter}`} className="backLink">
-        <button type="button" className="backList">
-          Retour à la liste
+      <div className="back-delete">
+        <Link to={`/shelter/${idShelter}`} className="backLink">
+          <button type="button" className="backList">
+            Retour à la liste
+          </button>
+        </Link>
+        <button type="button" className="deleteAccount" onClick={deleteAccount}>
+          Se désinscrire
         </button>
-      </Link>
+      </div>
     </div>
   );
 };
@@ -206,6 +262,12 @@ ShelterModification.propTypes = {
   submitModification: PropTypes.func.isRequired,
   shelterUpdateError: PropTypes.number.isRequired,
   errorsArray: PropTypes.object.isRequired,
+  userActualPassword: PropTypes.string.isRequired,
+  userNewPassword: PropTypes.string.isRequired,
+  userConfirmPassword: PropTypes.string.isRequired,
+  passwordStatus: PropTypes.bool.isRequired,
+  changePasswordStatus: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
 };
 
 // == Export

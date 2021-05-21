@@ -89,7 +89,7 @@ const AnimalCreation = ({
           value={animalModificationName}
           placeholder="Nom de l'animal"
           pattern="[a-zA-Zéèàçêîïëôù\-' ]{1,}"
-          required
+          required="true"
           manageChange={(value, identifier) => (changeField(value, identifier))}
         />
         {errorsArray.name !== undefined
