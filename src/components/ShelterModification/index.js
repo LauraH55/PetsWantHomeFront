@@ -43,6 +43,9 @@ const ShelterModification = ({
   passwordStatus,
   changePasswordStatus,
   deleteAccount,
+  regError,
+  deleteConfirm,
+  passwordDelete,
 }) => {
   const { idShelter } = useParams();
 
@@ -63,8 +66,48 @@ const ShelterModification = ({
     );
   }
 
+  const closeSuccess = () => {
+    localStorage.clear();
+    window.location = '/';
+  };
+
   return (
     <div className="shelterModification">
+      {regError === 7
+      && (
+        <div className="overlay">
+          <div className="successReg">
+            <p>Toutes les informations entrées concernant les animaux seront perdues.</p>
+            <p>Cette action est irréversible !</p>
+            <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
+            <p>Si vous êtes sûr, entrez votre mot de passe et appyuez sur le bouton "Supprimer mon compte"</p>
+            <InputField
+              name="passwordDelete"
+              type="password"
+              label="Veuillez saisir votre mot de passe avant de supprimer votre compte"
+              id="passwordDelete"
+              value={passwordDelete}
+              placeholder="Mot de passe"
+              pattern="[a-zA-Z0-9-+!*$@%_]{8,15}"
+              manageChange={(value, identifier) => (changeField(value, identifier))}
+            />
+            {errorsArray.deleteError !== undefined
+            && (
+              <div className="error">{errorsArray.deleteError}</div>
+            )}
+            <button type="button" onClick={deleteConfirm}>Supprimer mon compte</button>
+          </div>
+        </div>
+      )}
+      {regError === 8
+      && (
+        <div className="overlay">
+          <div className="successReg">
+            <p>Votre compte a bien été supprimé ! Nous espérons vous revoir vite parmi nous !</p>
+            <button type="button" onClick={closeSuccess}>Fermer ce message</button>
+          </div>
+        </div>
+      )}
       <h1>{shelter.name}</h1>
       <h2>Modification du refuge</h2>
       {shelterUpdateError === 1
@@ -268,6 +311,9 @@ ShelterModification.propTypes = {
   passwordStatus: PropTypes.bool.isRequired,
   changePasswordStatus: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
+  regError: PropTypes.number.isRequired,
+  deleteConfirm: PropTypes.func.isRequired,
+  passwordDelete: PropTypes.string.isRequired,
 };
 
 // == Export

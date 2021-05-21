@@ -4,6 +4,7 @@ import {
   updateUserField,
   changePasswordStatus,
   deleteAccount,
+  deleteConfirm,
 } from 'src/actions/auth';
 
 import {
@@ -30,6 +31,8 @@ const mapStateToProps = (state) => ({
   userNewPassword: state.auth.userNewPassword,
   userConfirmPassword: state.auth.userConfirmPassword,
   passwordStatus: state.auth.passwordStatus,
+  regError: state.register.regError,
+  passwordDelete: state.register.passwordDelete,
 });
 
 /**
@@ -76,6 +79,14 @@ const mapDispatchToProps = (dispatch) => ({
    */
   deleteAccount: () => {
     const action = deleteAccount();
+    dispatch(action);
+  },
+
+  /**
+   * Action to confirm the delete of the account with password
+   */
+  deleteConfirm: () => {
+    const action = deleteConfirm();
     dispatch(action);
   },
 });

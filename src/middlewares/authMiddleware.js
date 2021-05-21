@@ -11,7 +11,7 @@ import {
   logIn,
   loader,
   regError,
-  DELETE_ACCOUNT,
+  DELETE_CONFIRM,
 } from 'src/actions/auth';
 
 import {
@@ -180,22 +180,41 @@ const authMiddleware = (store) => (next) => (action) => {
     /**
      * Request sent to delete the user account and all the informations associated
      */
-    case DELETE_ACCOUNT:
-      axios({
-        method: 'delete',
-        url: `${API_URL}/user/delete`,
-        headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
+    case DELETE_CONFIRM: {
+      const { passwordDelete } = store.getState().register;
+
+      axios.post(`${API_URL}/login`, {
+        username: localStorage.email,
+        password: passwordDelete,
       })
-        .then((response) => {
-          console.log(response);
-          localStorage.setItem('regError', 2);
-          window.location = '/';
+        .then(() => {
+          axios({
+            method: 'delete',
+            url: `${API_URL}/user/delete`,
+            headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
+          })
+            .then((response) => {
+              console.log(response);
+              store.dispatch(regError(8));
+            })
+            .catch((error) => {
+              console.log('DELETE USER ERROR : ', error.response);
+              const deleteError = {
+                deleteError: 'La suppression du compte ne s\'est pas effectuée. Veuillez essayer ultérieurement.',
+              };
+              store.dispatch(shelterErrorsArray(deleteError));
+            });
         })
-        .catch((error) => {
-          console.log('DELETE USER ERROR : ', error.response);
+        .catch((failure) => {
+          console.log('DELETE ACCOUNT ERROR', failure.response.data.violations);
+          const deleteError = {
+            deleteError: 'La suppression du compte ne s\'est pas effectuée.',
+          };
+          store.dispatch(shelterErrorsArray(deleteError));
         });
       next(action);
       break;
+    }
 
     /**
      * Action to log out the user

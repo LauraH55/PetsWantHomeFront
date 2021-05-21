@@ -122,14 +122,14 @@
         background-color: vars.$outlineColor;
       }
     }
+  }
 
-    .error {
-      margin: 0 auto 1rem;
-      color: vars.$footerColor;
-      font-size: 1.2rem;
-      font-weight: bold;
-      line-height: normal;
-    }
+  .error {
+    margin: 0 auto 1rem;
+    color: vars.$footerColor;
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: normal;
   }
 
   .back-delete {
@@ -167,6 +167,113 @@
     &:hover,
     &focus {
       background-color: rgb(253, 132, 132);
+    }
+  }
+
+  .overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: 1200px) {
+      display: block;
+    }
+
+    .field {
+      width: 60%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: vars.$avenir;
+      font-size: 1.2rem;
+      line-height: 2rem;
+      margin: 1rem auto -1rem;
+
+      label {
+        width: 100%;
+        color: vars.$footerColor;
+      }
+
+      input {
+        width: 100%;
+        padding: .7em;
+        font-size: 1rem;
+        border: 1px solid vars.$footerColor;
+        border-radius: .3em;
+        height: 2.5em;
+        margin-top: 0.2em;
+        margin-bottom: 1em;
+
+        &:focus {
+          border-color: #f17f42;
+        }
+      }
+    }
+
+    .successReg {
+      align-self: center;
+      background-color: rgba(246, 244, 210);
+      border: 3px solid vars.$footerColor;
+      height: 45%;
+      width: 60%;
+      text-align: center;
+      font-family: vars.$avenir;
+      padding-top: 1rem;
+      
+      @media (max-width: 1200px) {
+        margin: 20% auto 0;
+        height: 50%;
+      }
+
+      @media (max-width: 750px) {
+        margin: 5% auto 0;
+        height: 90%;
+      }
+
+      @media (min-width: 1650px) {
+        height: 40%;
+      }
+
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+
+        @media (max-width: 750px) {
+          &:nth-child(2),
+          &:nth-child(3) {
+            display: none;
+          }
+          font-size: 1.1rem;
+        }
+      }
+
+      button {
+        font-weight: 700;
+        font-size: 1rem;
+        color: vars.$secondaryTextColor;
+        background-color: vars.$footerColor;
+        border-radius: .3em;
+        border: 0;
+        padding: 0.7em;
+        height: 2.5em;
+        margin: 2em;
+
+        @media (max-width: 750px) {
+          font-size: 0.8rem;
+        }
+
+        &:hover {
+          background-color: vars.$outlineColor;
+        }
+      }
     }
   }
 }

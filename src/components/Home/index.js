@@ -20,9 +20,6 @@ const Home = ({
   randomAnimals,
 }) => {
   const closeSuccess = () => {
-    if (localStorage.regError == 2) {
-      localStorage.clear();
-    }
     localStorage.removeItem('regError');
     window.location = '/';
   };
@@ -41,7 +38,7 @@ const Home = ({
           </div>
         </div>
       )}
-      {localStorage.regError == 2
+      {/* {localStorage.regError == 2
       && (
         <div className="overlay">
           <div className="successReg">
@@ -49,7 +46,7 @@ const Home = ({
             <button type="button" onClick={closeSuccess}>Fermer ce message</button>
           </div>
         </div>
-      )}
+      )} */}
       <h3 className="description">
         Le site Pets Want Home a été pensé et créé pour les refuges d’animaux afin de leur proposer un outil pour une gestion simplifiée des avis d’adoptions de leurs pensionnaires.
         En centralisant les avis d’adoptions des refuges, nous souhaitons également simplifier la recherche des pensionnaires pour les particuliers souhaitant en adopter.
