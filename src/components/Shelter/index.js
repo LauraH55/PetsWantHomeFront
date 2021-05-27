@@ -32,7 +32,7 @@ const Shelter = ({
           <div>
             <div className="shelter-characteristics">
               <h1>{shelter.name}</h1>
-              <h3><span>Adresse :</span> {shelter.address}</h3>
+              <h3><span>Adresse :</span> {shelter.zip}</h3>
               <h3><span>Téléphone :</span> {shelter.phoneNumber}</h3>
               <h3><span>Email :</span> {shelter.email}</h3>
             </div>

@@ -28,6 +28,7 @@ const SheltersList = ({
             <div className="card-info">
               <h3>{shelter.name}</h3>
               <h4><span>Adresse : </span>{shelter.address}</h4>
+              <h4>{shelter.zip} {shelter.city}</h4>
               <h4><span>Téléphone : </span>{shelter.phoneNumber}</h4>
               <h4><span>Email : </span>{shelter.email}</h4>
             </div>

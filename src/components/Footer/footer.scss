@@ -34,10 +34,11 @@
   }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1500px) {
   .footer {
     position: relative;
     bottom: 0;
+    height: 40vh;
 
     .footer-container {
       position: absolute;
@@ -51,6 +52,8 @@
   }
 
 }
+
+
 
 @media (max-width: 800px) {
   .footer {

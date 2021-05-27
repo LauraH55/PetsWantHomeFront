@@ -43,7 +43,6 @@ const RegisterShelter = ({
 
   return (
     <div className="register-shelter-form">
-      <h1 className="register-shelter-form-title">Inscription du refuge</h1>
       {/* {shelterUpdateError === 1
       && (
         <h3 className="updateSuccess">La création du refuge a bien été prise en compte. Vous allez être redirigé automatiquement.</h3>
@@ -53,6 +52,7 @@ const RegisterShelter = ({
         <h3 className="updateFail">La création du refuge n'a pas été prise en compte.</h3>
       )} */}
       <form autoComplete="off" className="register-shelter-form-element" onSubmit={handleSubmit}>
+        <h1 className="register-shelter-form-title">Inscription du refuge</h1>
         <RegisterShelterField
           name="name"
           placeholder="Nom"

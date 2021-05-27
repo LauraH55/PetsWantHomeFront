@@ -109,3 +109,14 @@
     }
   }
 }
+
+@media (max-width: 1500px) {
+  .about {
+    background-image: none;
+    
+    .about-picture2 {
+      right: 5%;
+    }
+
+  }
+}
