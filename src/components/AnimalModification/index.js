@@ -339,7 +339,7 @@ const AnimalModification = ({
           )}
         </div>
         <div className="picture">
-          <img className="shelter-image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${animalModificationPicture}`} alt="#" />
+          <img className="shelter-image" src={`http://localhost/Projets/PetsWantHomeBack/public/images/${animalModificationPicture}`} alt="#" />
         </div>
         <button type="button" onClick={submitForm}>Enregistrer</button>
       </form>

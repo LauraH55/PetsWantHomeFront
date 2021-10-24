@@ -24,7 +24,7 @@ const SheltersList = ({
           key={shelter.id}
         >
           <div className="card">
-            <img className="image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${shelter.picture}`} alt={shelter.name} />
+            <img className="image" src={`http://localhost/Projets/PetsWantHomeBack/public/images/${shelter.picture}`} alt={shelter.name} />
             <div className="card-info">
               <h3>{shelter.name}</h3>
               <h4><span>Adresse : </span>{shelter.address}</h4>

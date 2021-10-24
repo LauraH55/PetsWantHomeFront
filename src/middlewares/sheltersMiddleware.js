@@ -22,10 +22,10 @@ import {
   validationPassword,
 } from 'src/utils/validator';
 
-const URL_FETCH_SHELTERS = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelters';
-const MODIFICATION_URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api/shelter/update';
-const URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
-const API_URL = 'http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/api';
+const URL_FETCH_SHELTERS = 'http://localhost/Projets/PetsWantHomeBack/public/api/shelters';
+const MODIFICATION_URL = 'http://localhost/Projets/PetsWantHomeBack/public/api/shelter/update';
+const URL = 'http://localhost/Projets/PetsWantHomeBack/public/api';
+const API_URL = 'http://localhost/Projets/PetsWantHomeBack/public/api';
 
 const sheltersMiddleware = (store) => (next) => (action) => {
   switch (action.type) {

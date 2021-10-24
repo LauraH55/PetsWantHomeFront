@@ -59,7 +59,7 @@ const Adoption = ({
           key={animal.id}
         >
           <div className="card">
-            <img className="card-image" src={`http://54.172.199.205/apotheose/apo-PetsWantHome-back/public/images/${animal.picture}`} alt="" />
+            <img className="card-image" src={`http://localhost/Projets/PetsWantHomeBack/public/images/${animal.picture}`} alt="" />
             <h3>{animal.name}</h3>
             {animal.race !== '' && <h4>Race : {animal.race}</h4>}
             <h4>Âge : {getDate(animal.birthdate)} ans</h4>
